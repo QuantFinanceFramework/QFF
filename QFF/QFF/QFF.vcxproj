@@ -126,6 +126,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="EuropeanOption.h" />
+    <ClInclude Include="IInstrument.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EuropeanOption.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

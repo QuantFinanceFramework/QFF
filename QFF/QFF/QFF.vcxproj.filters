@@ -13,18 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Instrument">
+      <UniqueIdentifier>{654b32be-d241-4476-8d3d-888587bdc28b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpolator">
+      <UniqueIdentifier>{e190d393-25c8-48bf-aa66-95838f58c4c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Solver">
+      <UniqueIdentifier>{cf0a039c-e02a-41ef-8c83-b90b87e2cf85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Calendar">
+      <UniqueIdentifier>{c62652a7-838a-47e7-bd08-eb5c365d6d47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DayCounter">
+      <UniqueIdentifier>{82fb6e38-3d34-41d4-98a1-0d73445e74c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Instrument">
+      <UniqueIdentifier>{d181d052-fe68-4165-a420-0c09b9805e24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpolator">
+      <UniqueIdentifier>{5cead426-9088-4393-896a-a72b88887a84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Calendar">
+      <UniqueIdentifier>{4a409443-598b-4c19-9c2f-78de2ad93304}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DayCounter">
+      <UniqueIdentifier>{22b33229-1987-4697-a757-9a3bd52b2e7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Solver">
+      <UniqueIdentifier>{e09b9be4-389c-490b-9e29-667a0aa97151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TermStructure">
+      <UniqueIdentifier>{92a6fc27-8fbf-49ba-8cb9-711796034607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TermStructure">
+      <UniqueIdentifier>{527ff5dc-bed9-4c5c-a1d6-ea9b7b6b2c98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bootstrapper">
+      <UniqueIdentifier>{93cffd4f-85f8-405b-a735-eb85afcc8973}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bootstrapper">
+      <UniqueIdentifier>{ab1babd7-2692-431a-89aa-5600618559b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Pricer">
+      <UniqueIdentifier>{79675448-3dfd-40b2-a5df-dadc72c11236}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Pricer">
+      <UniqueIdentifier>{ca6eb20f-4fbd-4f9a-addc-cc0f00b54563}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInstrument.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Instrument</Filter>
     </ClInclude>
     <ClInclude Include="EuropeanOption.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="IInterpolator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="ICalendar.h">
+      <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="IDayCounter.h">
+      <Filter>Header Files\DayCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="ISolver.h">
+      <Filter>Header Files\Solver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Instrument</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

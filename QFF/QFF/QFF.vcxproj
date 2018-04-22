@@ -127,7 +127,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EuropeanOption.h" />
+    <ClInclude Include="ICalendar.h" />
+    <ClInclude Include="IDayCounter.h" />
     <ClInclude Include="IInstrument.h" />
+    <ClInclude Include="IInterpolator.h" />
+    <ClInclude Include="ISolver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp" />

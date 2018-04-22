@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="pch.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Instrument">
+      <UniqueIdentifier>{9ca9ce98-a748-440f-b9d5-7f24399a89cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interpolator">
+      <UniqueIdentifier>{806e1e2b-55a5-4398-ad3e-ddd575db2b97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Calendar">
+      <UniqueIdentifier>{f93a7aff-c921-4ce3-8859-5dc82d773b1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DayCounter">
+      <UniqueIdentifier>{1223b2f9-426f-48d4-a94d-df62fc94d8fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Solver">
+      <UniqueIdentifier>{69b51e59-27b2-4f25-8043-ffaafdca0042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TermStructure">
+      <UniqueIdentifier>{02a2ffdf-82cd-4176-a7fb-64cf55f4cb75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bootstrapper">
+      <UniqueIdentifier>{d47e0486-9cca-4a4b-a649-c258e89cc417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pricer">
+      <UniqueIdentifier>{ce13aeb0-9811-431f-bc3f-68a4844e4737}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

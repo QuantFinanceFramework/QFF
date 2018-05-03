@@ -2,17 +2,9 @@
 class IInstrument
 {
 public:
-	IInstrument();
-	virtual ~IInstrument();
+	IInstrument() = default;
+	virtual ~IInstrument() = default;
+
+	virtual double evaluate() const =0 ;
 };
 
-
-
-IInstrument::IInstrument()
-{
-}
-
-
-IInstrument::~IInstrument()
-{
-}

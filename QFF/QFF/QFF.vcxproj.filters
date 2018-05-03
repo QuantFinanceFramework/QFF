@@ -61,6 +61,12 @@
     <Filter Include="Source Files\Pricer">
       <UniqueIdentifier>{ca6eb20f-4fbd-4f9a-addc-cc0f00b54563}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\BOL">
+      <UniqueIdentifier>{4056c3b8-8b8f-4c98-ba94-6922df6e8d7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BOL">
+      <UniqueIdentifier>{bc996f19-3709-4ec4-be2d-4a436c1aec66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInstrument.h">
@@ -81,10 +87,22 @@
     <ClInclude Include="ISolver.h">
       <Filter>Header Files\Solver</Filter>
     </ClInclude>
+    <ClInclude Include="IEuropeanOptionPricer.h">
+      <Filter>Header Files\Pricer</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicTradeInfo.h">
+      <Filter>Header Files\BOL</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackScholesPricer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
       <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackScholesPricer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

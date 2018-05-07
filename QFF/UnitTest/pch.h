@@ -6,3 +6,6 @@
 #pragma once
 
 #include "gtest/gtest.h"
+#include <MarketData.h>
+#include <ICurrency.h>
+#include <BlackScholesPricer.h>

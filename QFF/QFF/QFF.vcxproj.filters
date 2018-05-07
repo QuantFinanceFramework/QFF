@@ -61,11 +61,23 @@
     <Filter Include="Source Files\Pricer">
       <UniqueIdentifier>{ca6eb20f-4fbd-4f9a-addc-cc0f00b54563}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\BOL">
+    <Filter Include="Header Files\TradeInfo">
       <UniqueIdentifier>{4056c3b8-8b8f-4c98-ba94-6922df6e8d7a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\BOL">
+    <Filter Include="Source Files\TradeInfo">
       <UniqueIdentifier>{bc996f19-3709-4ec4-be2d-4a436c1aec66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MarketData">
+      <UniqueIdentifier>{84c671d6-f62c-498b-b1e9-5cfd5415102a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MarketData">
+      <UniqueIdentifier>{968493cc-1a9f-4f8b-b942-beaaf883084e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Currency">
+      <UniqueIdentifier>{960ce2a4-d795-4e1f-ad7a-897156348598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Currency">
+      <UniqueIdentifier>{cb6ee74b-c221-49b2-a0be-01dc17fe25de}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,10 +103,16 @@
       <Filter>Header Files\Pricer</Filter>
     </ClInclude>
     <ClInclude Include="BasicTradeInfo.h">
-      <Filter>Header Files\BOL</Filter>
+      <Filter>Header Files\TradeInfo</Filter>
     </ClInclude>
     <ClInclude Include="BlackScholesPricer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Pricer</Filter>
+    </ClInclude>
+    <ClInclude Include="MarketData.h">
+      <Filter>Header Files\MarketData</Filter>
+    </ClInclude>
+    <ClInclude Include="ICurrency.h">
+      <Filter>Header Files\Currency</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,7 +120,7 @@
       <Filter>Source Files\Instrument</Filter>
     </ClCompile>
     <ClCompile Include="BlackScholesPricer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Pricer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -9,3 +9,4 @@
 #include <MarketData.h>
 #include <ICurrency.h>
 #include <BlackScholesPricer.h>
+#include <TurnbullWakemanPricer.h>

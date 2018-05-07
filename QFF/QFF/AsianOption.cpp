@@ -1,12 +1,13 @@
 #include "AsianOption.h"
 
+AsianOption::AsianOption(BasicTradeInfo info, const IAsianOptionPricer& pricer) :m_info(info), m_pricer(&pricer) {}
 
-
-AsianOption::AsianOption()
+double AsianOption::evaluate(MarketData marketData, const ICurrency& currency) const
 {
+	return m_pricer->evaluate(marketData, currency);
 }
 
-
-AsianOption::~AsianOption()
+void AsianOption::setPricer(const IAsianOptionPricer & pricer)
 {
+	m_pricer = &pricer;
 }

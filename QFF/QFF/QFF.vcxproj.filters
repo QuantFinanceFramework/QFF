@@ -114,6 +114,9 @@
     <ClInclude Include="ICurrency.h">
       <Filter>Header Files\Currency</Filter>
     </ClInclude>
+    <ClInclude Include="AsianOption.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -121,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="BlackScholesPricer.cpp">
       <Filter>Source Files\Pricer</Filter>
+    </ClCompile>
+    <ClCompile Include="AsianOption.cpp">
+      <Filter>Source Files\Instrument</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

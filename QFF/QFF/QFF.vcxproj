@@ -126,6 +126,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AsianOption.h" />
     <ClInclude Include="BasicTradeInfo.h" />
     <ClInclude Include="BlackScholesPricer.h" />
     <ClInclude Include="EuropeanOption.h" />
@@ -139,6 +140,7 @@
     <ClInclude Include="MarketData.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AsianOption.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="EuropeanOption.cpp" />
   </ItemGroup>

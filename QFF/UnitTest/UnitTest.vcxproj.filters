@@ -6,6 +6,9 @@
     <ClCompile Include="BlackScholesPricerTest.cpp">
       <Filter>Pricer</Filter>
     </ClCompile>
+    <ClCompile Include="TurnbullWakemanPricerTest.cpp">
+      <Filter>Pricer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

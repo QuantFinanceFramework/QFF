@@ -126,9 +126,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AsianOption.h" />
     <ClInclude Include="BasicTradeInfo.h" />
     <ClInclude Include="BlackScholesPricer.h" />
     <ClInclude Include="EuropeanOption.h" />
+    <ClInclude Include="IAsianOptionPricer.h" />
     <ClInclude Include="ICalendar.h" />
     <ClInclude Include="ICurrency.h" />
     <ClInclude Include="IDayCounter.h" />
@@ -137,10 +139,13 @@
     <ClInclude Include="IInterpolator.h" />
     <ClInclude Include="ISolver.h" />
     <ClInclude Include="MarketData.h" />
+    <ClInclude Include="TurnbullWakemanPricer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AsianOption.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="EuropeanOption.cpp" />
+    <ClCompile Include="TurnbullWakemanPricer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

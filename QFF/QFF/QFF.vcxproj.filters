@@ -114,12 +114,27 @@
     <ClInclude Include="ICurrency.h">
       <Filter>Header Files\Currency</Filter>
     </ClInclude>
+    <ClInclude Include="AsianOption.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="IAsianOptionPricer.h">
+      <Filter>Header Files\Pricer</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnbullWakemanPricer.h">
+      <Filter>Header Files\Pricer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
       <Filter>Source Files\Instrument</Filter>
     </ClCompile>
     <ClCompile Include="BlackScholesPricer.cpp">
+      <Filter>Source Files\Pricer</Filter>
+    </ClCompile>
+    <ClCompile Include="AsianOption.cpp">
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnbullWakemanPricer.cpp">
       <Filter>Source Files\Pricer</Filter>
     </ClCompile>
   </ItemGroup>

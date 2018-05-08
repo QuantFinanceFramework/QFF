@@ -50,7 +50,6 @@
   <ItemGroup>
     <ClCompile Include="BlackScholesPricerTest.cpp" />
     <ClCompile Include="TurnbullWakemanPricerTest.cpp" />
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

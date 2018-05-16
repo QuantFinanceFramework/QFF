@@ -1,7 +1,10 @@
 #pragma once
+#include <string>
+using std::string;
+
 class ICurrency
 {
 public:
-	ICurrency() = default;
+	virtual string getCurrency() const = 0;
 	virtual ~ICurrency() = default;
 };

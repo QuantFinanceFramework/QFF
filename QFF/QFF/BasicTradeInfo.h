@@ -1,17 +1,14 @@
 #pragma once
 #include <string>
+#include <boost\date_time\gregorian\gregorian.hpp>
 using std::string;
+using boost::gregorian::date;
 
-struct BasicTradeInfo final
+
+struct BasicTradeInfo
 {
-public:
-	BasicTradeInfo(string tradeID, string underlying);
-	~BasicTradeInfo() = default;
-
-public:
-	string m_tradeID;
-	string m_underlying;
-
+	string tradeID;
+	string underlying;
+	double strike;
+	date expiryDate;
 };
-
-BasicTradeInfo::BasicTradeInfo(string tradeID, string underlying) : m_tradeID(tradeID), m_underlying(underlying) {};

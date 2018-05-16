@@ -1,9 +1,11 @@
 #pragma once
-struct MarketData final
+
+
+struct MarketData
 {
-public:
-	MarketData() = default;
-	~MarketData() = default;
+	double price;
+	double volatility;
+	double discountFactor;
+};
 
 
-}; 

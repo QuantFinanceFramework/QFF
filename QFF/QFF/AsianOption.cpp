@@ -4,7 +4,7 @@ AsianOption::AsianOption(BasicTradeInfo info, const IAsianOptionPricer& pricer) 
 
 double AsianOption::evaluate(MarketData marketData, const ICurrency& currency) const
 {
-	return m_pricer->evaluate(marketData, currency);
+	return m_pricer->evaluate(marketData, m_info, currency);
 }
 
 void AsianOption::setPricer(const IAsianOptionPricer & pricer)

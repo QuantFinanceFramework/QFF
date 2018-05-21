@@ -4,13 +4,32 @@
     <ClCompile Include="BlackScholesPricerTest.cpp">
       <Filter>Pricer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc" />
+    <ClCompile Include="InstrumentPortfolioTest.cpp">
+      <Filter>Instrument</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">
       <UniqueIdentifier>{2736c6cf-006d-4ac9-98d0-a0165a3ccf0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Instrument">
+      <UniqueIdentifier>{968c60ad-5197-46fa-8ee5-598e512976c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Currency">
+      <UniqueIdentifier>{5723084b-20d5-4efb-9724-586e074c0470}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CurrencyStub.h">
+      <Filter>Currency</Filter>
+    </ClInclude>
+    <ClInclude Include="InstrumentStub.h">
+      <Filter>Instrument</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

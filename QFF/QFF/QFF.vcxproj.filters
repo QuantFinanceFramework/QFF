@@ -123,6 +123,9 @@
     <ClInclude Include="TurnbullWakemanPricer.h">
       <Filter>Header Files\Pricer</Filter>
     </ClInclude>
+    <ClInclude Include="InstrumentPortfolio.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="TurnbullWakemanPricer.cpp">
       <Filter>Source Files\Pricer</Filter>
+    </ClCompile>
+    <ClCompile Include="InstrumentPortfolio.cpp">
+      <Filter>Source Files\Instrument</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

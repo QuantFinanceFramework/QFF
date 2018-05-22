@@ -51,6 +51,7 @@
   <ItemGroup>
     <ClCompile Include="BlackScholesPricerTest.cpp" />
     <ClCompile Include="InstrumentPortfolioTest.cpp" />
+    <ClCompile Include="TurnbullWakemanPricerTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QFF\QFF.vcxproj">

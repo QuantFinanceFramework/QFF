@@ -9,6 +9,9 @@
     <ClCompile Include="InstrumentPortfolioTest.cpp">
       <Filter>Instrument</Filter>
     </ClCompile>
+    <ClCompile Include="TurnbullWakemanPricerTest.cpp">
+      <Filter>Pricer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">

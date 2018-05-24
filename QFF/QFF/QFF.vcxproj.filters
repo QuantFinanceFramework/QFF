@@ -126,6 +126,9 @@
     <ClInclude Include="InstrumentPortfolio.h">
       <Filter>Header Files\Instrument</Filter>
     </ClInclude>
+    <ClInclude Include="Aud.h">
+      <Filter>Header Files\Currency</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -142,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="InstrumentPortfolio.cpp">
       <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="Aud.cpp">
+      <Filter>Source Files\Currency</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

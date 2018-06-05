@@ -70,20 +70,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\LEEK3\source\repos\boost\boost_1_65_1;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\LEEK3\source\repos\boost\boost_1_65_1\stage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\LEEK3\source\repos\boost\boost_1_65_1;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\LEEK3\source\repos\boost\boost_1_65_1\stage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\LEEK3\source\repos\boost\boost_1_65_1;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\LEEK3\source\repos\boost\boost_1_65_1\stage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\LEEK3\source\repos\boost\boost_1_65_1;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\LEEK3\source\repos\boost\boost_1_65_1\stage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -133,6 +133,7 @@
     <ClInclude Include="AsianOption.h" />
     <ClInclude Include="Aud.h" />
     <ClInclude Include="BasicTradeInfo.h" />
+    <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesPricer.h" />
     <ClInclude Include="EuropeanOption.h" />
     <ClInclude Include="IAsianOptionPricer.h" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="AsianOption.cpp" />
     <ClCompile Include="Aud.cpp" />
+    <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="EuropeanOption.cpp" />
     <ClCompile Include="InstrumentPortfolio.cpp" />

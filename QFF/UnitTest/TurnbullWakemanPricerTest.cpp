@@ -8,8 +8,8 @@ using namespace testing;
 
 TEST(TurnbullWakemanPricerTest, EvaluateTest) {
 
-	MarketData data{ 0.0, 0.0, 0.0 };
-	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10) };
+	MarketData data{ 50, 0.25, 0.1, 0.0 };
+	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1, "call" };
 	CurrencyStub currency{};
 	auto pricer = TurnbullWakemanPricer{};
 	auto result = pricer.evaluate(data, info, currency);

@@ -5,7 +5,8 @@ struct MarketData
 {
 	double price;
 	double volatility;
-	double discountFactor;
+	double rate;
+	double dividend;
 };
 
 

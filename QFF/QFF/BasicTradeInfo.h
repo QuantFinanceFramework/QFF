@@ -7,8 +7,15 @@ using boost::gregorian::date;
 
 struct BasicTradeInfo
 {
+	
+
 	string tradeID;
 	string underlying;
 	double strike;
-	date expiryDate;
+	//need to work out how to deal with dates
+	date expiryDate; 
+	
+	//not sure best way to do this so here for now
+	double timeToMaturity;
+	string optionType;
 };

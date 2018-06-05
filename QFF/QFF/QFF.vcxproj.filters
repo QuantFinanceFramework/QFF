@@ -79,6 +79,12 @@
     <Filter Include="Source Files\Currency">
       <UniqueIdentifier>{cb6ee74b-c221-49b2-a0be-01dc17fe25de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Functions">
+      <UniqueIdentifier>{eb690ddf-a462-45e7-a0ac-05abbb625b91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Functions">
+      <UniqueIdentifier>{fa0f09bc-f239-4eed-b104-b287fc89f4d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInstrument.h">
@@ -129,6 +135,9 @@
     <ClInclude Include="Aud.h">
       <Filter>Header Files\Currency</Filter>
     </ClInclude>
+    <ClInclude Include="Black76Formula.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -148,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="Aud.cpp">
       <Filter>Source Files\Currency</Filter>
+    </ClCompile>
+    <ClCompile Include="Black76Formula.cpp">
+      <Filter>Source Files\Functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

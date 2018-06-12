@@ -17,5 +17,5 @@ struct BasicTradeInfo
 	
 	//not sure best way to do this so here for now
 	double timeToMaturity;
-	string optionType;
+	
 };

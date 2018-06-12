@@ -1,10 +1,12 @@
 #include "Black76Formula.h"
 #include <cmath>
 #include <boost\math\distributions\normal.hpp>
+#include <stdexcept>
+
 using boost::math::normal;
 using boost::math::cdf;
 
-double Black76Formula(double forwardPrice, double strike, double rate, double timeToMaturity, double volatility, double dividend, string optionType)
+double Black76Formula(double forwardPrice, double strike, double rate, double timeToMaturity, double volatility, string optionType)
 {
 	double d1 = (log(forwardPrice / strike) + 0.5*(volatility*volatility)*timeToMaturity)/(volatility*sqrt(timeToMaturity));
 	double d2 = d1 - (volatility * sqrt(timeToMaturity));
@@ -20,6 +22,7 @@ double Black76Formula(double forwardPrice, double strike, double rate, double ti
 	else
 	{
 		//throw error?
+		//throw std::invalid_argument("invalid option type");
 		return 0;
 	}
 

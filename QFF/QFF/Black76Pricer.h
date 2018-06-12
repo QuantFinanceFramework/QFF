@@ -1,11 +1,10 @@
 #pragma once
 #include "IEuropeanOptionPricer.h"
-class BlackScholesPricer :
+class Black76Pricer :
 	public IEuropeanOptionPricer
 {
 public:
-	BlackScholesPricer() = default;
-	virtual ~BlackScholesPricer() = default;
+	Black76Pricer() = default;
+	virtual ~Black76Pricer() = default;
 	double evaluate(MarketData marketData, BasicTradeInfo basicTradeInfo, string optionType, const ICurrency& currency) const override;
 };
-

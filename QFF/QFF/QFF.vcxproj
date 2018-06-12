@@ -136,6 +136,8 @@
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesPricer.h" />
     <ClInclude Include="EuropeanOption.h" />
+    <ClInclude Include="BlackScholesFormula.h" />
+    <ClInclude Include="Black76Pricer.h" />
     <ClInclude Include="IAsianOptionPricer.h" />
     <ClInclude Include="ICalendar.h" />
     <ClInclude Include="ICurrency.h" />
@@ -155,6 +157,8 @@
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="EuropeanOption.cpp" />
     <ClCompile Include="InstrumentPortfolio.cpp" />
+    <ClCompile Include="BlackScholesFormula.cpp" />
+    <ClCompile Include="Black76Pricer.cpp" />
     <ClCompile Include="TurnbullWakemanPricer.cpp" />
   </ItemGroup>
   <ItemGroup>

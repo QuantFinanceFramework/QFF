@@ -138,6 +138,12 @@
     <ClInclude Include="Black76Formula.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
+    <ClInclude Include="BlackScholesFormula.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Black76Pricer.h">
+      <Filter>Header Files\Pricer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -160,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="Black76Formula.cpp">
       <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackScholesFormula.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Black76Pricer.cpp">
+      <Filter>Source Files\Pricer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

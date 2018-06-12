@@ -1,7 +1,7 @@
 #include "BlackScholesPricer.h"
-#include "Black76Formula.h"
+#include "BlackScholesFormula.h"
 
-double BlackScholesPricer::evaluate(MarketData marketData, BasicTradeInfo basicTradeInfo, const ICurrency& currency) const
+double BlackScholesPricer::evaluate(MarketData marketData, BasicTradeInfo basicTradeInfo, string optionType, const ICurrency& currency) const
 {
-	return Black76Formula(marketData.price,basicTradeInfo.strike,marketData.rate,basicTradeInfo.timeToMaturity,marketData.volatility,marketData.dividend,basicTradeInfo.optionType);
+	return BlackScholesFormula(marketData.price,basicTradeInfo.strike,marketData.rate,basicTradeInfo.timeToMaturity,marketData.volatility,marketData.dividend,optionType);
 }

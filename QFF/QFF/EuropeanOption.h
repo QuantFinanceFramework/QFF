@@ -7,7 +7,7 @@ class EuropeanOption :
 	public IInstrument
 {
 public:
-	EuropeanOption(BasicTradeInfo info, const IEuropeanOptionPricer& pricer);
+	EuropeanOption(BasicTradeInfo info, string optionType, const IEuropeanOptionPricer& pricer);
 	virtual ~EuropeanOption() = default;
 
 	double evaluate(MarketData marketData, const ICurrency& currency) const override;
@@ -16,6 +16,7 @@ public:
 private:
 	BasicTradeInfo m_info;
 	const IEuropeanOptionPricer* m_pricer;
+	string m_optionType;
 
 };
 

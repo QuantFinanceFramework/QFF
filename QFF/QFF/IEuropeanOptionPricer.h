@@ -8,5 +8,5 @@ class IEuropeanOptionPricer
 public:
 	IEuropeanOptionPricer() = default;
 	virtual ~IEuropeanOptionPricer() = default;
-	virtual double evaluate(MarketData marketData, BasicTradeInfo basicTradeInfo, const ICurrency& currency) const = 0;
+	virtual double evaluate(MarketData marketData, BasicTradeInfo basicTradeInfo, string optionType, const ICurrency& currency) const = 0;
 };

@@ -22,8 +22,8 @@ double Black76Formula(double forwardPrice, double strike, double rate, double ti
 	else
 	{
 		//throw error?
-		//throw std::invalid_argument("invalid option type");
-		return 0;
+		throw std::invalid_argument("invalid option type");
+		//return 0;
 	}
 
 }

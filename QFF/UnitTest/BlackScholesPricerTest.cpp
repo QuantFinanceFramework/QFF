@@ -36,8 +36,5 @@ TEST(BlackScholesPricerTest, EvaluateErrorTest) {
 	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1 };
 	CurrencyStub currency{};
 	auto pricer = BlackScholesPricer{};
-	auto result = pricer.evaluate(data, info, "swap", currency);
-
-	//EXPECT_THROW(result,std::invalid_argument);
-	EXPECT_EQ(result, 0);
+	EXPECT_THROW(pricer.evaluate(data, info, "swap", currency),std::invalid_argument);
 }

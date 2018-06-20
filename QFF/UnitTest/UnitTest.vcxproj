@@ -33,19 +33,19 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;C:\Users\BanksA\source\repos\QFF\QFF\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;..\QFF;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;C:\Users\BanksA\source\repos\QFF\QFF\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;..\QFF;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;C:\Users\BanksA\source\repos\QFF\QFF\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;..\QFF;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;C:\Users\BanksA\source\repos\QFF\QFF\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;..\QFF;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemGroup>

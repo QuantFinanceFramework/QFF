@@ -22,8 +22,8 @@ double BlackScholesFormula(double spot, double strike, double rate, double timeT
 	else
 	{
 		//throw error?
-		//throw std::invalid_argument("invalid option type");
-		return 0;
+		throw std::invalid_argument("invalid option type");
+		//return 0;
 	}
 
 }

@@ -144,6 +144,18 @@
     <ClInclude Include="Black76Pricer.h">
       <Filter>Header Files\Pricer</Filter>
     </ClInclude>
+    <ClInclude Include="ISwapLeg.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatingLeg.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedLeg.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="Swap.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -172,6 +184,15 @@
     </ClCompile>
     <ClCompile Include="Black76Pricer.cpp">
       <Filter>Source Files\Pricer</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatingLeg.cpp">
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedLeg.cpp">
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="Swap.cpp">
+      <Filter>Source Files\Instrument</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

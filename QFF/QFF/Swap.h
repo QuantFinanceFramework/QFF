@@ -10,7 +10,8 @@ class Swap :
 	public IInstrument
 {
 public:
-	Swap() = default;
+	Swap() = delete;
+	Swap(BasicTradeInfo info, unique_ptr<ISwapLeg> receiveLeg, unique_ptr<ISwapLeg> payLeg);
 	~Swap() = default;
 	double evaluate(MarketData marketData, const ICurrency& currency) const override;
 

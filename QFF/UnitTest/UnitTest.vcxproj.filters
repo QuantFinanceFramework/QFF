@@ -15,6 +15,9 @@
     <ClCompile Include="BlackScholesPricerTest.cpp">
       <Filter>Pricer</Filter>
     </ClCompile>
+    <ClCompile Include="EuropeanOptionTest.cpp">
+      <Filter>Instrument</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">

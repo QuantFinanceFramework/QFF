@@ -8,8 +8,8 @@ using boost::gregorian::date;
 
 struct BasicTradeInfo
 {
-	
-
+	// BasicTradeInfo cannot be empty
+	BasicTradeInfo() = delete;
 	string tradeID;
 	string underlying;
 	double strike;

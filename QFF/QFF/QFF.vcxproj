@@ -138,10 +138,9 @@
     <ClInclude Include="EuropeanOption.h" />
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="Black76Pricer.h" />
-    <ClInclude Include="FixedLeg.h" />
-    <ClInclude Include="FloatingLeg.h" />
     <ClInclude Include="IAsianOptionPricer.h" />
     <ClInclude Include="ICalendar.h" />
+    <ClInclude Include="ICashFlow.h" />
     <ClInclude Include="ICurrency.h" />
     <ClInclude Include="IDayCounter.h" />
     <ClInclude Include="IEuropeanOptionPricer.h" />
@@ -149,7 +148,7 @@
     <ClInclude Include="IInterpolator.h" />
     <ClInclude Include="InstrumentPortfolio.h" />
     <ClInclude Include="ISolver.h" />
-    <ClInclude Include="ISwapLeg.h" />
+    <ClInclude Include="SwapLeg.h" />
     <ClInclude Include="MarketData.h" />
     <ClInclude Include="Swap.h" />
     <ClInclude Include="TurnbullWakemanPricer.h" />
@@ -160,12 +159,11 @@
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="EuropeanOption.cpp" />
-    <ClCompile Include="FixedLeg.cpp" />
-    <ClCompile Include="FloatingLeg.cpp" />
     <ClCompile Include="InstrumentPortfolio.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="Black76Pricer.cpp" />
     <ClCompile Include="Swap.cpp" />
+    <ClCompile Include="SwapLeg.cpp" />
     <ClCompile Include="TurnbullWakemanPricer.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -1,23 +1,20 @@
 #pragma once
 #include "IInstrument.h"
-#include "ISwapLeg.h"
+#include "SwapLeg.h"
 #include "BasicTradeInfo.h"
-#include <memory>
-
-using std::unique_ptr;
 
 class Swap :
 	public IInstrument
 {
 public:
 	Swap() = delete;
-	Swap(BasicTradeInfo info, unique_ptr<ISwapLeg> receiveLeg, unique_ptr<ISwapLeg> payLeg);
+	Swap(BasicTradeInfo info, SwapLeg receiveLeg, SwapLeg payLeg);
 	~Swap() = default;
-	double evaluate(MarketData marketData, const ICurrency& currency) const override;
+	double evaluate(const MarketData& marketData, const ICurrency& currency) const;
 
 private:
 	BasicTradeInfo m_info;
-	unique_ptr<ISwapLeg> m_receiveLeg;
-	unique_ptr<ISwapLeg> m_payLeg;
+	SwapLeg m_receiveLeg;
+	SwapLeg m_payLeg;
 };
 

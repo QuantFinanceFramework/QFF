@@ -1,7 +1,7 @@
 #include "Swap.h"
 
-Swap::Swap(BasicTradeInfo info, SwapLeg receiveLeg, SwapLeg payLeg):
-	m_info(info), m_receiveLeg(std::move(receiveLeg)), m_payLeg(std::move(payLeg)){}
+Swap::Swap(SwapLeg receiveLeg, SwapLeg payLeg):
+	m_receiveLeg(std::move(receiveLeg)), m_payLeg(std::move(payLeg)){}
 
 double Swap::evaluate(const MarketData & marketData, const ICurrency & currency) const
 {

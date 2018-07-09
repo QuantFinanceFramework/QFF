@@ -10,12 +10,13 @@ using std::unique_ptr;
 class SwapLeg
 {
 public:
-	SwapLeg() = default;
+	SwapLeg() = delete;
+	SwapLeg(vector<ICashFlow*> leg);
 	virtual ~SwapLeg() = default;
 	double evaluate(const MarketData& marketData, const ICurrency& currency) const;
 
 private:
-	vector<unique_ptr<ICashFlow>> m_leg;
+	vector<ICashFlow*> m_leg;
 
 };
 

@@ -139,9 +139,11 @@
     <ClInclude Include="BasicTradeInfo.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesPricer.h" />
+    <ClInclude Include="DiscountCurve.h" />
     <ClInclude Include="EuropeanOption.h" />
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="Black76Pricer.h" />
+    <ClInclude Include="FXCurve.h" />
     <ClInclude Include="IAsianOptionPricer.h" />
     <ClInclude Include="ICalendar.h" />
     <ClInclude Include="ICashFlow.h" />
@@ -162,7 +164,9 @@
     <ClCompile Include="Aud.cpp" />
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
+    <ClCompile Include="DiscountCurve.cpp" />
     <ClCompile Include="EuropeanOption.cpp" />
+    <ClCompile Include="FXCurve.cpp" />
     <ClCompile Include="InstrumentPortfolio.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="Black76Pricer.cpp" />

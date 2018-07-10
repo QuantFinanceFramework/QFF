@@ -85,6 +85,18 @@
     <Filter Include="Source Files\Functions">
       <UniqueIdentifier>{fa0f09bc-f239-4eed-b104-b287fc89f4d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\MarketData\Curves">
+      <UniqueIdentifier>{8109ad32-39b9-41d4-965d-82e9191ca8c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MarketData\Surfaces">
+      <UniqueIdentifier>{a96cd632-4648-4be5-9cdf-603e1abf4462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MarketData\Curves">
+      <UniqueIdentifier>{3a52e4ff-1d38-4e3b-abac-2595fcac8c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MarketData\Surfaces">
+      <UniqueIdentifier>{6b92d60a-255d-4cf7-9477-256b790adf55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInstrument.h">
@@ -153,6 +165,12 @@
     <ClInclude Include="ICashFlow.h">
       <Filter>Header Files\Instrument</Filter>
     </ClInclude>
+    <ClInclude Include="DiscountCurve.h">
+      <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="FXCurve.h">
+      <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -187,6 +205,12 @@
     </ClCompile>
     <ClCompile Include="SwapLeg.cpp">
       <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="DiscountCurve.cpp">
+      <Filter>Source Files\MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="FXCurve.cpp">
+      <Filter>Source Files\MarketData\Curves</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,17 +2,6 @@
 class IInterpolator
 {
 public:
-	IInterpolator();
-	virtual ~IInterpolator();
+	IInterpolator() = default;
+	virtual ~IInterpolator() = default;
 };
-
-
-
-IInterpolator::IInterpolator()
-{
-}
-
-
-IInterpolator::~IInterpolator()
-{
-}

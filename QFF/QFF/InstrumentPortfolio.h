@@ -10,7 +10,7 @@ public:
 	InstrumentPortfolio(vector<IInstrument*> portfolio);
 	~InstrumentPortfolio() = default;
 
-	double evaluate(MarketData marketData, const ICurrency& currency) const override;
+	double evaluate(const MarketData& marketData, const ICurrency& currency) const override;
 
 private:
 	vector<IInstrument*> m_portfolio;

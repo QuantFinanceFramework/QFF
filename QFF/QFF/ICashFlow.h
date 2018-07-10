@@ -8,6 +8,6 @@ public:
 	ICashFlow() = default;
 	virtual ~ICashFlow() = default;
 
-	virtual double evaluate(MarketData marketData, const ICurrency& currency) const = 0;
+	virtual double evaluate(const MarketData& marketData, const ICurrency& currency) const = 0;
 };
 

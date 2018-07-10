@@ -40,5 +40,8 @@
     <ClInclude Include="InstrumentStub.h">
       <Filter>Instrument</Filter>
     </ClInclude>
+    <ClInclude Include="CashFlowStub.h">
+      <Filter>Instrument</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

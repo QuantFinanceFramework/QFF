@@ -10,7 +10,7 @@ public:
 	AsianOption(BasicTradeInfo info, const IAsianOptionPricer& pricer);
 	virtual ~AsianOption() = default;
 
-	double evaluate(MarketData marketData, const ICurrency& currency) const override;
+	double evaluate(const MarketData& marketData, const ICurrency& currency) const override;
 	void setPricer(const IAsianOptionPricer& pricer);
 
 private:

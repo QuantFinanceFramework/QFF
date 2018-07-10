@@ -1,8 +1,8 @@
 #pragma once
-#include <IInstrument.h>
+#include <ICashFlow.h>
 #include "gmock\gmock.h"
 
-class InstrumentStub : public IInstrument {
+class CashFlowStub : public ICashFlow {
 public:
 	MOCK_CONST_METHOD2(evaluate, double(const MarketData&, const ICurrency&));
 };

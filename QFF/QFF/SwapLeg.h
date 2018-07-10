@@ -3,9 +3,8 @@
 #include "ICurrency.h"
 #include "ICashFlow.h"
 #include <vector>
-#include <memory>
+
 using std::vector;
-using std::unique_ptr;
 
 class SwapLeg
 {

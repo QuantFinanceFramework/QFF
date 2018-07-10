@@ -10,7 +10,7 @@ public:
 	EuropeanOption(BasicTradeInfo info, string optionType, const IEuropeanOptionPricer& pricer);
 	virtual ~EuropeanOption() = default;
 
-	double evaluate(MarketData marketData, const ICurrency& currency) const override;
+	double evaluate(const MarketData& marketData, const ICurrency& currency) const override;
 	void setPricer(const IEuropeanOptionPricer& pricer);
 
 private:

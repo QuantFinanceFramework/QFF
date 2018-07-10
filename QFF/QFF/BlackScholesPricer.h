@@ -6,6 +6,6 @@ class BlackScholesPricer :
 public:
 	BlackScholesPricer() = default;
 	virtual ~BlackScholesPricer() = default;
-	double evaluate(MarketData marketData, BasicTradeInfo basicTradeInfo, string optionType, const ICurrency& currency) const override;
+	double evaluate(const MarketData& marketData, const BasicTradeInfo& basicTradeInfo, string optionType, const ICurrency& currency) const override;
 };
 

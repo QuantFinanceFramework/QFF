@@ -2,17 +2,7 @@
 class IDayCounter
 {
 public:
-	IDayCounter();
-	virtual ~IDayCounter();
+	IDayCounter() = delete;
+	virtual ~IDayCounter() = default;
 };
 
-
-
-IDayCounter::IDayCounter()
-{
-}
-
-
-IDayCounter::~IDayCounter()
-{
-}

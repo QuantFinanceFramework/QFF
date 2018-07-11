@@ -18,7 +18,7 @@
     <ClCompile Include="EuropeanOptionTest.cpp">
       <Filter>Instrument</Filter>
     </ClCompile>
-    <ClCompile Include="SwapLegTest.cpp">
+    <ClCompile Include="CashFlowCollectionTest.cpp">
       <Filter>Instrument</Filter>
     </ClCompile>
   </ItemGroup>

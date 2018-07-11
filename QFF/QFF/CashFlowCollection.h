@@ -6,16 +6,16 @@
 
 using std::vector;
 
-class SwapLeg
+class CashFlowCollection
 {
 public:
-	SwapLeg() = delete;
-	SwapLeg(vector<ICashFlow*> leg);
-	virtual ~SwapLeg() = default;
+	CashFlowCollection() = delete;
+	CashFlowCollection(vector<ICashFlow*> collection);
+	virtual ~CashFlowCollection() = default;
 	double evaluate(const MarketData& marketData, const ICurrency& currency) const;
 
 private:
-	vector<ICashFlow*> m_leg;
+	vector<ICashFlow*> m_collection;
 
 };
 

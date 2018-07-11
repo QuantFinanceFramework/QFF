@@ -12,7 +12,7 @@ public:
 	CashFlowCollection() = delete;
 	CashFlowCollection(vector<ICashFlow*> collection);
 	virtual ~CashFlowCollection() = default;
-	double evaluate(const MarketData& marketData, const ICurrency& currency) const;
+	double evaluate(const IMarketData & marketData, const ICurrency& currency) const;
 
 private:
 	vector<ICashFlow*> m_collection;

@@ -10,7 +10,7 @@ public:
 	Swap() = delete;
 	Swap(CashFlowCollection receiveLeg, CashFlowCollection payLeg);
 	~Swap() = default;
-	double evaluate(const MarketData& marketData, const ICurrency& currency) const;
+	double evaluate(const IMarketData & marketData, const ICurrency& currency) const;
 
 private:
 	CashFlowCollection m_receiveLeg;

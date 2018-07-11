@@ -2,7 +2,13 @@
 #include "Black76Formula.h"
 
 double Black76Pricer::evaluate(const IMarketData& marketData, const BasicTradeInfo& basicTradeInfo, string optionType, const ICurrency & currency) const
-{
-	return Black76Formula(marketData.price, basicTradeInfo.strike, marketData.rate, basicTradeInfo.timeToMaturity, marketData.volatility, optionType);
+{	
+	//TODO: Make Black76Formula takes discount factor instead of zero rate and time to maturity. 
+	return Black76Formula(marketData.getForward(basicTradeInfo.underlying,basicTradeInfo.expiryDate), 
+		basicTradeInfo.strike, 
+		marketData.getZeroRate("AUD_STD", basicTradeInfo.expiryDate),
+		basicTradeInfo.timeToMaturity, 
+		marketData.getVolatility(basicTradeInfo.underlying, basicTradeInfo.expiryDate, basicTradeInfo.strike),
+		optionType);
 
 }

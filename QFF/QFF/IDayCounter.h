@@ -2,17 +2,9 @@
 class IDayCounter
 {
 public:
-	IDayCounter();
-	virtual ~IDayCounter();
+	IDayCounter() = default;
+	virtual ~IDayCounter() = default;
+	virtual double calculate() const = 0;
 };
 
 
-
-IDayCounter::IDayCounter()
-{
-}
-
-
-IDayCounter::~IDayCounter()
-{
-}

@@ -54,6 +54,7 @@
     <ClCompile Include="BlackScholesPricerTest.cpp" />
     <ClCompile Include="EuropeanOptionTest.cpp" />
     <ClCompile Include="SwapLegTest.cpp" />
+    <ClCompile Include="DayCounter.cpp" />
     <ClCompile Include="TurnbullWakemanPricerTest.cpp" />
   </ItemGroup>
   <ItemGroup>

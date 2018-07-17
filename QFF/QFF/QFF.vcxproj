@@ -157,6 +157,7 @@
     <ClInclude Include="SwapLeg.h" />
     <ClInclude Include="MarketData.h" />
     <ClInclude Include="Swap.h" />
+    <ClInclude Include="DayCounter.h" />
     <ClInclude Include="TurnbullWakemanPricer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +173,7 @@
     <ClCompile Include="Black76Pricer.cpp" />
     <ClCompile Include="Swap.cpp" />
     <ClCompile Include="SwapLeg.cpp" />
+    <ClCompile Include="DayCounter.cpp" />
     <ClCompile Include="TurnbullWakemanPricer.cpp" />
   </ItemGroup>
   <ItemGroup>

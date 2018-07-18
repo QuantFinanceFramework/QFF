@@ -159,9 +159,6 @@
     <ClInclude Include="Swap.h">
       <Filter>Header Files\Instrument</Filter>
     </ClInclude>
-    <ClInclude Include="SwapLeg.h">
-      <Filter>Header Files\Instrument</Filter>
-    </ClInclude>
     <ClInclude Include="ICashFlow.h">
       <Filter>Header Files\Instrument</Filter>
     </ClInclude>
@@ -170,6 +167,12 @@
     </ClInclude>
     <ClInclude Include="FXCurve.h">
       <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="CashFlowCollection.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="IMarketData.h">
+      <Filter>Header Files\MarketData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -203,14 +206,17 @@
     <ClCompile Include="Swap.cpp">
       <Filter>Source Files\Instrument</Filter>
     </ClCompile>
-    <ClCompile Include="SwapLeg.cpp">
-      <Filter>Source Files\Instrument</Filter>
-    </ClCompile>
     <ClCompile Include="DiscountCurve.cpp">
       <Filter>Source Files\MarketData\Curves</Filter>
     </ClCompile>
     <ClCompile Include="FXCurve.cpp">
       <Filter>Source Files\MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="CashFlowCollection.cpp">
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="MarketData.cpp">
+      <Filter>Source Files\MarketData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

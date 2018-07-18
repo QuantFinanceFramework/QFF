@@ -1,6 +1,6 @@
 #pragma once
 #include "IInstrument.h"
-#include "SwapLeg.h"
+#include "CashFlowCollection.h"
 #include "BasicTradeInfo.h"
 
 class Swap :
@@ -8,12 +8,12 @@ class Swap :
 {
 public:
 	Swap() = delete;
-	Swap(SwapLeg receiveLeg, SwapLeg payLeg);
+	Swap(CashFlowCollection receiveLeg, CashFlowCollection payLeg);
 	~Swap() = default;
-	double evaluate(const MarketData& marketData, const ICurrency& currency) const;
+	double evaluate(const IMarketData & marketData, const ICurrency& currency) const;
 
 private:
-	SwapLeg m_receiveLeg;
-	SwapLeg m_payLeg;
+	CashFlowCollection m_receiveLeg;
+	CashFlowCollection m_payLeg;
 };
 

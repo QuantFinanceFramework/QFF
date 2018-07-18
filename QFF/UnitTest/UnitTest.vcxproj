@@ -53,7 +53,7 @@
     <ClCompile Include="InstrumentPortfolioTest.cpp" />
     <ClCompile Include="BlackScholesPricerTest.cpp" />
     <ClCompile Include="EuropeanOptionTest.cpp" />
-    <ClCompile Include="SwapLegTest.cpp" />
+    <ClCompile Include="CashFlowCollectionTest.cpp" />
     <ClCompile Include="TurnbullWakemanPricerTest.cpp" />
   </ItemGroup>
   <ItemGroup>

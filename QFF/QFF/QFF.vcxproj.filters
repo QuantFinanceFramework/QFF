@@ -171,9 +171,6 @@
     <ClInclude Include="FXCurve.h">
       <Filter>Header Files\MarketData\Curves</Filter>
     </ClInclude>
-    <ClInclude Include="DayCounter.h">
-      <Filter>Header Files\DayCounter</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -214,9 +211,6 @@
     </ClCompile>
     <ClCompile Include="FXCurve.cpp">
       <Filter>Source Files\MarketData\Curves</Filter>
-    </ClCompile>
-    <ClCompile Include="DayCounter.cpp">
-      <Filter>Source Files\DayCounter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

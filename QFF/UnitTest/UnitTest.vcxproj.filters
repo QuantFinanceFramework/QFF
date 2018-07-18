@@ -21,9 +21,6 @@
     <ClCompile Include="SwapLegTest.cpp">
       <Filter>Instrument</Filter>
     </ClCompile>
-    <ClCompile Include="DayCounter.cpp">
-      <Filter>DayCounter</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">
@@ -34,9 +31,6 @@
     </Filter>
     <Filter Include="Currency">
       <UniqueIdentifier>{5723084b-20d5-4efb-9724-586e074c0470}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DayCounter">
-      <UniqueIdentifier>{a23751eb-7fc0-4b41-9e5e-f5d501fdadca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

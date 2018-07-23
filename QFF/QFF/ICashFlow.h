@@ -9,6 +9,10 @@ class ICashFlow :
 {
 public:
 	ICashFlow() = delete;
+
+	ICashFlow(ICashFlow&&) = default;
+	ICashFlow& operator=(ICashFlow&&) = default;
+
 	virtual ~ICashFlow() = default;
 	virtual date getPaymentDate() const = 0;
 };

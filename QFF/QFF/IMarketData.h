@@ -15,7 +15,6 @@ public:
 	virtual double getSpot(string underlying) const = 0;
 	virtual double getForward(string underlying, date date) const = 0;
 	virtual double getVolatility(string underlying, date date, double strike) const = 0;
-	virtual double getDividendYieldEstimate(string underlying, date date) const = 0;
 };
 
 

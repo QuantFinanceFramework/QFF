@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="Black76PricerTest.cpp" />
+    <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="InstrumentPortfolioTest.cpp" />
     <ClCompile Include="BlackScholesPricerTest.cpp" />
     <ClCompile Include="EuropeanOptionTest.cpp" />

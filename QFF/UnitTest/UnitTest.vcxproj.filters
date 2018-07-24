@@ -21,6 +21,9 @@
     <ClCompile Include="CashFlowCollectionTest.cpp">
       <Filter>Instrument</Filter>
     </ClCompile>
+    <ClCompile Include="DayCounterTest.cpp">
+      <Filter>DayCounter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">
@@ -31,6 +34,9 @@
     </Filter>
     <Filter Include="Currency">
       <UniqueIdentifier>{5723084b-20d5-4efb-9724-586e074c0470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DayCounter">
+      <UniqueIdentifier>{4fd03935-bc76-4133-bd85-1f60c3983e07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

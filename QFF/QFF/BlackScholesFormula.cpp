@@ -6,18 +6,18 @@
 using boost::math::normal;
 using boost::math::cdf;
 
-double BlackScholesFormula(double spot, double strike, double rate, double timeToMaturity, double volatility, double dividend, string optionType)
+double BlackScholesFormula(double spot, double strike, double discountFactor, double timeToMaturity, double volatility, string optionType)
 {
-	double d1 = (log(spot / strike) + ((rate - dividend) + 0.5*volatility*volatility)*timeToMaturity) / (volatility*sqrt(timeToMaturity));
+	double d1 = (log(spot / strike) + (((-log(discountFactor)/timeToMaturity) + 0.5*volatility*volatility)*timeToMaturity) / (volatility*sqrt(timeToMaturity));
 	double d2 = d1 - (volatility * sqrt(timeToMaturity));
 
 	if (optionType == "call")
 	{
-		return exp(-dividend * timeToMaturity)*spot*cdf(normal(), d1) - exp(-rate * timeToMaturity)*strike*cdf(normal(), d2);
+		return spot*cdf(normal(), d1) - discountFactor*strike*cdf(normal(), d2);
 	}
 	else if (optionType == "put")
 	{
-		return exp(-rate * timeToMaturity)*strike*cdf(normal(), -d2) - exp(-dividend * timeToMaturity)*spot*cdf(normal(), -d1);
+		return discountFactor*strike*cdf(normal(), -d2) - spot*cdf(normal(), -d1);
 	}
 	else
 	{

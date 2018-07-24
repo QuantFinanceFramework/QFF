@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="AsianOption.h" />
     <ClInclude Include="Aud.h" />
+    <ClInclude Include="BasicDayCounter.h" />
     <ClInclude Include="BasicTradeInfo.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesPricer.h" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="AsianOption.cpp" />
     <ClCompile Include="Aud.cpp" />
+    <ClCompile Include="BasicDayCounter.cpp" />
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="DiscountCurve.cpp" />

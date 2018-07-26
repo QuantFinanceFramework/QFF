@@ -1,18 +1,18 @@
 #include "gtest/gtest.h"
-#include <BasicDayCounter.h>
+#include <Actual365DayCounter.h>
 
-TEST(BasicDayCounterTest, countDayBetweenTest) {
+TEST(Actual365DayCounterTest, countDayBetweenTest) {
 
-	BasicDayCounter time{ date(2002,12,30), date(2002,12,10) };
+	Actual365DayCounter time{ date(2002,12,30), date(2002,12,10) };
 	auto result = time.countDayBetween();
 
 	EXPECT_NEAR(result, 20, 0.0001);
 
 }
 
-TEST(BasicDayCounterTest, calculateYearFractionTest) {
+TEST(Actual365DayCounterTest, calculateYearFractionTest) {
 
-	BasicDayCounter time{ date(2002,12,30), date(2002,12,10) };
+	Actual365DayCounter time{ date(2002,12,30), date(2002,12,10) };
 	auto result = time.calculateYearFraction();
 
 	EXPECT_NEAR(result, 0.05479452, 0.0001);

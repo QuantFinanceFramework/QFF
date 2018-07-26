@@ -8,7 +8,7 @@ using boost::math::cdf;
 
 double BlackScholesFormula(double spot, double strike, double discountFactor, double timeToMaturity, double volatility, string optionType)
 {
-	double d1 = (log(spot / strike) + (((-log(discountFactor)/timeToMaturity) + 0.5*volatility*volatility)*timeToMaturity) / (volatility*sqrt(timeToMaturity));
+	double d1 = (log(spot / strike) + (-log(discountFactor) + 0.5*volatility*volatility*timeToMaturity)) / (volatility*sqrt(timeToMaturity));
 	double d2 = d1 - (volatility * sqrt(timeToMaturity));
 
 	if (optionType == "call")

@@ -4,12 +4,12 @@
 
 using boost::gregorian::date;
 
-class BasicDayCounter :
+class Actual365DayCounter :
 	public IDayCounter
 {
 public:
-	BasicDayCounter(date startDate, date endDate);
-	~BasicDayCounter() = default;
+	Actual365DayCounter(date startDate, date endDate);
+	~Actual365DayCounter() = default;
 	double countDayBetween() const override;
 	double calculateYearFraction() const override;
 

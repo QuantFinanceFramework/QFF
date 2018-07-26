@@ -174,7 +174,7 @@
     <ClInclude Include="IMarketData.h">
       <Filter>Header Files\MarketData</Filter>
     </ClInclude>
-    <ClInclude Include="BasicDayCounter.h">
+    <ClInclude Include="Actual365DayCounter.h">
       <Filter>Header Files\DayCounter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -221,7 +221,7 @@
     <ClCompile Include="MarketData.cpp">
       <Filter>Source Files\MarketData</Filter>
     </ClCompile>
-    <ClCompile Include="BasicDayCounter.cpp">
+    <ClCompile Include="Actual365DayCounter.cpp">
       <Filter>Source Files\DayCounter</Filter>
     </ClCompile>
   </ItemGroup>

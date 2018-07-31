@@ -4,14 +4,14 @@ Actual365DayCounter::Actual365DayCounter(date startDate, date endDate) :m_startD
 
 double Actual365DayCounter::countDayBetween() const
 {
-	double difference = (m_startDate - m_endDate).days();
+	boost::gregorian::date_duration difference = m_startDate - m_endDate;
 
-	return difference;
+	return difference.days();
 }
 
 double Actual365DayCounter::calculateYearFraction() const
 {
-	double difference = (m_startDate - m_endDate).days();
+	boost::gregorian::date_duration difference = m_startDate - m_endDate;
 
-	return difference / 365;
+	return (difference.days()) / 365;
 }

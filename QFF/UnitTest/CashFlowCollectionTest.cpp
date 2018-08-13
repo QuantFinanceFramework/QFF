@@ -4,12 +4,14 @@
 #include <CashFlowCollection.h>
 #include "CurrencyStub.h"
 #include "CashFlowStub.h"
+#include "MarketDataStub.h"
+
 
 using namespace testing;
 using std::vector;
 
 TEST(SwapLegTest, EvaluateTest) {
-	MarketData data;
+	MarketDataStub data{};
 	CurrencyStub currency{};
 	CashFlowStub dummyCashFlow1{};
 	CashFlowStub dummyCashFlow2{};

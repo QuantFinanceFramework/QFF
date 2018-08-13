@@ -7,13 +7,14 @@
 #include <InstrumentPortfolio.h>
 #include "CurrencyStub.h"
 #include "InstrumentStub.h"
+#include "MarketDataStub.h"
 
 using namespace testing;
 using std::vector;
 
 TEST(InstrumentPortfolioTest, EvaluateTest) {
 
-	MarketData data{ 0.0, 0.0, 0.0 };
+	MarketDataStub data{};
 	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10) };
 	CurrencyStub currency{};
 	InstrumentStub dummyInstrument1{}; 

@@ -9,9 +9,13 @@ class MarketData :
 	public IMarketData
 {
 public:
-	MarketData() = delete;
+	MarketData() = default;
 	~MarketData() = default;
 	double getDiscountFactor(string curveName, date date) const override;
+	double getForwardRateProjection(string curveName, date date) const override;
+	double getSpot(string underlying) const override;
+	double getForward(string underlying, date date) const override;
+	double getVolatility(string underlying, date date, double strike) const override;
 
 private:
 	date m_referenceDate;

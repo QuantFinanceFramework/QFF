@@ -68,6 +68,7 @@
   <ItemGroup>
     <ClInclude Include="CashFlowStub.h" />
     <ClInclude Include="CurrencyStub.h" />
+    <ClInclude Include="MarketDataStub.h" />
     <ClInclude Include="InstrumentStub.h" />
   </ItemGroup>
   <ItemDefinitionGroup />

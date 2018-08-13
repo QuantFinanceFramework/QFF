@@ -8,7 +8,7 @@ using boost::gregorian::date;
 class IMarketData
 {
 public:
-	IMarketData() = delete;
+	IMarketData() = default;
 	virtual ~IMarketData() = default;
 	virtual double getDiscountFactor(string curveName, date date) const = 0;
 	virtual double getForwardRateProjection(string curveName, date date) const = 0;

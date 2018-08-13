@@ -38,6 +38,9 @@
     <Filter Include="DayCounter">
       <UniqueIdentifier>{4fd03935-bc76-4133-bd85-1f60c3983e07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MarketData">
+      <UniqueIdentifier>{dfa9d34e-32cd-4b44-94f0-7ad4b3920166}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -51,6 +54,9 @@
     </ClInclude>
     <ClInclude Include="CashFlowStub.h">
       <Filter>Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="MarketDataStub.h">
+      <Filter>MarketData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

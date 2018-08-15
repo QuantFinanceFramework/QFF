@@ -9,6 +9,6 @@
 TEST(EuropeanOptionTest, EvaluateTest) {
 	MarketDataStub data{};
 	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1 };
-	EuropeanOption instrument{ info, "call", BlackScholesPricer{} };
+	EuropeanOption instrument{ info, "call", std::make_shared<BlackScholesPricer>()};
 	EXPECT_NEAR(instrument.evaluate(data, Aud{}), 7.4879, 0.0001);
 }

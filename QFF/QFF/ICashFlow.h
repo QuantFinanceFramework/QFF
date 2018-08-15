@@ -8,7 +8,7 @@ class ICashFlow :
 	public IInstrument
 {
 public:
-	ICashFlow() = delete;
+	ICashFlow() = default;
 
 	ICashFlow(ICashFlow&&) = default;
 	ICashFlow& operator=(ICashFlow&&) = default;

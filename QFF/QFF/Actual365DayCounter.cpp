@@ -1,17 +1,13 @@
 #include "Actual365DayCounter.h"
 
-Actual365DayCounter::Actual365DayCounter(date startDate, date endDate) :m_startDate(startDate), m_endDate(endDate) {}
-
-double Actual365DayCounter::countDayBetween() const
+double Actual365DayCounter::countDayBetween(date startDate, date endDate) const
 {
-	boost::gregorian::date_duration difference = m_startDate - m_endDate;
+	boost::gregorian::date_duration difference = startDate - endDate;
 
 	return difference.days();
 }
 
-double Actual365DayCounter::calculateYearFraction() const
+double Actual365DayCounter::calculateYearFraction(date startDate, date endDate) const
 {
-	boost::gregorian::date_duration difference = m_startDate - m_endDate;
-
-	return (difference.days()) / 365;
+	return countDayBetween(startDate, endDate) / 365;
 }

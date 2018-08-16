@@ -3,8 +3,8 @@
 
 TEST(Actual365DayCounterTest, countDayBetweenTest) {
 
-	Actual365DayCounter time{ date(2002,12,30), date(2002,12,10) };
-	auto result = time.countDayBetween();
+	Actual365DayCounter dayCounter{};
+	auto result = dayCounter.countDayBetween(date(2002, 12, 30), date(2002, 12, 10));
 
 	EXPECT_NEAR(result, 20, 0.0001);
 
@@ -12,8 +12,8 @@ TEST(Actual365DayCounterTest, countDayBetweenTest) {
 
 TEST(Actual365DayCounterTest, calculateYearFractionTest) {
 
-	Actual365DayCounter time{ date(2002,12,30), date(2002,12,10) };
-	auto result = time.calculateYearFraction();
+	Actual365DayCounter dayCounter{};
+	auto result = dayCounter.calculateYearFraction(date(2002, 12, 30), date(2002, 12, 10));
 
 	EXPECT_NEAR(result, 0.05479452, 0.0001);
 

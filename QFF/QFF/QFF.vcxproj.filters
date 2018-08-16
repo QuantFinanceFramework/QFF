@@ -177,6 +177,12 @@
     <ClInclude Include="Actual365DayCounter.h">
       <Filter>Header Files\DayCounter</Filter>
     </ClInclude>
+    <ClInclude Include="Coupon.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedRateCoupon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -223,6 +229,12 @@
     </ClCompile>
     <ClCompile Include="Actual365DayCounter.cpp">
       <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="Coupon.cpp">
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedRateCoupon.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

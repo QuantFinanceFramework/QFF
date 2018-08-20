@@ -9,7 +9,6 @@ public:
 	~FixedRateCoupon() = default;
 
 	double evaluate(const IMarketData & marketData, const ICurrency& currency) const override;
-	date getPaymentDate() const override;
 	double getPaymentAmount() const;
 
 private:

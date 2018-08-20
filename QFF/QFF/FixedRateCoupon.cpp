@@ -14,11 +14,6 @@ double FixedRateCoupon::evaluate(const IMarketData & marketData, const ICurrency
 	return getPaymentAmount() * marketData.getDiscountFactor(m_discountCurveName, m_paymentDate);
 }
 
-date FixedRateCoupon::getPaymentDate() const
-{
-	return m_paymentDate;
-}
-
 double FixedRateCoupon::getPaymentAmount() const
 {
 	return m_notional * m_rate * calculateAccrualPeriod();

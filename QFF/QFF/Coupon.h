@@ -18,6 +18,8 @@ public:
 
 	~Coupon() = default;
 
+	date getPaymentDate() const final;
+
 protected:
 	double calculateAccrualPeriod() const;
 

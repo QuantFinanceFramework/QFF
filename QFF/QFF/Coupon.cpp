@@ -9,6 +9,11 @@ Coupon::Coupon(double notional,
 	m_notional{ notional }, m_paymentDate{ paymentDate }, m_accrualStartDate{ accrualStartDate }, 
 	m_accrualEndDate{ accrualEndDate }, m_dayCounter{ dayCounter }, m_discountCurveName{ discountCurveName }{}
 
+date Coupon::getPaymentDate() const
+{
+	return m_paymentDate;
+}
+
 double Coupon::calculateAccrualPeriod() const
 {
 	return m_dayCounter->calculateYearFraction(m_accrualStartDate, m_accrualEndDate);

@@ -181,7 +181,10 @@
       <Filter>Header Files\Instrument</Filter>
     </ClInclude>
     <ClInclude Include="FixedRateCoupon.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatingRateCoupon.h">
+      <Filter>Header Files\Instrument</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -234,7 +237,10 @@
       <Filter>Source Files\Instrument</Filter>
     </ClCompile>
     <ClCompile Include="FixedRateCoupon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatingRateCoupon.cpp">
+      <Filter>Source Files\Instrument</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

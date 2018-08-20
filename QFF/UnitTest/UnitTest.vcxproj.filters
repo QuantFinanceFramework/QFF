@@ -58,5 +58,8 @@
     <ClInclude Include="MarketDataStub.h">
       <Filter>MarketData</Filter>
     </ClInclude>
+    <ClInclude Include="DayCounterStub.h">
+      <Filter>DayCounter</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

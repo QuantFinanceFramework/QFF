@@ -1,6 +1,4 @@
-#pragma once
 #include "gtest\gtest.h"
-#include <MarketData.h>
 #include <BasicTradeInfo.h>
 #include <boost\date_time\gregorian\gregorian.hpp>
 #include <vector>

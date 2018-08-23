@@ -24,6 +24,15 @@
     <ClCompile Include="DayCounterTest.cpp">
       <Filter>DayCounter</Filter>
     </ClCompile>
+    <ClCompile Include="FixedRateCouponTest.cpp">
+      <Filter>Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatingRateCouponTest.cpp">
+      <Filter>Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapTest.cpp">
+      <Filter>Instrument</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">

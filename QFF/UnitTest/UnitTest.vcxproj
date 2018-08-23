@@ -51,10 +51,13 @@
   <ItemGroup>
     <ClCompile Include="Black76PricerTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
+    <ClCompile Include="FixedRateCouponTest.cpp" />
+    <ClCompile Include="FloatingRateCouponTest.cpp" />
     <ClCompile Include="InstrumentPortfolioTest.cpp" />
     <ClCompile Include="BlackScholesPricerTest.cpp" />
     <ClCompile Include="EuropeanOptionTest.cpp" />
     <ClCompile Include="CashFlowCollectionTest.cpp" />
+    <ClCompile Include="SwapTest.cpp" />
     <ClCompile Include="TurnbullWakemanPricerTest.cpp" />
   </ItemGroup>
   <ItemGroup>

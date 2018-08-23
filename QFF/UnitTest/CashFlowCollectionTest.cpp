@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include <MarketData.h>
 #include <vector>
 #include <CashFlowCollection.h>
 #include "CurrencyStub.h"

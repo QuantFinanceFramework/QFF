@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <boost\date_time\gregorian\gregorian.hpp>
-#include "IInterpolator.h"
 
 using std::vector;
 using boost::gregorian::date;
@@ -16,6 +15,5 @@ public:
 private:
 	vector<date> m_dates;
 	vector<double> m_values;
-	IInterpolator* m_interpolator;
 };
 

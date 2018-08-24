@@ -105,9 +105,6 @@
     <ClInclude Include="EuropeanOption.h">
       <Filter>Header Files\Instrument</Filter>
     </ClInclude>
-    <ClInclude Include="IInterpolator.h">
-      <Filter>Header Files\Interpolator</Filter>
-    </ClInclude>
     <ClInclude Include="ICalendar.h">
       <Filter>Header Files\Calendar</Filter>
     </ClInclude>
@@ -186,6 +183,18 @@
     <ClInclude Include="FloatingRateCoupon.h">
       <Filter>Header Files\Instrument</Filter>
     </ClInclude>
+    <ClInclude Include="IDiscountCurveApproximator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="IDiscountCurveExtrapolator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="IDiscountCurveInterpolator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalDiscountCurveApproximator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -241,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="FloatingRateCoupon.cpp">
       <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalDiscountCurveApproximator.cpp">
+      <Filter>Source Files\Interpolator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

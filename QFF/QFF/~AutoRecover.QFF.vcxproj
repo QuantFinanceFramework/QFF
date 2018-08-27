@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -162,10 +162,10 @@
     <ClInclude Include="InstrumentPortfolio.h" />
     <ClInclude Include="ISolver.h" />
     <ClInclude Include="CashFlowCollection.h" />
-    <ClInclude Include="INormalRandomSequenceGenerator.h" />
+    <ClInclude Include="IUniformRandomSequenceGenerator.h" />
     <ClInclude Include="LocalDiscountCurveApproximator.h" />
     <ClInclude Include="MarketData.h" />
-    <ClInclude Include="PseudoNormalRsg.h" />
+    <ClInclude Include="PseudoUniformRsg.h" />
     <ClInclude Include="Swap.h" />
     <ClInclude Include="TurnbullWakemanPricer.h" />
   </ItemGroup>
@@ -186,7 +186,7 @@
     <ClCompile Include="Black76Pricer.cpp" />
     <ClCompile Include="LocalDiscountCurveApproximator.cpp" />
     <ClCompile Include="MarketData.cpp" />
-    <ClCompile Include="PseudoNormalRsg.cpp" />
+    <ClCompile Include="PseudoUniformRsg.cpp" />
     <ClCompile Include="Swap.cpp" />
     <ClCompile Include="CashFlowCollection.cpp" />
     <ClCompile Include="TurnbullWakemanPricer.cpp" />

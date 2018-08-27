@@ -97,6 +97,12 @@
     <Filter Include="Source Files\MarketData\Surfaces">
       <UniqueIdentifier>{6b92d60a-255d-4cf7-9477-256b790adf55}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Random">
+      <UniqueIdentifier>{badbd839-f83a-4edf-b78f-6b760a7e2bb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Random">
+      <UniqueIdentifier>{36a95de2-ae7a-499c-87e7-a58f844c3eb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInstrument.h">
@@ -195,6 +201,12 @@
     <ClInclude Include="LocalDiscountCurveApproximator.h">
       <Filter>Header Files\Interpolator</Filter>
     </ClInclude>
+    <ClInclude Include="INormalRandomSequenceGenerator.h">
+      <Filter>Header Files\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="PseudoNormalRsg.h">
+      <Filter>Header Files\Random</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -253,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="LocalDiscountCurveApproximator.cpp">
       <Filter>Source Files\Interpolator</Filter>
+    </ClCompile>
+    <ClCompile Include="PseudoNormalRsg.cpp">
+      <Filter>Source Files\Random</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

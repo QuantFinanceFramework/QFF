@@ -24,6 +24,15 @@
     <ClCompile Include="DayCounterTest.cpp">
       <Filter>DayCounter</Filter>
     </ClCompile>
+    <ClCompile Include="FixedRateCouponTest.cpp">
+      <Filter>Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatingRateCouponTest.cpp">
+      <Filter>Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapTest.cpp">
+      <Filter>Instrument</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">
@@ -57,6 +66,9 @@
     </ClInclude>
     <ClInclude Include="MarketDataStub.h">
       <Filter>MarketData</Filter>
+    </ClInclude>
+    <ClInclude Include="DayCounterStub.h">
+      <Filter>DayCounter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -105,9 +105,6 @@
     <ClInclude Include="EuropeanOption.h">
       <Filter>Header Files\Instrument</Filter>
     </ClInclude>
-    <ClInclude Include="IInterpolator.h">
-      <Filter>Header Files\Interpolator</Filter>
-    </ClInclude>
     <ClInclude Include="ICalendar.h">
       <Filter>Header Files\Calendar</Filter>
     </ClInclude>
@@ -177,6 +174,27 @@
     <ClInclude Include="Actual365DayCounter.h">
       <Filter>Header Files\DayCounter</Filter>
     </ClInclude>
+    <ClInclude Include="Coupon.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedRateCoupon.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatingRateCoupon.h">
+      <Filter>Header Files\Instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="IDiscountCurveApproximator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="IDiscountCurveExtrapolator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="IDiscountCurveInterpolator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalDiscountCurveApproximator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -223,6 +241,18 @@
     </ClCompile>
     <ClCompile Include="Actual365DayCounter.cpp">
       <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="Coupon.cpp">
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedRateCoupon.cpp">
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatingRateCoupon.cpp">
+      <Filter>Source Files\Instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalDiscountCurveApproximator.cpp">
+      <Filter>Source Files\Interpolator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

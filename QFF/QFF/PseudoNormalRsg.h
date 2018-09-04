@@ -7,6 +7,7 @@ class PseudoNormalRsg :
 {
 public:
 	PseudoNormalRsg(int dimension, unsigned int seed);
+	PseudoNormalRsg(int dimension);
 	~PseudoNormalRsg() = default;
 
 	vector<double> generateNormalSequence() override;

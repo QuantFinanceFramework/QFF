@@ -103,6 +103,24 @@
     <Filter Include="Source Files\Random">
       <UniqueIdentifier>{36a95de2-ae7a-499c-87e7-a58f844c3eb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\StochasticProcess">
+      <UniqueIdentifier>{f0bc3f57-5e80-410f-8950-452f97300edf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DiscretisationScheme">
+      <UniqueIdentifier>{e17429e2-0d9e-4715-8d5c-a017ceaca77f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EconomicScenarioGenerator">
+      <UniqueIdentifier>{75d430b1-690f-4cd0-8e74-37dc454d9050}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EconomicScenarioGenerator">
+      <UniqueIdentifier>{8a2f6c49-07a4-4cee-9d4e-aa07c5a1219c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StochasticProcess">
+      <UniqueIdentifier>{b5cd0bcd-a1e2-43ae-9d50-947a9fc01b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DiscretisationScheme">
+      <UniqueIdentifier>{c38add4a-a193-4711-acdb-b895e902d4c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInstrument.h">
@@ -207,6 +225,27 @@
     <ClInclude Include="PseudoNormalRsg.h">
       <Filter>Header Files\Random</Filter>
     </ClInclude>
+    <ClInclude Include="BlackScholesProcess.h">
+      <Filter>Header Files\StochasticProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="IStochasticProcess.h">
+      <Filter>Header Files\StochasticProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="EconomicScenarioGenerator.h">
+      <Filter>Header Files\EconomicScenarioGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="IEconomicScenarioGenerator.h">
+      <Filter>Header Files\EconomicScenarioGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="EulerScheme.h">
+      <Filter>Header Files\DiscretisationScheme</Filter>
+    </ClInclude>
+    <ClInclude Include="IDiscretisationScheme.h">
+      <Filter>Header Files\DiscretisationScheme</Filter>
+    </ClInclude>
+    <ClInclude Include="ExactScheme.h">
+      <Filter>Header Files\DiscretisationScheme</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -268,6 +307,18 @@
     </ClCompile>
     <ClCompile Include="PseudoNormalRsg.cpp">
       <Filter>Source Files\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="EconomicScenarioGenerator.cpp">
+      <Filter>Source Files\EconomicScenarioGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackScholesProcess.cpp">
+      <Filter>Source Files\StochasticProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="EulerScheme.cpp">
+      <Filter>Source Files\DiscretisationScheme</Filter>
+    </ClCompile>
+    <ClCompile Include="ExactScheme.cpp">
+      <Filter>Source Files\DiscretisationScheme</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

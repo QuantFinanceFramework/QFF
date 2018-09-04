@@ -1,6 +1,8 @@
 #include "PseudoNormalRsg.h"
 
-PseudoNormalRsg::PseudoNormalRsg(int dimension, unsigned int seed) :m_dimension{ dimension }, m_rng { std::mt19937{ seed } }, m_dist{ std::normal_distribution<double>{0,1} } {}
+PseudoNormalRsg::PseudoNormalRsg(int dimension, unsigned int seed) : m_dimension{ dimension }, m_rng { std::mt19937{ seed } }, m_dist{ std::normal_distribution<double>{0,1} } {}
+
+PseudoNormalRsg::PseudoNormalRsg(int dimension) : m_dimension{ dimension }, m_rng{ std::mt19937{std::random_device{}()} } {}
 
 vector<double> PseudoNormalRsg::generateNormalSequence()
 {

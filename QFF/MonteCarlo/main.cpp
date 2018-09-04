@@ -1,34 +1,34 @@
 #include <random>
 #include <PseudoNormalRsg.h>
 #include <iostream>
+#include <BlackScholesProcess.h>
+#include <EulerScheme.h>
+#include <ExactScheme.h>
+#include <EconomicScenarioGenerator.h>
+#include <numeric>
 
 int main() 
-{
-	PseudoNormalRsg rsg{ 10, 100 };
-	PseudoNormalRsg rsg2{ 10, 100 };
-	auto seq1 = rsg.generateNormalSequence();
-	auto seq2 = rsg.generateNormalSequence();
-	auto seq3 = rsg2.generateNormalSequence(); 
+{	
+	double initialPrice{ 100.0 };
+	auto process = make_shared<BlackScholesProcess>(0.05, 0.2, make_shared<ExactScheme>());
+	auto rsq = make_shared<PseudoNormalRsg>(1, 10);
 
-	for (auto i : seq1)
+	EconomicScenarioGenerator esg{ initialPrice, process, rsq };
+
+	vector<double> timeGrid(10);
+	std::iota(timeGrid.begin(), timeGrid.end(), 1);
+
+	auto es = esg.generateScenarioSet(10, timeGrid);
+
+	for (auto &i : es)
 	{
-		std::cout << i << std::endl;
+		for (auto &j :i)
+		{
+			std::cout << j << " ";
+		}
+		std::cout << "\n";
 	}
-
-	std::cout << '\n';
-
-	for (auto i : seq2)
-	{
-		std::cout << i << std::endl;
-	}
-
-	std::cout << '\n';
-
-	for (auto i : seq3)
-	{
-		std::cout << i << std::endl;
-	}
-	
 	system("pause");
+
 	return 0;
 }

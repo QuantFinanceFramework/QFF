@@ -13,10 +13,9 @@ TEST(BlackScholesPricerTest, EvaluateCallTest) {
 	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1 };
 	CurrencyStub currency{};
 
-	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(1.0));
-	ON_CALL(data, getSpot(_)).WillByDefault(Return(1.0));
-	ON_CALL(data, getForward(_, _)).WillByDefault(Return(1.0));
-	ON_CALL(data, getVolatility(_, _, _)).WillByDefault(Return(1.0));
+	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(0.99));
+	ON_CALL(data, getSpot(_)).WillByDefault(Return(50.0));
+	ON_CALL(data, getVolatility(_, _, _)).WillByDefault(Return(0.25));
 
 	auto pricer = BlackScholesPricer{};
 	auto result = pricer.evaluate(data, info, "call", currency);
@@ -31,7 +30,7 @@ TEST(BlackScholesPricerTest, EvaluatePutTest) {
 	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1 };
 	CurrencyStub currency{};
 
-	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(0.90));
+	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(0.99));
 	ON_CALL(data, getSpot(_)).WillByDefault(Return(50.0));
 	ON_CALL(data, getVolatility(_, _, _)).WillByDefault(Return(0.25));
 

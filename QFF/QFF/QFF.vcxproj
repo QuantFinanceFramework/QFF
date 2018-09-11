@@ -135,13 +135,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AsianOption.h" />
+    <ClInclude Include="AsianOptionInfo.h" />
     <ClInclude Include="Aud.h" />
     <ClInclude Include="Actual365DayCounter.h" />
-    <ClInclude Include="BasicTradeInfo.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesPricer.h" />
     <ClInclude Include="Coupon.h" />
     <ClInclude Include="DiscountCurve.h" />
+    <ClInclude Include="EuroOptionInfo.h" />
     <ClInclude Include="EuropeanOption.h" />
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="Black76Pricer.h" />

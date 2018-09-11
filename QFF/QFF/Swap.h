@@ -1,7 +1,6 @@
 #pragma once
 #include "IInstrument.h"
 #include "CashFlowCollection.h"
-#include "BasicTradeInfo.h"
 
 class Swap :
 	public IInstrument

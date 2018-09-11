@@ -10,41 +10,41 @@ using namespace testing;
 TEST(BlackScholesPricerTest, EvaluateCallTest) {
 
 	MarketDataStub data{};
-	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1 };
+	EuroOptionInfo info{ "Dummy_Trade", "Brent", 105.0, date(2002,12,10), 0.05479};
 	CurrencyStub currency{};
 
-	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(0.99));
-	ON_CALL(data, getSpot(_)).WillByDefault(Return(50.0));
-	ON_CALL(data, getVolatility(_, _, _)).WillByDefault(Return(0.25));
+	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(0.9994));
+	ON_CALL(data, getSpot(_)).WillByDefault(Return(100.0));
+	ON_CALL(data, getVolatility(_, _, _)).WillByDefault(Return(0.3815));
 
 	auto pricer = BlackScholesPricer{};
 	auto result = pricer.evaluate(data, info, "call", currency);
 
-	EXPECT_NEAR(result, 7.4879, 0.0001);
+	EXPECT_NEAR(result, 1.70, 0.001);
 
 }
 
 TEST(BlackScholesPricerTest, EvaluatePutTest) {
 
 	MarketDataStub data{};
-	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1 };
+	EuroOptionInfo info{ "Dummy_Trade", "Brent", 105.0, date(2002,12,10), 0.05479 };
 	CurrencyStub currency{};
 
-	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(0.99));
-	ON_CALL(data, getSpot(_)).WillByDefault(Return(50.0));
-	ON_CALL(data, getVolatility(_, _, _)).WillByDefault(Return(0.25));
+	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(0.9994));
+	ON_CALL(data, getSpot(_)).WillByDefault(Return(100.0));
+	ON_CALL(data, getVolatility(_, _, _)).WillByDefault(Return(0.3815));
 
 	auto pricer = BlackScholesPricer{};
 	auto result = pricer.evaluate(data, info, "put", currency);
 
-	EXPECT_NEAR(result, 2.6360, 0.0001);
+	EXPECT_NEAR(result, 6.636, 0.001);
 
 }
 
 TEST(BlackScholesPricerTest, EvaluateErrorTest) {
 
 	MarketDataStub data{};
-	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1 };
+	EuroOptionInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1 };
 	CurrencyStub currency{};
 
 	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(1.0));

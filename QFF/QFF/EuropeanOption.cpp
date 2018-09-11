@@ -1,6 +1,6 @@
 #include "EuropeanOption.h"
 
-EuropeanOption::EuropeanOption(BasicTradeInfo info, string optionType, shared_ptr<IEuropeanOptionPricer> pricer):m_info(info), m_optionType(optionType), m_pricer(pricer){}
+EuropeanOption::EuropeanOption(EuroOptionInfo info, string optionType, shared_ptr<IEuropeanOptionPricer> pricer):m_info(info), m_optionType(optionType), m_pricer(pricer){}
 
 double EuropeanOption::evaluate(const IMarketData & marketData, const ICurrency& currency) const
 {

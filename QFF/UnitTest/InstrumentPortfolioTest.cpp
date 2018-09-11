@@ -1,5 +1,5 @@
 #include "gtest\gtest.h"
-#include <BasicTradeInfo.h>
+#include <EuroOptionInfo.h>
 #include <boost\date_time\gregorian\gregorian.hpp>
 #include <vector>
 #include <InstrumentPortfolio.h>
@@ -15,7 +15,7 @@ using std::shared_ptr;
 TEST(InstrumentPortfolioTest, EvaluateTest) {
 
 	MarketDataStub data{};
-	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10) };
+	EuroOptionInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10) };
 	CurrencyStub currency{};
 	auto pDummyInstrument1 = std::make_shared<InstrumentStub>();
 	auto pDummyInstrument2 = std::make_shared<InstrumentStub>();

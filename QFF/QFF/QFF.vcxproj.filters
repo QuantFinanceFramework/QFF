@@ -117,9 +117,6 @@
     <ClInclude Include="IEuropeanOptionPricer.h">
       <Filter>Header Files\Pricer</Filter>
     </ClInclude>
-    <ClInclude Include="BasicTradeInfo.h">
-      <Filter>Header Files\TradeInfo</Filter>
-    </ClInclude>
     <ClInclude Include="BlackScholesPricer.h">
       <Filter>Header Files\Pricer</Filter>
     </ClInclude>
@@ -194,6 +191,12 @@
     </ClInclude>
     <ClInclude Include="LocalDiscountCurveApproximator.h">
       <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="EuroOptionInfo.h">
+      <Filter>Header Files\TradeInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="AsianOptionInfo.h">
+      <Filter>Header Files\TradeInfo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

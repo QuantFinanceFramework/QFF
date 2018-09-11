@@ -6,5 +6,5 @@ class Black76Pricer :
 public:
 	Black76Pricer() = default;
 	virtual ~Black76Pricer() = default;
-	double evaluate(const IMarketData& marketData, const BasicTradeInfo& basicTradeInfo, string optionType, const ICurrency& currency) const override;
+	double evaluate(const IMarketData& marketData, const EuroOptionInfo& euroOptionInfo, string optionType, const ICurrency& currency) const override;
 };

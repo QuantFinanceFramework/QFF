@@ -1,6 +1,6 @@
 #include "AsianOption.h"
 
-AsianOption::AsianOption(BasicTradeInfo info, shared_ptr<IAsianOptionPricer> pricer) :m_info(info), m_pricer(pricer) {}
+AsianOption::AsianOption(AsianOptionInfo info, shared_ptr<IAsianOptionPricer> pricer) :m_info(info), m_pricer(pricer) {}
 
 double AsianOption::evaluate(const IMarketData & marketData, const ICurrency& currency) const
 {

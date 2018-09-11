@@ -6,6 +6,6 @@ class TurnbullWakemanPricer :
 public:
 	TurnbullWakemanPricer() = default;
 	virtual ~TurnbullWakemanPricer() = default;
-	double evaluate(const IMarketData& marketData, const BasicTradeInfo& basicTradeInfo, const ICurrency& currency) const override;
+	double evaluate(const IMarketData& marketData, const AsianOptionInfo& asianOptionInfo, const ICurrency& currency) const override;
 };
 

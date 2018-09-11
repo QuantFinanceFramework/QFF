@@ -1,15 +1,15 @@
 #include "BlackScholesPricer.h"
 #include "BlackScholesFormula.h"
 
-double BlackScholesPricer::evaluate(const IMarketData& marketData, const BasicTradeInfo& basicTradeInfo, string optionType, const ICurrency& currency) const
+double BlackScholesPricer::evaluate(const IMarketData& marketData, const EuroOptionInfo& euroOptionInfo, string optionType, const ICurrency& currency) const
 { 	
 
 	return BlackScholesFormula(
-		marketData.getSpot(basicTradeInfo.underlying),
-		basicTradeInfo.strike,
-		marketData.getDiscountFactor("AUD_STD", basicTradeInfo.expiryDate), 
-		basicTradeInfo.timeToMaturity,
-		marketData.getVolatility(basicTradeInfo.underlying, basicTradeInfo.expiryDate, basicTradeInfo.strike),
+		marketData.getSpot(euroOptionInfo.underlying),
+		euroOptionInfo.strike,
+		marketData.getDiscountFactor("AUD_STD", euroOptionInfo.expiryDate),
+		euroOptionInfo.timeToMaturity,
+		marketData.getVolatility(euroOptionInfo.underlying, euroOptionInfo.expiryDate, euroOptionInfo.strike),
 		optionType);
 
 }

@@ -10,12 +10,10 @@ using namespace testing;
 TEST(TurnbullWakemanPricerTest, EvaluateTest) {
 
 	MarketDataStub data{};
-	BasicTradeInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), 1};
+	AsianOptionInfo info{ "Dummy_Trade", "Brent", 50, date(2002,12,10), date(2003,01,10), date(2003,01,15)};
 	CurrencyStub currency{};
 
 	ON_CALL(data, getDiscountFactor(_, _)).WillByDefault(Return(1.0));
-	ON_CALL(data, getForwardRateProjection(_, _)).WillByDefault(Return(1.0));
-	ON_CALL(data, getSpot(_)).WillByDefault(Return(1.0));
 	ON_CALL(data, getForward(_, _)).WillByDefault(Return(1.0));
 	ON_CALL(data, getVolatility(_, _, _)).WillByDefault(Return(1.0));
 

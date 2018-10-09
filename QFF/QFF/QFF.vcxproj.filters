@@ -121,6 +121,12 @@
     <Filter Include="Source Files\DiscretisationScheme">
       <UniqueIdentifier>{c38add4a-a193-4711-acdb-b895e902d4c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Parameters">
+      <UniqueIdentifier>{46cbc042-afb7-4d31-91eb-f66ddcd1786b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parameters">
+      <UniqueIdentifier>{2c4ffd4a-9866-41a2-b898-32795967b26b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInstrument.h">
@@ -237,14 +243,35 @@
     <ClInclude Include="IEconomicScenarioGenerator.h">
       <Filter>Header Files\EconomicScenarioGenerator</Filter>
     </ClInclude>
-    <ClInclude Include="EulerScheme.h">
+    <ClInclude Include="IStochastic1FProcess.h">
+      <Filter>Header Files\StochasticProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Gaussian1FProcess.h">
+      <Filter>Header Files\StochasticProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="IParameter.h">
+      <Filter>Header Files\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantParameter.h">
+      <Filter>Header Files\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="PiecewiseConstantParameter.h">
+      <Filter>Header Files\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackScholesExactScheme.h">
       <Filter>Header Files\DiscretisationScheme</Filter>
     </ClInclude>
-    <ClInclude Include="IDiscretisationScheme.h">
+    <ClInclude Include="BlackScholesEulerScheme.h">
       <Filter>Header Files\DiscretisationScheme</Filter>
     </ClInclude>
-    <ClInclude Include="ExactScheme.h">
+    <ClInclude Include="IBlackScholesDiscretisation.h">
       <Filter>Header Files\DiscretisationScheme</Filter>
+    </ClInclude>
+    <ClInclude Include="IGaussian1FDiscretisation.h">
+      <Filter>Header Files\DiscretisationScheme</Filter>
+    </ClInclude>
+    <ClInclude Include="Gaussian1FEulerScheme.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -314,10 +341,28 @@
     <ClCompile Include="BlackScholesProcess.cpp">
       <Filter>Source Files\StochasticProcess</Filter>
     </ClCompile>
-    <ClCompile Include="EulerScheme.cpp">
+    <ClCompile Include="IStochastic1FProcess.cpp">
+      <Filter>Source Files\StochasticProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Gaussian1FProcess.cpp">
+      <Filter>Source Files\StochasticProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="IParameter.cpp">
+      <Filter>Source Files\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantParameter.cpp">
+      <Filter>Source Files\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="PiecewiseConstantParameter.cpp">
+      <Filter>Source Files\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackScholesExactScheme.cpp">
       <Filter>Source Files\DiscretisationScheme</Filter>
     </ClCompile>
-    <ClCompile Include="ExactScheme.cpp">
+    <ClCompile Include="BlackScholesEulerScheme.cpp">
+      <Filter>Source Files\DiscretisationScheme</Filter>
+    </ClCompile>
+    <ClCompile Include="Gaussian1FEulerScheme.cpp">
       <Filter>Source Files\DiscretisationScheme</Filter>
     </ClCompile>
   </ItemGroup>

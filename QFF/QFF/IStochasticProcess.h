@@ -1,4 +1,7 @@
 #pragma once
+#include <vector>
+
+using std::vector;
 
 class IStochasticProcess
 {
@@ -6,5 +9,5 @@ public:
 	IStochasticProcess() = default;
 	virtual ~IStochasticProcess() = default;
 
-	virtual double evolve(double previousValue, double previousTime, double timeStep, double randomNormal) const = 0;
+	virtual vector<double> evolve(vector<double> previousValue, double previousTime, double timeStep, vector<double> randomNormal) const = 0;
 };

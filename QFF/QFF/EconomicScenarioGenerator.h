@@ -1,18 +1,17 @@
 #pragma once
 #include "IEconomicScenarioGenerator.h"
-#include "IStochasticProcess.h"
+#include "IStochastic1FProcess.h"
 #include "INormalRandomSequenceGenerator.h"
 #include <memory>
 
 using std::shared_ptr;
-using std::make_shared;
 
 class EconomicScenarioGenerator :
 	public IEconomicScenarioGenerator
 {
 public:
 	EconomicScenarioGenerator() = delete;
-	EconomicScenarioGenerator(double initialValue, shared_ptr<IStochasticProcess> process, shared_ptr<INormalRandomSequenceGenerator> normalRsg);
+	EconomicScenarioGenerator(double initialValue, shared_ptr<IStochastic1FProcess> process, shared_ptr<INormalRandomSequenceGenerator> normalRsg);
 	~EconomicScenarioGenerator() = default;
 
 	vector<double> generateScenario(vector<double> timeGrid) const override;
@@ -20,7 +19,7 @@ public:
 
 private:
 	double m_initialValue;
-	shared_ptr<IStochasticProcess> m_process;
+	shared_ptr<IStochastic1FProcess> m_process;
 	shared_ptr<INormalRandomSequenceGenerator> m_normalRsg;
 	
 };

@@ -33,6 +33,12 @@
     <ClCompile Include="SwapTest.cpp">
       <Filter>Instrument</Filter>
     </ClCompile>
+    <ClCompile Include="ConstantParameterTest.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="PiecewiseConstantParameterTest.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">
@@ -49,6 +55,9 @@
     </Filter>
     <Filter Include="MarketData">
       <UniqueIdentifier>{dfa9d34e-32cd-4b44-94f0-7ad4b3920166}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parameters">
+      <UniqueIdentifier>{89f21c1c-f5a8-4317-9b5e-e977a782eea8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

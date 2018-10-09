@@ -1,24 +1,24 @@
 #pragma once
-#include "IStochasticProcess.h"
-#include "IDiscretisationScheme.h"
+#include "IStochastic1FProcess.h"
+#include "IBlackScholesDiscretisation.h"
+#include "IParameter.h"
 #include <memory>
 
 using std::shared_ptr;
-using std::make_shared;
 
 class BlackScholesProcess :
-	public IStochasticProcess
+	public IStochastic1FProcess
 {
 public:
-	BlackScholesProcess() = delete;
-	BlackScholesProcess(double mu, double sigma, shared_ptr<IDiscretisationScheme> discretisation);
+	BlackScholesProcess() = default;
+	BlackScholesProcess(shared_ptr<IParameter> mu, shared_ptr<IParameter> sigma, shared_ptr<IBlackScholesDiscretisation> discretisation);
 	~BlackScholesProcess() = default;
 
 	double evolve(double previousValue, double previousTime, double timeStep, double randomNormal) const override;
 
 private:
-	double m_mu;
-	double m_sigma;
-	shared_ptr<IDiscretisationScheme> m_discretisation;
+	shared_ptr<IParameter> m_mu;
+	shared_ptr<IParameter> m_sigma;
+	shared_ptr<IBlackScholesDiscretisation> m_discretisation;
 };
 

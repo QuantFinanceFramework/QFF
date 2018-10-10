@@ -171,6 +171,7 @@
     <ClInclude Include="IMarketData.h" />
     <ClInclude Include="InstrumentPortfolio.h" />
     <ClInclude Include="IParameter.h" />
+    <ClInclude Include="IQuasiGaussian1FDiscretisation.h" />
     <ClInclude Include="ISolver.h" />
     <ClInclude Include="CashFlowCollection.h" />
     <ClInclude Include="INormalRandomSequenceGenerator.h" />
@@ -180,6 +181,8 @@
     <ClInclude Include="MarketData.h" />
     <ClInclude Include="PiecewiseConstantParameter.h" />
     <ClInclude Include="PseudoNormalRsg.h" />
+    <ClInclude Include="QuasiGaussian1FEulerScheme.h" />
+    <ClInclude Include="QuasiGaussian1FProcess.h" />
     <ClInclude Include="Swap.h" />
     <ClInclude Include="TurnbullWakemanPricer.h" />
   </ItemGroup>
@@ -211,6 +214,8 @@
     <ClCompile Include="MarketData.cpp" />
     <ClCompile Include="PiecewiseConstantParameter.cpp" />
     <ClCompile Include="PseudoNormalRsg.cpp" />
+    <ClCompile Include="QuasiGaussian1FEulerScheme.cpp" />
+    <ClCompile Include="QuasiGaussian1FProcess.cpp" />
     <ClCompile Include="Swap.cpp" />
     <ClCompile Include="CashFlowCollection.cpp" />
     <ClCompile Include="TurnbullWakemanPricer.cpp" />

@@ -271,7 +271,16 @@
       <Filter>Header Files\DiscretisationScheme</Filter>
     </ClInclude>
     <ClInclude Include="Gaussian1FEulerScheme.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DiscretisationScheme</Filter>
+    </ClInclude>
+    <ClInclude Include="IQuasiGaussian1FDiscretisation.h">
+      <Filter>Header Files\DiscretisationScheme</Filter>
+    </ClInclude>
+    <ClInclude Include="QuasiGaussian1FEulerScheme.h">
+      <Filter>Header Files\DiscretisationScheme</Filter>
+    </ClInclude>
+    <ClInclude Include="QuasiGaussian1FProcess.h">
+      <Filter>Header Files\StochasticProcess</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +373,12 @@
     </ClCompile>
     <ClCompile Include="Gaussian1FEulerScheme.cpp">
       <Filter>Source Files\DiscretisationScheme</Filter>
+    </ClCompile>
+    <ClCompile Include="QuasiGaussian1FEulerScheme.cpp">
+      <Filter>Source Files\DiscretisationScheme</Filter>
+    </ClCompile>
+    <ClCompile Include="QuasiGaussian1FProcess.cpp">
+      <Filter>Source Files\Parameters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

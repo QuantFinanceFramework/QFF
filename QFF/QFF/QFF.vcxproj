@@ -183,6 +183,7 @@
     <ClInclude Include="PseudoNormalRsg.h" />
     <ClInclude Include="QuasiGaussian1FEulerScheme.h" />
     <ClInclude Include="QuasiGaussian1FProcess.h" />
+    <ClInclude Include="SobolNormalRsg.h" />
     <ClInclude Include="Swap.h" />
     <ClInclude Include="TurnbullWakemanPricer.h" />
   </ItemGroup>
@@ -216,6 +217,7 @@
     <ClCompile Include="PseudoNormalRsg.cpp" />
     <ClCompile Include="QuasiGaussian1FEulerScheme.cpp" />
     <ClCompile Include="QuasiGaussian1FProcess.cpp" />
+    <ClCompile Include="SobolNormalRsg.cpp" />
     <ClCompile Include="Swap.cpp" />
     <ClCompile Include="CashFlowCollection.cpp" />
     <ClCompile Include="TurnbullWakemanPricer.cpp" />

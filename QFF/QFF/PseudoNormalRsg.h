@@ -6,14 +6,14 @@ class PseudoNormalRsg :
 	public INormalRandomSequenceGenerator
 {
 public:
-	PseudoNormalRsg(int dimension, unsigned int seed);
-	PseudoNormalRsg(int dimension);
+	PseudoNormalRsg(size_t dimension, unsigned int seed);
+	PseudoNormalRsg(size_t dimension);
 	~PseudoNormalRsg() = default;
 
 	vector<double> generateNormalSequence() override;
 
 private:
-	int m_dimension;
+	size_t m_dimension;
 	std::mt19937 m_rng;
 	std::normal_distribution<double> m_dist;
 };

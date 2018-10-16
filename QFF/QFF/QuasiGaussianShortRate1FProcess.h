@@ -22,9 +22,9 @@ public:
 
 private:
 	unique_ptr<ConstantParameter> m_kappa;
-	unique_ptr<IParameter> m_sigma;
-	unique_ptr<IParameter> m_beta;
-	unique_ptr<IParameter> m_s0;
+	unique_ptr<IParameter> m_lamda_r;
+	unique_ptr<IParameter> m_beta_r;
+	unique_ptr<IParameter> m_alpha_r;
 	unique_ptr<IDiscretisation> m_discretisation;
 	double xDrift(double time, double x, double y) const;
 	double yDrift(double time, double x, double y) const;

@@ -5,11 +5,11 @@ using std::move;
 
 QuasiGaussianShortRate1FProcess::QuasiGaussianShortRate1FProcess(
 	unique_ptr<ConstantParameter> kappa,
-	unique_ptr<IParameter> sigma,
-	unique_ptr<IParameter> beta,
-	unique_ptr<IParameter> s0,
+	unique_ptr<IParameter> lamda_r,
+	unique_ptr<IParameter> beta_r,
+	unique_ptr<IParameter> alpha_r,
 	unique_ptr<IDiscretisation> discretisation)
-	:m_kappa{ move(kappa) }, m_sigma{ move(sigma) }, m_beta{ move(beta) }, m_s0{ move(s0) }, m_discretisation{ move(discretisation) }{}
+	:m_kappa{ move(kappa) }, m_lamda_r{ move(lamda_r) }, m_beta_r{ move(beta_r) }, m_alpha_r{ move(alpha_r) }, m_discretisation{ move(discretisation) }{}
 
 vector<double> QuasiGaussianShortRate1FProcess::evolve(vector<double> previousValues, double previousTime, double timeStep, vector<double> randomNormal) const
 {
@@ -28,7 +28,7 @@ double QuasiGaussianShortRate1FProcess::yDrift(double time,double x, double y) c
 
 double QuasiGaussianShortRate1FProcess::xDiffusion(double time, double x) const
 {
-	return m_sigma->operator[](time) * (m_beta->operator[](time) * x + m_s0->operator[](time));
+	return m_lamda_r->operator[](time) * (m_alpha_r->operator[](time) + m_beta_r->operator[](time) * x);
 }
 
 vector<double> QuasiGaussianShortRate1FProcess::EulerScheme::next(const QuasiGaussianShortRate1FProcess & process, vector<double> previousValues, double previousTime, double timeStep, double randomNormal) const

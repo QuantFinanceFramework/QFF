@@ -1,8 +1,33 @@
 #include "BlackScholesProcess.h"
+#include <cmath>
 
-BlackScholesProcess::BlackScholesProcess(shared_ptr<IParameter> mu, shared_ptr<IParameter> sigma, shared_ptr<IBlackScholesDiscretisation> discretisation) : m_mu{ mu }, m_sigma{ sigma }, m_discretisation{ discretisation } {}
+using std::move;
+
+BlackScholesProcess::BlackScholesProcess(unique_ptr<IParameter> mu, unique_ptr<IParameter> sigma, unique_ptr<IDiscretisation> discretisation) : m_mu{ move(mu) }, m_sigma{ move(sigma) }, m_discretisation{ move(discretisation) } {}
 
 double BlackScholesProcess::evolve(double previousValue, double previousTime, double timeStep, double randomNormal) const
 {
-	return m_discretisation->evolve(*m_mu, *m_sigma, previousValue, previousTime, timeStep, randomNormal);
+	return m_discretisation->next(*this, previousValue, previousTime, timeStep, randomNormal);
+}
+
+double BlackScholesProcess::drift(double time) const
+{
+	return m_mu->operator[](time);
+}
+
+double BlackScholesProcess::diffusion(double time, double s) const
+{
+	return m_sigma->operator[](time) * s;
+}
+
+double BlackScholesProcess::ExactScheme::next(const BlackScholesProcess & process, double previousValue, double previousTime, double timeStep, double randomNormal) const
+{
+	auto muAvg = process.m_mu->mean(previousTime, previousTime + timeStep);
+	auto sigmaAvg = process.m_sigma->rootMeanSquare(previousTime, previousTime + timeStep);
+	return previousValue * exp((muAvg - 0.5 * sigmaAvg * sigmaAvg) * timeStep + sigmaAvg * sqrt(timeStep) * randomNormal);
+}
+
+double BlackScholesProcess::EulerScheme::next(const BlackScholesProcess & process, double previousValue, double previousTime, double timeStep, double randomNormal) const
+{
+	return previousValue + process.drift(previousTime) * timeStep + process.diffusion(previousTime, previousValue) * sqrt(timeStep) * randomNormal;
 }

@@ -106,9 +106,6 @@
     <Filter Include="Header Files\StochasticProcess">
       <UniqueIdentifier>{f0bc3f57-5e80-410f-8950-452f97300edf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\DiscretisationScheme">
-      <UniqueIdentifier>{e17429e2-0d9e-4715-8d5c-a017ceaca77f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\EconomicScenarioGenerator">
       <UniqueIdentifier>{75d430b1-690f-4cd0-8e74-37dc454d9050}</UniqueIdentifier>
     </Filter>
@@ -117,9 +114,6 @@
     </Filter>
     <Filter Include="Source Files\StochasticProcess">
       <UniqueIdentifier>{b5cd0bcd-a1e2-43ae-9d50-947a9fc01b21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DiscretisationScheme">
-      <UniqueIdentifier>{c38add4a-a193-4711-acdb-b895e902d4c8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Parameters">
       <UniqueIdentifier>{46cbc042-afb7-4d31-91eb-f66ddcd1786b}</UniqueIdentifier>
@@ -246,9 +240,6 @@
     <ClInclude Include="IStochastic1FProcess.h">
       <Filter>Header Files\StochasticProcess</Filter>
     </ClInclude>
-    <ClInclude Include="Gaussian1FProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
-    </ClInclude>
     <ClInclude Include="IParameter.h">
       <Filter>Header Files\Parameters</Filter>
     </ClInclude>
@@ -258,32 +249,14 @@
     <ClInclude Include="PiecewiseConstantParameter.h">
       <Filter>Header Files\Parameters</Filter>
     </ClInclude>
-    <ClInclude Include="BlackScholesExactScheme.h">
-      <Filter>Header Files\DiscretisationScheme</Filter>
-    </ClInclude>
-    <ClInclude Include="BlackScholesEulerScheme.h">
-      <Filter>Header Files\DiscretisationScheme</Filter>
-    </ClInclude>
-    <ClInclude Include="IBlackScholesDiscretisation.h">
-      <Filter>Header Files\DiscretisationScheme</Filter>
-    </ClInclude>
-    <ClInclude Include="IGaussian1FDiscretisation.h">
-      <Filter>Header Files\DiscretisationScheme</Filter>
-    </ClInclude>
-    <ClInclude Include="Gaussian1FEulerScheme.h">
-      <Filter>Header Files\DiscretisationScheme</Filter>
-    </ClInclude>
-    <ClInclude Include="IQuasiGaussian1FDiscretisation.h">
-      <Filter>Header Files\DiscretisationScheme</Filter>
-    </ClInclude>
-    <ClInclude Include="QuasiGaussian1FEulerScheme.h">
-      <Filter>Header Files\DiscretisationScheme</Filter>
-    </ClInclude>
-    <ClInclude Include="QuasiGaussian1FProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
-    </ClInclude>
     <ClInclude Include="SobolNormalRsg.h">
       <Filter>Header Files\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="GaussianShortRate1FProcess.h">
+      <Filter>Header Files\StochasticProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="QuasiGaussianShortRate1FProcess.h">
+      <Filter>Header Files\StochasticProcess</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -356,9 +329,6 @@
     <ClCompile Include="IStochastic1FProcess.cpp">
       <Filter>Source Files\StochasticProcess</Filter>
     </ClCompile>
-    <ClCompile Include="Gaussian1FProcess.cpp">
-      <Filter>Source Files\StochasticProcess</Filter>
-    </ClCompile>
     <ClCompile Include="IParameter.cpp">
       <Filter>Source Files\Parameters</Filter>
     </ClCompile>
@@ -368,23 +338,14 @@
     <ClCompile Include="PiecewiseConstantParameter.cpp">
       <Filter>Source Files\Parameters</Filter>
     </ClCompile>
-    <ClCompile Include="BlackScholesExactScheme.cpp">
-      <Filter>Source Files\DiscretisationScheme</Filter>
-    </ClCompile>
-    <ClCompile Include="BlackScholesEulerScheme.cpp">
-      <Filter>Source Files\DiscretisationScheme</Filter>
-    </ClCompile>
-    <ClCompile Include="Gaussian1FEulerScheme.cpp">
-      <Filter>Source Files\DiscretisationScheme</Filter>
-    </ClCompile>
-    <ClCompile Include="QuasiGaussian1FEulerScheme.cpp">
-      <Filter>Source Files\DiscretisationScheme</Filter>
-    </ClCompile>
-    <ClCompile Include="QuasiGaussian1FProcess.cpp">
-      <Filter>Source Files\Parameters</Filter>
-    </ClCompile>
     <ClCompile Include="SobolNormalRsg.cpp">
       <Filter>Source Files\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="GaussianShortRate1FProcess.cpp">
+      <Filter>Source Files\StochasticProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="QuasiGaussianShortRate1FProcess.cpp">
+      <Filter>Source Files\StochasticProcess</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

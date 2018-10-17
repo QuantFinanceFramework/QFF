@@ -9,12 +9,12 @@ using std::unique_ptr;
 class QuasiGaussianShortRate1FProcess :
 	public IStochasticProcess
 {
+public:
 	class IDiscretisation;
 	class EulerScheme;
 
-public:
 	QuasiGaussianShortRate1FProcess() = default;
-	QuasiGaussianShortRate1FProcess(unique_ptr<ConstantParameter> kappa, unique_ptr<IParameter> sigma, unique_ptr<IParameter> beta, unique_ptr<IParameter> s0, unique_ptr<IDiscretisation> discretisation);
+	QuasiGaussianShortRate1FProcess(unique_ptr<ConstantParameter> kappa, unique_ptr<IParameter> lamda_r, unique_ptr<IParameter> beta_r, unique_ptr<IParameter> alpha_r, unique_ptr<IDiscretisation> discretisation);
 
 	~QuasiGaussianShortRate1FProcess() = default;
 

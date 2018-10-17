@@ -11,6 +11,7 @@ public:
 	~PseudoNormalRsg() = default;
 
 	vector<double> generateNormalSequence() override;
+	void setDimension(size_t dimension) override;
 
 private:
 	size_t m_dimension;

@@ -9,10 +9,10 @@ using std::unique_ptr;
 class GaussianShortRate1FProcess :
 	public IStochastic1FProcess
 {
+public:
 	class IDiscretisation;
 	class EulerScheme;
 
-public:
 	GaussianShortRate1FProcess() = default;
 	GaussianShortRate1FProcess(unique_ptr<ConstantParameter> kappa, unique_ptr<IParameter> sigma, unique_ptr<IDiscretisation> discretisation);
 	~GaussianShortRate1FProcess() = default;

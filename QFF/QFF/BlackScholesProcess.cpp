@@ -10,9 +10,9 @@ double BlackScholesProcess::evolve(double previousValue, double previousTime, do
 	return m_discretisation->next(*this, previousValue, previousTime, timeStep, randomNormal);
 }
 
-double BlackScholesProcess::drift(double time) const
+double BlackScholesProcess::drift(double time, double s) const
 {
-	return m_mu->operator[](time);
+	return m_mu->operator[](time) * s;
 }
 
 double BlackScholesProcess::diffusion(double time, double s) const
@@ -29,5 +29,5 @@ double BlackScholesProcess::ExactScheme::next(const BlackScholesProcess & proces
 
 double BlackScholesProcess::EulerScheme::next(const BlackScholesProcess & process, double previousValue, double previousTime, double timeStep, double randomNormal) const
 {
-	return previousValue + process.drift(previousTime) * timeStep + process.diffusion(previousTime, previousValue) * sqrt(timeStep) * randomNormal;
+	return previousValue + process.drift(previousTime, previousValue) * timeStep + process.diffusion(previousTime, previousValue) * sqrt(timeStep) * randomNormal;
 }

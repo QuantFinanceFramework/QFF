@@ -8,11 +8,11 @@ using std::unique_ptr;
 class BlackScholesProcess :
 	public IStochastic1FProcess
 {
+public:
 	class IDiscretisation;
 	class ExactScheme;
 	class EulerScheme;
 
-public:
 	BlackScholesProcess() = default;
 	BlackScholesProcess(unique_ptr<IParameter> mu, unique_ptr<IParameter> sigma, unique_ptr<IDiscretisation> discretisation);
 	~BlackScholesProcess() = default;
@@ -23,7 +23,7 @@ private:
 	unique_ptr<IParameter> m_mu;
 	unique_ptr<IParameter> m_sigma;
 	unique_ptr<IDiscretisation> m_discretisation;
-	double drift(double time) const;
+	double drift(double time, double s) const;
 	double diffusion(double time, double s) const;
 };
 

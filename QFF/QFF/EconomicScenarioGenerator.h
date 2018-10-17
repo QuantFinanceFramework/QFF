@@ -14,8 +14,8 @@ public:
 	EconomicScenarioGenerator(double initialValue, shared_ptr<IStochastic1FProcess> process, shared_ptr<INormalRandomSequenceGenerator> normalRsg);
 	~EconomicScenarioGenerator() = default;
 
-	vector<double> generateScenario(vector<double> timeGrid) const override;
-	vector < vector<double>> generateScenarioSet(int numberOfPath, vector<double> timeGrid) const final;
+	vector<double> generateScenario(const vector<double>& timeGrid) const override;
+	vector<vector<double>> generateScenarioSet(size_t numberOfPath, const vector<double>& timeGrid) const final;
 
 private:
 	double m_initialValue;

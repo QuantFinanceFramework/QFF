@@ -258,6 +258,9 @@
     <ClInclude Include="QuasiGaussianShortRate1FProcess.h">
       <Filter>Header Files\StochasticProcess</Filter>
     </ClInclude>
+    <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -346,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="QuasiGaussianShortRate1FProcess.cpp">
       <Filter>Source Files\StochasticProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp">
+      <Filter>Source Files\Functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

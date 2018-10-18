@@ -21,6 +21,5 @@ private:
 	size_t m_dimension;
 	boost::random::sobol m_engine;
 	sobol_generator m_generator;
-	static double inverseCumulativeNormal(double u);
 };
 

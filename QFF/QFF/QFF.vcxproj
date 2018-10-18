@@ -138,6 +138,7 @@
     <ClInclude Include="Aud.h" />
     <ClInclude Include="Actual365DayCounter.h" />
     <ClInclude Include="BasicTradeInfo.h" />
+    <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesPricer.h" />
     <ClInclude Include="BlackScholesProcess.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="AsianOption.cpp" />
     <ClCompile Include="Aud.cpp" />
     <ClCompile Include="Actual365DayCounter.cpp" />
+    <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp" />
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="BlackScholesProcess.cpp" />

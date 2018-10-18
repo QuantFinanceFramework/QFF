@@ -17,6 +17,7 @@ public:
 		shared_ptr<IDayCounter> dayCounter);
 	virtual ~DiscountCurve() = default;
 	double getDiscountFactor(date date) const;
+	double getDiscountFactor(double t) const;
 	double getForwardRate(date startDate, date endDate) const;
 	double getZeroRate(date date) const;
 

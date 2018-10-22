@@ -145,6 +145,7 @@
     <ClInclude Include="ConstantParameter.h" />
     <ClInclude Include="Coupon.h" />
     <ClInclude Include="DiscountCurve.h" />
+    <ClInclude Include="DiscountCurveInterpolator.h" />
     <ClInclude Include="EconomicScenarioGenerator.h" />
     <ClInclude Include="EuropeanOption.h" />
     <ClInclude Include="BlackScholesFormula.h" />
@@ -172,7 +173,9 @@
     <ClInclude Include="INormalRandomSequenceGenerator.h" />
     <ClInclude Include="IStochastic1FProcess.h" />
     <ClInclude Include="IStochasticProcess.h" />
+    <ClInclude Include="LinearInterpolator.h" />
     <ClInclude Include="LocalDiscountCurveApproximator.h" />
+    <ClInclude Include="LogLinearInterpolator.h" />
     <ClInclude Include="MarketData.h" />
     <ClInclude Include="PiecewiseConstantParameter.h" />
     <ClInclude Include="PseudoNormalRsg.h" />
@@ -192,6 +195,7 @@
     <ClCompile Include="ConstantParameter.cpp" />
     <ClCompile Include="Coupon.cpp" />
     <ClCompile Include="DiscountCurve.cpp" />
+    <ClCompile Include="DiscountCurveInterpolator.cpp" />
     <ClCompile Include="EconomicScenarioGenerator.cpp" />
     <ClCompile Include="EuropeanOption.cpp" />
     <ClCompile Include="FixedRateCoupon.cpp" />
@@ -203,7 +207,9 @@
     <ClCompile Include="Black76Pricer.cpp" />
     <ClCompile Include="IParameter.cpp" />
     <ClCompile Include="IStochastic1FProcess.cpp" />
+    <ClCompile Include="LinearInterpolator.cpp" />
     <ClCompile Include="LocalDiscountCurveApproximator.cpp" />
+    <ClCompile Include="LogLinearInterpolator.cpp" />
     <ClCompile Include="MarketData.cpp" />
     <ClCompile Include="PiecewiseConstantParameter.cpp" />
     <ClCompile Include="PseudoNormalRsg.cpp" />

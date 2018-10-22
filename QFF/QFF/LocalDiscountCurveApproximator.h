@@ -11,13 +11,14 @@ class LocalDiscountCurveApproximator :
 {
 public:
 	LocalDiscountCurveApproximator() = delete;
-	LocalDiscountCurveApproximator(shared_ptr<IDiscountCurveExtrapolator> leftExtrapolator, 
+	LocalDiscountCurveApproximator(
+		shared_ptr<IDiscountCurveExtrapolator> leftExtrapolator, 
 		shared_ptr<IDiscountCurveExtrapolator> rightExtrapolator, 
 		shared_ptr<IDiscountCurveInterpolator> interpolator);
 
 	~LocalDiscountCurveApproximator() = default;
 
-	double approximate(date queryDate, vector<date> dates, vector<double> discountFactors) const override;
+	double approximate(const double & queryTime, const vector<double> & times, const vector<double> & discountFactors) const override;
 
 private:
 	shared_ptr<IDiscountCurveExtrapolator> m_leftExtrapolator;

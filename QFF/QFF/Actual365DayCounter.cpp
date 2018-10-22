@@ -2,7 +2,7 @@
 
 double Actual365DayCounter::countDayBetween(date startDate, date endDate) const
 {
-	boost::gregorian::date_duration difference = startDate - endDate;
+	boost::gregorian::date_duration difference = endDate - startDate;
 
 	return difference.days();
 }

@@ -261,6 +261,15 @@
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
+    <ClInclude Include="LogLinearInterpolator.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearInterpolator.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="DiscountCurveInterpolator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -352,6 +361,15 @@
     </ClCompile>
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp">
       <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearInterpolator.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="LogLinearInterpolator.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="DiscountCurveInterpolator.cpp">
+      <Filter>Source Files\Interpolator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

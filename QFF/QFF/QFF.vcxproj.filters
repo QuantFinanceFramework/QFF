@@ -270,6 +270,9 @@
     <ClInclude Include="DiscountCurveInterpolator.h">
       <Filter>Header Files\Interpolator</Filter>
     </ClInclude>
+    <ClInclude Include="NormalRsgFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EuropeanOption.cpp">
@@ -370,6 +373,9 @@
     </ClCompile>
     <ClCompile Include="DiscountCurveInterpolator.cpp">
       <Filter>Source Files\Interpolator</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalRsgFactory.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

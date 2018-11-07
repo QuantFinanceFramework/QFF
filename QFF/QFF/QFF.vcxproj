@@ -154,6 +154,7 @@
     <ClInclude Include="FloatingRateCoupon.h" />
     <ClInclude Include="FXCurve.h" />
     <ClInclude Include="GaussianShortRate1FProcess.h" />
+    <ClInclude Include="HybridBlackScholesProcess.h" />
     <ClInclude Include="IAsianOptionPricer.h" />
     <ClInclude Include="ICalendar.h" />
     <ClInclude Include="ICashFlow.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="FloatingRateCoupon.cpp" />
     <ClCompile Include="FXCurve.cpp" />
     <ClCompile Include="GaussianShortRate1FProcess.cpp" />
+    <ClCompile Include="HybridBlackScholesProcess.cpp" />
     <ClCompile Include="InstrumentPortfolio.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="Black76Pricer.cpp" />

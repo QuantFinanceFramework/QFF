@@ -80,6 +80,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
+    <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;$(IncludePath)</IncludePath>
@@ -103,6 +105,7 @@
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
       <PreprocessorDefinitions>BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <EnablePREfast>true</EnablePREfast>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -154,7 +157,7 @@
     <ClInclude Include="FloatingRateCoupon.h" />
     <ClInclude Include="FXCurve.h" />
     <ClInclude Include="GaussianShortRate1FProcess.h" />
-    <ClInclude Include="HybirdBlackScholesProcess.h" />
+    <ClInclude Include="HybridBlackScholesProcess.h" />
     <ClInclude Include="IAsianOptionPricer.h" />
     <ClInclude Include="ICalendar.h" />
     <ClInclude Include="ICashFlow.h" />
@@ -174,6 +177,7 @@
     <ClInclude Include="INormalRandomSequenceGenerator.h" />
     <ClInclude Include="IStochastic1FProcess.h" />
     <ClInclude Include="IStochasticProcess.h" />
+    <ClInclude Include="IStochasticShortRateProcess.h" />
     <ClInclude Include="LinearInterpolator.h" />
     <ClInclude Include="LocalDiscountCurveApproximator.h" />
     <ClInclude Include="LogLinearInterpolator.h" />
@@ -204,7 +208,7 @@
     <ClCompile Include="FloatingRateCoupon.cpp" />
     <ClCompile Include="FXCurve.cpp" />
     <ClCompile Include="GaussianShortRate1FProcess.cpp" />
-    <ClCompile Include="HybirdBlackScholesProcess.cpp" />
+    <ClCompile Include="HybridBlackScholesProcess.cpp" />
     <ClCompile Include="InstrumentPortfolio.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="Black76Pricer.cpp" />

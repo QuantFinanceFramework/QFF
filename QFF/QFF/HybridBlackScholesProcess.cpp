@@ -1,26 +1,38 @@
 #include "HybridBlackScholesProcess.h"
 #include <cmath>
+#include <algorithm>
 
 using std::move;
 
 HybridBlackScholesProcess::HybridBlackScholesProcess(
-	unique_ptr<IStochastic1FProcess> domesticSRProcess, 
-	unique_ptr<IStochastic1FProcess> foreignSRProcess, 
+	unique_ptr<IStochasticShortRateProcess> domesticSRProcess,
+	unique_ptr<IStochasticShortRateProcess> foreignSRProcess,
 	unique_ptr<IParameter> sigma, 
-	unique_ptr<IDiscretisation> discretisation):
+	unique_ptr<IDiscretisation> discretisation,
+	const vector<vector<double>>& correlationMatrix):
 	m_domesticSRProcess{ move(domesticSRProcess) },
 	m_foreignSRProcess{ move(foreignSRProcess) },
 	m_sigma{ move(sigma) },
-	m_discretisation{ move(discretisation) }{}
+	m_discretisation{ move(discretisation) },
+	m_correlationMatrix{ correlationMatrix }{}
 
-vector<double> HybridBlackScholesProcess::evolve(vector<double> previousValue, double previousTime, double timeStep, vector<double> randomNormal) const
+vector<double> HybridBlackScholesProcess::evolve(
+	const vector<double> & previousValue, 
+	double previousTime, 
+	double timeStep, 
+	const vector<double> & randomNormal) const
 {
 	return m_discretisation->next(*this, previousValue, previousTime, timeStep, randomNormal);
 }
 
-size_t HybridBlackScholesProcess::numberOfFactors() const
+size_t HybridBlackScholesProcess::factors() const
 {
-	return m_domesticSRProcess->numberOfFactors() + m_foreignSRProcess->numberOfFactors() + 1;
+	return m_domesticSRProcess->factors() + m_foreignSRProcess->factors() + 1;
+}
+
+size_t HybridBlackScholesProcess::dimension() const
+{
+	return m_domesticSRProcess->dimension() + m_foreignSRProcess->dimension();
 }
 
 double HybridBlackScholesProcess::diffusion(double time, double s) const
@@ -28,19 +40,27 @@ double HybridBlackScholesProcess::diffusion(double time, double s) const
 	return m_sigma->operator[](time) * s;
 }
 
-vector<double> HybridBlackScholesProcess::ExactScheme::next(const HybridBlackScholesProcess & process, vector<double> previousValue, double previousTime, double timeStep, vector<double> randomNormal) const
+vector<double> HybridBlackScholesProcess::ExactScheme::next(
+	const HybridBlackScholesProcess & process,
+	const vector<double> & previousValue,
+	double previousTime,
+	double timeStep,
+	const vector<double> & randomNormal) const
 {
-	auto rDomestic = process.m_domesticSRProcess->evolve(previousValue[0], previousTime, timeStep, randomNormal[0]);
-	auto rForeign = process.m_foreignSRProcess->evolve(previousValue[1], previousTime, timeStep, randomNormal[1]);
+	auto rDDimension = process.m_domesticSRProcess->dimension();
+	auto rFDimension = process.m_foreignSRProcess->dimension();
+	auto rDFactors = process.m_domesticSRProcess->factors();
+	auto rFFactors = process.m_foreignSRProcess->factors();
+	vector<double> rDState{ previousValue.begin(), previousValue.begin() + rDDimension };
+	vector<double> rFState{ previousValue.begin() + rDDimension + 1, previousValue.begin() + rDDimension + 1 + rFDimension };
+	auto rDStateNext = process.m_domesticSRProcess->evolve(rDState, previousTime, timeStep, { randomNormal.begin(), randomNormal.begin() + rDFactors });
+	auto rFStateNext = process.m_foreignSRProcess->evolve(rFState, previousTime, timeStep, { randomNormal.begin() + rDFactors + 1, randomNormal.begin() + rDFactors + 1 + rFFactors });
 	auto sigmaAvg = process.m_sigma->rootMeanSquare(previousTime, previousTime + timeStep);
-	auto currentValue = previousValue[2] * exp((rDomestic - rForeign - 0.5 * sigmaAvg * sigmaAvg) * timeStep + sigmaAvg * sqrt(timeStep) * randomNormal[2]);
-	return { rDomestic, rForeign, currentValue };
-}
-
-vector<double> HybridBlackScholesProcess::EulerScheme::next(const HybridBlackScholesProcess & process, vector<double> previousValue, double previousTime, double timeStep, vector<double> randomNormal) const
-{
-	auto rDomestic = process.m_domesticSRProcess->evolve(previousValue[0], previousTime, timeStep, randomNormal[0]);
-	auto rForeign = process.m_foreignSRProcess->evolve(previousValue[1], previousTime, timeStep, randomNormal[1]);
-	auto currentValue = previousValue[2] + (rDomestic + rForeign) * timeStep + process.diffusion(previousTime, previousValue[2]) * sqrt(timeStep) * randomNormal[2];
-	return { rDomestic, rForeign, currentValue };
+	auto rDBond = process.m_domesticSRProcess->zeroCouponBondPrice(previousTime, previousTime + timeStep, rDStateNext);
+	auto rFBond = process.m_foreignSRProcess->zeroCouponBondPrice(previousTime, previousTime + timeStep, rFStateNext);
+	auto currentValue = previousValue.back() * rDBond/ rFBond * exp(- 0.5 * sigmaAvg * sigmaAvg) * timeStep + sigmaAvg * sqrt(timeStep) * randomNormal.back();
+	vector<double> result;
+	std::merge(rDStateNext.begin(), rDStateNext.end(), rFStateNext.begin(), rFStateNext.end(), result.begin());
+	result.push_back(currentValue);
+	return result;
 }

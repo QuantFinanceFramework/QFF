@@ -18,6 +18,7 @@ public:
 	~BlackScholesProcess() = default;
 
 	double evolve(double previousValue, double previousTime, double timeStep, double randomNormal) const override;
+	size_t dimension() const override;
 
 private:
 	unique_ptr<IParameter> m_mu;

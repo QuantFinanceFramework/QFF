@@ -8,7 +8,7 @@ EconomicScenarioGenerator::EconomicScenarioGenerator(
 	m_initialValue{ initialValue }, 
 	m_process{ process }, 
 	m_timeGrid{ timeGrid },
-	m_normalRsg{ NormalRsgFactory::makeNormalRsg(rsgName, m_timeGrid.size() * m_process->numberOfFactors()) } {}
+	m_normalRsg{ NormalRsgFactory::makeNormalRsg(rsgName, m_timeGrid.size() * m_process->factors()) } {}
 
 vector<double> EconomicScenarioGenerator::generateScenario() const
 {

@@ -270,11 +270,14 @@
     <ClInclude Include="DiscountCurveInterpolator.h">
       <Filter>Header Files\Interpolator</Filter>
     </ClInclude>
-    <ClInclude Include="NormalRsgFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HybridBlackScholesProcess.h">
       <Filter>Header Files\StochasticProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="IStochasticShortRateProcess.h">
+      <Filter>Header Files\StochasticProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalRsgFactory.h">
+      <Filter>Header Files\Random</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -377,11 +380,11 @@
     <ClCompile Include="DiscountCurveInterpolator.cpp">
       <Filter>Source Files\Interpolator</Filter>
     </ClCompile>
-    <ClCompile Include="NormalRsgFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="HybridBlackScholesProcess.cpp">
       <Filter>Source Files\StochasticProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalRsgFactory.cpp">
+      <Filter>Source Files\Random</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

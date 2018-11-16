@@ -12,15 +12,29 @@ GaussianShortRate1FProcess::GaussianShortRate1FProcess(
 	m_sigma{ move(sigma) }, 
 	m_discretisation{ move(discretisation) }{}
 
-double GaussianShortRate1FProcess::evolve(double previousValue, double previousTime, double timeStep, double randomNormal) const
+vector<double> GaussianShortRate1FProcess::evolve(
+	const vector<double> & previousValue, 
+	double previousTime, 
+	double timeStep, 
+	const vector<double> & randomNormal) const
 {
-	return m_discretisation->next(*this, previousValue, previousTime, timeStep, randomNormal);
+	return vector<double> {m_discretisation->next(*this, previousValue[0], previousTime, timeStep, randomNormal[0])};
 }
 
-double GaussianShortRate1FProcess::zeroCouponBondPrice(double t, double T, double x) const
+size_t GaussianShortRate1FProcess::factors() const
+{
+	return 1;
+}
+
+size_t GaussianShortRate1FProcess::dimension() const
+{
+	return 1;
+}
+
+double GaussianShortRate1FProcess::zeroCouponBondPrice(double t, double T, const vector<double> & state) const
 {
 	auto gValue = g(t, T);
-	return m_disCurve->getDiscountFactor(T) / m_disCurve->getDiscountFactor(t) * exp(-x * gValue -0.5 * y(t) * gValue * gValue);
+	return m_disCurve->getDiscountFactor(T) / m_disCurve->getDiscountFactor(t) * exp(-state[0] * gValue -0.5 * y(t) * gValue * gValue);
 }
 
 double GaussianShortRate1FProcess::drift(double time, double x) const
@@ -44,7 +58,8 @@ double GaussianShortRate1FProcess::g(double t, double T) const
 	return (1.0 - exp(-kappa *(T-t)))/ kappa;
 }
 
-double GaussianShortRate1FProcess::EulerScheme::next(const GaussianShortRate1FProcess & process, 
+double GaussianShortRate1FProcess::EulerScheme::next(
+	const GaussianShortRate1FProcess & process, 
 	double previousValue, 
 	double previousTime, 
 	double timeStep, 

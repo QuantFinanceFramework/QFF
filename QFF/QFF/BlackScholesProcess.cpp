@@ -10,6 +10,11 @@ double BlackScholesProcess::evolve(double previousValue, double previousTime, do
 	return m_discretisation->next(*this, previousValue, previousTime, timeStep, randomNormal);
 }
 
+size_t BlackScholesProcess::dimension() const
+{
+	return 1;
+}
+
 double BlackScholesProcess::drift(double time, double s) const
 {
 	return m_mu->operator[](time) * s;

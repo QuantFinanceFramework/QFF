@@ -18,15 +18,25 @@ QuasiGaussianShortRate1FProcess::QuasiGaussianShortRate1FProcess(
 	m_discretisation{ move(discretisation) }{}
 
 vector<double> QuasiGaussianShortRate1FProcess::evolve(
-	vector<double> previousValues,
+	const vector<double> & previousValues,
 	double previousTime, 
 	double timeStep, 
-	vector<double> randomNormal) const
+	const vector<double> & randomNormal) const
 {
 	return m_discretisation->next(*this, previousValues, previousTime, timeStep, randomNormal[0]);
 }
 
-double QuasiGaussianShortRate1FProcess::zeroCouponBondPrice(double t, double T, vector<double> state) const
+size_t QuasiGaussianShortRate1FProcess::factors() const
+{
+	return 1;
+}
+
+size_t QuasiGaussianShortRate1FProcess::dimension() const
+{
+	return 2;
+}
+
+double QuasiGaussianShortRate1FProcess::zeroCouponBondPrice(double t, double T, const vector<double> & state) const
 {
 	auto gValue = g(t, T);
 	return m_disCurve->getDiscountFactor(T) / m_disCurve->getDiscountFactor(t) * exp(-state[0] * gValue - 0.5 * state[1] * gValue * gValue);
@@ -55,7 +65,7 @@ double QuasiGaussianShortRate1FProcess::g(double t, double T) const
 
 vector<double> QuasiGaussianShortRate1FProcess::EulerScheme::next(
 	const QuasiGaussianShortRate1FProcess & process, 
-	vector<double> previousValues, 
+	const vector<double> & previousValues, 
 	double previousTime, 
 	double timeStep, 
 	double randomNormal) const

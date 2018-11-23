@@ -19,8 +19,9 @@ public:
 
 	GaussianShortRate1FProcess(
 		shared_ptr<DiscountCurve> disCurve, 
-		unique_ptr<ConstantParameter> kappa, 
-		unique_ptr<IParameter> sigma, 
+		const vector<double> & term,
+		const vector<double> & kappa,
+		const vector<double> & sigma,
 		unique_ptr<IDiscretisation> discretisation);
 
 	~GaussianShortRate1FProcess() = default;
@@ -39,8 +40,9 @@ public:
 
 private:
 	shared_ptr<DiscountCurve> m_disCurve;
-	unique_ptr<ConstantParameter> m_kappa;
-	unique_ptr<IParameter> m_sigma;
+	vector<double> m_term;
+	vector<double> m_kappa;
+	vector<double> m_sigma;
 	unique_ptr<IDiscretisation> m_discretisation;
 	double drift(double time, double x) const;
 	double diffusion(double time) const;

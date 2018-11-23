@@ -59,6 +59,9 @@
     <Filter Include="Parameters">
       <UniqueIdentifier>{89f21c1c-f5a8-4317-9b5e-e977a782eea8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StochasticProcess">
+      <UniqueIdentifier>{83265fba-7705-4d29-8806-2eb726d1a9e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

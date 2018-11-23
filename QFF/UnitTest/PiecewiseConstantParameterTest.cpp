@@ -12,8 +12,8 @@ TEST(PiecewiseConstantParameterTest, IntegralTest_Right) {
 }
 
 TEST(PiecewiseConstantParameterTest, IntegralSquareTest) {
-	PiecewiseConstantParameter parameter{ { {0.0, 10.0}, {3.0, 30.0}, {5.0, 50.0}, {10.0, 100.0} } };
-	EXPECT_NEAR(parameter.integralSquare(3.0, 10.0), 14300.0, 0.0001);
+	PiecewiseConstantParameter parameter{ { {0.0, 0.0077154}, {5.01918, 0.00705787}, {8.01918, 0.00678679}, {10.0219, 0.00542237}, {11.0219, 0.00518465}, {12.0219, 0.00433031}, {13.0247, 0.00402051} } };
+	EXPECT_NEAR(parameter.integralSquare(0.0, 10.0), 0.00053945690435152, 0.00001);
 }
 
 TEST(PiecewiseConstantParameterTest, GetValueTest) {

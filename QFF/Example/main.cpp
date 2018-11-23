@@ -28,9 +28,9 @@ int main()
 		make_unique<ConstantParameter>(0.001),
 		make_unique<ConstantParameter>(0.2),
 		make_unique<BlackScholesProcess::EulerScheme>());
-	vector<double> timeGrid{ 1.0, 2.0, 4.0, 5.0 };
-	EconomicScenarioGenerator esg { 0.0, bs, timeGrid, "Sobol" };
-	auto result = esg.generateScenarioSet(1000000);
+	vector<double> timeGrid{ 0.0, 2.0, 4.0, 5.0 };
+	EconomicScenarioGenerator esg{ {100.0}, bs, timeGrid, "Pseudo" };
+	auto result = esg.generateScenarioSet(100);
 
 	return EXIT_SUCCESS;
 }

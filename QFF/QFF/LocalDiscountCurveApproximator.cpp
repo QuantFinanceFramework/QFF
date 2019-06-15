@@ -1,16 +1,19 @@
 #include "LocalDiscountCurveApproximator.h"
 
-LocalDiscountCurveApproximator::LocalDiscountCurveApproximator(shared_ptr<IDiscountCurveExtrapolator> leftExtrapolator,
+LocalDiscountCurveApproximator::LocalDiscountCurveApproximator(
+	shared_ptr<IDiscountCurveExtrapolator> leftExtrapolator,
 	shared_ptr<IDiscountCurveExtrapolator> rightExtrapolator,
-	shared_ptr<IDiscountCurveInterpolator> interpolator) :m_leftExtrapolator{ leftExtrapolator },
-	m_rightExtrapolator{ rightExtrapolator }, m_interpolator{ interpolator } {}
+	shared_ptr<IDiscountCurveInterpolator> interpolator) :
+	m_leftExtrapolator{ leftExtrapolator },
+	m_rightExtrapolator{ rightExtrapolator }, 
+	m_interpolator{ interpolator } {}
 
-double LocalDiscountCurveApproximator::approximate(date queryDate, vector<date> dates, vector<double> discountFactors) const
+double LocalDiscountCurveApproximator::approximate(const double & queryTime, const vector<double> & times, const vector<double> & discountFactors) const
 {
-	if (queryDate < dates[0])
-		return(m_leftExtrapolator->extrapol(queryDate, dates, discountFactors));
-	else if (queryDate > dates.back())
-		return(m_rightExtrapolator->extrapol(queryDate, dates, discountFactors));
+	if (queryTime < times[0])
+		return(m_leftExtrapolator->extrapol(queryTime, times, discountFactors));
+	else if (queryTime > times.back())
+		return(m_rightExtrapolator->extrapol(queryTime, times, discountFactors));
 	else
-		return(m_interpolator->interpol(queryDate, dates, discountFactors));
+		return(m_interpolator->interpol(queryTime, times, discountFactors));
 }

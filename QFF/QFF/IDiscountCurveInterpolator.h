@@ -11,5 +11,5 @@ public:
 	IDiscountCurveInterpolator() = default;
 	virtual ~IDiscountCurveInterpolator() = default;
 
-	virtual double interpol(date queryDate, vector<date> dates, vector<double> discountFactors) const = 0;
+	virtual double interpol(const double & queryTime, const vector<double> & times, const vector<double> & discountFactors) const = 0;
 };

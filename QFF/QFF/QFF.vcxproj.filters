@@ -108,9 +108,6 @@
     <ClInclude Include="IDayCounter.h">
       <Filter>Header Files\DayCounter</Filter>
     </ClInclude>
-    <ClInclude Include="ISolver.h">
-      <Filter>Header Files\Solver</Filter>
-    </ClInclude>
     <ClInclude Include="MarketData.h">
       <Filter>Header Files\MarketData</Filter>
     </ClInclude>

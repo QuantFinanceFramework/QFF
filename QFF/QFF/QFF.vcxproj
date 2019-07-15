@@ -179,7 +179,6 @@
     <ClInclude Include="IMarketData.h" />
     <ClInclude Include="InstrumentPortfolio.h" />
     <ClInclude Include="IParameter.h" />
-    <ClInclude Include="ISolver.h" />
     <ClInclude Include="CashFlowCollection.h" />
     <ClInclude Include="INormalRandomSequenceGenerator.h" />
     <ClInclude Include="IStochastic1FProcess.h" />

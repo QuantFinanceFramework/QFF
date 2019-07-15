@@ -1,20 +1,12 @@
 #include "Coupon.h"
 
-Coupon::Coupon(double notional, 
-	date paymentDate, 
-	date accrualStartDate, 
-	date accrualEndDate, 
-	shared_ptr<IDayCounter> dayCounter, 
-	string discountCurveName) : 
-	m_notional{ notional }, m_paymentDate{ paymentDate }, m_accrualStartDate{ accrualStartDate }, 
-	m_accrualEndDate{ accrualEndDate }, m_dayCounter{ dayCounter }, m_discountCurveName{ discountCurveName }{}
+Coupon::Coupon(double notional, date paymentDate, date accrualStartDate, date accrualEndDate,
+	const IDayCounter& dayCounter) : notional_{ notional }, paymentDate_{ paymentDate },
+	accrualStartDate_{ accrualStartDate }, accrualEndDate_{ accrualEndDate }{
+	dayCounter_ = dayCounter.clone(); }
 
-date Coupon::getPaymentDate() const
+double Coupon::calculateAccrualFactor() const
 {
-	return m_paymentDate;
+	return dayCounter_->calculateYearFraction(accrualStartDate_, accrualEndDate_);
 }
 
-double Coupon::calculateAccrualPeriod() const
-{
-	return m_dayCounter->calculateYearFraction(m_accrualStartDate, m_accrualEndDate);
-}

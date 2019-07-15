@@ -13,7 +13,7 @@ public:
 	InstrumentPortfolio(vector<shared_ptr<IInstrument>> portfolio);
 	~InstrumentPortfolio() = default;
 
-	double evaluate(const IMarketData & marketData, const ICurrency& currency) const override;
+	Currency evaluate(const IMarketData& marketData, const string& currencyCode) const override;
 
 private:
 	vector<shared_ptr<IInstrument>> m_portfolio;

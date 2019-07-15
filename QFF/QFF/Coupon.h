@@ -6,7 +6,7 @@
 #include <string>
 
 using boost::gregorian::date;
-using std::shared_ptr;
+using std::unique_ptr;
 using std::string;
 
 class Coupon :
@@ -14,20 +14,16 @@ class Coupon :
 {
 public:
 	Coupon(double notional, date paymentDate, date accrualStartDate, date accrualEndDate,
-		shared_ptr<IDayCounter> dayCounter, string discountCurveName);
-
+		const IDayCounter& dayCounter);
 	~Coupon() = default;
 
-	date getPaymentDate() const final;
-
 protected:
-	double calculateAccrualPeriod() const;
+	double calculateAccrualFactor() const;
 
-	double m_notional;
-	date m_paymentDate;
-	date m_accrualStartDate;
-	date m_accrualEndDate;
-	shared_ptr<IDayCounter> m_dayCounter;
-	string m_discountCurveName;
+	double notional_;
+	date paymentDate_;
+	date accrualStartDate_;
+	date accrualEndDate_;
+	unique_ptr<IDayCounter> dayCounter_;
 };
 

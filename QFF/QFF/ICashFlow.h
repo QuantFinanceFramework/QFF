@@ -1,19 +1,16 @@
 #pragma once
-#include "IInstrument.h"
+
 #include <boost/date_time/gregorian/gregorian.hpp>
 
 using boost::gregorian::date;
 
-class ICashFlow : 
-	public IInstrument
+class ICashFlow
 {
 public:
 	ICashFlow() = default;
-
-	ICashFlow(ICashFlow&&) = default;
-	ICashFlow& operator=(ICashFlow&&) = default;
-
 	virtual ~ICashFlow() = default;
+
+	virtual double getAmount() const = 0;
 	virtual date getPaymentDate() const = 0;
 };
 

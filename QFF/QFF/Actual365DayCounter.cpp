@@ -1,5 +1,12 @@
 #include "Actual365DayCounter.h"
 
+using std::make_unique;
+
+unique_ptr<IDayCounter> Actual365DayCounter::clone() const
+{
+	return make_unique<Actual365DayCounter>();
+}
+
 double Actual365DayCounter::countDayBetween(date startDate, date endDate) const
 {
 	boost::gregorian::date_duration difference = endDate - startDate;

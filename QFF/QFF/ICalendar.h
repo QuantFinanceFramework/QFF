@@ -1,18 +1,15 @@
 #pragma once
+#include <boost\date_time\gregorian\gregorian.hpp>
+
+using boost::gregorian::date;
+
 class ICalendar
 {
 public:
-	ICalendar();
-	virtual ~ICalendar();
+	ICalendar() = default;
+	virtual ~ICalendar() = default;
+
+	virtual bool isHoliday(date queryDate) const = 0;
+	virtual bool isBusinessDay(date queryDate) const = 0;
 };
 
-
-
-ICalendar::ICalendar()
-{
-}
-
-
-ICalendar::~ICalendar()
-{
-}

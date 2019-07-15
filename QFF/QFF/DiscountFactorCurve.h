@@ -31,7 +31,7 @@ public:
 	double getDiscountFactor(double queryTime) const override;
 
 	double getForwardRate(const date& startDate, const date& endDate) const override;
-	double getForwardRate(double starttime, double endtime) const override;
+	double getForwardRate(double startTime, double endTime) const override;
 
 	double getZeroRate(const date& queryDate) const override;
 	double getZeroRate(double queryTime) const override;
@@ -41,7 +41,7 @@ private:
 
 	date curveDate_;
 	vector<date> dates_;
-	map<double, double> DiscountFactorsMap_;
+	map<double, double> discountFactorsMap_;
 	unique_ptr<IInterpolator> interpolator_;
 	unique_ptr<IDayCounter> dayCounter_;
 };

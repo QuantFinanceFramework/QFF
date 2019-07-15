@@ -5,12 +5,12 @@
 
 using std::string;
 
-class IInstrument
+class IProduct
 {
 public:
-	IInstrument() = default;
-	virtual ~IInstrument() = default;
+	IProduct() = default;
+	virtual ~IProduct() = default;
 
-	virtual Currency evaluate(const IMarketData& marketData, const string& currencyCode) const = 0 ;
+	virtual Currency evaluate(const IMarketData& marketData, const string& currencyCode) const = 0;
 };
 

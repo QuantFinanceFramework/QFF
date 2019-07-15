@@ -1,5 +1,5 @@
 #pragma once
-#include "ICashFlow.h"
+#include "ICashflow.h"
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include "IDayCounter.h"
 #include <memory>
@@ -10,17 +10,22 @@ using std::unique_ptr;
 using std::string;
 
 class Coupon :
-	public ICashFlow
+	public ICashflow
 {
 public:
-	Coupon(double notional, date paymentDate, date accrualStartDate, date accrualEndDate,
+	Coupon() = default;
+	Coupon(double notional, const string& currencyCode, date paymentDate, date accrualStartDate, date accrualEndDate,
 		const IDayCounter& dayCounter);
 	~Coupon() = default;
+
+	string getCurrency() const;
+	date getPaymentDate() const final;
 
 protected:
 	double calculateAccrualFactor() const;
 
 	double notional_;
+	string currencyCode_;
 	date paymentDate_;
 	date accrualStartDate_;
 	date accrualEndDate_;

@@ -10,11 +10,10 @@ class IMarketData
 public:
 	IMarketData() = default;
 	virtual ~IMarketData() = default;
-	virtual double getDiscountFactor(string curveName, date date) const = 0;
-	virtual double getForwardRateProjection(string curveName, date date) const = 0;
-	virtual double getSpot(string underlying) const = 0;
-	virtual double getForward(string underlying, date date) const = 0;
-	virtual double getVolatility(string underlying, date date, double strike) const = 0;
+
+	virtual double getDiscountFactor(string curveName, date queryDate) const = 0;
+	virtual double getForwardRate(string curveName, date startDate, date endDate) const = 0;
+	virtual double getZeroRate(string curveName, date queryDate) const = 0;
 };
 
 

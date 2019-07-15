@@ -1,26 +1,21 @@
 #include "MarketData.h"
 
-double MarketData::getDiscountFactor(string curveName, date date) const
+date MarketData::getMarketDate() const
+{
+	return marketDate_;
+}
+
+double MarketData::getDiscountFactor(string curveName, date queryDate) const
 {
 	return 0.0;
 }
 
-double MarketData::getForwardRateProjection(string curveName, date date) const
+double MarketData::getForwardRate(string curveName, date startDate, date endDate) const
 {
 	return 0.0;
 }
 
-double MarketData::getSpot(string underlying) const
-{
-	return 0.0;
-}
-
-double MarketData::getForward(string underlying, date date) const
-{
-	return 0.0;
-}
-
-double MarketData::getVolatility(string underlying, date date, double strike) const
+double MarketData::getZeroRate(string curveName, date queryDate) const
 {
 	return 0.0;
 }

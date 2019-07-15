@@ -16,9 +16,6 @@
     <Filter Include="Header Files\Interpolator">
       <UniqueIdentifier>{e190d393-25c8-48bf-aa66-95838f58c4c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Solver">
-      <UniqueIdentifier>{cf0a039c-e02a-41ef-8c83-b90b87e2cf85}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Calendar">
       <UniqueIdentifier>{c62652a7-838a-47e7-bd08-eb5c365d6d47}</UniqueIdentifier>
     </Filter>
@@ -34,17 +31,11 @@
     <Filter Include="Source Files\DayCounter">
       <UniqueIdentifier>{22b33229-1987-4697-a757-9a3bd52b2e7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Solver">
-      <UniqueIdentifier>{e09b9be4-389c-490b-9e29-667a0aa97151}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Pricer">
       <UniqueIdentifier>{79675448-3dfd-40b2-a5df-dadc72c11236}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Pricer">
       <UniqueIdentifier>{ca6eb20f-4fbd-4f9a-addc-cc0f00b54563}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\TradeInfo">
-      <UniqueIdentifier>{4056c3b8-8b8f-4c98-ba94-6922df6e8d7a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\MarketData">
       <UniqueIdentifier>{84c671d6-f62c-498b-b1e9-5cfd5415102a}</UniqueIdentifier>
@@ -76,18 +67,6 @@
     <Filter Include="Source Files\Random">
       <UniqueIdentifier>{36a95de2-ae7a-499c-87e7-a58f844c3eb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\StochasticProcess">
-      <UniqueIdentifier>{f0bc3f57-5e80-410f-8950-452f97300edf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\EconomicScenarioGenerator">
-      <UniqueIdentifier>{75d430b1-690f-4cd0-8e74-37dc454d9050}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\EconomicScenarioGenerator">
-      <UniqueIdentifier>{8a2f6c49-07a4-4cee-9d4e-aa07c5a1219c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\StochasticProcess">
-      <UniqueIdentifier>{b5cd0bcd-a1e2-43ae-9d50-947a9fc01b21}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Parameters">
       <UniqueIdentifier>{46cbc042-afb7-4d31-91eb-f66ddcd1786b}</UniqueIdentifier>
     </Filter>
@@ -111,9 +90,6 @@
     <ClInclude Include="MarketData.h">
       <Filter>Header Files\MarketData</Filter>
     </ClInclude>
-    <ClInclude Include="InstrumentPortfolio.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="Black76Formula.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
@@ -121,12 +97,6 @@
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
     <ClInclude Include="Swap.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="ICashFlow.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="CashFlowCollection.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
     <ClInclude Include="IMarketData.h">
@@ -150,21 +120,6 @@
     <ClInclude Include="PseudoNormalRsg.h">
       <Filter>Header Files\Random</Filter>
     </ClInclude>
-    <ClInclude Include="BlackScholesProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="IStochasticProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="EconomicScenarioGenerator.h">
-      <Filter>Header Files\EconomicScenarioGenerator</Filter>
-    </ClInclude>
-    <ClInclude Include="IEconomicScenarioGenerator.h">
-      <Filter>Header Files\EconomicScenarioGenerator</Filter>
-    </ClInclude>
-    <ClInclude Include="IStochastic1FProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
-    </ClInclude>
     <ClInclude Include="IParameter.h">
       <Filter>Header Files\Parameters</Filter>
     </ClInclude>
@@ -177,20 +132,8 @@
     <ClInclude Include="SobolNormalRsg.h">
       <Filter>Header Files\Random</Filter>
     </ClInclude>
-    <ClInclude Include="GaussianShortRate1FProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="QuasiGaussianShortRate1FProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
-    </ClInclude>
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h">
       <Filter>Header Files\Functions</Filter>
-    </ClInclude>
-    <ClInclude Include="HybridBlackScholesProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="IStochasticShortRateProcess.h">
-      <Filter>Header Files\StochasticProcess</Filter>
     </ClInclude>
     <ClInclude Include="NormalRsgFactory.h">
       <Filter>Header Files\Random</Filter>
@@ -216,6 +159,15 @@
     <ClInclude Include="CurveInterpolator.h">
       <Filter>Header Files\Interpolator</Filter>
     </ClInclude>
+    <ClInclude Include="Leg.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="Index.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="ICashflow.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -225,9 +177,6 @@
       <Filter>Source Files\Functions</Filter>
     </ClCompile>
     <ClCompile Include="Swap.cpp">
-      <Filter>Source Files\Products</Filter>
-    </ClCompile>
-    <ClCompile Include="CashFlowCollection.cpp">
       <Filter>Source Files\Products</Filter>
     </ClCompile>
     <ClCompile Include="MarketData.cpp">
@@ -248,15 +197,6 @@
     <ClCompile Include="PseudoNormalRsg.cpp">
       <Filter>Source Files\Random</Filter>
     </ClCompile>
-    <ClCompile Include="EconomicScenarioGenerator.cpp">
-      <Filter>Source Files\EconomicScenarioGenerator</Filter>
-    </ClCompile>
-    <ClCompile Include="BlackScholesProcess.cpp">
-      <Filter>Source Files\StochasticProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="IStochastic1FProcess.cpp">
-      <Filter>Source Files\StochasticProcess</Filter>
-    </ClCompile>
     <ClCompile Include="IParameter.cpp">
       <Filter>Source Files\Parameters</Filter>
     </ClCompile>
@@ -269,17 +209,8 @@
     <ClCompile Include="SobolNormalRsg.cpp">
       <Filter>Source Files\Random</Filter>
     </ClCompile>
-    <ClCompile Include="GaussianShortRate1FProcess.cpp">
-      <Filter>Source Files\StochasticProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="QuasiGaussianShortRate1FProcess.cpp">
-      <Filter>Source Files\StochasticProcess</Filter>
-    </ClCompile>
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp">
       <Filter>Source Files\Functions</Filter>
-    </ClCompile>
-    <ClCompile Include="HybridBlackScholesProcess.cpp">
-      <Filter>Source Files\StochasticProcess</Filter>
     </ClCompile>
     <ClCompile Include="NormalRsgFactory.cpp">
       <Filter>Source Files\Random</Filter>
@@ -295,6 +226,12 @@
     </ClCompile>
     <ClCompile Include="CurveInterpolator.cpp">
       <Filter>Source Files\Interpolator</Filter>
+    </ClCompile>
+    <ClCompile Include="Leg.cpp">
+      <Filter>Source Files\Products</Filter>
+    </ClCompile>
+    <ClCompile Include="Index.cpp">
+      <Filter>Source Files\Products</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

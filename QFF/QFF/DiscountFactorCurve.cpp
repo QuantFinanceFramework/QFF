@@ -1,4 +1,5 @@
 #include "DiscountFactorCurve.h"
+#include <cmath>
 
 DiscountFactorCurve::DiscountFactorCurve(date curveDate, const vector<date>& dates, 
 	const vector<double>& discountFactors, const IInterpolator& interpolator, 
@@ -20,7 +21,7 @@ double DiscountFactorCurve::getDiscountFactor(const date& queryDate) const
 
 double DiscountFactorCurve::getDiscountFactor(double queryTime) const
 {
-	return 0.0;
+	return interpolator_->interpol(queryTime, discountFactorsMap_);
 }
 
 double DiscountFactorCurve::getForwardRate(const date& startDate, const date& endDate) const
@@ -28,9 +29,9 @@ double DiscountFactorCurve::getForwardRate(const date& startDate, const date& en
 	return getForwardRate(dateToTime(startDate), dateToTime(endDate));
 }
 
-double DiscountFactorCurve::getForwardRate(double starttime, double endtime) const
+double DiscountFactorCurve::getForwardRate(double startTime, double endTime) const
 {
-	return 0.0;
+	return -log(getDiscountFactor(endTime)/getDiscountFactor(startTime))/(endTime - startTime);
 }
 
 double DiscountFactorCurve::getZeroRate(const date& queryDate) const
@@ -40,7 +41,7 @@ double DiscountFactorCurve::getZeroRate(const date& queryDate) const
 
 double DiscountFactorCurve::getZeroRate(double queryTime) const
 {
-	return 0.0;
+	return -log(getDiscountFactor(queryTime))/ queryTime;
 }
 
 double DiscountFactorCurve::dateToTime(const date& date) const

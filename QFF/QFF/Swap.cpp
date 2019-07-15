@@ -1,10 +1,10 @@
 #include "Swap.h"
 using std::move;
 
-Swap::Swap(CashFlowCollection receiveLeg, CashFlowCollection payLeg):
-	m_receiveLeg(move(receiveLeg)), m_payLeg(move(payLeg)){}
+Swap::Swap(Leg&& receiveLeg, Leg&& payLeg):
+	receiveLeg_(move(receiveLeg)), payLeg_(move(payLeg)){}
 
-double Swap::evaluate(const IMarketData & marketData, const ICurrency & currency) const
+Currency Swap::evaluate(const IMarketData& marketData, const string& currencyCode) const
 {
-	return m_receiveLeg.evaluate(marketData, currency) - m_payLeg.evaluate(marketData, currency);
+	return Currency();
 }

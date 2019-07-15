@@ -1,16 +1,13 @@
 #pragma once
+#include "IMarketData.h"
 
-#include <boost/date_time/gregorian/gregorian.hpp>
-
-using boost::gregorian::date;
-
-class ICashFlow
+class ICashflow
 {
 public:
-	ICashFlow() = default;
-	virtual ~ICashFlow() = default;
+	ICashflow() = default;
+	virtual ~ICashflow() = default;
 
-	virtual double getAmount() const = 0;
 	virtual date getPaymentDate() const = 0;
+	virtual double getPaymentAmount(const IMarketData& marketData) const = 0;
 };
 

@@ -1,19 +1,19 @@
 #pragma once
-#include "IInstrument.h"
-#include "CashFlowCollection.h"
-#include "BasicTradeInfo.h"
+#include "IProduct.h"
+#include "Leg.h"
 
 class Swap :
-	public IInstrument
+	public IProduct
 {
 public:
-	Swap() = delete;
-	Swap(CashFlowCollection receiveLeg, CashFlowCollection payLeg);
+	Swap() = default;
+	Swap(Leg&& receiveLeg, Leg&& payLeg);
 	~Swap() = default;
-	double evaluate(const IMarketData & marketData, const ICurrency& currency) const;
+
+	Currency evaluate(const IMarketData& marketData, const string& currencyCode) const override;
 
 private:
-	CashFlowCollection m_receiveLeg;
-	CashFlowCollection m_payLeg;
+	Leg receiveLeg_;
+	Leg payLeg_;
 };
 

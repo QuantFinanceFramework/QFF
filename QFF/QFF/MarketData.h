@@ -1,9 +1,11 @@
 #pragma once
 #include "IMarketData.h"
-#include "DiscountCurve.h"
+#include "IInterestRateCurve.h"
 #include <map>
+#include <memory>
 
 using std::map;
+using std::unique_ptr;
 
 class MarketData :
 	public IMarketData
@@ -11,15 +13,16 @@ class MarketData :
 public:
 	MarketData() = default;
 	~MarketData() = default;
-	double getDiscountFactor(string curveName, date date) const override;
-	double getForwardRateProjection(string curveName, date date) const override;
-	double getSpot(string underlying) const override;
-	double getForward(string underlying, date date) const override;
-	double getVolatility(string underlying, date date, double strike) const override;
+
+	date getMarketDate() const;
+	
+	double getDiscountFactor(string curveName, date queryDate) const override;
+	double getForwardRate(string curveName, date startDate, date endDate) const override;
+	double getZeroRate(string curveName, date queryDate) const override;
 
 private:
-	date m_referenceDate;
-	map<string, DiscountCurve> m_discountCurves;
+	date marketDate_;
+	map<string, unique_ptr<IInterestRateCurve>> curveSets_;
 };
 
 

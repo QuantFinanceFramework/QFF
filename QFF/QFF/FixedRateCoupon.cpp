@@ -1,21 +1,11 @@
 #include "FixedRateCoupon.h"
 
-FixedRateCoupon::FixedRateCoupon(double notional, 
-	date paymentDate, 
-	date accrualStartDate, 
-	date accrualEndDate, 
-	shared_ptr<IDayCounter> dayCounter, 
-	string discountCurveName, 
-	double rate): 
-	Coupon(notional, paymentDate, accrualStartDate, accrualEndDate, dayCounter, discountCurveName), m_rate{ rate }{}
-
-double FixedRateCoupon::evaluate(const IMarketData & marketData, const ICurrency & currency) const
+FixedRateCoupon::FixedRateCoupon(double notional, date paymentDate, date accrualStartDate, date accrualEndDate, const IDayCounter& dayCounter, double rate)
 {
-	return getPaymentAmount() * marketData.getDiscountFactor(m_discountCurveName, m_paymentDate);
 }
 
-double FixedRateCoupon::getPaymentAmount() const
+double FixedRateCoupon::getPaymentAmount(const IMarketData& marketData) const
 {
-	return m_notional * m_rate * calculateAccrualPeriod();
+	return notional_ * rate_ * calculateAccrualFactor();
 }
 

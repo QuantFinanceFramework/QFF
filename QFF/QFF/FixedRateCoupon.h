@@ -1,18 +1,20 @@
 #pragma once
 #include "Coupon.h"
+
 class FixedRateCoupon :
 	public Coupon
 {
 public:
+	FixedRateCoupon() = default;
 	FixedRateCoupon(double notional, date paymentDate, date accrualStartDate, date accrualEndDate,
-		shared_ptr<IDayCounter> dayCounter, string discountCurveName, double rate);
+		const IDayCounter& dayCounter, double rate);
+
 	~FixedRateCoupon() = default;
 
-	double evaluate(const IMarketData & marketData, const ICurrency& currency) const override;
-	double getPaymentAmount() const;
+	double getPaymentAmount(const IMarketData& marketData) const override;
 
 private:
-	double m_rate;
+	double rate_;
 
 };
 

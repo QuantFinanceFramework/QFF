@@ -126,9 +126,6 @@
     <ClInclude Include="ICashFlow.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
-    <ClInclude Include="DiscountCurve.h">
-      <Filter>Header Files\MarketData\Curves</Filter>
-    </ClInclude>
     <ClInclude Include="CashFlowCollection.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
@@ -146,18 +143,6 @@
     </ClInclude>
     <ClInclude Include="FloatingRateCoupon.h">
       <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="IDiscountCurveApproximator.h">
-      <Filter>Header Files\Interpolator</Filter>
-    </ClInclude>
-    <ClInclude Include="IDiscountCurveExtrapolator.h">
-      <Filter>Header Files\Interpolator</Filter>
-    </ClInclude>
-    <ClInclude Include="IDiscountCurveInterpolator.h">
-      <Filter>Header Files\Interpolator</Filter>
-    </ClInclude>
-    <ClInclude Include="LocalDiscountCurveApproximator.h">
-      <Filter>Header Files\Interpolator</Filter>
     </ClInclude>
     <ClInclude Include="INormalRandomSequenceGenerator.h">
       <Filter>Header Files\Random</Filter>
@@ -201,15 +186,6 @@
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="LogLinearInterpolator.h">
-      <Filter>Header Files\Functions</Filter>
-    </ClInclude>
-    <ClInclude Include="LinearInterpolator.h">
-      <Filter>Header Files\Functions</Filter>
-    </ClInclude>
-    <ClInclude Include="DiscountCurveInterpolator.h">
-      <Filter>Header Files\Interpolator</Filter>
-    </ClInclude>
     <ClInclude Include="HybridBlackScholesProcess.h">
       <Filter>Header Files\StochasticProcess</Filter>
     </ClInclude>
@@ -234,6 +210,12 @@
     <ClInclude Include="IProduct.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
+    <ClInclude Include="Interpolation.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="CurveInterpolator.h">
+      <Filter>Header Files\Interpolator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -244,9 +226,6 @@
     </ClCompile>
     <ClCompile Include="Swap.cpp">
       <Filter>Source Files\Products</Filter>
-    </ClCompile>
-    <ClCompile Include="DiscountCurve.cpp">
-      <Filter>Source Files\MarketData\Curves</Filter>
     </ClCompile>
     <ClCompile Include="CashFlowCollection.cpp">
       <Filter>Source Files\Products</Filter>
@@ -265,9 +244,6 @@
     </ClCompile>
     <ClCompile Include="FloatingRateCoupon.cpp">
       <Filter>Source Files\Products</Filter>
-    </ClCompile>
-    <ClCompile Include="LocalDiscountCurveApproximator.cpp">
-      <Filter>Source Files\Interpolator</Filter>
     </ClCompile>
     <ClCompile Include="PseudoNormalRsg.cpp">
       <Filter>Source Files\Random</Filter>
@@ -302,15 +278,6 @@
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp">
       <Filter>Source Files\Functions</Filter>
     </ClCompile>
-    <ClCompile Include="LinearInterpolator.cpp">
-      <Filter>Source Files\Functions</Filter>
-    </ClCompile>
-    <ClCompile Include="LogLinearInterpolator.cpp">
-      <Filter>Source Files\Functions</Filter>
-    </ClCompile>
-    <ClCompile Include="DiscountCurveInterpolator.cpp">
-      <Filter>Source Files\Interpolator</Filter>
-    </ClCompile>
     <ClCompile Include="HybridBlackScholesProcess.cpp">
       <Filter>Source Files\StochasticProcess</Filter>
     </ClCompile>
@@ -322,6 +289,12 @@
     </ClCompile>
     <ClCompile Include="DiscountFactorCurve.cpp">
       <Filter>Source Files\MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="Interpolation.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="CurveInterpolator.cpp">
+      <Filter>Source Files\Interpolator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

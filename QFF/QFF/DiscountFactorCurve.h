@@ -14,11 +14,15 @@ class DiscountFactorCurve :
 {
 public:
 	DiscountFactorCurve() = default;
-	DiscountFactorCurve(date curveDate, 
-		const vector<date>& dates, 
-		const vector<double>& discountFactors,
-		const IInterpolator& interpolator,
+
+	DiscountFactorCurve(date curveDate, const vector<date>& dates, 
+		const vector<double>& discountFactors, const IInterpolator& interpolator,
 		const IDayCounter& daycounter);
+
+	DiscountFactorCurve(date curveDate, const vector<date>& dates, 
+		const vector<double>& discountFactors, unique_ptr<IInterpolator> interpolator,
+		unique_ptr<IDayCounter> daycounter);
+
 	~DiscountFactorCurve() = default;
 
 	date getCurveDate() const;

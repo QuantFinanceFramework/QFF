@@ -157,8 +157,6 @@
     <ClInclude Include="ConstantParameter.h" />
     <ClInclude Include="Coupon.h" />
     <ClInclude Include="Currency.h" />
-    <ClInclude Include="DiscountCurve.h" />
-    <ClInclude Include="DiscountCurveInterpolator.h" />
     <ClInclude Include="DiscountFactorCurve.h" />
     <ClInclude Include="EconomicScenarioGenerator.h" />
     <ClInclude Include="BlackScholesFormula.h" />
@@ -169,9 +167,6 @@
     <ClInclude Include="ICalendar.h" />
     <ClInclude Include="ICashFlow.h" />
     <ClInclude Include="IDayCounter.h" />
-    <ClInclude Include="IDiscountCurveApproximator.h" />
-    <ClInclude Include="IDiscountCurveExtrapolator.h" />
-    <ClInclude Include="IDiscountCurveInterpolator.h" />
     <ClInclude Include="IEconomicScenarioGenerator.h" />
     <ClInclude Include="IProduct.h" />
     <ClInclude Include="IInterestRateCurve.h" />
@@ -184,9 +179,8 @@
     <ClInclude Include="IStochastic1FProcess.h" />
     <ClInclude Include="IStochasticProcess.h" />
     <ClInclude Include="IStochasticShortRateProcess.h" />
-    <ClInclude Include="LinearInterpolator.h" />
-    <ClInclude Include="LocalDiscountCurveApproximator.h" />
-    <ClInclude Include="LogLinearInterpolator.h" />
+    <ClInclude Include="Interpolation.h" />
+    <ClInclude Include="CurveInterpolator.h" />
     <ClInclude Include="MarketData.h" />
     <ClInclude Include="NormalRsgFactory.h" />
     <ClInclude Include="PiecewiseConstantParameter.h" />
@@ -203,8 +197,7 @@
     <ClCompile Include="ConstantParameter.cpp" />
     <ClCompile Include="Coupon.cpp" />
     <ClCompile Include="Currency.cpp" />
-    <ClCompile Include="DiscountCurve.cpp" />
-    <ClCompile Include="DiscountCurveInterpolator.cpp" />
+    <ClCompile Include="CurveInterpolator.cpp" />
     <ClCompile Include="DiscountFactorCurve.cpp" />
     <ClCompile Include="EconomicScenarioGenerator.cpp" />
     <ClCompile Include="FixedRateCoupon.cpp" />
@@ -214,9 +207,7 @@
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="IParameter.cpp" />
     <ClCompile Include="IStochastic1FProcess.cpp" />
-    <ClCompile Include="LinearInterpolator.cpp" />
-    <ClCompile Include="LocalDiscountCurveApproximator.cpp" />
-    <ClCompile Include="LogLinearInterpolator.cpp" />
+    <ClCompile Include="Interpolation.cpp" />
     <ClCompile Include="MarketData.cpp" />
     <ClCompile Include="NormalRsgFactory.cpp" />
     <ClCompile Include="PiecewiseConstantParameter.cpp" />

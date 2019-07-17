@@ -3,14 +3,15 @@
 #include "Currency.h"
 #include <string>
 
-using std::string;
+namespace qff {
+	using std::string;
 
-class IProduct
-{
-public:
-	IProduct() = default;
-	virtual ~IProduct() = default;
+	class IProduct
+	{
+	public:
+		IProduct() = default;
+		virtual ~IProduct() = default;
 
-	virtual Currency evaluate(const IMarketData& marketData, const string& currencyCode) const = 0;
-};
-
+		virtual Currency evaluate(const IMarketData& marketData, const string& currencyCode) const = 0;
+	};
+}

@@ -1,20 +1,22 @@
 #include "Actual365DayCounter.h"
 
-using std::make_unique;
+namespace qff {
+	using std::make_unique;
 
-unique_ptr<IDayCounter> Actual365DayCounter::clone() const
-{
-	return make_unique<Actual365DayCounter>();
-}
+	unique_ptr<IDayCounter> Actual365DayCounter::clone() const
+	{
+		return make_unique<Actual365DayCounter>();
+	}
 
-double Actual365DayCounter::countDayBetween(date startDate, date endDate) const
-{
-	boost::gregorian::date_duration difference = endDate - startDate;
+	double Actual365DayCounter::countDayBetween(date startDate, date endDate) const
+	{
+		boost::gregorian::date_duration difference = endDate - startDate;
 
-	return difference.days();
-}
+		return difference.days();
+	}
 
-double Actual365DayCounter::calculateYearFraction(date startDate, date endDate) const
-{
-	return countDayBetween(startDate, endDate) / 365;
+	double Actual365DayCounter::calculateYearFraction(date startDate, date endDate) const
+	{
+		return countDayBetween(startDate, endDate) / 365;
+	}
 }

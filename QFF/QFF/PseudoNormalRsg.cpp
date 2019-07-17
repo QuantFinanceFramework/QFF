@@ -1,21 +1,23 @@
 #include "PseudoNormalRsg.h"
 
-PseudoNormalRsg::PseudoNormalRsg(size_t dimension, unsigned int seed) : m_dimension{ dimension }, m_rng { std::mt19937{ seed } }, m_dist{ std::normal_distribution<double>{0,1} } {}
+namespace qff {
+	PseudoNormalRsg::PseudoNormalRsg(size_t dimension, unsigned int seed) : m_dimension{ dimension }, m_rng{ std::mt19937{ seed } }, m_dist{ std::normal_distribution<double>{0,1} } {}
 
-PseudoNormalRsg::PseudoNormalRsg(size_t dimension) : m_dimension{ dimension }, m_rng{ std::mt19937{std::random_device{}()} } {}
+	PseudoNormalRsg::PseudoNormalRsg(size_t dimension) : m_dimension{ dimension }, m_rng{ std::mt19937{std::random_device{}()} } {}
 
-vector<double> PseudoNormalRsg::generateNormalSequence()
-{
-	vector<double> result(m_dimension);
-	for (auto &i : result) 
+	vector<double> PseudoNormalRsg::generateNormalSequence()
 	{
-		i = m_dist(m_rng);
+		vector<double> result(m_dimension);
+		for (auto& i : result)
+		{
+			i = m_dist(m_rng);
+		}
+
+		return result;
 	}
 
-	return result;
-}
-
-void PseudoNormalRsg::setDimension(size_t dimension)
-{
-	m_dimension = dimension;
+	void PseudoNormalRsg::setDimension(size_t dimension)
+	{
+		m_dimension = dimension;
+	}
 }

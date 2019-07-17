@@ -1,3 +1,5 @@
 #include "Currency.h"
 
-Currency::Currency(string currencyCode, double amount):currencyCode(currencyCode), amount(amount){}
+namespace qff {
+	Currency::Currency(string currencyCode, double amount) :currencyCode(currencyCode), amount(amount) {}
+}

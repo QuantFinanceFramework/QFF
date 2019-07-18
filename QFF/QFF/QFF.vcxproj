@@ -151,6 +151,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Actual365DayCounter.h" />
+    <ClInclude Include="AustraliaCalendar.h" />
+    <ClInclude Include="BaseCalendar.h" />
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="ConstantParameter.h" />
@@ -160,6 +162,7 @@
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="FixedRateCoupon.h" />
     <ClInclude Include="FloatingRateCoupon.h" />
+    <ClInclude Include="IBusinessDayConvention.h" />
     <ClInclude Include="ICalendar.h" />
     <ClInclude Include="ICashflow.h" />
     <ClInclude Include="IDayCounter.h" />
@@ -182,6 +185,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actual365DayCounter.cpp" />
+    <ClCompile Include="AustraliaCalendar.cpp" />
+    <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp" />
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="ConstantParameter.cpp" />

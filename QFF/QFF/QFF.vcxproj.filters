@@ -79,6 +79,12 @@
     <Filter Include="Source Files\Products">
       <UniqueIdentifier>{d181d052-fe68-4165-a420-0c09b9805e24}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\BusinessDayConventions">
+      <UniqueIdentifier>{01d98ce0-ba17-4964-bec7-cd635739d1b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BusinessDayConventions">
+      <UniqueIdentifier>{6cc147c6-d484-4f0d-af14-50a8ab0a0d66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICalendar.h">
@@ -168,6 +174,15 @@
     <ClInclude Include="ICashflow.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
+    <ClInclude Include="IBusinessDayConvention.h">
+      <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseCalendar.h">
+      <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="AustraliaCalendar.h">
+      <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -232,6 +247,12 @@
     </ClCompile>
     <ClCompile Include="Index.cpp">
       <Filter>Source Files\Products</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="AustraliaCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

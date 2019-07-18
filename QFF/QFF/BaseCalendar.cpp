@@ -14,7 +14,7 @@ namespace qff {
 
 	date qff::BaseCalendar::adjustHoliday(const date& holiday) const
 	{
-		auto w = holiday.day_of_week;
+		auto w = holiday.day_of_week();
 		if (w == 'Sat')
 			return holiday + boost::gregorian::days(2);
 		if (w == 'Sun')
@@ -72,7 +72,7 @@ namespace qff {
 	date BaseCalendar::boxingDay(int year) const
 	{
 		auto boxingDay = date(year, 12, 26);
-		auto dayOfWeek = boxingDay.day_of_week;
+		auto dayOfWeek = boxingDay.day_of_week();
 		if (dayOfWeek == 'Mon')
 			return boxingDay + boost::gregorian::days(1);
 		if (dayOfWeek == 'Sun')

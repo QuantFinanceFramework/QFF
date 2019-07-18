@@ -7,6 +7,7 @@ namespace qff {
 	{
 	public:
 		bool isHoliday(const date& queryDate) const override;
+
 	private:
 		date australiaDay(int year) const;
 		date anzacDay(int year) const;

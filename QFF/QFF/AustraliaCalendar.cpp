@@ -2,7 +2,6 @@
 
 namespace qff {
 	using boost::date_time::next_weekday;
-	using boost::date_time::Monday;
 
 	bool qff::AustraliaCalendar::isHoliday(const date& queryDate) const
 	{
@@ -32,16 +31,19 @@ namespace qff {
 
 	date AustraliaCalendar::queensBirthday(int year) const
 	{
-		return next_weekday(next_weekday(date(year, 6, 1), Monday), Monday);
+		auto monday = boost::gregorian::greg_weekday(boost::date_time::Monday);
+		return next_weekday(next_weekday(date(year, 6, 1), monday), monday);
 	}
 
 	date AustraliaCalendar::bankHoliday(int year) const
 	{
-		return next_weekday(date(year, 8, 1), Monday);
+		auto monday = boost::gregorian::greg_weekday(boost::date_time::Monday);
+		return next_weekday(date(year, 8, 1), monday);
 	}
 
 	date AustraliaCalendar::labourDay(int year) const
 	{
-		return next_weekday(date(year, 10, 1), Monday);
+		auto monday = boost::gregorian::greg_weekday(boost::date_time::Monday);
+		return next_weekday(date(year, 10, 1), monday);
 	}
 }

@@ -1,24 +1,22 @@
 #pragma once
-#include "IParameter.h"
 #include <map>
+#include "IParameter.h"
 
 namespace qff {
-	using std::map;
+using std::map;
 
-	class PiecewiseConstantParameter :
-		public IParameter
-	{
-	public:
-		PiecewiseConstantParameter() = default;
-		PiecewiseConstantParameter(const map<double, double>& value);
+class PiecewiseConstantParameter : public IParameter {
+ public:
+  PiecewiseConstantParameter() = default;
+  PiecewiseConstantParameter(const map<double, double>& value);
 
-		~PiecewiseConstantParameter() = default;
+  ~PiecewiseConstantParameter() = default;
 
-		double operator[](double time) const override;
-		double integral(double time1, double time2) const override;
-		double integralSquare(double time1, double time2) const override;
+  double operator[](double time) const override;
+  double integral(double time1, double time2) const override;
+  double integralSquare(double time1, double time2) const override;
 
-	private:
-		map<double, double> m_value;
-	};
-}
+ private:
+  map<double, double> m_value;
+};
+}  // namespace qff

@@ -2,16 +2,15 @@
 #include <string>
 
 namespace qff {
-	using std::string;
+using std::string;
 
-	struct Currency
-	{
-	public:
-		Currency() = default;
-		Currency(string currencyCode, double amount);
-		~Currency() = default;
+struct Currency {
+ public:
+  Currency() = default;
+  Currency(string currencyCode, double amount);
+  ~Currency() = default;
 
-		string currencyCode;
-		double amount;
-	};
-}
+  string currencyCode;
+  double amount;
+};
+}  // namespace qff

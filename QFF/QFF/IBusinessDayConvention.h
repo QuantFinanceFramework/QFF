@@ -3,11 +3,11 @@
 #include "ICalendar.h"
 
 namespace qff {
-	using boost::gregorian::date;
+using boost::gregorian::date;
 
-	class IBusinessDayConvention
-	{
-	public:
-		virtual date adjust(const date& originalDate, const ICalendar& calendar) const = 0;
-	};
-}
+class IBusinessDayConvention {
+ public:
+  virtual date adjust(const date& originalDate,
+                      const ICalendar& calendar) const = 0;
+};
+}  // namespace qff

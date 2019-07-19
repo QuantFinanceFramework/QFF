@@ -1,7 +1,5 @@
 #pragma once
 
 namespace qff {
-	class Index
-	{
-	};
-}
+class Index {};
+}  // namespace qff

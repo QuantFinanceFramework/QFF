@@ -1,5 +1,3 @@
 #include "Index.h"
 
-namespace qff {
-
-}
+namespace qff {}

@@ -1,31 +1,30 @@
 #pragma once
-#include "IProduct.h"
-#include "ICashflow.h"
-#include <vector>
 #include <memory>
+#include <vector>
+#include "ICashflow.h"
+#include "IProduct.h"
 
 namespace qff {
-	using std::vector;
-	using std::unique_ptr;
+using std::unique_ptr;
+using std::vector;
 
-	class Leg :
-		public IProduct
-	{
-	public:
-		Leg() = default;
-		Leg(vector<unique_ptr<ICashflow>> cashflows);
+class Leg : public IProduct {
+ public:
+  Leg() = default;
+  Leg(vector<unique_ptr<ICashflow>> cashflows);
 
-		Leg(const Leg&) = delete;
-		Leg& operator=(const Leg&) = delete;
+  Leg(const Leg&) = delete;
+  Leg& operator=(const Leg&) = delete;
 
-		Leg(Leg&&) = default;
-		Leg& operator=(Leg&&) = default;
+  Leg(Leg&&) = default;
+  Leg& operator=(Leg&&) = default;
 
-		~Leg() = default;
+  ~Leg() = default;
 
-		Currency evaluate(const IMarketData& marketData, const string& currencyCode) const override;
+  Currency evaluate(const IMarketData& marketData,
+                    const string& currencyCode) const override;
 
-	private:
-		vector<unique_ptr<ICashflow>> cashflows_;
-	};
-}
+ private:
+  vector<unique_ptr<ICashflow>> cashflows_;
+};
+}  // namespace qff

@@ -1,21 +1,19 @@
 #pragma once
-#include <string>
 #include <boost/date_time/gregorian/gregorian.hpp>
+#include <string>
 
 namespace qff {
-	using std::string;
-	using boost::gregorian::date;
+using boost::gregorian::date;
+using std::string;
 
-	class IMarketData
-	{
-	public:
-		IMarketData() = default;
-		virtual ~IMarketData() = default;
+class IMarketData {
+ public:
+  IMarketData() = default;
+  virtual ~IMarketData() = default;
 
-		virtual double getDiscountFactor(string curveName, date queryDate) const = 0;
-		virtual double getForwardRate(string curveName, date startDate, date endDate) const = 0;
-		virtual double getZeroRate(string curveName, date queryDate) const = 0;
-	};
-}
-
-
+  virtual double getDiscountFactor(string curveName, date queryDate) const = 0;
+  virtual double getForwardRate(string curveName, date startDate,
+                                date endDate) const = 0;
+  virtual double getZeroRate(string curveName, date queryDate) const = 0;
+};
+}  // namespace qff

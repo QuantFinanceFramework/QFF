@@ -8,6 +8,6 @@ namespace qff {
 	class IBusinessDayConvention
 	{
 	public:
-		virtual date adjust(date originalDate, const ICalendar& calendar) const = 0;
+		virtual date adjust(const date& originalDate, const ICalendar& calendar) const = 0;
 	};
 }

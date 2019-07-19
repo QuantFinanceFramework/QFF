@@ -184,6 +184,15 @@
       <Filter>Header Files\Calendar</Filter>
     </ClInclude>
     <ClInclude Include="shiftDate.h">
+      <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="ModifiedFollowing.h">
+      <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
+    <ClInclude Include="Following.h">
+      <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
+    <ClInclude Include="Preceding.h">
       <Filter>Header Files\BusinessDayConventions</Filter>
     </ClInclude>
   </ItemGroup>
@@ -258,6 +267,15 @@
       <Filter>Source Files\Calendar</Filter>
     </ClCompile>
     <ClCompile Include="shiftDate.cpp">
+      <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifiedFollowing.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="Following.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="Preceding.cpp">
       <Filter>Source Files\BusinessDayConventions</Filter>
     </ClCompile>
   </ItemGroup>

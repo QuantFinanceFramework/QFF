@@ -180,6 +180,7 @@
     <ClInclude Include="NormalRsgFactory.h" />
     <ClInclude Include="PiecewiseConstantParameter.h" />
     <ClInclude Include="PseudoNormalRsg.h" />
+    <ClInclude Include="shiftDate.h" />
     <ClInclude Include="SobolNormalRsg.h" />
     <ClInclude Include="Swap.h" />
   </ItemGroup>
@@ -204,6 +205,7 @@
     <ClCompile Include="NormalRsgFactory.cpp" />
     <ClCompile Include="PiecewiseConstantParameter.cpp" />
     <ClCompile Include="PseudoNormalRsg.cpp" />
+    <ClCompile Include="shiftDate.cpp" />
     <ClCompile Include="SobolNormalRsg.cpp" />
     <ClCompile Include="Swap.cpp" />
     <ClCompile Include="Leg.cpp" />

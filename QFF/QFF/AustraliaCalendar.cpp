@@ -31,19 +31,16 @@ namespace qff {
 
 	date AustraliaCalendar::queensBirthday(int year) const
 	{
-		auto monday = boost::gregorian::greg_weekday(boost::date_time::Monday);
-		return next_weekday(next_weekday(date(year, 6, 1), monday), monday);
+		return next_weekday(date(year, 6, 8), boost::gregorian::greg_weekday(boost::date_time::Monday));
 	}
 
 	date AustraliaCalendar::bankHoliday(int year) const
 	{
-		auto monday = boost::gregorian::greg_weekday(boost::date_time::Monday);
-		return next_weekday(date(year, 8, 1), monday);
+		return next_weekday(date(year, 8, 1), boost::gregorian::greg_weekday(boost::date_time::Monday));
 	}
 
 	date AustraliaCalendar::labourDay(int year) const
 	{
-		auto monday = boost::gregorian::greg_weekday(boost::date_time::Monday);
-		return next_weekday(date(year, 10, 1), monday);
+		return next_weekday(date(year, 10, 1), boost::gregorian::greg_weekday(boost::date_time::Monday));
 	}
 }

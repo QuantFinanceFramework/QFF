@@ -33,11 +33,11 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;..\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>..\QFF;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;..\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>..\QFF;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -45,22 +45,14 @@
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0;..\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>..\QFF;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="Black76PricerTest.cpp" />
+    <ClCompile Include="AustraliaCalendarTest.cpp" />
     <ClCompile Include="ConstantParameterTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
-    <ClCompile Include="FixedRateCouponTest.cpp" />
-    <ClCompile Include="FloatingRateCouponTest.cpp" />
-    <ClCompile Include="InstrumentPortfolioTest.cpp" />
-    <ClCompile Include="BlackScholesPricerTest.cpp" />
-    <ClCompile Include="EuropeanOptionTest.cpp" />
-    <ClCompile Include="CashFlowCollectionTest.cpp" />
     <ClCompile Include="PiecewiseConstantParameterTest.cpp" />
-    <ClCompile Include="SwapTest.cpp" />
-    <ClCompile Include="TurnbullWakemanPricerTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QFF\QFF.vcxproj">
@@ -71,11 +63,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CashFlowStub.h" />
-    <ClInclude Include="CurrencyStub.h" />
-    <ClInclude Include="DayCounterStub.h" />
     <ClInclude Include="MarketDataStub.h" />
-    <ClInclude Include="InstrumentStub.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

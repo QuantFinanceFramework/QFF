@@ -7,14 +7,14 @@ bool BaseCalendar::isBusinessDay(const date &queryDate) const {
 
 bool BaseCalendar::isWeekend(const date &queryDate) const {
   auto dayOfWeek = queryDate.day_of_week();
-  return (dayOfWeek == 'Sat' || dayOfWeek == 'Sun');
+  return (dayOfWeek == boost::gregorian::Saturday || dayOfWeek == boost::gregorian::Sunday);
 }
 
 date BaseCalendar::adjustHoliday(const date &holiday) const {
   auto w = holiday.day_of_week();
-  if (w == 'Sat')
+  if (w == boost::gregorian::Saturday)
     return holiday + boost::gregorian::days(2);
-  if (w == 'Sun')
+  if (w == boost::gregorian::Sunday)
     return holiday + boost::gregorian::days(1);
   return holiday;
 }
@@ -66,9 +66,9 @@ date BaseCalendar::christmasDay(int year) const {
 date BaseCalendar::boxingDay(int year) const {
   auto boxingDay = date(year, 12, 26);
   auto dayOfWeek = boxingDay.day_of_week();
-  if (dayOfWeek == 'Mon')
+  if (dayOfWeek == boost::gregorian::Saturday)
     return boxingDay + boost::gregorian::days(1);
-  if (dayOfWeek == 'Sun')
+  if (dayOfWeek == boost::gregorian::Sunday)
     return boxingDay + boost::gregorian::days(2);
   return adjustHoliday(boxingDay);
 }

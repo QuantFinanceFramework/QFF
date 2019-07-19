@@ -150,7 +150,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Actual365DayCounter.h" />
+    <ClInclude Include="Actual360.h" />
+    <ClInclude Include="Actual365.h" />
     <ClInclude Include="AustraliaCalendar.h" />
     <ClInclude Include="BaseCalendar.h" />
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h" />
@@ -188,7 +189,8 @@
     <ClInclude Include="Swap.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Actual365DayCounter.cpp" />
+    <ClCompile Include="Actual360.cpp" />
+    <ClCompile Include="Actual365.cpp" />
     <ClCompile Include="AustraliaCalendar.cpp" />
     <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp" />

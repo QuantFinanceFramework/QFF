@@ -3,41 +3,17 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc" />
-    <ClCompile Include="InstrumentPortfolioTest.cpp">
-      <Filter>Instrument</Filter>
-    </ClCompile>
-    <ClCompile Include="TurnbullWakemanPricerTest.cpp">
-      <Filter>Pricer</Filter>
-    </ClCompile>
-    <ClCompile Include="Black76PricerTest.cpp">
-      <Filter>Pricer</Filter>
-    </ClCompile>
-    <ClCompile Include="BlackScholesPricerTest.cpp">
-      <Filter>Pricer</Filter>
-    </ClCompile>
-    <ClCompile Include="EuropeanOptionTest.cpp">
-      <Filter>Instrument</Filter>
-    </ClCompile>
-    <ClCompile Include="CashFlowCollectionTest.cpp">
-      <Filter>Instrument</Filter>
-    </ClCompile>
     <ClCompile Include="DayCounterTest.cpp">
       <Filter>DayCounter</Filter>
-    </ClCompile>
-    <ClCompile Include="FixedRateCouponTest.cpp">
-      <Filter>Instrument</Filter>
-    </ClCompile>
-    <ClCompile Include="FloatingRateCouponTest.cpp">
-      <Filter>Instrument</Filter>
-    </ClCompile>
-    <ClCompile Include="SwapTest.cpp">
-      <Filter>Instrument</Filter>
     </ClCompile>
     <ClCompile Include="ConstantParameterTest.cpp">
       <Filter>Parameters</Filter>
     </ClCompile>
     <ClCompile Include="PiecewiseConstantParameterTest.cpp">
       <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="AustraliaCalendarTest.cpp">
+      <Filter>Calendar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,25 +38,16 @@
     <Filter Include="StochasticProcess">
       <UniqueIdentifier>{83265fba-7705-4d29-8806-2eb726d1a9e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Calendar">
+      <UniqueIdentifier>{af38d746-05fb-4f07-bf54-7a21b71846e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CurrencyStub.h">
-      <Filter>Currency</Filter>
-    </ClInclude>
-    <ClInclude Include="InstrumentStub.h">
-      <Filter>Instrument</Filter>
-    </ClInclude>
-    <ClInclude Include="CashFlowStub.h">
-      <Filter>Instrument</Filter>
-    </ClInclude>
     <ClInclude Include="MarketDataStub.h">
       <Filter>MarketData</Filter>
-    </ClInclude>
-    <ClInclude Include="DayCounterStub.h">
-      <Filter>DayCounter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

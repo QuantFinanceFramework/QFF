@@ -13,7 +13,7 @@ class IDayCounter {
 
   virtual unique_ptr<IDayCounter> clone() const = 0;
 
-  virtual double countDayBetween(date startDate, date endDate) const = 0;
-  virtual double calculateYearFraction(date startDate, date endDate) const = 0;
+  virtual double calculateYearFraction(const date& startDate,
+                                       const date& endDate) const = 0;
 };
 }  // namespace qff

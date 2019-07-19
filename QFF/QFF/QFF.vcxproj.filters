@@ -108,9 +108,6 @@
     <ClInclude Include="IMarketData.h">
       <Filter>Header Files\MarketData</Filter>
     </ClInclude>
-    <ClInclude Include="Actual365DayCounter.h">
-      <Filter>Header Files\DayCounter</Filter>
-    </ClInclude>
     <ClInclude Include="Coupon.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
@@ -195,6 +192,12 @@
     <ClInclude Include="Preceding.h">
       <Filter>Header Files\BusinessDayConventions</Filter>
     </ClInclude>
+    <ClInclude Include="Actual365.h">
+      <Filter>Header Files\DayCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="Actual360.h">
+      <Filter>Header Files\DayCounter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -208,9 +211,6 @@
     </ClCompile>
     <ClCompile Include="MarketData.cpp">
       <Filter>Source Files\MarketData</Filter>
-    </ClCompile>
-    <ClCompile Include="Actual365DayCounter.cpp">
-      <Filter>Source Files\DayCounter</Filter>
     </ClCompile>
     <ClCompile Include="Coupon.cpp">
       <Filter>Source Files\Products</Filter>
@@ -277,6 +277,12 @@
     </ClCompile>
     <ClCompile Include="Preceding.cpp">
       <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actual365.cpp">
+      <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="Actual360.cpp">
+      <Filter>Source Files\DayCounter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

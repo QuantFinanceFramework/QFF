@@ -2,7 +2,7 @@
 #include "BaseCalendar.h"
 
 namespace qff {
-class AustraliaCalendar : public BaseCalendar {
+class SydneyCalendar : public BaseCalendar {
  public:
   bool isHoliday(const date& queryDate) const override;
 

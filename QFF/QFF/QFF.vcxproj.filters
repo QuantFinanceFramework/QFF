@@ -177,9 +177,6 @@
     <ClInclude Include="BaseCalendar.h">
       <Filter>Header Files\Calendar</Filter>
     </ClInclude>
-    <ClInclude Include="AustraliaCalendar.h">
-      <Filter>Header Files\Calendar</Filter>
-    </ClInclude>
     <ClInclude Include="shiftDate.h">
       <Filter>Header Files\Calendar</Filter>
     </ClInclude>
@@ -200,6 +197,15 @@
     </ClInclude>
     <ClInclude Include="Unadjusted.h">
       <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
+    <ClInclude Include="SydneyCalendar.h">
+      <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="NewYorkCalendar.h">
+      <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="LondonCalendar.h">
+      <Filter>Header Files\Calendar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -266,9 +272,6 @@
     <ClCompile Include="BaseCalendar.cpp">
       <Filter>Source Files\Calendar</Filter>
     </ClCompile>
-    <ClCompile Include="AustraliaCalendar.cpp">
-      <Filter>Source Files\Calendar</Filter>
-    </ClCompile>
     <ClCompile Include="shiftDate.cpp">
       <Filter>Source Files\Calendar</Filter>
     </ClCompile>
@@ -289,6 +292,15 @@
     </ClCompile>
     <ClCompile Include="Unadjusted.cpp">
       <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="SydenyCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="LondonCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="NewYorkCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,7 @@ class BaseCalendar : public ICalendar {
   bool isWeekend(const date& queryDate) const final;
 
  protected:
-  date adjustHoliday(const date& holiday) const;
+  virtual date adjustHoliday(const date& holiday) const;
   date newYearsDay(int year) const;
   date easterMonday(int year) const;
   date goodFriday(int year) const;

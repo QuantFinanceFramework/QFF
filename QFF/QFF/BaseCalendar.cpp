@@ -69,7 +69,7 @@ date BaseCalendar::boxingDay(int year) const {
   auto boxingDay = date(year, 12, 26);
   auto dayOfWeek = boxingDay.day_of_week();
   if (dayOfWeek == boost::gregorian::Saturday)
-    return boxingDay + boost::gregorian::days(1);
+    return boxingDay + boost::gregorian::days(2);
   if (dayOfWeek == boost::gregorian::Sunday)
     return boxingDay + boost::gregorian::days(2);
   return adjustHoliday(boxingDay);

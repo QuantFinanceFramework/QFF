@@ -1,9 +1,9 @@
-#include "AustraliaCalendar.h"
+#include "SydneyCalendar.h"
 
 namespace qff {
 using boost::date_time::next_weekday;
 
-bool AustraliaCalendar::isHoliday(const date& queryDate) const {
+bool SydneyCalendar::isHoliday(const date& queryDate) const {
   auto year = queryDate.year();
   return (
       (queryDate == newYearsDay(year)) || (queryDate == australiaDay(year)) ||
@@ -13,25 +13,25 @@ bool AustraliaCalendar::isHoliday(const date& queryDate) const {
       (queryDate == christmasDay(year)) || (queryDate == boxingDay(year)));
 }
 
-date AustraliaCalendar::australiaDay(int year) const {
+date SydneyCalendar::australiaDay(int year) const {
   return adjustHoliday(date(year, 1, 26));
 }
 
-date AustraliaCalendar::anzacDay(int year) const {
+date SydneyCalendar::anzacDay(int year) const {
   return adjustHoliday(date(year, 4, 25));
 }
 
-date AustraliaCalendar::queensBirthday(int year) const {
+date SydneyCalendar::queensBirthday(int year) const {
   return next_weekday(date(year, 6, 8),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
 
-date AustraliaCalendar::bankHoliday(int year) const {
+date SydneyCalendar::bankHoliday(int year) const {
   return next_weekday(date(year, 8, 1),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
 
-date AustraliaCalendar::labourDay(int year) const {
+date SydneyCalendar::labourDay(int year) const {
   return next_weekday(date(year, 10, 1),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }

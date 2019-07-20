@@ -12,13 +12,19 @@
     <ClCompile Include="PiecewiseConstantParameterTest.cpp">
       <Filter>Parameters</Filter>
     </ClCompile>
-    <ClCompile Include="AustraliaCalendarTest.cpp">
-      <Filter>Calendar</Filter>
-    </ClCompile>
     <ClCompile Include="BusinessDayConventionTest.cpp">
       <Filter>BusinessDayConventions</Filter>
     </ClCompile>
     <ClCompile Include="shiftDateTest.cpp">
+      <Filter>Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="SydneyCalendarTest.cpp">
+      <Filter>Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="NewYorkCalendarTest.cpp">
+      <Filter>Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="LondonCalendarTest.cpp">
       <Filter>Calendar</Filter>
     </ClCompile>
   </ItemGroup>

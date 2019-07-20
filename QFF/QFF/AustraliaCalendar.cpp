@@ -5,13 +5,12 @@ using boost::date_time::next_weekday;
 
 bool AustraliaCalendar::isHoliday(const date& queryDate) const {
   auto year = queryDate.year();
-  return (isWeekend(queryDate) || (queryDate == newYearsDay(year)) ||
-          (queryDate == australiaDay(year)) ||
-          (queryDate == goodFriday(year)) ||
-          (queryDate == easterMonday(year)) || (queryDate == anzacDay(year)) ||
-          (queryDate == queensBirthday(year)) ||
-          (queryDate == bankHoliday(year)) || (queryDate == labourDay(year)) ||
-          (queryDate == christmasDay(year)) || (queryDate == boxingDay(year)));
+  return (
+      (queryDate == newYearsDay(year)) || (queryDate == australiaDay(year)) ||
+      (queryDate == goodFriday(year)) || (queryDate == easterMonday(year)) ||
+      (queryDate == anzacDay(year)) || (queryDate == queensBirthday(year)) ||
+      (queryDate == bankHoliday(year)) || (queryDate == labourDay(year)) ||
+      (queryDate == christmasDay(year)) || (queryDate == boxingDay(year)));
 }
 
 date AustraliaCalendar::australiaDay(int year) const {

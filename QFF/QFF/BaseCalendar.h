@@ -8,6 +8,7 @@ class BaseCalendar : public ICalendar {
   ~BaseCalendar() = default;
 
   bool isBusinessDay(const date& queryDate) const final;
+  bool isHoliday(const date& queryDate) const override;
   bool isWeekend(const date& queryDate) const final;
 
  protected:
@@ -17,5 +18,6 @@ class BaseCalendar : public ICalendar {
   date goodFriday(int year) const;
   date christmasDay(int year) const;
   date boxingDay(int year) const;
+
 };
 }  // namespace qff

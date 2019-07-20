@@ -1,4 +1,8 @@
 #include "shiftDate.h"
+#include "Following.h"
+#include "Preceding.h"
+#include "Unadjusted.h"
+#include <memory>
 
 namespace qff {
 date shiftDate(date originalDate, int length, TimeUnit timeUnit,
@@ -18,7 +22,29 @@ date shiftDate(date originalDate, int length, TimeUnit timeUnit,
       return convention.adjust(originalDate + boost::gregorian::years(length),
                                calendar);
     case TimeUnit::b:
-      throw "myFunction is not implemented yet.";
+      if (length > 0) {
+        auto following = std::make_unique<Following>();
+        auto a = following->adjust(originalDate, calendar);
+        date tmpDate = originalDate;
+        do {
+          tmpDate = following->adjust(tmpDate + boost::gregorian::days(1),
+                                      calendar);
+          length--;
+        } while (length > 0);
+        return tmpDate;
+      }
+      if (length < 0) {
+        auto preceding = std::make_unique<Preceding>();
+        date tmpDate = originalDate;
+        do {
+          tmpDate = preceding->adjust(tmpDate - boost::gregorian::days(1),
+                                      calendar);
+          length++;
+        } while (length < 0);
+        return tmpDate;
+
+        return originalDate;
+      }
   }
 }
 }  // namespace qff

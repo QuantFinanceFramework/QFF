@@ -187,6 +187,7 @@
     <ClInclude Include="shiftDate.h" />
     <ClInclude Include="SobolNormalRsg.h" />
     <ClInclude Include="Swap.h" />
+    <ClInclude Include="Unadjusted.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actual360.cpp" />
@@ -217,6 +218,7 @@
     <ClCompile Include="SobolNormalRsg.cpp" />
     <ClCompile Include="Swap.cpp" />
     <ClCompile Include="Leg.cpp" />
+    <ClCompile Include="Unadjusted.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

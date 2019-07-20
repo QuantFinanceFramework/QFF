@@ -198,6 +198,9 @@
     <ClInclude Include="Actual360.h">
       <Filter>Header Files\DayCounter</Filter>
     </ClInclude>
+    <ClInclude Include="Unadjusted.h">
+      <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -283,6 +286,9 @@
     </ClCompile>
     <ClCompile Include="Actual360.cpp">
       <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="Unadjusted.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

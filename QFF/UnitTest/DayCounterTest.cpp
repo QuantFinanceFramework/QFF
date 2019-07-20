@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 
 using namespace qff;
+
 TEST(Actual360Test, calculateYearFractionTest) {
   Actual360 dayCounter{};
   auto result =

@@ -50,9 +50,11 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="AustraliaCalendarTest.cpp" />
+    <ClCompile Include="BusinessDayConventionTest.cpp" />
     <ClCompile Include="ConstantParameterTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="PiecewiseConstantParameterTest.cpp" />
+    <ClCompile Include="shiftDateTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QFF\QFF.vcxproj">

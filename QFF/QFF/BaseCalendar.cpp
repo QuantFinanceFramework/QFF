@@ -5,6 +5,8 @@ bool BaseCalendar::isBusinessDay(const date &queryDate) const {
   return !(isHoliday(queryDate) || isWeekend(queryDate));
 }
 
+bool BaseCalendar::isHoliday(const date &queryDate) const { return false; }
+
 bool BaseCalendar::isWeekend(const date &queryDate) const {
   auto dayOfWeek = queryDate.day_of_week();
   return (dayOfWeek == boost::gregorian::Saturday || dayOfWeek == boost::gregorian::Sunday);

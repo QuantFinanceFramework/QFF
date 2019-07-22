@@ -85,6 +85,12 @@
     <Filter Include="Source Files\BusinessDayConventions">
       <UniqueIdentifier>{6cc147c6-d484-4f0d-af14-50a8ab0a0d66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Indices">
+      <UniqueIdentifier>{cca7b738-d9db-4279-86ec-acd23cb92d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Indices">
+      <UniqueIdentifier>{7baa0f54-e90f-46f0-a5ce-9c91e42708e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICalendar.h">
@@ -165,9 +171,6 @@
     <ClInclude Include="Leg.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
-    <ClInclude Include="Index.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="ICashflow.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
@@ -175,9 +178,6 @@
       <Filter>Header Files\BusinessDayConventions</Filter>
     </ClInclude>
     <ClInclude Include="BaseCalendar.h">
-      <Filter>Header Files\Calendar</Filter>
-    </ClInclude>
-    <ClInclude Include="shiftDate.h">
       <Filter>Header Files\Calendar</Filter>
     </ClInclude>
     <ClInclude Include="ModifiedFollowing.h">
@@ -209,6 +209,15 @@
     </ClInclude>
     <ClInclude Include="CompositeCalendar.h">
       <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="IIndex.h">
+      <Filter>Header Files\Indices</Filter>
+    </ClInclude>
+    <ClInclude Include="IborIndex.h">
+      <Filter>Header Files\Indices</Filter>
+    </ClInclude>
+    <ClInclude Include="Period.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -269,13 +278,7 @@
     <ClCompile Include="Leg.cpp">
       <Filter>Source Files\Products</Filter>
     </ClCompile>
-    <ClCompile Include="Index.cpp">
-      <Filter>Source Files\Products</Filter>
-    </ClCompile>
     <ClCompile Include="BaseCalendar.cpp">
-      <Filter>Source Files\Calendar</Filter>
-    </ClCompile>
-    <ClCompile Include="shiftDate.cpp">
       <Filter>Source Files\Calendar</Filter>
     </ClCompile>
     <ClCompile Include="ModifiedFollowing.cpp">
@@ -307,6 +310,12 @@
     </ClCompile>
     <ClCompile Include="CompositeCalendar.cpp">
       <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="IborIndex.cpp">
+      <Filter>Source Files\Indices</Filter>
+    </ClCompile>
+    <ClCompile Include="Period.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ class BaseCalendar : public ICalendar {
   BaseCalendar() = default;
   ~BaseCalendar() = default;
 
-  unique_ptr<ICalendar> clone() override;
+  unique_ptr<ICalendar> clone() const override;
 
   bool isBusinessDay(const date& queryDate) const final;
   bool isHoliday(const date& queryDate) const override;

@@ -20,7 +20,7 @@ class CompositeCalendar : public BaseCalendar {
         std::make_move_iterator(std::end(calendarArr))};
   };
 
-  unique_ptr<ICalendar> clone() override;
+  unique_ptr<ICalendar> clone() const override;
 
   bool isHoliday(const date& queryDate) const override;
 

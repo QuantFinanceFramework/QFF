@@ -1,7 +1,7 @@
 #include "LondonCalendar.h"
 
 namespace qff {
-unique_ptr<ICalendar> LondonCalendar::clone() {
+unique_ptr<ICalendar> LondonCalendar::clone() const {
   return std::make_unique<LondonCalendar>();
 }
 

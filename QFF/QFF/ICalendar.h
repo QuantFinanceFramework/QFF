@@ -11,7 +11,7 @@ class ICalendar {
   ICalendar() = default;
   virtual ~ICalendar() = default;
 
-  virtual unique_ptr<ICalendar> clone() = 0;
+  virtual unique_ptr<ICalendar> clone() const = 0;
 
   virtual bool isBusinessDay(const date& queryDate) const = 0;
   virtual bool isHoliday(const date& queryDate) const = 0;

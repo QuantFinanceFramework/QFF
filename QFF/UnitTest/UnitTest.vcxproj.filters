@@ -15,9 +15,6 @@
     <ClCompile Include="BusinessDayConventionTest.cpp">
       <Filter>BusinessDayConventions</Filter>
     </ClCompile>
-    <ClCompile Include="shiftDateTest.cpp">
-      <Filter>Calendar</Filter>
-    </ClCompile>
     <ClCompile Include="SydneyCalendarTest.cpp">
       <Filter>Calendar</Filter>
     </ClCompile>
@@ -30,6 +27,7 @@
     <ClCompile Include="CompositeCalendarTest.cpp">
       <Filter>Calendar</Filter>
     </ClCompile>
+    <ClCompile Include="PeriodTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">

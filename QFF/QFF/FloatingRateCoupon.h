@@ -1,15 +1,18 @@
 #pragma once
 #include "Coupon.h"
 #include "IMarketData.h"
-#include "Index.h"
+#include "IIndex.h"
+#include <memory>
 
 namespace qff {
+	using std::unique_ptr;
+
 class FloatingRateCoupon : public Coupon {
  public:
   FloatingRateCoupon() = default;
   FloatingRateCoupon(double notional, date paymentDate, date accrualStartDate,
                      date accrualEndDate, const IDayCounter& dayCounter,
-                     Index index, double leverage, double margin);
+                     const IIndex& index, double leverage, double margin);
 
   ~FloatingRateCoupon() = default;
 
@@ -18,7 +21,7 @@ class FloatingRateCoupon : public Coupon {
  private:
   double getRate(const IMarketData& marketData) const;
 
-  Index index_;
+  unique_ptr<IIndex> index_;
   double leverage_;
   double margin_;
 };

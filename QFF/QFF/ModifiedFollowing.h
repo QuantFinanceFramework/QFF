@@ -1,10 +1,11 @@
 #pragma once
-#include "Following.h"
-#include "Preceding.h"
+#include "IBusinessDayConvention.h"
 
 namespace qff {
-class ModifiedFollowing : public Following, public Preceding {
+class ModifiedFollowing : public IBusinessDayConvention {
  public:
+  unique_ptr<IBusinessDayConvention> clone() const override;
+
   date adjust(const date& originalDate,
               const ICalendar& calendar) const override;
 };

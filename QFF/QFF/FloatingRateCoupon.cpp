@@ -5,7 +5,7 @@ FloatingRateCoupon::FloatingRateCoupon(double notional, date paymentDate,
                                        date accrualStartDate,
                                        date accrualEndDate,
                                        const IDayCounter& dayCounter,
-                                       Index index, double leverage,
+                                       const IIndex& index, double leverage,
                                        double margin) {}
 
 double FloatingRateCoupon::getPaymentAmount(

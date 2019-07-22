@@ -55,8 +55,8 @@
     <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="LondonCalendarTest.cpp" />
     <ClCompile Include="NewYorkCalendarTest.cpp" />
+    <ClCompile Include="PeriodTest.cpp" />
     <ClCompile Include="PiecewiseConstantParameterTest.cpp" />
-    <ClCompile Include="shiftDateTest.cpp" />
     <ClCompile Include="SydneyCalendarTest.cpp" />
   </ItemGroup>
   <ItemGroup>

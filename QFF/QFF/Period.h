@@ -9,7 +9,12 @@ using boost::gregorian::date;
 
 enum class TimeUnit { d, w, m, y, b };
 
-date shiftDate(date originalDate, int length, TimeUnit timeUnit,
+struct Period {
+  int length;
+  TimeUnit unit;
+};
+
+date shiftDate(const date& originalDate, const Period& period,
                const ICalendar& calendar,
                const IBusinessDayConvention& convention = Unadjusted());
 

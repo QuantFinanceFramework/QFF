@@ -1,6 +1,10 @@
 #include "Following.h"
 
 namespace qff {
+unique_ptr<IBusinessDayConvention> Following::clone() const {
+  return std::make_unique<Following>();
+}
+
 date Following::adjust(const date& originalDate,
                        const ICalendar& calendar) const {
   if (calendar.isBusinessDay(originalDate)) return originalDate;

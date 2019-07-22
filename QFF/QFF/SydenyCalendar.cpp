@@ -3,7 +3,7 @@
 namespace qff {
 using boost::date_time::next_weekday;
 
-unique_ptr<ICalendar> SydneyCalendar::clone() {
+unique_ptr<ICalendar> SydneyCalendar::clone() const {
   return std::make_unique<SydneyCalendar>();
 }
 

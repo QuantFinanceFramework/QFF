@@ -1,10 +1,18 @@
 #include "ModifiedFollowing.h"
+#include "Following.h"
+#include "Preceding.h"
 
 namespace qff {
+unique_ptr<IBusinessDayConvention> ModifiedFollowing::clone() const {
+  return std::make_unique<ModifiedFollowing>();
+}
+
 date ModifiedFollowing::adjust(const date& originalDate,
                                const ICalendar& calendar) const {
-  auto tmpDate = Following::adjust(originalDate, calendar);
+  auto following = std::make_unique<Following>();
+  auto tmpDate = following->adjust(originalDate, calendar);
   if (tmpDate.month() == originalDate.month()) return tmpDate;
-  return Preceding::adjust(originalDate, calendar);
+  auto preceding = std::make_unique<Preceding>();
+  return preceding->adjust(originalDate, calendar);
 }
 }  // namespace qff

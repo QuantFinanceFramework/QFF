@@ -3,6 +3,10 @@
 namespace qff {
 using boost::date_time::next_weekday;
 
+unique_ptr<ICalendar> SydneyCalendar::clone() {
+  return std::make_unique<SydneyCalendar>();
+}
+
 bool SydneyCalendar::isHoliday(const date& queryDate) const {
   auto year = queryDate.year();
   return (

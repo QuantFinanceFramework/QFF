@@ -207,6 +207,9 @@
     <ClInclude Include="LondonCalendar.h">
       <Filter>Header Files\Calendar</Filter>
     </ClInclude>
+    <ClInclude Include="CompositeCalendar.h">
+      <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -300,6 +303,9 @@
       <Filter>Source Files\Calendar</Filter>
     </ClCompile>
     <ClCompile Include="NewYorkCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeCalendar.cpp">
       <Filter>Source Files\Calendar</Filter>
     </ClCompile>
   </ItemGroup>

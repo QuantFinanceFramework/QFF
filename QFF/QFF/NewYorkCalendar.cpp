@@ -1,6 +1,10 @@
 #include "NewYorkCalendar.h"
 
 namespace qff {
+unique_ptr<ICalendar> NewYorkCalendar::clone() {
+  return std::make_unique<NewYorkCalendar>();
+}
+
 bool NewYorkCalendar::isHoliday(const date& queryDate) const {
   auto year = queryDate.year();
   return (

@@ -4,6 +4,7 @@
 namespace qff {
 class LondonCalendar : public BaseCalendar {
  public:
+  unique_ptr<ICalendar> clone() override;
   bool isHoliday(const date& queryDate) const override;
 
  private:

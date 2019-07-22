@@ -155,6 +155,7 @@
     <ClInclude Include="BaseCalendar.h" />
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h" />
     <ClInclude Include="Black76Formula.h" />
+    <ClInclude Include="CompositeCalendar.h" />
     <ClInclude Include="ConstantParameter.h" />
     <ClInclude Include="Coupon.h" />
     <ClInclude Include="Currency.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp" />
     <ClCompile Include="Black76Formula.cpp" />
+    <ClCompile Include="CompositeCalendar.cpp" />
     <ClCompile Include="ConstantParameter.cpp" />
     <ClCompile Include="Coupon.cpp" />
     <ClCompile Include="Currency.cpp" />

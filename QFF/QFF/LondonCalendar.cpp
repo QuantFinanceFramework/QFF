@@ -1,6 +1,10 @@
 #include "LondonCalendar.h"
 
 namespace qff {
+unique_ptr<ICalendar> LondonCalendar::clone() {
+  return std::make_unique<LondonCalendar>();
+}
+
 bool LondonCalendar::isHoliday(const date& queryDate) const {
   auto year = queryDate.year();
   return ((queryDate == newYearsDay(year)) || (queryDate == goodFriday(year)) ||

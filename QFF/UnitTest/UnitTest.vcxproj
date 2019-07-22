@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="BusinessDayConventionTest.cpp" />
+    <ClCompile Include="CompositeCalendarTest.cpp" />
     <ClCompile Include="ConstantParameterTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="LondonCalendarTest.cpp" />

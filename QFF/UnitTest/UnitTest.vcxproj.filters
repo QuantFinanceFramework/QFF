@@ -27,6 +27,9 @@
     <ClCompile Include="LondonCalendarTest.cpp">
       <Filter>Calendar</Filter>
     </ClCompile>
+    <ClCompile Include="CompositeCalendarTest.cpp">
+      <Filter>Calendar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">

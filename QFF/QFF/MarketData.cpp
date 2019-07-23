@@ -3,16 +3,24 @@
 namespace qff {
 date MarketData::getMarketDate() const { return marketDate_; }
 
-double MarketData::getDiscountFactor(string curveName, date queryDate) const {
+double MarketData::getDiscountFactor(const string& curveName,
+                                     const date& queryDate) const {
   return 0.0;
 }
 
-double MarketData::getForwardRate(string curveName, date startDate,
-                                  date endDate) const {
+double MarketData::getForwardRate(const string& curveName,
+                                  const date& startDate,
+                                  const date& endDate) const {
   return 0.0;
 }
 
-double MarketData::getZeroRate(string curveName, date queryDate) const {
+double MarketData::getZeroRate(const string& curveName,
+                               const date& queryDate) const {
+  return 0.0;
+}
+
+double MarketData::getPastFixing(const string& curveName,
+                                 const date& queryDate) const {
   return 0.0;
 }
 }  // namespace qff

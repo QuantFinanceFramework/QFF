@@ -91,6 +91,12 @@
     <Filter Include="Source Files\Indices">
       <UniqueIdentifier>{7baa0f54-e90f-46f0-a5ce-9c91e42708e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Products\Cashflows">
+      <UniqueIdentifier>{74b46382-d736-45be-a423-75faac3f5678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Products\Cashflows">
+      <UniqueIdentifier>{f29d0c76-ef6f-4e7b-a778-5a23419bc718}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICalendar.h">
@@ -113,15 +119,6 @@
     </ClInclude>
     <ClInclude Include="IMarketData.h">
       <Filter>Header Files\MarketData</Filter>
-    </ClInclude>
-    <ClInclude Include="Coupon.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="FixedRateCoupon.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="FloatingRateCoupon.h">
-      <Filter>Header Files\Products</Filter>
     </ClInclude>
     <ClInclude Include="INormalRandomSequenceGenerator.h">
       <Filter>Header Files\Random</Filter>
@@ -171,9 +168,6 @@
     <ClInclude Include="Leg.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
-    <ClInclude Include="ICashflow.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="IBusinessDayConvention.h">
       <Filter>Header Files\BusinessDayConventions</Filter>
     </ClInclude>
@@ -219,6 +213,30 @@
     <ClInclude Include="Period.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OvernightIndex.h">
+      <Filter>Header Files\Indices</Filter>
+    </ClInclude>
+    <ClInclude Include="AveragedOvernightCoupon.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="CompoundedIborCoupon.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="CompoundedOvernightCoupon.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedCashflow.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedCoupon.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="IborCoupon.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="ICashflow.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -232,15 +250,6 @@
     </ClCompile>
     <ClCompile Include="MarketData.cpp">
       <Filter>Source Files\MarketData</Filter>
-    </ClCompile>
-    <ClCompile Include="Coupon.cpp">
-      <Filter>Source Files\Products</Filter>
-    </ClCompile>
-    <ClCompile Include="FixedRateCoupon.cpp">
-      <Filter>Source Files\Products</Filter>
-    </ClCompile>
-    <ClCompile Include="FloatingRateCoupon.cpp">
-      <Filter>Source Files\Products</Filter>
     </ClCompile>
     <ClCompile Include="PseudoNormalRsg.cpp">
       <Filter>Source Files\Random</Filter>
@@ -316,6 +325,27 @@
     </ClCompile>
     <ClCompile Include="Period.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OvernightIndex.cpp">
+      <Filter>Source Files\Indices</Filter>
+    </ClCompile>
+    <ClCompile Include="AveragedOvernightCoupon.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
+    </ClCompile>
+    <ClCompile Include="CompoundedIborCoupon.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
+    </ClCompile>
+    <ClCompile Include="CompoundedOvernightCoupon.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedCashflow.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedCoupon.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
+    </ClCompile>
+    <ClCompile Include="IborCoupon.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

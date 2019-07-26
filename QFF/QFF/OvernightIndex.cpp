@@ -1,25 +1,27 @@
-#include "IborIndex.h"
+#include "OvernightIndex.h"
 
 namespace qff {
-IborIndex::IborIndex(const string& currencyCode, const string& curveName,
-                     Period tenor, const IDayCounter& dayCounter,
-                     Period fixingLag,
-                     const ICalendar& fixingCalendar,
-                     const IBusinessDayConvention& convention,
-                      bool preserveEndofMonth)
+OvernightIndex::OvernightIndex(const string& currencyCode,
+                               const string& curveName, Period tenor,
+                               const IDayCounter& dayCounter, Period fixingLag,
+                               Period publicationLag,
+                               const ICalendar& fixingCalendar,
+                               const IBusinessDayConvention& convention)
     : currencyCode_{currencyCode},
       curveName_{curveName},
       tenor_{tenor},
       dayCounter_(dayCounter.clone()),
       fixingLag_{fixingLag},
+      publicationLag_{publicationLag},
       fixingCalendar_(fixingCalendar.clone()),
-      convention_(convention.clone()),
-      preserveEndofMonth_{preserveEndofMonth} {}
+      convention_(convention.clone()) {}
 
-unique_ptr<IIndex> IborIndex::clone() const { return unique_ptr<IIndex>(); }
+unique_ptr<IIndex> OvernightIndex::clone() const {
+  return unique_ptr<IIndex>();
+}
 
-double IborIndex::getRate(const date& startDate,
-                          const IMarketData& marketData) const {
+double OvernightIndex::getRate(const date& startDate,
+                               const IMarketData& marketData) const {
   const auto fixingDate = getFixingDate(startDate);
 
   if (fixingDate <= marketData.getMarketDate()) {
@@ -36,7 +38,7 @@ double IborIndex::getRate(const date& startDate,
          yearFraction;
 }
 
-date IborIndex::getFixingDate(const date& startDate) const {
+date OvernightIndex::getFixingDate(const date& startDate) const {
   return shiftDate(startDate, fixingLag_, *fixingCalendar_);
 }
 }  // namespace qff

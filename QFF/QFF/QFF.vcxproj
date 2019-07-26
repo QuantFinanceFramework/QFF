@@ -152,18 +152,21 @@
   <ItemGroup>
     <ClInclude Include="Actual360.h" />
     <ClInclude Include="Actual365.h" />
+    <ClInclude Include="AveragedOvernightCoupon.h" />
     <ClInclude Include="BaseCalendar.h" />
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="CompositeCalendar.h" />
+    <ClInclude Include="CompoundedIborCoupon.h" />
+    <ClInclude Include="CompoundedOvernightCoupon.h" />
     <ClInclude Include="ConstantParameter.h" />
-    <ClInclude Include="Coupon.h" />
     <ClInclude Include="Currency.h" />
     <ClInclude Include="DiscountFactorCurve.h" />
     <ClInclude Include="BlackScholesFormula.h" />
-    <ClInclude Include="FixedRateCoupon.h" />
-    <ClInclude Include="FloatingRateCoupon.h" />
+    <ClInclude Include="FixedCashflow.h" />
+    <ClInclude Include="FixedCoupon.h" />
     <ClInclude Include="Following.h" />
+    <ClInclude Include="IborCoupon.h" />
     <ClInclude Include="IborIndex.h" />
     <ClInclude Include="IBusinessDayConvention.h" />
     <ClInclude Include="ICalendar.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="ModifiedFollowing.h" />
     <ClInclude Include="NewYorkCalendar.h" />
     <ClInclude Include="NormalRsgFactory.h" />
+    <ClInclude Include="OvernightIndex.h" />
     <ClInclude Include="Period.h" />
     <ClInclude Include="PiecewiseConstantParameter.h" />
     <ClInclude Include="Preceding.h" />
@@ -196,19 +200,22 @@
   <ItemGroup>
     <ClCompile Include="Actual360.cpp" />
     <ClCompile Include="Actual365.cpp" />
+    <ClCompile Include="AveragedOvernightCoupon.cpp" />
     <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp" />
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="CompositeCalendar.cpp" />
+    <ClCompile Include="CompoundedIborCoupon.cpp" />
+    <ClCompile Include="CompoundedOvernightCoupon.cpp" />
     <ClCompile Include="ConstantParameter.cpp" />
-    <ClCompile Include="Coupon.cpp" />
     <ClCompile Include="Currency.cpp" />
     <ClCompile Include="CurveInterpolator.cpp" />
     <ClCompile Include="DiscountFactorCurve.cpp" />
-    <ClCompile Include="FixedRateCoupon.cpp" />
-    <ClCompile Include="FloatingRateCoupon.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
+    <ClCompile Include="FixedCashflow.cpp" />
+    <ClCompile Include="FixedCoupon.cpp" />
     <ClCompile Include="Following.cpp" />
+    <ClCompile Include="IborCoupon.cpp" />
     <ClCompile Include="IborIndex.cpp" />
     <ClCompile Include="IParameter.cpp" />
     <ClCompile Include="Interpolation.cpp" />
@@ -217,6 +224,7 @@
     <ClCompile Include="ModifiedFollowing.cpp" />
     <ClCompile Include="NewYorkCalendar.cpp" />
     <ClCompile Include="NormalRsgFactory.cpp" />
+    <ClCompile Include="OvernightIndex.cpp" />
     <ClCompile Include="Period.cpp" />
     <ClCompile Include="PiecewiseConstantParameter.cpp" />
     <ClCompile Include="Preceding.cpp" />

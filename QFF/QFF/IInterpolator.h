@@ -9,7 +9,7 @@ class IInterpolator {
   IInterpolator() = default;
   virtual ~IInterpolator() = default;
 
-  virtual double interpol(const double& queryTime,
+  virtual double Interpol(const double& query_time,
                           const map<double, double>& data) const = 0;
 };
 }  // namespace qff

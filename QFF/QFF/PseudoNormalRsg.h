@@ -9,8 +9,8 @@ class PseudoNormalRsg : public INormalRandomSequenceGenerator {
   PseudoNormalRsg(size_t dimension);
   ~PseudoNormalRsg() = default;
 
-  vector<double> generateNormalSequence() override;
-  void setDimension(size_t dimension) override;
+  vector<double> GenerateNormalSequence() override;
+  void SetDimension(size_t dimension) override;
 
  private:
   size_t m_dimension;

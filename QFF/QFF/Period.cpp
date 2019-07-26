@@ -4,50 +4,51 @@
 #include <memory>
 
 namespace qff {
-date shiftDate(const date& originalDate, const Period& period,
+date ShiftDate(const date& original_date, const Period& period,
                const ICalendar& calendar,
                const IBusinessDayConvention& convention) {
   switch (period.unit) {
     case TimeUnit::d:
-      return convention.adjust(originalDate + boost::gregorian::days(period.length),
+      return convention.Adjust(original_date + boost::gregorian::days(period.length),
                                calendar);
     case TimeUnit::w:
-      return convention.adjust(
-          originalDate + boost::gregorian::weeks(period.length),
+      return convention.Adjust(
+          original_date + boost::gregorian::weeks(period.length),
                                calendar);
     case TimeUnit::m:
-      return convention.adjust(
-          originalDate + boost::gregorian::months(period.length),
+      return convention.Adjust(
+          original_date + boost::gregorian::months(period.length),
                                calendar);
     case TimeUnit::y:
-      return convention.adjust(
-          originalDate + boost::gregorian::years(period.length),
+      return convention.Adjust(
+          original_date + boost::gregorian::years(period.length),
                                calendar);
     case TimeUnit::b:
       auto length = period.length; 
       if (length > 0) {
-        auto following = std::make_unique<Following>();
-        auto a = following->adjust(originalDate, calendar);
-        date tmpDate = originalDate;
+	      const auto following = std::make_unique<Following>();
+        auto a = following->Adjust(original_date, calendar);
+	      auto tmp_date = original_date;
         do {
-          tmpDate =
-              following->adjust(tmpDate + boost::gregorian::days(1), calendar);
+          tmp_date =
+              following->Adjust(tmp_date + boost::gregorian::days(1), calendar);
           length--;
         } while (length > 0);
-        return tmpDate;
+        return tmp_date;
       }
       if (length < 0) {
-        auto preceding = std::make_unique<Preceding>();
-        date tmpDate = originalDate;
+	      const auto preceding = std::make_unique<Preceding>();
+	      auto tmp_date = original_date;
         do {
-          tmpDate =
-              preceding->adjust(tmpDate - boost::gregorian::days(1), calendar);
+          tmp_date =
+              preceding->Adjust(tmp_date - boost::gregorian::days(1), calendar);
           length++;
         } while (length < 0);
-        return tmpDate;
-
-        return originalDate;
+        return tmp_date;
       }
+
+	  return original_date;
   }
+  throw std::invalid_argument("invalid TimeUnit");
 }
 }  // namespace qff

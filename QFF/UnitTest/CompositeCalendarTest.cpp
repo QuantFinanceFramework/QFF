@@ -5,26 +5,26 @@
 
 using namespace qff;
 
-TEST(CompositeCalendarTest, isBusinessDayTest_MemorialDay) {
-  auto com = CompositeCalendar(NewYorkCalendar(), LondonCalendar());
-  date memorialDay(2019, 5, 27);
-  EXPECT_FALSE(com.isBusinessDay(memorialDay));
+TEST(CompositeCalendarTest, IsBusinessDayTest_MemorialDay) {
+	const auto com = CompositeCalendar(NewYorkCalendar(), LondonCalendar());
+	const date memorial_day(2019, 5, 27);
+  EXPECT_FALSE(com.IsBusinessDay(memorial_day));
 }
 
-TEST(CompositeCalendarTest, isHolidayTest_MemorialDay) {
-  auto com = CompositeCalendar(NewYorkCalendar(), LondonCalendar());
-  date memorialDay(2019, 5, 27);
-  EXPECT_TRUE(com.isHoliday(memorialDay));
+TEST(CompositeCalendarTest, IsHolidayTest_MemorialDay) {
+	const auto com = CompositeCalendar(NewYorkCalendar(), LondonCalendar());
+	const date memorial_day(2019, 5, 27);
+  EXPECT_TRUE(com.IsHoliday(memorial_day));
 }
 
-TEST(CompositeCalendarTest, isBusinessDayTest_QueensBirthday) {
-  auto com = CompositeCalendar(NewYorkCalendar(), LondonCalendar());
-  date queensBirthday(2019, 6, 10);
-  EXPECT_TRUE(com.isBusinessDay(queensBirthday));
+TEST(CompositeCalendarTest, IsBusinessDayTest_QueensBirthday) {
+	const auto com = CompositeCalendar(NewYorkCalendar(), LondonCalendar());
+	const date queens_birthday(2019, 6, 10);
+  EXPECT_TRUE(com.IsBusinessDay(queens_birthday));
 }
 
-TEST(CompositeCalendarTest, isHolidayTest_QueensBirthday) {
-  auto com = CompositeCalendar(NewYorkCalendar(), LondonCalendar());
-  date queensBirthday(2019, 6, 10);
-  EXPECT_FALSE(com.isHoliday(queensBirthday));
+TEST(CompositeCalendarTest, IsHolidayTest_QueensBirthday) {
+	const auto com = CompositeCalendar(NewYorkCalendar(), LondonCalendar());
+	const date queens_birthday(2019, 6, 10);
+  EXPECT_FALSE(com.IsHoliday(queens_birthday));
 }

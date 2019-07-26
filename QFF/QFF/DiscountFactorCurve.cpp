@@ -2,48 +2,48 @@
 #include <cmath>
 
 namespace qff {
-DiscountFactorCurve::DiscountFactorCurve(date curveDate,
+DiscountFactorCurve::DiscountFactorCurve(date curve_date,
                                          const vector<date>& dates,
-                                         const vector<double>& discountFactors,
+                                         const vector<double>& discount_factors,
                                          const IInterpolator& interpolator,
-                                         const IDayCounter& daycounter) {}
+                                         const IDayCounter& day_counter) {}
 
-DiscountFactorCurve::DiscountFactorCurve(date curveDate,
+DiscountFactorCurve::DiscountFactorCurve(date curve_date,
                                          const vector<date>& dates,
-                                         const vector<double>& discountFactors,
+                                         const vector<double>& discount_factors,
                                          unique_ptr<IInterpolator> interpolator,
-                                         unique_ptr<IDayCounter> daycounter) {}
+                                         unique_ptr<IDayCounter> day_counter) {}
 
-date DiscountFactorCurve::getCurveDate() const { return curveDate_; }
+date DiscountFactorCurve::GetCurveDate() const { return curve_date_; }
 
-double DiscountFactorCurve::getDiscountFactor(const date& queryDate) const {
-  return getDiscountFactor(dateToTime(queryDate));
+double DiscountFactorCurve::GetDiscountFactor(const date& query_date) const {
+  return GetDiscountFactor(DateToTime(query_date));
 }
 
-double DiscountFactorCurve::getDiscountFactor(double queryTime) const {
-  return interpolator_->interpol(queryTime, discountFactorsMap_);
+double DiscountFactorCurve::GetDiscountFactor(double query_time) const {
+  return interpolator_->Interpol(query_time, discount_factors_map_);
 }
 
-double DiscountFactorCurve::getForwardRate(const date& startDate,
-                                           const date& endDate) const {
-  return getForwardRate(dateToTime(startDate), dateToTime(endDate));
+double DiscountFactorCurve::GetForwardRate(const date& start_date,
+                                           const date& end_date) const {
+  return GetForwardRate(DateToTime(start_date), DateToTime(end_date));
 }
 
-double DiscountFactorCurve::getForwardRate(double startTime,
-                                           double endTime) const {
-  return -log(getDiscountFactor(endTime) / getDiscountFactor(startTime)) /
-         (endTime - startTime);
+double DiscountFactorCurve::GetForwardRate(double start_time,
+                                           double end_time) const {
+  return -log(GetDiscountFactor(end_time) / GetDiscountFactor(start_time)) /
+         (end_time - start_time);
 }
 
-double DiscountFactorCurve::getZeroRate(const date& queryDate) const {
-  return getZeroRate(dateToTime(queryDate));
+double DiscountFactorCurve::GetZeroRate(const date& query_date) const {
+  return GetZeroRate(DateToTime(query_date));
 }
 
-double DiscountFactorCurve::getZeroRate(double queryTime) const {
-  return -log(getDiscountFactor(queryTime)) / queryTime;
+double DiscountFactorCurve::GetZeroRate(double query_time) const {
+  return -log(GetDiscountFactor(query_time)) / query_time;
 }
 
-double DiscountFactorCurve::dateToTime(const date& date) const {
-  return dayCounter_->calculateYearFraction(curveDate_, date);
+double DiscountFactorCurve::DateToTime(const date& date) const {
+  return day_counter_->CalculateYearFraction(curve_date_, date);
 }
 }  // namespace qff

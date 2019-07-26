@@ -11,13 +11,14 @@ class CurveInterpolator : public IInterpolator {
 
   ~CurveInterpolator() = default;
 
-  double interpol(const double& queryTime,
+  double Interpol(const double& query_time,
                   const map<double, double>& data) const override;
 
  private:
-  function<double(const double&, const map<double, double>&)> leftExtrapolFunc_;
-  function<double(const double&, const map<double, double>&)> interpolFunc_;
   function<double(const double&, const map<double, double>&)>
-      rightExtrapolFunc_;
+      left_extrapol_func_;
+  function<double(const double&, const map<double, double>&)> interpol_func_;
+  function<double(const double&, const map<double, double>&)>
+      right_extrapol_func_;
 };
 }  // namespace qff

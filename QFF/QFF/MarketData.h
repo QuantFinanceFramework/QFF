@@ -13,23 +13,23 @@ class MarketData : public IMarketData {
   MarketData() = default;
   ~MarketData() = default;
 
-  date getMarketDate() const override;
+  date GetMarketDate() const override;
 
-  double getDiscountFactor(const string& curveName,
-                           const date& queryDate) const override;
+  double GetDiscountFactor(const string& curve_name,
+                           const date& query_date) const override;
 
-  double getForwardRate(const string& curveName, const date& startDate,
-                        const date& endDate) const override;
+  double GetForwardRate(const string& curve_name, const date& start_date,
+                        const date& end_date) const override;
 
-  double getZeroRate(const string& curveName,
-                     const date& queryDate) const override;
+  double GetZeroRate(const string& curve_name,
+                     const date& query_date) const override;
 
-  double getPastFixing(const string& curveName,
-                       const date& queryDate) const override;
+  double GetPastFixing(const string& curve_name,
+                       const date& query_date) const override;
  
  private:
-  date marketDate_;
-  map<string, unique_ptr<IInterestRateCurve>> curveSets_;
+  date market_date_;
+  map<string, unique_ptr<IInterestRateCurve>> curve_sets_;
 
 };
 }  // namespace qff

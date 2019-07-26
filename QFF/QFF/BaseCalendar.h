@@ -7,18 +7,18 @@ class BaseCalendar : public ICalendar {
   BaseCalendar() = default;
   ~BaseCalendar() = default;
 
-  unique_ptr<ICalendar> clone() const override;
+  unique_ptr<ICalendar> Clone() const override;
 
-  bool isBusinessDay(const date& queryDate) const final;
-  bool isHoliday(const date& queryDate) const override;
-  bool isWeekend(const date& queryDate) const final;
+  bool IsBusinessDay(const date& query_date) const final;
+  bool IsHoliday(const date& query_date) const override;
+  bool IsWeekend(const date& query_date) const final;
 
  protected:
-  virtual date adjustHoliday(const date& holiday) const;
-  date newYearsDay(int year) const;
-  date easterMonday(int year) const;
-  date goodFriday(int year) const;
-  date christmasDay(int year) const;
-  date boxingDay(int year) const;
+  virtual date AdjustHoliday(const date& holiday) const;
+  date NewYearsDay(int year) const;
+  static date EasterMonday(int year);
+  static date GoodFriday(int year);
+  date ChristmasDay(int year) const;
+  date BoxingDay(int year) const;
 };
 }  // namespace qff

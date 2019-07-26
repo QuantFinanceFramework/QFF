@@ -3,11 +3,11 @@
 namespace qff {
 using std::move;
 
-Swap::Swap(Leg&& receiveLeg, Leg&& payLeg)
-    : receiveLeg_(move(receiveLeg)), payLeg_(move(payLeg)) {}
+Swap::Swap(Leg&& receive_leg, Leg&& pay_leg)
+    : receiveLeg_(move(receive_leg)), payLeg_(move(pay_leg)) {}
 
-Currency Swap::evaluate(const IMarketData& marketData,
-                        const string& currencyCode) const {
+Currency Swap::evaluate(const IMarketData& market_data,
+                        const string& currency_code) const {
   return Currency();
 }
 }  // namespace qff

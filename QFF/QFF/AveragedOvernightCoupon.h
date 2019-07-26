@@ -14,24 +14,24 @@ using std::vector;
 class AveragedOvernightCoupon : public ICashflow {
  public:
   AveragedOvernightCoupon() = default;
-  AveragedOvernightCoupon(double notional, date paymentDate,
-                          date accrualStartDate, date accrualEndDate,
-                          const IDayCounter& dayCounter, const IIndex& index,
+  AveragedOvernightCoupon(double notional, date payment_date,
+                          date accrual_start_date, date accrual_end_date,
+                          const IDayCounter& day_counter, const IIndex& index,
                           Period rate_cut_off, double leverage, double margin);
 
   ~AveragedOvernightCoupon() = default;
 
-  double getPaymentAmount(const IMarketData& marketData) const override;
+  double GetPaymentAmount(const IMarketData& market_data) const override;
 
  private:
-  double getRate(const IMarketData& marketData) const;
+  static double GetRate(const IMarketData& market_data);
 
   double notional_;
-  string currencyCode_;
+  string currency_code_;
   vector<date> accrual_period_dates_;
-  vector<double> accrualFactors_;
-  date paymentDate_;
-  unique_ptr<IDayCounter> dayCounter_;
+  vector<double> accrual_factors_;
+  date payment_date_;
+  unique_ptr<IDayCounter> day_counter_;
   unique_ptr<IIndex> index_;
   Period rate_cut_off_;
   double leverage_;

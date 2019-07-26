@@ -9,7 +9,7 @@ class INormalRandomSequenceGenerator {
   INormalRandomSequenceGenerator() = default;
   virtual ~INormalRandomSequenceGenerator() = default;
 
-  virtual vector<double> generateNormalSequence() = 0;
-  virtual void setDimension(size_t dimension) = 0;
+  virtual vector<double> GenerateNormalSequence() = 0;
+  virtual void SetDimension(size_t dimension) = 0;
 };
 }  // namespace qff

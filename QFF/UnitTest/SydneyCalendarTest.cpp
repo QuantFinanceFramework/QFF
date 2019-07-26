@@ -1,25 +1,24 @@
 #include <SydneyCalendar.h>
-#include <vector>
 #include "gtest/gtest.h"
 
 using namespace qff;
 
 class SydneyCalendarTestFixture : public ::testing::TestWithParam<date> {
  protected:
-  SydneyCalendar syd;
+  SydneyCalendar syd_;
 };
 
 TEST_F(SydneyCalendarTestFixture, isBusinessDayTest_Weekednd) {
-  EXPECT_FALSE(syd.isBusinessDay(date(2019, 4, 20)));
+  EXPECT_FALSE(syd_.IsBusinessDay(date(2019, 4, 20)));
 }
 
 TEST_F(SydneyCalendarTestFixture, isBusinessDayTest_Holiday) {
-  EXPECT_FALSE(syd.isBusinessDay(date(2019, 4, 19)));
+  EXPECT_FALSE(syd_.IsBusinessDay(date(2019, 4, 19)));
 }
 
 TEST_P(SydneyCalendarTestFixture, isHolidayTest_Holidays) {
-  date holiday = GetParam();
-  EXPECT_TRUE(syd.isHoliday(holiday));
+  const auto holiday = GetParam();
+  EXPECT_TRUE(syd_.IsHoliday(holiday));
 }
 
 INSTANTIATE_TEST_CASE_P(

@@ -13,23 +13,23 @@ using std::vector;
 class CompoundedIborCoupon : public ICashflow {
  public:
   CompoundedIborCoupon() = default;
-  CompoundedIborCoupon(double notional, date paymentDate, date accrualStartDate,
-                     date accrualEndDate, const IDayCounter& dayCounter,
+  CompoundedIborCoupon(double notional, date payment_date, date accrual_start_date,
+                     date accrual_end_date, const IDayCounter& day_counter,
                      const IIndex& index, double leverage, double margin);
 
   ~CompoundedIborCoupon() = default;
 
-  double getPaymentAmount(const IMarketData& marketData) const override;
+  double GetPaymentAmount(const IMarketData& market_data) const override;
 
  private:
-  double getRate(const IMarketData& marketData) const;
+  static double GetRate(const IMarketData& market_data);
 
   double notional_;
-  string currencyCode_;
+  string currency_code_;
   vector<date> accrual_period_dates_;
-  vector<double> accrualFactors_;
-  date paymentDate_;
-  unique_ptr<IDayCounter> dayCounter_;
+  vector<double> accrual_factors_;
+  date payment_date_;
+  unique_ptr<IDayCounter> day_counter_;
   unique_ptr<IIndex> index_;
   double leverage_;
   double margin_;

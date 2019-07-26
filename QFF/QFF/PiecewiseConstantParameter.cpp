@@ -4,53 +4,53 @@
 namespace qff {
 PiecewiseConstantParameter::PiecewiseConstantParameter(
     const map<double, double>& value)
-    : m_value{value} {}
+    : value_{value} {}
 
 double PiecewiseConstantParameter::operator[](double time) const {
-  if (time < m_value.begin()->first) return 0.0;
-  return std::prev(m_value.upper_bound(time))->second;
+  if (time < value_.begin()->first) return 0.0;
+  return std::prev(value_.upper_bound(time))->second;
 }
 
-double PiecewiseConstantParameter::integral(double time1, double time2) const {
-  if (time1 < m_value.begin()->first || time2 < m_value.begin()->first)
+double PiecewiseConstantParameter::Integral(double time1, double time2) const {
+  if (time1 < value_.begin()->first || time2 < value_.begin()->first)
     return 0.0;
 
-  double endTime = 0.0;
-  double startTime = time1;
-  double result = 0.0;
+  auto end_time = 0.0;
+  auto start_time = time1;
+  auto result = 0.0;
 
-  for (auto iter = prev(m_value.upper_bound(time1));
-       iter != m_value.upper_bound(time2); ++iter) {
-    if (next(iter) == m_value.upper_bound(time2))
-      endTime = time2;
+  for (auto iter = prev(value_.upper_bound(time1));
+       iter != value_.upper_bound(time2); ++iter) {
+    if (next(iter) == value_.upper_bound(time2))
+      end_time = time2;
     else
-      endTime = next(iter)->first;
+      end_time = next(iter)->first;
 
-    result += iter->second * (endTime - startTime);
-    startTime = endTime;
+    result += iter->second * (end_time - start_time);
+    start_time = end_time;
   }
 
   return result;
 }
 
-double PiecewiseConstantParameter::integralSquare(double time1,
+double PiecewiseConstantParameter::IntegralSquare(double time1,
                                                   double time2) const {
-  if (time1 < m_value.begin()->first || time2 < m_value.begin()->first)
+  if (time1 < value_.begin()->first || time2 < value_.begin()->first)
     return 0.0;
 
-  double endTime = 0.0;
-  double startTime = time1;
-  double result = 0.0;
+  auto end_time = 0.0;
+  auto start_time = time1;
+  auto result = 0.0;
 
-  for (auto iter = prev(m_value.upper_bound(time1));
-       iter != m_value.upper_bound(time2); ++iter) {
-    if (next(iter) == m_value.upper_bound(time2))
-      endTime = time2;
+  for (auto iter = prev(value_.upper_bound(time1));
+       iter != value_.upper_bound(time2); ++iter) {
+    if (next(iter) == value_.upper_bound(time2))
+      end_time = time2;
     else
-      endTime = next(iter)->first;
+      end_time = next(iter)->first;
 
-    result += std::pow(iter->second, 2) * (endTime - startTime);
-    startTime = endTime;
+    result += std::pow(iter->second, 2) * (end_time - start_time);
+    start_time = end_time;
   }
 
   return result;

@@ -1,5 +1,5 @@
 #pragma once
-#include <boost\date_time\gregorian\gregorian.hpp>
+#include <boost/date_time/gregorian/gregorian.hpp>
 #include "IBusinessDayConvention.h"
 #include "ICalendar.h"
 #include "Unadjusted.h"
@@ -14,7 +14,7 @@ struct Period {
   TimeUnit unit;
 };
 
-date shiftDate(const date& originalDate, const Period& period,
+date ShiftDate(const date& original_date, const Period& period,
                const ICalendar& calendar,
                const IBusinessDayConvention& convention = Unadjusted());
 

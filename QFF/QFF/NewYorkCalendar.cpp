@@ -1,32 +1,32 @@
 #include "NewYorkCalendar.h"
 
 namespace qff {
-unique_ptr<ICalendar> NewYorkCalendar::clone() const {
+unique_ptr<ICalendar> NewYorkCalendar::Clone() const {
   return std::make_unique<NewYorkCalendar>();
 }
 
-bool NewYorkCalendar::isHoliday(const date& queryDate) const {
-  auto year = queryDate.year();
+bool NewYorkCalendar::IsHoliday(const date& query_date) const {
+	const auto year = query_date.year();
   return (
-      (queryDate == newYearsDay(year)) ||
-      (queryDate == martinLutherKingsBirthday(year)) ||
-      (queryDate == WashingtonsBirthday(year)) ||
-      (queryDate == memorialDay(year)) ||
-      (queryDate == independenceDay(year)) || (queryDate == labourDay(year)) ||
-      (queryDate == columbusDay(year)) || (queryDate == veteransDay(year)) ||
-      (queryDate == thanksgiveingDay(year)) ||
-      (queryDate == christmasDay(year) || queryDate == newYearsDay(year + 1)));
+      (query_date == NewYearsDay(year)) ||
+      (query_date == MartinLutherKingsBirthday(year)) ||
+      (query_date == WashingtonsBirthday(year)) ||
+      (query_date == MemorialDay(year)) ||
+      (query_date == IndependenceDay(year)) || (query_date == LabourDay(year)) ||
+      (query_date == ColumbusDay(year)) || (query_date == VeteransDay(year)) ||
+      (query_date == ThanksgivingDay(year)) ||
+      (query_date == ChristmasDay(year) || query_date == NewYearsDay(year + 1)));
 }
 
-date NewYorkCalendar::adjustHoliday(const date& holiday) const {
-  auto w = holiday.day_of_week();
+date NewYorkCalendar::AdjustHoliday(const date& holiday) const {
+	const auto w = holiday.day_of_week();
   if (w == boost::gregorian::Saturday)
     return holiday - boost::gregorian::days(1);
   if (w == boost::gregorian::Sunday) return holiday + boost::gregorian::days(1);
   return holiday;
 }
 
-date NewYorkCalendar::martinLutherKingsBirthday(int year) const {
+date NewYorkCalendar::MartinLutherKingsBirthday(int year) const {
   return next_weekday(date(year, 1, 15),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
@@ -36,31 +36,31 @@ date NewYorkCalendar::WashingtonsBirthday(int year) const {
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
 
-date NewYorkCalendar::memorialDay(int year) const {
+date NewYorkCalendar::MemorialDay(int year) {
   return boost::date_time::previous_weekday(
       date(year, 5, 31),
       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
 
-date NewYorkCalendar::independenceDay(int year) const {
-  return adjustHoliday(date(year, 7, 4));
+date NewYorkCalendar::IndependenceDay(int year) const {
+  return AdjustHoliday(date(year, 7, 4));
 }
 
-date NewYorkCalendar::labourDay(int year) const {
+date NewYorkCalendar::LabourDay(int year) const {
   return next_weekday(date(year, 9, 1),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
 
-date NewYorkCalendar::columbusDay(int year) const {
+date NewYorkCalendar::ColumbusDay(int year) const {
   return next_weekday(date(year, 10, 8),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
 
-date NewYorkCalendar::veteransDay(int year) const {
-  return adjustHoliday(date(year, 11, 11));
+date NewYorkCalendar::VeteransDay(int year) const {
+  return AdjustHoliday(date(year, 11, 11));
 }
 
-date NewYorkCalendar::thanksgiveingDay(int year) const {
+date NewYorkCalendar::ThanksgivingDay(int year) const {
   return next_weekday(date(year, 11, 22), boost::gregorian::greg_weekday(
                                               boost::date_time::Thursday));
 }

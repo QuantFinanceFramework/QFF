@@ -7,7 +7,7 @@ class ICashflow {
   ICashflow() = default;
   virtual ~ICashflow() = default;
 
-  virtual date getPaymentDate() const = 0;
-  virtual double getPaymentAmount(const IMarketData& marketData) const = 0;
+  virtual date GetPaymentDate() const = 0;
+  virtual double GetPaymentAmount(const IMarketData& market_data) const = 0;
 };
 }  // namespace qff

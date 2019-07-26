@@ -2,16 +2,16 @@
 namespace qff {
 
 CompoundedOvernightCoupon::CompoundedOvernightCoupon(
-    double notional, date paymentDate, date accrualStartDate,
-    date accrualEndDate, const IDayCounter& dayCounter, const IIndex& index,
+    double notional, date payment_date, date accrual_start_date,
+    date accrual_end_date, const IDayCounter& day_counter, const IIndex& index,
     Period rate_cut_off, double leverage, double margin) {}
 
-double CompoundedOvernightCoupon::getPaymentAmount(
-    const IMarketData& marketData) const {
+double CompoundedOvernightCoupon::GetPaymentAmount(
+    const IMarketData& market_data) const {
   return 0;
 }
 
-double CompoundedOvernightCoupon::getRate(const IMarketData& marketData) const {
+double CompoundedOvernightCoupon::GetRate(const IMarketData& market_data) {
   return 0;
 }
 }  // namespace qff

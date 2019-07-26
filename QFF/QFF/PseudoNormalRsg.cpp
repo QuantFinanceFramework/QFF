@@ -9,7 +9,7 @@ PseudoNormalRsg::PseudoNormalRsg(size_t dimension, unsigned int seed)
 PseudoNormalRsg::PseudoNormalRsg(size_t dimension)
     : m_dimension{dimension}, m_rng{std::mt19937{std::random_device{}()}} {}
 
-vector<double> PseudoNormalRsg::generateNormalSequence() {
+vector<double> PseudoNormalRsg::GenerateNormalSequence() {
   vector<double> result(m_dimension);
   for (auto& i : result) {
     i = m_dist(m_rng);
@@ -18,7 +18,7 @@ vector<double> PseudoNormalRsg::generateNormalSequence() {
   return result;
 }
 
-void PseudoNormalRsg::setDimension(size_t dimension) {
+void PseudoNormalRsg::SetDimension(size_t dimension) {
   m_dimension = dimension;
 }
 }  // namespace qff

@@ -1,5 +1,5 @@
 #pragma once
 
 namespace qff {
-double inverseCumulativeNormal(double u);
+double InverseCumulativeNormal(double u);
 }

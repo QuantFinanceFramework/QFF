@@ -7,10 +7,10 @@ using std::string;
 struct Currency {
  public:
   Currency() = default;
-  Currency(string currencyCode, double amount);
+  Currency(const string& currency_code, double amount);
   ~Currency() = default;
 
-  string currencyCode;
+  string currency_code;
   double amount;
 };
 }  // namespace qff

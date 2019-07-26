@@ -13,7 +13,7 @@ class NormalRsgFactory {
  public:
   NormalRsgFactory() = default;
   ~NormalRsgFactory() = default;
-  static unique_ptr<INormalRandomSequenceGenerator> makeNormalRsg(
-      const string& rsgName, int dimension);
+  static unique_ptr<INormalRandomSequenceGenerator> MakeNormalRsg(
+      const string& rsg_name, int dimension);
 };
 }  // namespace qff

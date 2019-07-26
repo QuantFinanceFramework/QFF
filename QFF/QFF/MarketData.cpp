@@ -1,26 +1,26 @@
 #include "MarketData.h"
 
 namespace qff {
-date MarketData::getMarketDate() const { return marketDate_; }
+date MarketData::GetMarketDate() const { return market_date_; }
 
-double MarketData::getDiscountFactor(const string& curveName,
-                                     const date& queryDate) const {
+double MarketData::GetDiscountFactor(const string& curve_name,
+                                     const date& query_date) const {
   return 0.0;
 }
 
-double MarketData::getForwardRate(const string& curveName,
-                                  const date& startDate,
-                                  const date& endDate) const {
+double MarketData::GetForwardRate(const string& curve_name,
+                                  const date& start_date,
+                                  const date& end_date) const {
   return 0.0;
 }
 
-double MarketData::getZeroRate(const string& curveName,
-                               const date& queryDate) const {
+double MarketData::GetZeroRate(const string& curve_name,
+                               const date& query_date) const {
   return 0.0;
 }
 
-double MarketData::getPastFixing(const string& curveName,
-                                 const date& queryDate) const {
+double MarketData::GetPastFixing(const string& curve_name,
+                                 const date& query_date) const {
   return 0.0;
 }
 }  // namespace qff

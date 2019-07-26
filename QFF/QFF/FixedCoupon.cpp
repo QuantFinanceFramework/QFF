@@ -3,9 +3,9 @@
 namespace qff {
 FixedCoupon::FixedCoupon(double notional, date paymentDate,
                                  date accrualStartDate, date accrualEndDate,
-                                 const IDayCounter& dayCounter, double rate) {}
+                                 const IDayCounter& day_counter, double rate) {}
 
-double FixedCoupon::getPaymentAmount(const IMarketData& marketData) const {
-  return notional_ * rate_ * accrualFactor_;
+double FixedCoupon::GetPaymentAmount(const IMarketData& market_data) const {
+  return notional_ * rate_ * accrual_factor_;
 }
 }  // namespace qff

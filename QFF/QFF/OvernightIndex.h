@@ -13,28 +13,29 @@ using std::unique_ptr;
 class OvernightIndex : public IIndex {
  public:
   OvernightIndex() = default;
-  OvernightIndex(const string& currencyCode, const string& curveName,
-                 Period tenor, const IDayCounter& dayCounter, Period fixingLag,
-                 Period publicationLag, const ICalendar& fixingCalendar,
+  OvernightIndex(const string& currency_code, const string& curve_name,
+                 Period tenor, const IDayCounter& day_counter,
+                 Period fixing_lag, Period publication_lag,
+                 const ICalendar& fixing_calendar,
                  const IBusinessDayConvention& convention);
 
   ~OvernightIndex() = default;
 
-  unique_ptr<IIndex> clone() const override;
+  unique_ptr<IIndex> Clone() const override;
 
-  double getRate(const date& startDate,
-                 const IMarketData& marketData) const override;
+  double GetRate(const date& start_date,
+                 const IMarketData& market_data) const override;
 
  private:
-  date getFixingDate(const date& startDate) const;
+  date GetFixingDate(const date& start_date) const;
 
-  string currencyCode_;
-  string curveName_;
+  string currency_code_;
+  string curve_name_;
   Period tenor_;
-  unique_ptr<IDayCounter> dayCounter_;
-  Period fixingLag_;
-  Period publicationLag_;
-  unique_ptr<ICalendar> fixingCalendar_;
+  unique_ptr<IDayCounter> day_counter_;
+  Period fixing_lag_;
+  Period publication_lag_;
+  unique_ptr<ICalendar> fixing_calendar_;
   unique_ptr<IBusinessDayConvention> convention_;
 };
 }  // namespace qff

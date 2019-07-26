@@ -7,8 +7,8 @@ using std::move;
 
 Leg::Leg(vector<unique_ptr<ICashflow>> cashflows) {}
 
-Currency Leg::evaluate(const IMarketData& marketData,
-                       const string& currencyCode) const {
+Currency Leg::evaluate(const IMarketData& market_data,
+                       const string& currency_code) const {
   return Currency();
 }
 }  // namespace qff

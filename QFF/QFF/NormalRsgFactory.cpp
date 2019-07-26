@@ -1,12 +1,11 @@
 #include "NormalRsgFactory.h"
 
 namespace qff {
-unique_ptr<INormalRandomSequenceGenerator> NormalRsgFactory::makeNormalRsg(
-    const string& rsgName, int dimension) {
-  if (rsgName == "Pseudo") return make_unique<PseudoNormalRsg>(dimension);
-  if (rsgName == "Sobol")
+unique_ptr<INormalRandomSequenceGenerator> NormalRsgFactory::MakeNormalRsg(
+    const string& rsg_name, int dimension) {
+  if (rsg_name == "Pseudo") return make_unique<PseudoNormalRsg>(dimension);
+  if (rsg_name == "Sobol")
     return make_unique<SobolNormalRsg>(dimension);
-  else
-    return nullptr;
+  return nullptr;
 }
 }  // namespace qff

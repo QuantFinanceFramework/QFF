@@ -4,16 +4,16 @@ namespace qff {
 IborCoupon::IborCoupon(double notional, date paymentDate,
                                        date accrualStartDate,
                                        date accrualEndDate,
-                                       const IDayCounter& dayCounter,
+                                       const IDayCounter& day_counter,
                                        const IIndex& index, double leverage,
                                        double margin) {}
 
-double IborCoupon::getPaymentAmount(
-    const IMarketData& marketData) const {
-  return notional_ * getRate(marketData) * accrualFactor_;
+double IborCoupon::GetPaymentAmount(
+    const IMarketData& market_data) const {
+  return notional_ * GetRate(market_data) * accrual_factor_;
 }
 
-double IborCoupon::getRate(const IMarketData& marketData) const {
-  return leverage_ * index_->getRate(accrualStartDate_, marketData) + margin_;
+double IborCoupon::GetRate(const IMarketData& market_data) const {
+  return leverage_ * index_->GetRate(accrual_start_date_, market_data) + margin_;
 }
 }  // namespace qff

@@ -1,25 +1,24 @@
 #include <NewYorkCalendar.h>
-#include <vector>
 #include "gtest/gtest.h"
 
 using namespace qff;
 
 class NewYorkCalendarTestFixture : public ::testing::TestWithParam<date> {
  protected:
-  NewYorkCalendar nyc;
+  NewYorkCalendar nyc_;
 };
 
-TEST_F(NewYorkCalendarTestFixture, isBusinessDayTest_Weekednd) {
-  EXPECT_FALSE(nyc.isBusinessDay(date(2019, 4, 20)));
+TEST_F(NewYorkCalendarTestFixture, IsBusinessDayTest_Weekednd) {
+  EXPECT_FALSE(nyc_.IsBusinessDay(date(2019, 4, 20)));
 }
 
-TEST_F(NewYorkCalendarTestFixture, isBusinessDayTest_Holiday) {
-  EXPECT_FALSE(nyc.isBusinessDay(date(2019, 5, 27)));
+TEST_F(NewYorkCalendarTestFixture, IsBusinessDayTest_Holiday) {
+  EXPECT_FALSE(nyc_.IsBusinessDay(date(2019, 5, 27)));
 }
 
-TEST_P(NewYorkCalendarTestFixture, isHolidayTest_Holidays) {
-  date holiday = GetParam();
-  EXPECT_TRUE(nyc.isHoliday(holiday));
+TEST_P(NewYorkCalendarTestFixture, IsHolidayTest_Holidays) {
+	const auto holiday = GetParam();
+  EXPECT_TRUE(nyc_.IsHoliday(holiday));
 }
 
 INSTANTIATE_TEST_CASE_P(

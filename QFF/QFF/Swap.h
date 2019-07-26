@@ -6,11 +6,11 @@ namespace qff {
 class Swap : public IProduct {
  public:
   Swap() = default;
-  Swap(Leg&& receiveLeg, Leg&& payLeg);
+  Swap(Leg&& receive_leg, Leg&& pay_leg);
   ~Swap() = default;
 
-  Currency evaluate(const IMarketData& marketData,
-                    const string& currencyCode) const override;
+  Currency evaluate(const IMarketData& market_data,
+                    const string& currency_code) const override;
 
  private:
   Leg receiveLeg_;

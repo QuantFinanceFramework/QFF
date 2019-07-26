@@ -4,20 +4,20 @@
 namespace qff {
 class NewYorkCalendar : public BaseCalendar {
  public:
-  unique_ptr<ICalendar> clone() const override;
-  bool isHoliday(const date& queryDate) const override;
+  unique_ptr<ICalendar> Clone() const override;
+  bool IsHoliday(const date& query_date) const override;
 
   protected:
-  date adjustHoliday(const date& holiday) const override;
+  date AdjustHoliday(const date& holiday) const override;
 
  private:
-  date martinLutherKingsBirthday(int year) const;
+  date MartinLutherKingsBirthday(int year) const;
   date WashingtonsBirthday(int year) const;
-  date memorialDay(int year) const;
-  date independenceDay(int year) const;
-  date labourDay(int year) const;
-  date columbusDay(int year) const;
-  date veteransDay(int year) const;
-  date thanksgiveingDay(int year) const;
+  static date MemorialDay(int year);
+  date IndependenceDay(int year) const;
+  date LabourDay(int year) const;
+  date ColumbusDay(int year) const;
+  date VeteransDay(int year) const;
+  date ThanksgivingDay(int year) const;
 };
 }  // namespace qff

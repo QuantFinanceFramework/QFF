@@ -1,5 +1,5 @@
 #pragma once
-#include <boost\date_time\gregorian\gregorian.hpp>
+#include <boost/date_time/gregorian/gregorian.hpp>
 #include <memory>
 
 namespace qff {
@@ -11,9 +11,9 @@ class IDayCounter {
   IDayCounter() = default;
   virtual ~IDayCounter() = default;
 
-  virtual unique_ptr<IDayCounter> clone() const = 0;
+  virtual unique_ptr<IDayCounter> Clone() const = 0;
 
-  virtual double calculateYearFraction(const date& startDate,
-                                       const date& endDate) const = 0;
+  virtual double CalculateYearFraction(const date& start_date,
+                                       const date& end_date) const = 0;
 };
 }  // namespace qff

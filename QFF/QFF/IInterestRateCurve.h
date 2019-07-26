@@ -1,5 +1,5 @@
 #pragma once
-#include <boost\date_time\gregorian\gregorian.hpp>
+#include <boost/date_time/gregorian/gregorian.hpp>
 
 namespace qff {
 using boost::gregorian::date;
@@ -9,14 +9,14 @@ class IInterestRateCurve {
   IInterestRateCurve() = default;
   virtual ~IInterestRateCurve() = default;
 
-  virtual double getDiscountFactor(const date& queryDate) const = 0;
-  virtual double getDiscountFactor(double queryTime) const = 0;
+  virtual double GetDiscountFactor(const date& query_date) const = 0;
+  virtual double GetDiscountFactor(double query_time) const = 0;
 
-  virtual double getForwardRate(const date& startDate,
-                                const date& endDate) const = 0;
-  virtual double getForwardRate(double starttime, double endtime) const = 0;
+  virtual double GetForwardRate(const date& start_date,
+                                const date& end_date) const = 0;
+  virtual double GetForwardRate(double start_time, double end_time) const = 0;
 
-  virtual double getZeroRate(const date& queryDate) const = 0;
-  virtual double getZeroRate(double queryTime) const = 0;
+  virtual double GetZeroRate(const date& query_date) const = 0;
+  virtual double GetZeroRate(double query_time) const = 0;
 };
 }  // namespace qff

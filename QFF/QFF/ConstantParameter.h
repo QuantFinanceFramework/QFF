@@ -10,11 +10,11 @@ class ConstantParameter : public IParameter {
   ~ConstantParameter() = default;
 
   double operator[](double time) const override;
-  double integral(double time1, double time2) const override;
-  double integralSquare(double time1, double time2) const override;
+  double Integral(double time1, double time2) const override;
+  double IntegralSquare(double time1, double time2) const override;
 
  private:
-  double m_value;
-  double m_valueSquare;
+  double value_;
+  double valueSquare_;
 };
 }  // namespace qff

@@ -1,13 +1,13 @@
 #include "Actual360.h"
 
 namespace qff {
-unique_ptr<IDayCounter> Actual360::clone() const {
+unique_ptr<IDayCounter> Actual360::Clone() const {
   return std::make_unique<Actual360>();
 }
 
-double Actual360::calculateYearFraction(const date& startDate,
-                                        const date& endDate) const {
-  auto difference = endDate - startDate;
+double Actual360::CalculateYearFraction(const date& start_date,
+                                        const date& end_date) const {
+  const auto difference = end_date - start_date;
   return difference.days() / 360.0;
 }
 }  // namespace qff

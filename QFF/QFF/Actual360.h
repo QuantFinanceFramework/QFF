@@ -7,9 +7,9 @@ class Actual360 : public IDayCounter {
   Actual360() = default;
   ~Actual360() = default;
 
-  unique_ptr<IDayCounter> clone() const override;
+  unique_ptr<IDayCounter> Clone() const override;
 
-  double calculateYearFraction(const date& startDate,
-                               const date& endDate) const override;
+  double CalculateYearFraction(const date& start_date,
+                               const date& end_date) const override;
 };
 }  // namespace qff

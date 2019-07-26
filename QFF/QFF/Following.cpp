@@ -1,17 +1,17 @@
 #include "Following.h"
 
 namespace qff {
-unique_ptr<IBusinessDayConvention> Following::clone() const {
+unique_ptr<IBusinessDayConvention> Following::Clone() const {
   return std::make_unique<Following>();
 }
 
-date Following::adjust(const date& originalDate,
+date Following::Adjust(const date& original_date,
                        const ICalendar& calendar) const {
-  if (calendar.isBusinessDay(originalDate)) return originalDate;
-  auto tmpDate = originalDate;
+  if (calendar.IsBusinessDay(original_date)) return original_date;
+  auto tmp_date = original_date;
   do {
-    tmpDate += boost::gregorian::days(1);
-  } while (!calendar.isBusinessDay(tmpDate));
-  return tmpDate;
+    tmp_date += boost::gregorian::days(1);
+  } while (!calendar.IsBusinessDay(tmp_date));
+  return tmp_date;
 }
 }  // namespace qff

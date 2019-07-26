@@ -1,5 +1,5 @@
 #pragma once
-#include <boost\date_time\gregorian\gregorian.hpp>
+#include <boost/date_time/gregorian/gregorian.hpp>
 #include <memory>
 
 namespace qff {
@@ -11,10 +11,10 @@ class ICalendar {
   ICalendar() = default;
   virtual ~ICalendar() = default;
 
-  virtual unique_ptr<ICalendar> clone() const = 0;
+  virtual unique_ptr<ICalendar> Clone() const = 0;
 
-  virtual bool isBusinessDay(const date& queryDate) const = 0;
-  virtual bool isHoliday(const date& queryDate) const = 0;
-  virtual bool isWeekend(const date& queryDate) const = 0;
+  virtual bool IsBusinessDay(const date& query_date) const = 0;
+  virtual bool IsHoliday(const date& query_date) const = 0;
+  virtual bool IsWeekend(const date& query_date) const = 0;
 };
 }  // namespace qff

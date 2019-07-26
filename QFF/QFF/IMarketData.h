@@ -11,18 +11,18 @@ class IMarketData {
   IMarketData() = default;
   virtual ~IMarketData() = default;
 
-  virtual date getMarketDate() const = 0;
+  virtual date GetMarketDate() const = 0;
 
-  virtual double getDiscountFactor(const string& curveName,
-                                   const date& queryDate) const = 0;
+  virtual double GetDiscountFactor(const string& curve_name,
+                                   const date& query_date) const = 0;
 
-  virtual double getForwardRate(const string& curveName, const date& startDate,
-                                const date& endDate) const = 0;
+  virtual double GetForwardRate(const string& curve_name, const date& start_date,
+                                const date& end_date) const = 0;
 
-  virtual double getZeroRate(const string& curveName,
-                             const date& queryDate) const = 0;
+  virtual double GetZeroRate(const string& curve_name,
+                             const date& query_date) const = 0;
 
-  virtual double getPastFixing(const string& curveName,
-                               const date& queryDate) const = 0;
+  virtual double GetPastFixing(const string& curve_name,
+                               const date& query_date) const = 0;
 };
 }  // namespace qff

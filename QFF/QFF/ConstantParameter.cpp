@@ -2,15 +2,15 @@
 
 namespace qff {
 ConstantParameter::ConstantParameter(double value)
-    : m_value{value}, m_valueSquare{value * value} {}
+    : value_{value}, valueSquare_{value * value} {}
 
-double ConstantParameter::operator[](double time) const { return m_value; }
+double ConstantParameter::operator[](double time) const { return value_; }
 
-double ConstantParameter::integral(double time1, double time2) const {
-  return m_value * (time2 - time1);
+double ConstantParameter::Integral(double time1, double time2) const {
+  return value_ * (time2 - time1);
 }
 
-double ConstantParameter::integralSquare(double time1, double time2) const {
-  return m_valueSquare * (time2 - time1);
+double ConstantParameter::IntegralSquare(double time1, double time2) const {
+  return valueSquare_ * (time2 - time1);
 }
 }  // namespace qff

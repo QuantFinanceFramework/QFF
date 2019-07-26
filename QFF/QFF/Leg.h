@@ -21,8 +21,8 @@ class Leg : public IProduct {
 
   ~Leg() = default;
 
-  Currency evaluate(const IMarketData& marketData,
-                    const string& currencyCode) const override;
+  Currency evaluate(const IMarketData& market_data,
+                    const string& currency_code) const override;
 
  private:
   vector<unique_ptr<ICashflow>> cashflows_;

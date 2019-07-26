@@ -4,9 +4,9 @@
 namespace qff {
 class Following : public IBusinessDayConvention {
  public:
-  unique_ptr<IBusinessDayConvention> clone() const override;
+  unique_ptr<IBusinessDayConvention> Clone() const override;
 
-  date adjust(const date& originalDate,
+  date Adjust(const date& original_date,
               const ICalendar& calendar) const override;
 
 };

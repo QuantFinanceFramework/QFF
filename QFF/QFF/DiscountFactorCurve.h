@@ -14,37 +14,37 @@ class DiscountFactorCurve : public IInterestRateCurve {
  public:
   DiscountFactorCurve() = default;
 
-  DiscountFactorCurve(date curveDate, const vector<date>& dates,
-                      const vector<double>& discountFactors,
+  DiscountFactorCurve(date curve_date, const vector<date>& dates,
+                      const vector<double>& discount_factors,
                       const IInterpolator& interpolator,
-                      const IDayCounter& daycounter);
+                      const IDayCounter& day_counter);
 
-  DiscountFactorCurve(date curveDate, const vector<date>& dates,
-                      const vector<double>& discountFactors,
+  DiscountFactorCurve(date curve_date, const vector<date>& dates,
+                      const vector<double>& discount_factors,
                       unique_ptr<IInterpolator> interpolator,
-                      unique_ptr<IDayCounter> daycounter);
+                      unique_ptr<IDayCounter> day_counter);
 
   ~DiscountFactorCurve() = default;
 
-  date getCurveDate() const;
+  date GetCurveDate() const;
 
-  double getDiscountFactor(const date& queryDate) const override;
-  double getDiscountFactor(double queryTime) const override;
+  double GetDiscountFactor(const date& query_date) const override;
+  double GetDiscountFactor(double query_time) const override;
 
-  double getForwardRate(const date& startDate,
-                        const date& endDate) const override;
-  double getForwardRate(double startTime, double endTime) const override;
+  double GetForwardRate(const date& start_date,
+                        const date& end_date) const override;
+  double GetForwardRate(double start_time, double end_time) const override;
 
-  double getZeroRate(const date& queryDate) const override;
-  double getZeroRate(double queryTime) const override;
+  double GetZeroRate(const date& query_date) const override;
+  double GetZeroRate(double query_time) const override;
 
  private:
-  double dateToTime(const date& date) const;
+  double DateToTime(const date& date) const;
 
-  date curveDate_;
+  date curve_date_;
   vector<date> dates_;
-  map<double, double> discountFactorsMap_;
+  map<double, double> discount_factors_map_;
   unique_ptr<IInterpolator> interpolator_;
-  unique_ptr<IDayCounter> dayCounter_;
+  unique_ptr<IDayCounter> day_counter_;
 };
 }  // namespace qff

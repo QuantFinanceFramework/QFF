@@ -6,22 +6,22 @@
 
 using namespace qff;
 
-TEST(FollowingTest, adjustTest) {
+TEST(FollowingTest, AdjustTest) {
   Following convention{};
-  date originalDate{2017, 12, 31};
-  EXPECT_EQ(convention.adjust(originalDate, BaseCalendar()), date(2018, 1, 1));
+  date original_date{2017, 12, 31};
+  EXPECT_EQ(convention.Adjust(original_date, BaseCalendar()), date(2018, 1, 1));
 }
 
-TEST(ModifiedFollowingTest, adjustTest) {
+TEST(ModifiedFollowingTest, AdjustTest) {
   ModifiedFollowing convention{};
-  date originalDate{2017, 12, 31};
-  EXPECT_EQ(convention.adjust(originalDate, BaseCalendar()),
+  date original_date{2017, 12, 31};
+  EXPECT_EQ(convention.Adjust(original_date, BaseCalendar()),
             date(2017, 12, 29));
 }
 
-TEST(PrecedingTest, adjustTest) {
+TEST(PrecedingTest, AdjustTest) {
   Preceding convention{};
-  date originalDate{2017, 12, 31};
-  EXPECT_EQ(convention.adjust(originalDate, BaseCalendar()),
+  date original_date{2017, 12, 31};
+  EXPECT_EQ(convention.Adjust(original_date, BaseCalendar()),
             date(2017, 12, 29));
 }

@@ -4,7 +4,7 @@
 namespace qff {
 using std::string;
 
-double Black76Formula(double forwardPrice, double strike, double discountFactor,
-                      double timeToMaturity, double volatility,
-                      string optionType);
+double Black76Formula(double forward_price, double strike, double discount_factor,
+                      double time_to_maturity, double volatility,
+                      const string& option_type);
 }  // namespace qff

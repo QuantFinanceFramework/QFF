@@ -1,33 +1,33 @@
 #include "BaseCalendar.h"
 
 namespace qff {
-unique_ptr<ICalendar> BaseCalendar::clone() const {
+unique_ptr<ICalendar> BaseCalendar::Clone() const {
   return std::make_unique<BaseCalendar>();
 }
 
-bool BaseCalendar::isBusinessDay(const date &queryDate) const {
-  return !(isHoliday(queryDate) || isWeekend(queryDate));
+bool BaseCalendar::IsBusinessDay(const date &query_date) const {
+  return !(IsHoliday(query_date) || IsWeekend(query_date));
 }
 
-bool BaseCalendar::isHoliday(const date &queryDate) const { return false; }
+bool BaseCalendar::IsHoliday(const date &query_date) const { return false; }
 
-bool BaseCalendar::isWeekend(const date &queryDate) const {
-  auto dayOfWeek = queryDate.day_of_week();
+bool BaseCalendar::IsWeekend(const date &query_date) const {
+  auto dayOfWeek = query_date.day_of_week();
   return (dayOfWeek == boost::gregorian::Saturday ||
           dayOfWeek == boost::gregorian::Sunday);
 }
 
-date BaseCalendar::adjustHoliday(const date &holiday) const {
-  auto w = holiday.day_of_week();
+date BaseCalendar::AdjustHoliday(const date &holiday) const {
+	const auto w = holiday.day_of_week();
   if (w == boost::gregorian::Saturday)
     return holiday + boost::gregorian::days(2);
   if (w == boost::gregorian::Sunday) return holiday + boost::gregorian::days(1);
   return holiday;
 }
-date BaseCalendar::newYearsDay(int year) const {
-  return adjustHoliday(date(year, 1, 1));
+date BaseCalendar::NewYearsDay(int year) const {
+  return AdjustHoliday(date(year, 1, 1));
 }
-date BaseCalendar::easterMonday(int year) const {
+date BaseCalendar::EasterMonday(int year) {
   static const int easterMondayOffset[] = {
       98,  90,  103, 95,  114, 106, 91,  111, 102,       // 1901-1909
       87,  107, 99,  83,  103, 95,  115, 99,  91,  111,  // 1910-1919
@@ -63,19 +63,19 @@ date BaseCalendar::easterMonday(int year) const {
   return date(year - 1, 12, 31) +
          boost::gregorian::days(easterMondayOffset[year - 1901]);
 }
-date BaseCalendar::goodFriday(int year) const {
-  return easterMonday(year) - boost::gregorian::days(3);
+date BaseCalendar::GoodFriday(int year) {
+  return EasterMonday(year) - boost::gregorian::days(3);
 }
-date BaseCalendar::christmasDay(int year) const {
-  return adjustHoliday(date(year, 12, 25));
+date BaseCalendar::ChristmasDay(int year) const {
+  return AdjustHoliday(date(year, 12, 25));
 }
-date BaseCalendar::boxingDay(int year) const {
-  auto boxingDay = date(year, 12, 26);
-  auto dayOfWeek = boxingDay.day_of_week();
-  if (dayOfWeek == boost::gregorian::Saturday)
-    return boxingDay + boost::gregorian::days(2);
-  if (dayOfWeek == boost::gregorian::Sunday)
-    return boxingDay + boost::gregorian::days(2);
-  return adjustHoliday(boxingDay);
+date BaseCalendar::BoxingDay(int year) const {
+	const auto boxing_day = date(year, 12, 26);
+	const auto day_of_week = boxing_day.day_of_week();
+  if (day_of_week == boost::gregorian::Saturday)
+    return boxing_day + boost::gregorian::days(2);
+  if (day_of_week == boost::gregorian::Sunday)
+    return boxing_day + boost::gregorian::days(2);
+  return AdjustHoliday(boxing_day);
 }
 }  // namespace qff

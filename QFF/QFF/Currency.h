@@ -7,7 +7,7 @@ using std::string;
 struct Currency {
  public:
   Currency() = default;
-  Currency(const string& currency_code, double amount);
+  Currency(string currency_code, double amount);
   ~Currency() = default;
 
   string currency_code;

@@ -1,14 +1,15 @@
 #include "OvernightIndex.h"
+#include <utility>
 
 namespace qff {
-OvernightIndex::OvernightIndex(const string& currency_code,
-                               const string& curve_name, Period tenor,
+OvernightIndex::OvernightIndex(string currency_code,
+                               string curve_name, Period tenor,
                                const IDayCounter& day_counter, Period fixing_lag,
                                Period publication_lag,
                                const ICalendar& fixing_calendar,
                                const IBusinessDayConvention& convention)
-    : currency_code_{currency_code},
-      curve_name_{curve_name},
+    : currency_code_{std::move(currency_code)},
+      curve_name_{std::move(curve_name)},
       tenor_{tenor},
       day_counter_(day_counter.Clone()),
       fixing_lag_{fixing_lag},

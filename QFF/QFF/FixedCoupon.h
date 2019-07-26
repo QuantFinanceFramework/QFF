@@ -7,7 +7,7 @@ namespace qff {
 class FixedCoupon : public ICashflow {
  public:
   FixedCoupon() = default;
-  FixedCoupon(double notional, date accrual_start_date, date accrual_end_date,
+  FixedCoupon(double notional, string currency_code, date accrual_start_date, date accrual_end_date,
               date payment_date, const IDayCounter& day_counter, double rate);
 
   ~FixedCoupon() = default;

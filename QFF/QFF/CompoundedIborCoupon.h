@@ -1,10 +1,10 @@
 #pragma once
 #include <memory>
-#include "ICashflow.h"
-#include "IIndex.h"
-#include "IDayCounter.h"
-#include "IMarketData.h"
 #include <vector>
+#include "ICashflow.h"
+#include "IDayCounter.h"
+#include "IIndex.h"
+#include "IMarketData.h"
 
 namespace qff {
 using std::unique_ptr;
@@ -13,9 +13,10 @@ using std::vector;
 class CompoundedIborCoupon : public ICashflow {
  public:
   CompoundedIborCoupon() = default;
-  CompoundedIborCoupon(double notional, date payment_date, date accrual_start_date,
-                     date accrual_end_date, const IDayCounter& day_counter,
-                     const IIndex& index, double leverage, double margin);
+  CompoundedIborCoupon(double notional, string currency_code,
+                       vector<date> accrual_period_dates, date payment_date,
+                       const IDayCounter& day_counter, const IIndex& index,
+                       double leverage, double margin);
 
   ~CompoundedIborCoupon() = default;
 

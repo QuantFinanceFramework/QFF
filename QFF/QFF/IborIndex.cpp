@@ -1,20 +1,19 @@
 #include "IborIndex.h"
+#include <utility>
 
 namespace qff {
-IborIndex::IborIndex(const string& currency_code, const string& curve_name,
+IborIndex::IborIndex(string currency_code, string curve_name,
                      Period tenor, const IDayCounter& day_counter,
                      Period fixing_lag,
                      const ICalendar& fixing_calendar,
-                     const IBusinessDayConvention& convention,
-                      bool preserve_end_of_month)
-    : currency_code_{currency_code},
-      curve_name_{curve_name},
+                     const IBusinessDayConvention& convention)
+    : currency_code_{std::move(currency_code)},
+      curve_name_{std::move(curve_name)},
       tenor_{tenor},
       day_counter_(day_counter.Clone()),
       fixing_lag_{fixing_lag},
       fixing_calendar_(fixing_calendar.Clone()),
-      convention_(convention.Clone()),
-      preserve_end_of_month_{preserve_end_of_month} {}
+      convention_(convention.Clone()){}
 
 unique_ptr<IIndex> IborIndex::Clone() const { return unique_ptr<IIndex>(); }
 

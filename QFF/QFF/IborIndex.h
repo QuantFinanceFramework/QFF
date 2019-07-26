@@ -14,10 +14,10 @@ using std::unique_ptr;
 class IborIndex : public IIndex {
  public:
   IborIndex() = default;
-  IborIndex(const string& currency_code, const string& curve_name, Period tenor,
+  IborIndex(string currency_code, string curve_name, Period tenor,
             const IDayCounter& day_counter, Period fixing_lag,
             const ICalendar& fixing_calendar,
-            const IBusinessDayConvention& convention, bool preserve_end_of_month);
+            const IBusinessDayConvention& convention);
 
   ~IborIndex() = default;
 
@@ -36,6 +36,5 @@ class IborIndex : public IIndex {
   Period fixing_lag_;
   unique_ptr<ICalendar> fixing_calendar_;
   unique_ptr<IBusinessDayConvention> convention_;
-  bool preserve_end_of_month_;
 };
 }  // namespace qff

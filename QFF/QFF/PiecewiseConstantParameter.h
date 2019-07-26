@@ -8,7 +8,7 @@ using std::map;
 class PiecewiseConstantParameter : public IParameter {
  public:
   PiecewiseConstantParameter() = default;
-  PiecewiseConstantParameter(const map<double, double>& value);
+  PiecewiseConstantParameter(map<double, double> value);
 
   ~PiecewiseConstantParameter() = default;
 

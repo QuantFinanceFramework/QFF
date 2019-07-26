@@ -1,10 +1,11 @@
 #include "PiecewiseConstantParameter.h"
 #include <cmath>
+#include <utility>
 
 namespace qff {
 PiecewiseConstantParameter::PiecewiseConstantParameter(
-    const map<double, double>& value)
-    : value_{value} {}
+	map<double, double> value)
+    : value_{std::move(value)} {}
 
 double PiecewiseConstantParameter::operator[](double time) const {
   if (time < value_.begin()->first) return 0.0;

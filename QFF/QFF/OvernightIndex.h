@@ -13,7 +13,7 @@ using std::unique_ptr;
 class OvernightIndex : public IIndex {
  public:
   OvernightIndex() = default;
-  OvernightIndex(const string& currency_code, const string& curve_name,
+  OvernightIndex(string currency_code, string curve_name,
                  Period tenor, const IDayCounter& day_counter,
                  Period fixing_lag, Period publication_lag,
                  const ICalendar& fixing_calendar,

@@ -53,6 +53,8 @@
     <ClCompile Include="CompositeCalendarTest.cpp" />
     <ClCompile Include="ConstantParameterTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
+    <ClCompile Include="DiscountFactorCurveTest.cpp" />
+    <ClCompile Include="InterpolationTest.cpp" />
     <ClCompile Include="LondonCalendarTest.cpp" />
     <ClCompile Include="NewYorkCalendarTest.cpp" />
     <ClCompile Include="PeriodTest.cpp" />

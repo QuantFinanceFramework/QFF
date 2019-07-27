@@ -28,6 +28,12 @@
       <Filter>Calendar</Filter>
     </ClCompile>
     <ClCompile Include="PeriodTest.cpp" />
+    <ClCompile Include="DiscountFactorCurveTest.cpp">
+      <Filter>MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="InterpolationTest.cpp">
+      <Filter>Functions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">
@@ -56,6 +62,12 @@
     </Filter>
     <Filter Include="BusinessDayConventions">
       <UniqueIdentifier>{514b58bf-1863-412c-b4bf-a1687585e3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MarketData\Curves">
+      <UniqueIdentifier>{3083f942-d1ca-46b4-9476-d46d68383d40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Functions">
+      <UniqueIdentifier>{a2698424-7e39-473d-83fe-326fd1e62f17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

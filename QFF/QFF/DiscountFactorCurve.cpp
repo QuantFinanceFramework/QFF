@@ -1,18 +1,21 @@
 #include "DiscountFactorCurve.h"
+#include <algorithm>
 #include <cmath>
+#include <utility>
 
 namespace qff {
-DiscountFactorCurve::DiscountFactorCurve(date curve_date,
-                                         const vector<date>& dates,
+DiscountFactorCurve::DiscountFactorCurve(date curve_date, vector<date> dates,
                                          const vector<double>& discount_factors,
                                          const IInterpolator& interpolator,
-                                         const IDayCounter& day_counter) {}
-
-DiscountFactorCurve::DiscountFactorCurve(date curve_date,
-                                         const vector<date>& dates,
-                                         const vector<double>& discount_factors,
-                                         unique_ptr<IInterpolator> interpolator,
-                                         unique_ptr<IDayCounter> day_counter) {}
+                                         const IDayCounter& day_counter)
+    : curve_date_(curve_date),
+      dates_(std::move(dates)),
+      interpolator_(interpolator.Clone()),
+      day_counter_(day_counter.Clone()) {
+  std::transform(
+      dates_.begin(), dates_.end(), discount_factors.begin(),std::inserter(discount_factors_map_, discount_factors_map_.end()),
+      [&](auto d, auto df) { return std::make_pair(this->DateToTime(d), df); });
+}
 
 date DiscountFactorCurve::GetCurveDate() const { return curve_date_; }
 

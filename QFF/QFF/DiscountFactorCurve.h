@@ -14,15 +14,10 @@ class DiscountFactorCurve : public IInterestRateCurve {
  public:
   DiscountFactorCurve() = default;
 
-  DiscountFactorCurve(date curve_date, const vector<date>& dates,
+  DiscountFactorCurve(date curve_date, vector<date> dates,
                       const vector<double>& discount_factors,
                       const IInterpolator& interpolator,
                       const IDayCounter& day_counter);
-
-  DiscountFactorCurve(date curve_date, const vector<date>& dates,
-                      const vector<double>& discount_factors,
-                      unique_ptr<IInterpolator> interpolator,
-                      unique_ptr<IDayCounter> day_counter);
 
   ~DiscountFactorCurve() = default;
 

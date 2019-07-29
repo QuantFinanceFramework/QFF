@@ -14,9 +14,12 @@ class FixedCoupon : public ICashflow {
 
   ~FixedCoupon() = default;
 
-  double GetPaymentAmount(const IMarketData& market_data) const override;
+  Currency Evaluate(const IMarketData& market_data,
+                    const string& currency_code) const override;
 
   date GetPaymentDate() const override;
+
+  double GetPaymentAmount(const IMarketData& market_data) const override;
 
  private:
   double notional_{};

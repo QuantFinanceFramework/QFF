@@ -10,6 +10,6 @@ class Actual365 : public IDayCounter {
   unique_ptr<IDayCounter> Clone() const override;
 
   double CalculateYearFraction(const date& start_date,
-                               const date& end_date) const override;
+                               const date& end_date, const bool& is_maturity = false) const override;
 };
 }  // namespace qff

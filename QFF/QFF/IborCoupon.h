@@ -18,6 +18,9 @@ class IborCoupon : public ICashflow {
 
   ~IborCoupon() = default;
 
+  Currency Evaluate(const IMarketData& market_data,
+                    const string& currency_code) const override;
+
   double GetPaymentAmount(const IMarketData& market_data) const override;
 
   date GetPaymentDate() const override;

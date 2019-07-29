@@ -8,7 +8,11 @@ class FixedCashflow : public ICashflow {
                 string discount_curve_name);
   ~FixedCashflow() = default;
 
+  Currency Evaluate(const IMarketData& market_data,
+                    const string& currency_code) const override;
+
   date GetPaymentDate() const override;
+
   double GetPaymentAmount(const IMarketData& market_data) const override;
 
  private:

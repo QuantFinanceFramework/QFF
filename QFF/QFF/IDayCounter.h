@@ -14,6 +14,6 @@ class IDayCounter {
   virtual unique_ptr<IDayCounter> Clone() const = 0;
 
   virtual double CalculateYearFraction(const date& start_date,
-                                       const date& end_date) const = 0;
+                                       const date& end_date, const bool& is_maturity = false) const = 0;
 };
 }  // namespace qff

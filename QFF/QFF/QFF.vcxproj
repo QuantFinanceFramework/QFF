@@ -195,6 +195,7 @@
     <ClInclude Include="SobolNormalRsg.h" />
     <ClInclude Include="Swap.h" />
     <ClInclude Include="SydneyCalendar.h" />
+    <ClInclude Include="Thirty360Isda.h" />
     <ClInclude Include="Unadjusted.h" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +234,7 @@
     <ClCompile Include="Swap.cpp" />
     <ClCompile Include="Leg.cpp" />
     <ClCompile Include="SydenyCalendar.cpp" />
+    <ClCompile Include="Thirty360Isda.cpp" />
     <ClCompile Include="Unadjusted.cpp" />
   </ItemGroup>
   <ItemGroup>

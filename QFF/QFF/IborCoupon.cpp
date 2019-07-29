@@ -20,11 +20,19 @@ IborCoupon::IborCoupon(double notional, string currency_code,
       leverage_(leverage),
       margin_(margin) {}
 
-double IborCoupon::GetPaymentAmount(const IMarketData& market_data) const {
-  return notional_ * GetRate(market_data) * accrual_factor_;
+Currency IborCoupon::Evaluate(const IMarketData& market_data,
+                              const string& currency_code) const {
+  const auto discount_factor =
+      market_data.GetDiscountFactor(discount_curve_name_, payment_date_);
+  const auto npv = GetPaymentAmount(market_data) * discount_factor;
+  return Currency(currency_code, npv);
 }
 
 date IborCoupon::GetPaymentDate() const { return payment_date_; }
+
+double IborCoupon::GetPaymentAmount(const IMarketData& market_data) const {
+  return notional_ * GetRate(market_data) * accrual_factor_;
+}
 
 double IborCoupon::GetRate(const IMarketData& market_data) const {
   return leverage_ * index_->GetRate(accrual_start_date_, market_data) +

@@ -21,7 +21,7 @@ class Leg : public IProduct {
 
   ~Leg() = default;
 
-  Currency evaluate(const IMarketData& market_data,
+  Currency Evaluate(const IMarketData& market_data,
                     const string& currency_code) const override;
 
  private:

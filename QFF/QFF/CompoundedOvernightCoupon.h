@@ -23,6 +23,11 @@ class CompoundedOvernightCoupon : public ICashflow {
 
   ~CompoundedOvernightCoupon() = default;
 
+  Currency Evaluate(const IMarketData& market_data,
+                    const string& currency_code) const override;
+
+  date GetPaymentDate() const override;
+
   double GetPaymentAmount(const IMarketData& market_data) const override;
 
  private:

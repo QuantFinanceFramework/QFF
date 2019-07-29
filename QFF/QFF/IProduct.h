@@ -11,7 +11,7 @@ class IProduct {
   IProduct() = default;
   virtual ~IProduct() = default;
 
-  virtual Currency evaluate(const IMarketData& market_data,
+  virtual Currency Evaluate(const IMarketData& market_data,
                             const string& currency_code) const = 0;
 };
 }  // namespace qff

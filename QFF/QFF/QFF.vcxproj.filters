@@ -237,6 +237,9 @@
     <ClInclude Include="ICashflow.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
+    <ClInclude Include="Thirty360Isda.h">
+      <Filter>Header Files\DayCounter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -346,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="IborCoupon.cpp">
       <Filter>Source Files\Products\Cashflows</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirty360Isda.cpp">
+      <Filter>Source Files\DayCounter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

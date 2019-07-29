@@ -42,9 +42,6 @@
     <Filter Include="Pricer">
       <UniqueIdentifier>{2736c6cf-006d-4ac9-98d0-a0165a3ccf0f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Instrument">
-      <UniqueIdentifier>{968c60ad-5197-46fa-8ee5-598e512976c3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Currency">
       <UniqueIdentifier>{5723084b-20d5-4efb-9724-586e074c0470}</UniqueIdentifier>
     </Filter>
@@ -71,6 +68,9 @@
     </Filter>
     <Filter Include="Functions">
       <UniqueIdentifier>{a2698424-7e39-473d-83fe-326fd1e62f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Products">
+      <UniqueIdentifier>{deb7c829-22c0-44bc-88d4-3dc5a7c1ab4c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

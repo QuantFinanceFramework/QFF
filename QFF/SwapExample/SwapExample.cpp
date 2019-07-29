@@ -1,6 +1,5 @@
 #include <Actual360.h>
 #include <Actual365.h>
-#include <Thirty360Isda.h>
 #include <CurveInterpolator.h>
 #include <DiscountFactorCurve.h>
 #include <FixedCoupon.h>
@@ -12,6 +11,7 @@
 #include <MarketData.h>
 #include <ModifiedFollowing.h>
 #include <Swap.h>
+#include <Thirty360Isda.h>
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -107,8 +107,7 @@ int main() {
                 0.36547586490803};
 
   auto fed_funds = std::make_unique<DiscountFactorCurve>(
-      market_date, std::move(ff_pillars), ff_dfs, interpolator,
-      day_counter);
+      market_date, std::move(ff_pillars), ff_dfs, interpolator, day_counter);
 
   map<string, unique_ptr<IInterestRateCurve>> curve_set;
   curve_set.emplace(std::make_pair("USD_LIBOR_3M", std::move(usd_libor_3m)));
@@ -116,7 +115,7 @@ int main() {
 
   map<string, map<date, double>> past_fixing_set{std::make_pair(
       "USD_LIBOR_3M",
-      map<date, double>{std::make_pair(date(2019, 3, 19), 0.0261275)})};
+      map<date, double>{std::make_pair(date(2019, 3, 19), 0.0263263)})};
 
   const MarketData market{market_date, std::move(curve_set),
                           std::move(past_fixing_set)};
@@ -125,7 +124,7 @@ int main() {
                            "USD_LIBOR_3M",
                            Period{3, TimeUnit::m},
                            Actual360(),
-                           Period{2, TimeUnit::b},
+                           Period{-2, TimeUnit::b},
                            LondonCalendar(),
                            ModifiedFollowing()};
 
@@ -139,9 +138,39 @@ int main() {
       1000000.0, "USD", date(2019, 9, 23), date(2020, 3, 23), date(2020, 3, 23),
       discount_curve_name, Thirty360Isda(), 0.024717703);
 
+  auto fixed_cf3 = std::make_unique<FixedCoupon>(
+      1000000.0, "USD", date(2020, 3, 23), date(2020, 9, 21), date(2020, 9, 21),
+      discount_curve_name, Thirty360Isda(), 0.024717703);
+
+  auto fixed_cf4 = std::make_unique<FixedCoupon>(
+      1000000.0, "USD", date(2020, 9, 21), date(2021, 3, 22), date(2021, 3, 22),
+      discount_curve_name, Thirty360Isda(), 0.024717703);
+
+  auto fixed_cf5 = std::make_unique<FixedCoupon>(
+      1000000.0, "USD", date(2021, 3, 22), date(2021, 9, 21), date(2021, 9, 21),
+      discount_curve_name, Thirty360Isda(), 0.024717703);
+
+  auto fixed_cf6 = std::make_unique<FixedCoupon>(
+      1000000.0, "USD", date(2021, 9, 21), date(2022, 3, 21), date(2022, 3, 21),
+      discount_curve_name, Thirty360Isda(), 0.024717703);
+
+  auto fixed_cf7 = std::make_unique<FixedCoupon>(
+      1000000.0, "USD", date(2022, 3, 21), date(2022, 9, 21), date(2022, 9, 21),
+      discount_curve_name, Thirty360Isda(), 0.024717703);
+
+  auto fixed_cf8 = std::make_unique<FixedCoupon>(
+      1000000.0, "USD", date(2022, 9, 21), date(2023, 3, 21), date(2023, 3, 21),
+      discount_curve_name, Thirty360Isda(), 0.024717703);
+
   vector<unique_ptr<ICashflow>> fixed_cf_collection{};
   fixed_cf_collection.emplace_back(std::move(fixed_cf1));
   fixed_cf_collection.emplace_back(std::move(fixed_cf2));
+  fixed_cf_collection.emplace_back(std::move(fixed_cf3));
+  fixed_cf_collection.emplace_back(std::move(fixed_cf4));
+  fixed_cf_collection.emplace_back(std::move(fixed_cf5));
+  fixed_cf_collection.emplace_back(std::move(fixed_cf6));
+  fixed_cf_collection.emplace_back(std::move(fixed_cf7));
+  fixed_cf_collection.emplace_back(std::move(fixed_cf8));
 
   Leg fixed_leg{std::move(fixed_cf_collection)};
 
@@ -164,11 +193,80 @@ int main() {
       date(2020, 3, 23), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
+  auto floating_cf5 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2020, 3, 23), date(2020, 6, 22), date(2020, 6, 22),
+      discount_curve_name, Actual360(), libor_3m_index, 1.0, 0.0);
+
+  auto floating_cf6 = std::make_unique<IborCoupon>(
+      1000000.0, string("USD"), date(2020, 6, 22), date(2020, 9, 21),
+      date(2020, 9, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
+  auto floating_cf7 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2020, 9, 21), date(2020, 12, 21),
+      date(2020, 12, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
+  auto floating_cf8 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2020, 12, 21), date(2021, 3, 22),
+      date(2021, 3, 22), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
+	  auto floating_cf9 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2021, 3, 22), date(2021, 6, 21), date(2021, 6, 21),
+      discount_curve_name, Actual360(), libor_3m_index, 1.0, 0.0);
+
+  auto floating_cf10 = std::make_unique<IborCoupon>(
+      1000000.0, string("USD"), date(2021, 6, 21), date(2021, 9, 21),
+      date(2021, 9, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
+  auto floating_cf11 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2021, 9, 21), date(2021, 12, 21),
+      date(2021, 12, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
+  auto floating_cf12 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2021, 12, 21), date(2022, 3, 21),
+      date(2022, 3, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
+  auto floating_cf13 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2022, 3, 21), date(2022, 6, 21), date(2022, 6, 21),
+      discount_curve_name, Actual360(), libor_3m_index, 1.0, 0.0);
+
+  auto floating_cf14 = std::make_unique<IborCoupon>(
+      1000000.0, string("USD"), date(2022, 6, 21), date(2022, 9, 21),
+      date(2022, 9, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
+  auto floating_cf15 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2022, 9, 21), date(2022, 12, 21),
+      date(2022, 12, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
+  auto floating_cf16 = std::make_unique<IborCoupon>(
+      1000000.0, "USD", date(2022, 12, 21), date(2023, 3, 21),
+      date(2023, 3, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
+      0.0);
+
   vector<unique_ptr<ICashflow>> floating_cf_collection{};
   floating_cf_collection.emplace_back(std::move(floating_cf1));
   floating_cf_collection.emplace_back(std::move(floating_cf2));
   floating_cf_collection.emplace_back(std::move(floating_cf3));
   floating_cf_collection.emplace_back(std::move(floating_cf4));
+  floating_cf_collection.emplace_back(std::move(floating_cf5));
+  floating_cf_collection.emplace_back(std::move(floating_cf6));
+  floating_cf_collection.emplace_back(std::move(floating_cf7));
+  floating_cf_collection.emplace_back(std::move(floating_cf8));
+  floating_cf_collection.emplace_back(std::move(floating_cf9));
+  floating_cf_collection.emplace_back(std::move(floating_cf10));
+  floating_cf_collection.emplace_back(std::move(floating_cf11));
+  floating_cf_collection.emplace_back(std::move(floating_cf12));
+  floating_cf_collection.emplace_back(std::move(floating_cf13));
+  floating_cf_collection.emplace_back(std::move(floating_cf14));
+  floating_cf_collection.emplace_back(std::move(floating_cf15));
+  floating_cf_collection.emplace_back(std::move(floating_cf16));
 
   Leg floating_leg{std::move(floating_cf_collection)};
 

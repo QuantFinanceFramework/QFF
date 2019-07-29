@@ -13,9 +13,20 @@ DiscountFactorCurve::DiscountFactorCurve(date curve_date, vector<date> dates,
       interpolator_(interpolator.Clone()),
       day_counter_(day_counter.Clone()) {
   std::transform(
-      dates_.begin(), dates_.end(), discount_factors.begin(),std::inserter(discount_factors_map_, discount_factors_map_.end()),
+      dates_.begin(), dates_.end(), discount_factors.begin(),
+      std::inserter(discount_factors_map_, discount_factors_map_.end()),
       [&](auto d, auto df) { return std::make_pair(this->DateToTime(d), df); });
 }
+
+DiscountFactorCurve::DiscountFactorCurve(
+    date&& curve_date, vector<date>&& dates,
+    map<double, double>&& discount_factors_map,
+    unique_ptr<IInterpolator> interpolator, unique_ptr<IDayCounter> day_counter)
+    : curve_date_(curve_date),
+      dates_(dates),
+      discount_factors_map_(discount_factors_map),
+      interpolator_(std::move(interpolator)),
+      day_counter_(std::move(day_counter)) {}
 
 date DiscountFactorCurve::GetCurveDate() const { return curve_date_; }
 

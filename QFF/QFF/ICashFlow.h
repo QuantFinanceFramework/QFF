@@ -1,8 +1,9 @@
 #pragma once
 #include "IMarketData.h"
+#include "IProduct.h"
 
 namespace qff {
-class ICashflow {
+class ICashflow : public IProduct{
  public:
   ICashflow() = default;
   virtual ~ICashflow() = default;

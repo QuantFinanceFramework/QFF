@@ -52,6 +52,7 @@
     <ClCompile Include="BusinessDayConventionTest.cpp" />
     <ClCompile Include="CompositeCalendarTest.cpp" />
     <ClCompile Include="ConstantParameterTest.cpp" />
+    <ClCompile Include="CurrencyTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="DiscountFactorCurveTest.cpp" />
     <ClCompile Include="InterpolationTest.cpp" />

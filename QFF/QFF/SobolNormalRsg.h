@@ -19,7 +19,7 @@ class SobolNormalRsg : public INormalRandomSequenceGenerator {
   void SetDimension(size_t dimension) override;
 
  private:
-  size_t m_dimension;
+  size_t m_dimension{};
   boost::random::sobol m_engine;
   sobol_generator m_generator;
 };

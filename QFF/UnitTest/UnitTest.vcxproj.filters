@@ -34,6 +34,9 @@
     <ClCompile Include="InterpolationTest.cpp">
       <Filter>Functions</Filter>
     </ClCompile>
+    <ClCompile Include="CurrencyTest.cpp">
+      <Filter>Currency</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">

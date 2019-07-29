@@ -14,7 +14,7 @@ class ConstantParameter : public IParameter {
   double IntegralSquare(double time1, double time2) const override;
 
  private:
-  double value_;
-  double valueSquare_;
+  double value_{};
+  double valueSquare_{};
 };
 }  // namespace qff

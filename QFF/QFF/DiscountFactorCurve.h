@@ -19,6 +19,11 @@ class DiscountFactorCurve : public IInterestRateCurve {
                       const IInterpolator& interpolator,
                       const IDayCounter& day_counter);
 
+  DiscountFactorCurve(date&& curve_date, vector<date>&& dates,
+                      map<double, double>&& discount_factors_map,
+                      unique_ptr<IInterpolator> interpolator,
+                      unique_ptr<IDayCounter> day_counter);
+
   ~DiscountFactorCurve() = default;
 
   date GetCurveDate() const;

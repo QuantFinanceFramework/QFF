@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalendarExample", "Calendar
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SwapExample", "SwapExample\SwapExample.vcxproj", "{74EE8279-3B5B-4165-B852-00B7D60AE85C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OisExample", "OisExample\OisExample.vcxproj", "{A0179C20-8462-494E-A650-DA7FC36C1DEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{74EE8279-3B5B-4165-B852-00B7D60AE85C}.Release|x64.Build.0 = Release|x64
 		{74EE8279-3B5B-4165-B852-00B7D60AE85C}.Release|x86.ActiveCfg = Release|Win32
 		{74EE8279-3B5B-4165-B852-00B7D60AE85C}.Release|x86.Build.0 = Release|Win32
+		{A0179C20-8462-494E-A650-DA7FC36C1DEB}.Debug|x64.ActiveCfg = Debug|x64
+		{A0179C20-8462-494E-A650-DA7FC36C1DEB}.Debug|x64.Build.0 = Debug|x64
+		{A0179C20-8462-494E-A650-DA7FC36C1DEB}.Debug|x86.ActiveCfg = Debug|Win32
+		{A0179C20-8462-494E-A650-DA7FC36C1DEB}.Debug|x86.Build.0 = Debug|Win32
+		{A0179C20-8462-494E-A650-DA7FC36C1DEB}.Release|x64.ActiveCfg = Release|x64
+		{A0179C20-8462-494E-A650-DA7FC36C1DEB}.Release|x64.Build.0 = Release|x64
+		{A0179C20-8462-494E-A650-DA7FC36C1DEB}.Release|x86.ActiveCfg = Release|Win32
+		{A0179C20-8462-494E-A650-DA7FC36C1DEB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,6 +3,7 @@
 #include <vector>
 #include "FixedCoupon.h"
 #include "IborCoupon.h"
+#include "numeric"
 
 namespace qff {
 
@@ -51,7 +52,8 @@ unique_ptr<Swap> SwapScheduler::MakeInterestRateSwap(
       discount_curve_name, floating_frequency, floating_payment_calendar,
       floating_business_day_convention, floating_payment_lag,
       floating_day_counter, index, leverage, margin, is_front_stub, stub_date);
-  if (is_payer) return std::make_unique<Swap>(std::move(*floating), std::move(*fixed));
+  if (is_payer)
+    return std::make_unique<Swap>(std::move(*floating), std::move(*fixed));
   return std::make_unique<Swap>(std::move(*fixed), std::move(*floating));
 }
 
@@ -65,16 +67,11 @@ unique_ptr<Leg> SwapScheduler::MakeFixedLeg(
       MakeSchedule(settlement_date, maturity_date, frequency, payment_calendar,
                    convention, is_front_stub, stub_date);
 
-  vector<date> starts(size(schedule) - 1);
-  vector<date> ends(size(schedule) - 1);
-
-  std::copy(schedule.begin(), std::prev(schedule.end()), starts.begin());
-  std::copy(std::next(schedule.begin()), schedule.end(), ends.begin());
-
   vector<unique_ptr<ICashflow>> cf_collection;
 
-  std::transform(starts.begin(), starts.end(), ends.begin(),
-                 std::back_inserter(cf_collection), [&](auto start, auto end) {
+  std::transform(schedule.begin(), std::prev(schedule.end()),
+                 std::next(schedule.begin()), std::back_inserter(cf_collection),
+                 [&](auto start, auto end) {
                    return std::make_unique<FixedCoupon>(
                        notional, currency_code, start, end,
                        ShiftDate(end, payment_lag, payment_calendar),
@@ -93,22 +90,16 @@ unique_ptr<Leg> SwapScheduler::MakeFloatingLeg(
       MakeSchedule(settlement_date, maturity_date, frequency, payment_calendar,
                    convention, is_front_stub, stub_date);
 
-  vector<date> starts(size(schedule) - 1);
-  vector<date> ends(size(schedule) - 1);
-
-  std::copy(schedule.begin(), std::prev(schedule.end()), starts.begin());
-  std::copy(std::next(schedule.begin()), schedule.end(), ends.begin());
-
   vector<unique_ptr<ICashflow>> cf_collection;
 
-  std::transform(starts.begin(), starts.end(), ends.begin(),
-                 std::back_inserter(cf_collection), [&](auto start, auto end) {
-                   return std::make_unique<IborCoupon>(
-                       notional, currency_code, start, end,
-                       ShiftDate(end, payment_lag, payment_calendar),
-                       discount_curve_name, day_counter, index, leverage,
-                       margin);
-                 });
+  std::transform(
+      schedule.begin(), std::prev(schedule.end()), std::next(schedule.begin()),
+      std::back_inserter(cf_collection), [&](auto start, auto end) {
+        return std::make_unique<IborCoupon>(
+            notional, currency_code, start, end,
+            ShiftDate(end, payment_lag, payment_calendar), discount_curve_name,
+            day_counter, index, leverage, margin);
+      });
 
   return std::make_unique<Leg>(std::move(cf_collection));
 }

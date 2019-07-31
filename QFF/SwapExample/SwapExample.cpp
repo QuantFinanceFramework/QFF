@@ -289,5 +289,6 @@ int main() {
   auto npv2 = libor_3m_irs_generated->Evaluate(market, "USD");
   std::cout << "NPV from manual swap generation:  " << npv.amount << '\n';
   std::cout << "NPV from swap generator:  " << npv2.amount << '\n';
+
   return 0;
 }

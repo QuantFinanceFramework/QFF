@@ -31,7 +31,7 @@ class CompoundedOvernightCoupon : public ICashflow {
   double GetPaymentAmount(const IMarketData& market_data) const override;
 
  private:
-  static double GetRate(const IMarketData& market_data);
+  double GetRate(const IMarketData& market_data) const;
 
   double notional_{};
   string currency_code_;

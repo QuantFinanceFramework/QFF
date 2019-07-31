@@ -1,5 +1,6 @@
 #include <Actual360.h>
 #include <Actual365.h>
+#include <CompositeCalendar.h>
 #include <CurveInterpolator.h>
 #include <DiscountFactorCurve.h>
 #include <FixedCoupon.h>
@@ -10,7 +11,9 @@
 #include <LondonCalendar.h>
 #include <MarketData.h>
 #include <ModifiedFollowing.h>
+#include <NewYorkCalendar.h>
 #include <Swap.h>
+#include <SwapScheduler.h>
 #include <Thirty360Isda.h>
 #include <iostream>
 #include <memory>
@@ -212,7 +215,7 @@ int main() {
       date(2021, 3, 22), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-	  auto floating_cf9 = std::make_unique<IborCoupon>(
+  auto floating_cf9 = std::make_unique<IborCoupon>(
       1000000.0, "USD", date(2021, 3, 22), date(2021, 6, 21), date(2021, 6, 21),
       discount_curve_name, Actual360(), libor_3m_index, 1.0, 0.0);
 
@@ -270,10 +273,21 @@ int main() {
 
   Leg floating_leg{std::move(floating_cf_collection)};
 
-  Swap libor_3m_irs{std::move(fixed_leg), std::move(floating_leg)};
+  Swap libor_3m_irs_manual{std::move(fixed_leg), std::move(floating_leg)};
 
-  auto npv = libor_3m_irs.Evaluate(market, "USD");
+  auto libor_3m_irs_generated = SwapScheduler::MakeInterestRateSwap(
+      "USD", 1000000.0, date(2019, 3, 21), date(2023, 3, 21), false,
+      discount_curve_name, Frequency::Semiannually,
+      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
+      ModifiedFollowing(), Period{0, TimeUnit::b}, Thirty360Isda(), 0.024717703,
+      Frequency::Quarterly,
+      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
+      ModifiedFollowing(), Period{0, TimeUnit::b}, Actual360(), libor_3m_index,
+      1.0, 0.0, true, date(2019, 3, 21), 0.0);
 
-  std::cout << npv.amount << '/n';
+  auto npv = libor_3m_irs_manual.Evaluate(market, "USD");
+  auto npv2 = libor_3m_irs_generated->Evaluate(market, "USD");
+  std::cout << "NPV from manual swap generation:  " << npv.amount << '\n';
+  std::cout << "NPV from swap generator:  " << npv2.amount << '\n';
   return 0;
 }

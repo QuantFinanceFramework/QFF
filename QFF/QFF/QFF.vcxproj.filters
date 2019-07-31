@@ -240,6 +240,9 @@
     <ClInclude Include="Thirty360Isda.h">
       <Filter>Header Files\DayCounter</Filter>
     </ClInclude>
+    <ClInclude Include="SwapScheduler.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -352,6 +355,9 @@
     </ClCompile>
     <ClCompile Include="Thirty360Isda.cpp">
       <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapScheduler.cpp">
+      <Filter>Source Files\Products</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

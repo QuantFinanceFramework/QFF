@@ -37,6 +37,9 @@
     <ClCompile Include="CurrencyTest.cpp">
       <Filter>Currency</Filter>
     </ClCompile>
+    <ClCompile Include="SwapSchedulerTest.cpp">
+      <Filter>Products</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">

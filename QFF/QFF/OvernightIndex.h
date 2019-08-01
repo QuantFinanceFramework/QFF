@@ -13,10 +13,9 @@ using std::unique_ptr;
 class OvernightIndex : public IIndex {
  public:
   OvernightIndex() = default;
-  OvernightIndex(string currency_code, string curve_name,
-                 Period tenor, const IDayCounter& day_counter,
-                 Period fixing_lag, Period publication_lag,
-                 const ICalendar& fixing_calendar,
+  OvernightIndex(string currency_code, string curve_name, Period tenor,
+                 const IDayCounter& day_counter, Period fixing_lag,
+                 Period publication_lag, const ICalendar& fixing_calendar,
                  const IBusinessDayConvention& convention);
 
   ~OvernightIndex() = default;
@@ -26,9 +25,9 @@ class OvernightIndex : public IIndex {
   double GetRate(const date& start_date,
                  const IMarketData& market_data) const override;
 
- private:
-  date GetFixingDate(const date& start_date) const;
+  date GetFixingDate(const date& start_date) const override;
 
+ private:
   string currency_code_;
   string curve_name_;
   Period tenor_{};

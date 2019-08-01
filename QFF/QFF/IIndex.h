@@ -15,5 +15,6 @@ class IIndex {
   virtual unique_ptr<IIndex> Clone() const = 0;
 
   virtual double GetRate(const date& start_date, const IMarketData& market_data) const = 0;
+  virtual date GetFixingDate(const date& start_date) const = 0;
 };
 }  // namespace qff

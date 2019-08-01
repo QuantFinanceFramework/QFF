@@ -26,9 +26,9 @@ class IborIndex : public IIndex {
   double GetRate(const date& start_date,
                  const IMarketData& market_data) const override;
 
- private:
-  date GetFixingDate(const date& start_date) const;
+  date GetFixingDate(const date& start_date) const override;
 
+ private:
   string currency_code_;
   string curve_name_;
   Period tenor_{};

@@ -116,8 +116,7 @@ int main() {
                   date(2019, 6, 6),  date(2019, 6, 7),  date(2019, 6, 10),
                   date(2019, 6, 11), date(2019, 6, 12), date(2019, 6, 13),
                   date(2019, 6, 14), date(2019, 6, 17), date(2019, 6, 18),
-                  date(2019, 6, 19), date(2019, 6, 20), date(2019, 6, 21),
-                  date(2019, 6, 24)};
+                  date(2019, 6, 19), date(2019, 6, 20), date(2019, 6, 21)};
 
   auto floating_cf1 = std::make_unique<CompoundedOvernightCoupon>(
       1000000.0, "USD", accruals, date(2019, 6, 25), discount_curve_name,

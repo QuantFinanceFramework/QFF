@@ -40,7 +40,7 @@ double CompoundedOvernightCoupon::GetPaymentAmount(
     const IMarketData& market_data) const {
   return notional_ * GetRate(market_data) *
          day_counter_->CalculateYearFraction(*accrual_period_dates_.begin(),
-                                             *std::prev(std::prev(accrual_period_dates_.end())));
+                                             accrual_period_dates_.back());
 }
 
 double CompoundedOvernightCoupon::GetRate(

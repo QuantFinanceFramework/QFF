@@ -5,7 +5,6 @@
 #include "IDayCounter.h"
 #include "IIndex.h"
 #include "IMarketData.h"
-#include "Period.h"
 
 namespace qff {
 using std::unique_ptr;
@@ -18,7 +17,7 @@ class AveragedOvernightCoupon : public ICashflow {
                           vector<date> accrual_period_dates, date payment_date,
                           string discount_curve_name,
                           const IDayCounter& day_counter, const IIndex& index,
-                          double leverage, double margin, Period rate_cut_off);
+                          double leverage, double margin);
 
   ~AveragedOvernightCoupon() = default;
 
@@ -30,7 +29,7 @@ class AveragedOvernightCoupon : public ICashflow {
   double GetPaymentAmount(const IMarketData& market_data) const override;
 
  private:
-  static double GetRate(const IMarketData& market_data);
+  double GetRate(const IMarketData& market_data) const;
 
   double notional_{};
   string currency_code_;
@@ -42,6 +41,5 @@ class AveragedOvernightCoupon : public ICashflow {
   unique_ptr<IIndex> index_;
   double leverage_{};
   double margin_{};
-  Period rate_cut_off_{};
 };
 }  // namespace qff

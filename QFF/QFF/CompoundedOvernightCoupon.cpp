@@ -6,8 +6,7 @@ CompoundedOvernightCoupon::CompoundedOvernightCoupon(
     double notional, string currency_code, vector<date> accrual_period_dates,
     date payment_date, string discount_curve_name,
     const IDayCounter& day_counter, const IIndex& index, double leverage,
-    double margin, Period rate_cut_off)
-    : notional_(notional),
+    double margin) : notional_(notional),
       currency_code_(std::move(currency_code)),
       accrual_period_dates_(std::move(accrual_period_dates)),
       accrual_factors_(size(accrual_period_dates_) - 1),
@@ -16,8 +15,7 @@ CompoundedOvernightCoupon::CompoundedOvernightCoupon(
       day_counter_(day_counter.Clone()),
       index_(index.Clone()),
       leverage_(leverage),
-      margin_(margin),
-      rate_cut_off_(rate_cut_off) {
+      margin_(margin) {
   std::transform(accrual_period_dates_.begin(),
                  std::prev(accrual_period_dates_.end()),
                  std::next(accrual_period_dates_.begin()),

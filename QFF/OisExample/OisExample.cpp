@@ -13,7 +13,6 @@
 #include <Swap.h>
 #include <SwapScheduler.h>
 #include <memory>
-#include <numeric>
 #include <vector>
 
 using namespace qff;
@@ -120,7 +119,7 @@ int main() {
 
   auto floating_cf1 = std::make_unique<CompoundedOvernightCoupon>(
       1000000.0, "USD", accruals, date(2019, 6, 25), discount_curve_name,
-      Actual360(), ff_index, 1.0, 0.0, Period{0, TimeUnit::b});
+      Actual360(), ff_index, 1.0, 0.0);
 
   vector<unique_ptr<ICashflow>> floating_cf_collection{};
   floating_cf_collection.emplace_back(std::move(floating_cf1));

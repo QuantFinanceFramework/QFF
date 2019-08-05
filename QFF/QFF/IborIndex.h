@@ -14,27 +14,27 @@ using std::unique_ptr;
 class IborIndex : public IIndex {
  public:
   IborIndex() = default;
-  IborIndex(string currency_code, string curve_name, Period tenor,
+  IborIndex(string currency_code, string curve_name,
             const IDayCounter& day_counter, Period fixing_lag,
             const ICalendar& fixing_calendar,
-            const IBusinessDayConvention& convention);
+            const IBusinessDayConvention& convention, Period tenor);
 
   ~IborIndex() = default;
 
   unique_ptr<IIndex> Clone() const override;
 
-  double GetRate(const date& start_date,
+  double GetRate(const date& accrual_start, const date& accrual_end,
                  const IMarketData& market_data) const override;
 
-  date GetFixingDate(const date& start_date) const override;
-
  private:
+  date GetFixingDate(const date& start_date) const;
+
   string currency_code_;
   string curve_name_;
-  Period tenor_{};
   unique_ptr<IDayCounter> day_counter_;
   Period fixing_lag_{};
   unique_ptr<ICalendar> fixing_calendar_;
   unique_ptr<IBusinessDayConvention> convention_;
+  Period tenor_;
 };
 }  // namespace qff

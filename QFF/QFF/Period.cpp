@@ -21,6 +21,11 @@ Period& Period::operator-=(const Period& rhs) {
   throw std::logic_error{"Different unit used in Period arithmetic"};
 }
 
+Period& Period::operator-() {
+  this->length *= -1;
+  return *this;
+}
+
 Period operator+(const Period& lhs, const Period& rhs) {
   if (lhs.unit == rhs.unit) return Period(lhs.length + rhs.length, lhs.unit);
   throw std::logic_error{"Different unit used in Period arithmetic"};

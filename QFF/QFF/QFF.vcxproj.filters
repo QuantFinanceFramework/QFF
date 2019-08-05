@@ -213,25 +213,10 @@
     <ClInclude Include="Period.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OvernightIndex.h">
-      <Filter>Header Files\Indices</Filter>
-    </ClInclude>
-    <ClInclude Include="AveragedOvernightCoupon.h">
-      <Filter>Header Files\Products\Cashflows</Filter>
-    </ClInclude>
-    <ClInclude Include="CompoundedIborCoupon.h">
-      <Filter>Header Files\Products\Cashflows</Filter>
-    </ClInclude>
-    <ClInclude Include="CompoundedOvernightCoupon.h">
-      <Filter>Header Files\Products\Cashflows</Filter>
-    </ClInclude>
     <ClInclude Include="FixedCashflow.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
     <ClInclude Include="FixedCoupon.h">
-      <Filter>Header Files\Products\Cashflows</Filter>
-    </ClInclude>
-    <ClInclude Include="IborCoupon.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
     <ClInclude Include="ICashflow.h">
@@ -242,6 +227,12 @@
     </ClInclude>
     <ClInclude Include="SwapScheduler.h">
       <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="CompoundedOvernightIndex.h">
+      <Filter>Header Files\Indices</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatingCoupon.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -332,25 +323,10 @@
     <ClCompile Include="Period.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OvernightIndex.cpp">
-      <Filter>Source Files\Indices</Filter>
-    </ClCompile>
-    <ClCompile Include="AveragedOvernightCoupon.cpp">
-      <Filter>Source Files\Products\Cashflows</Filter>
-    </ClCompile>
-    <ClCompile Include="CompoundedIborCoupon.cpp">
-      <Filter>Source Files\Products\Cashflows</Filter>
-    </ClCompile>
-    <ClCompile Include="CompoundedOvernightCoupon.cpp">
-      <Filter>Source Files\Products\Cashflows</Filter>
-    </ClCompile>
     <ClCompile Include="FixedCashflow.cpp">
       <Filter>Source Files\Products\Cashflows</Filter>
     </ClCompile>
     <ClCompile Include="FixedCoupon.cpp">
-      <Filter>Source Files\Products\Cashflows</Filter>
-    </ClCompile>
-    <ClCompile Include="IborCoupon.cpp">
       <Filter>Source Files\Products\Cashflows</Filter>
     </ClCompile>
     <ClCompile Include="Thirty360Isda.cpp">
@@ -358,6 +334,12 @@
     </ClCompile>
     <ClCompile Include="SwapScheduler.cpp">
       <Filter>Source Files\Products</Filter>
+    </ClCompile>
+    <ClCompile Include="CompoundedOvernightIndex.cpp">
+      <Filter>Source Files\Indices</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatingCoupon.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

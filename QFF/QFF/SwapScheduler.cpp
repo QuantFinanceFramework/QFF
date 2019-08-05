@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include "FixedCoupon.h"
-#include "IborCoupon.h"
+#include "FloatingCoupon.h"
 #include "numeric"
 
 namespace qff {
@@ -95,7 +95,7 @@ unique_ptr<Leg> SwapScheduler::MakeFloatingLeg(
   std::transform(
       schedule.begin(), std::prev(schedule.end()), std::next(schedule.begin()),
       std::back_inserter(cf_collection), [&](auto start, auto end) {
-        return std::make_unique<IborCoupon>(
+        return std::make_unique<FloatingCoupon>(
             notional, currency_code, start, end,
             ShiftDate(end, payment_lag, payment_calendar), discount_curve_name,
             day_counter, index, leverage, margin);

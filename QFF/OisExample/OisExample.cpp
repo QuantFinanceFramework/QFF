@@ -1,15 +1,15 @@
 #include <Actual360.h>
 #include <Actual365.h>
-#include <CompoundedOvernightCoupon.h>
+#include <CompoundedOvernightIndex.h>
 #include <CurveInterpolator.h>
 #include <DiscountFactorCurve.h>
 #include <FixedCoupon.h>
+#include <FloatingCoupon.h>
 #include <Interpolation.h>
 #include <Leg.h>
 #include <MarketData.h>
 #include <ModifiedFollowing.h>
 #include <NewYorkCalendar.h>
-#include <OvernightIndex.h>
 #include <Swap.h>
 #include <SwapScheduler.h>
 #include <memory>
@@ -71,55 +71,48 @@ int main() {
 
   map<string, map<date, double>> past_fixing_set{std::make_pair(
       "USD_FedFunds",
-      map<date, double>{std::make_pair(date(2019, 3, 19), 0.0263263)})};
+      map<date, double>{std::make_pair(date(2019, 3, 1), 0.024),
+                        std::make_pair(date(2019, 3, 2), 0.024),
+                        std::make_pair(date(2019, 3, 3), 0.024),
+                        std::make_pair(date(2019, 3, 4), 0.024),
+                        std::make_pair(date(2019, 3, 5), 0.024),
+                        std::make_pair(date(2019, 3, 6), 0.024),
+                        std::make_pair(date(2019, 3, 7), 0.024),
+                        std::make_pair(date(2019, 3, 8), 0.024),
+                        std::make_pair(date(2019, 3, 9), 0.024),
+                        std::make_pair(date(2019, 3, 10), 0.024),
+                        std::make_pair(date(2019, 3, 11), 0.024),
+                        std::make_pair(date(2019, 3, 12), 0.024),
+                        std::make_pair(date(2019, 3, 13), 0.024),
+                        std::make_pair(date(2019, 3, 14), 0.024),
+                        std::make_pair(date(2019, 3, 15), 0.024),
+                        std::make_pair(date(2019, 3, 18), 0.024),
+                        std::make_pair(date(2019, 3, 19), 0.024)})};
 
   const MarketData market{market_date, std::move(curve_set),
                           std::move(past_fixing_set)};
 
-  OvernightIndex ff_index{"USD",
-                          "USD_FedFunds",
-                          Period{1, TimeUnit::b},
-                          Actual360(),
-                          Period{0, TimeUnit::b},
-                          Period{1, TimeUnit::b},
-                          NewYorkCalendar(),
-                          ModifiedFollowing()};
+  CompoundedOvernightIndex comp_ff{"USD",
+                                   "USD_FedFunds",
+                                   Actual360(),
+                                   Period(0, TimeUnit::b),
+                                   Period(1, TimeUnit::b),
+                                   NewYorkCalendar(),
+                                   ModifiedFollowing(),
+                                   Period(0, TimeUnit::b)};
 
   string discount_curve_name{"USD_FedFunds"};
 
   auto fixed_cf1 = std::make_unique<FixedCoupon>(
-      1000000.0, "USD", date(2019, 3, 21), date(2019, 6, 21), date(2019, 6, 25),
+      1000000.0, "USD", date(2019, 3, 4), date(2019, 6, 4), date(2019, 6, 6),
       discount_curve_name, Actual360(), 0.04);
   vector<unique_ptr<ICashflow>> fixed_cf_collection{};
   fixed_cf_collection.emplace_back(std::move(fixed_cf1));
   Leg fixed_leg{std::move(fixed_cf_collection)};
 
-  vector accruals{date(2019, 3, 21), date(2019, 3, 22), date(2019, 3, 25),
-                  date(2019, 3, 26), date(2019, 3, 27), date(2019, 3, 28),
-                  date(2019, 3, 29), date(2019, 4, 1),  date(2019, 4, 2),
-                  date(2019, 4, 3),  date(2019, 4, 4),  date(2019, 4, 5),
-                  date(2019, 4, 8),  date(2019, 4, 9),  date(2019, 4, 10),
-                  date(2019, 4, 11), date(2019, 4, 12), date(2019, 4, 15),
-                  date(2019, 4, 16), date(2019, 4, 17), date(2019, 4, 18),
-                  date(2019, 4, 19), date(2019, 4, 22), date(2019, 4, 23),
-                  date(2019, 4, 24), date(2019, 4, 25), date(2019, 4, 26),
-                  date(2019, 4, 29), date(2019, 4, 30), date(2019, 5, 1),
-                  date(2019, 5, 2),  date(2019, 5, 3),  date(2019, 5, 6),
-                  date(2019, 5, 7),  date(2019, 5, 8),  date(2019, 5, 9),
-                  date(2019, 5, 10), date(2019, 5, 13), date(2019, 5, 14),
-                  date(2019, 5, 15), date(2019, 5, 16), date(2019, 5, 17),
-                  date(2019, 5, 20), date(2019, 5, 21), date(2019, 5, 22),
-                  date(2019, 5, 23), date(2019, 5, 24), date(2019, 5, 28),
-                  date(2019, 5, 29), date(2019, 5, 30), date(2019, 5, 31),
-                  date(2019, 6, 3),  date(2019, 6, 4),  date(2019, 6, 5),
-                  date(2019, 6, 6),  date(2019, 6, 7),  date(2019, 6, 10),
-                  date(2019, 6, 11), date(2019, 6, 12), date(2019, 6, 13),
-                  date(2019, 6, 14), date(2019, 6, 17), date(2019, 6, 18),
-                  date(2019, 6, 19), date(2019, 6, 20), date(2019, 6, 21)};
-
-  auto floating_cf1 = std::make_unique<CompoundedOvernightCoupon>(
-      1000000.0, "USD", accruals, date(2019, 6, 25), discount_curve_name,
-      Actual360(), ff_index, 1.0, 0.0);
+  auto floating_cf1 = std::make_unique<FloatingCoupon>(
+      1000000.0, "USD", date(2019, 3, 4), date(2019, 6, 4), date(2019, 6, 6),
+      discount_curve_name, Actual360(), comp_ff, 1, 0.0);
 
   vector<unique_ptr<ICashflow>> floating_cf_collection{};
   floating_cf_collection.emplace_back(std::move(floating_cf1));

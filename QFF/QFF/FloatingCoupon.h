@@ -8,15 +8,15 @@
 namespace qff {
 using std::unique_ptr;
 
-class IborCoupon : public ICashflow {
+class FloatingCoupon : public ICashflow {
  public:
-  IborCoupon() = default;
-  IborCoupon(double notional, string currency_code, date accrual_start_date,
+  FloatingCoupon() = default;
+  FloatingCoupon(double notional, string currency_code, date accrual_start_date,
              date accrual_end_date, date payment_date,
              string discount_curve_name, const IDayCounter& day_counter,
              const IIndex& index, double leverage, double margin);
 
-  ~IborCoupon() = default;
+  ~FloatingCoupon() = default;
 
   Currency Evaluate(const IMarketData& market_data,
                     const string& currency_code) const override;

@@ -16,6 +16,7 @@ struct Period {
 
   Period& operator+=(const Period& rhs);
   Period& operator-=(const Period& rhs);
+  Period& operator-();
 
   int length;
   TimeUnit unit;

@@ -4,7 +4,7 @@
 #include <CurveInterpolator.h>
 #include <DiscountFactorCurve.h>
 #include <FixedCoupon.h>
-#include <IborCoupon.h>
+#include <FloatingCoupon.h>
 #include <IborIndex.h>
 #include <Interpolation.h>
 #include <Leg.h>
@@ -125,11 +125,11 @@ int main() {
 
   IborIndex libor_3m_index{"USD",
                            "USD_LIBOR_3M",
-                           Period{3, TimeUnit::m},
                            Actual360(),
                            Period{-2, TimeUnit::b},
                            LondonCalendar(),
-                           ModifiedFollowing()};
+                           ModifiedFollowing(),
+                           Period{3, TimeUnit::m}};
 
   string discount_curve_name{"USD_FedFunds"};
 
@@ -177,78 +177,78 @@ int main() {
 
   Leg fixed_leg{std::move(fixed_cf_collection)};
 
-  auto floating_cf1 = std::make_unique<IborCoupon>(
+  auto floating_cf1 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2019, 3, 21), date(2019, 6, 21), date(2019, 6, 21),
       discount_curve_name, Actual360(), libor_3m_index, 1.0, 0.0);
 
-  auto floating_cf2 = std::make_unique<IborCoupon>(
+  auto floating_cf2 = std::make_unique<FloatingCoupon>(
       1000000.0, string("USD"), date(2019, 6, 21), date(2019, 9, 23),
       date(2019, 9, 23), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf3 = std::make_unique<IborCoupon>(
+  auto floating_cf3 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2019, 9, 23), date(2019, 12, 23),
       date(2019, 12, 23), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf4 = std::make_unique<IborCoupon>(
+  auto floating_cf4 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2019, 12, 23), date(2020, 3, 23),
       date(2020, 3, 23), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf5 = std::make_unique<IborCoupon>(
+  auto floating_cf5 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2020, 3, 23), date(2020, 6, 22), date(2020, 6, 22),
       discount_curve_name, Actual360(), libor_3m_index, 1.0, 0.0);
 
-  auto floating_cf6 = std::make_unique<IborCoupon>(
+  auto floating_cf6 = std::make_unique<FloatingCoupon>(
       1000000.0, string("USD"), date(2020, 6, 22), date(2020, 9, 21),
       date(2020, 9, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf7 = std::make_unique<IborCoupon>(
+  auto floating_cf7 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2020, 9, 21), date(2020, 12, 21),
       date(2020, 12, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf8 = std::make_unique<IborCoupon>(
+  auto floating_cf8 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2020, 12, 21), date(2021, 3, 22),
       date(2021, 3, 22), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf9 = std::make_unique<IborCoupon>(
+  auto floating_cf9 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2021, 3, 22), date(2021, 6, 21), date(2021, 6, 21),
       discount_curve_name, Actual360(), libor_3m_index, 1.0, 0.0);
 
-  auto floating_cf10 = std::make_unique<IborCoupon>(
+  auto floating_cf10 = std::make_unique<FloatingCoupon>(
       1000000.0, string("USD"), date(2021, 6, 21), date(2021, 9, 21),
       date(2021, 9, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf11 = std::make_unique<IborCoupon>(
+  auto floating_cf11 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2021, 9, 21), date(2021, 12, 21),
       date(2021, 12, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf12 = std::make_unique<IborCoupon>(
+  auto floating_cf12 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2021, 12, 21), date(2022, 3, 21),
       date(2022, 3, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf13 = std::make_unique<IborCoupon>(
+  auto floating_cf13 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2022, 3, 21), date(2022, 6, 21), date(2022, 6, 21),
       discount_curve_name, Actual360(), libor_3m_index, 1.0, 0.0);
 
-  auto floating_cf14 = std::make_unique<IborCoupon>(
+  auto floating_cf14 = std::make_unique<FloatingCoupon>(
       1000000.0, string("USD"), date(2022, 6, 21), date(2022, 9, 21),
       date(2022, 9, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf15 = std::make_unique<IborCoupon>(
+  auto floating_cf15 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2022, 9, 21), date(2022, 12, 21),
       date(2022, 12, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);
 
-  auto floating_cf16 = std::make_unique<IborCoupon>(
+  auto floating_cf16 = std::make_unique<FloatingCoupon>(
       1000000.0, "USD", date(2022, 12, 21), date(2023, 3, 21),
       date(2023, 3, 21), discount_curve_name, Actual360(), libor_3m_index, 1.0,
       0.0);

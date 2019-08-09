@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="Actual360.h" />
     <ClInclude Include="Actual365.h" />
+    <ClInclude Include="AveragedOvernightIndex.h" />
     <ClInclude Include="BaseCalendar.h" />
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h" />
     <ClInclude Include="Black76Formula.h" />
@@ -199,6 +200,7 @@
   <ItemGroup>
     <ClCompile Include="Actual360.cpp" />
     <ClCompile Include="Actual365.cpp" />
+    <ClCompile Include="AveragedOvernightIndex.cpp" />
     <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp" />
     <ClCompile Include="Black76Formula.cpp" />

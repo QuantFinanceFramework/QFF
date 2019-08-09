@@ -120,7 +120,20 @@ int main() {
   Leg floating_leg{std::move(floating_cf_collection)};
 
   Swap ois_manual{std::move(fixed_leg), std::move(floating_leg)};
+
+  auto ois_generated = SwapScheduler::MakeInterestRateSwap(
+      "USD", 1000000.0, date(2019, 3, 4), date(2019, 6, 4), false,
+      "USD_FedFunds", Frequency::Annually, NewYorkCalendar(),
+      ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.04,
+      Frequency::Annually, NewYorkCalendar(), ModifiedFollowing(),
+      Period(2, TimeUnit::b), Actual360(), comp_ff, 1, 0, true,
+      date(2019, 3, 4), 0.0);
+
   const auto npv = ois_manual.Evaluate(market, "USD");
   std::cout << npv.amount << '\n';
+
+  const auto npv2 = ois_generated->Evaluate(market, "USD");
+  std::cout << npv2.amount << '\n';
+
   return 0;
 }

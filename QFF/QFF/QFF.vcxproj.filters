@@ -234,6 +234,9 @@
     <ClInclude Include="FloatingCoupon.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
+    <ClInclude Include="AveragedOvernightIndex.h">
+      <Filter>Header Files\Indices</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -340,6 +343,9 @@
     </ClCompile>
     <ClCompile Include="FloatingCoupon.cpp">
       <Filter>Source Files\Products\Cashflows</Filter>
+    </ClCompile>
+    <ClCompile Include="AveragedOvernightIndex.cpp">
+      <Filter>Source Files\Indices</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

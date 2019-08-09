@@ -57,6 +57,36 @@ unique_ptr<Swap> SwapScheduler::MakeInterestRateSwap(
   return std::make_unique<Swap>(std::move(*fixed), std::move(*floating));
 }
 
+unique_ptr<Swap> SwapScheduler::MakeBasisSwap(
+    const string& currency_code, double notional, date settlement_date,
+    date maturity_date, const string& discount_curve_name,
+    Frequency r_leg_frequency, const ICalendar& r_leg_payment_calendar,
+    const IBusinessDayConvention& r_leg_business_day_convention,
+    Period r_leg_payment_lag, const IDayCounter& r_leg_day_counter,
+    const IIndex& r_leg_index, double r_leg_leverage, double r_leg_margin,
+    bool r_leg_is_front_stub, date r_leg_stub_date, double r_leg_stub_rate,
+    Frequency p_leg_frequency, const ICalendar& p_leg_payment_calendar,
+    const IBusinessDayConvention& p_leg_business_day_convention,
+    Period p_leg_payment_lag, const IDayCounter& p_leg_day_counter,
+    const IIndex& p_leg_index, double p_leg_leverage, double p_leg_margin,
+    bool p_leg_is_front_stub, date p_leg_stub_date, double p_leg_stub_rate) {
+  auto receive_leg = MakeFloatingLeg(
+      currency_code, notional, settlement_date, maturity_date,
+      discount_curve_name, r_leg_frequency, r_leg_payment_calendar,
+      r_leg_business_day_convention, r_leg_payment_lag, r_leg_day_counter,
+      r_leg_index, r_leg_leverage, r_leg_margin, r_leg_is_front_stub,
+      r_leg_stub_date);
+
+  auto pay_leg = MakeFloatingLeg(
+      currency_code, notional, settlement_date, maturity_date,
+      discount_curve_name, p_leg_frequency, p_leg_payment_calendar,
+      p_leg_business_day_convention, p_leg_payment_lag, p_leg_day_counter,
+      p_leg_index, p_leg_leverage, p_leg_margin, p_leg_is_front_stub,
+      p_leg_stub_date);
+
+  return std::make_unique<Swap>(std::move(*receive_leg), std::move(*pay_leg));
+}
+
 unique_ptr<Leg> SwapScheduler::MakeFixedLeg(
     const string& currency_code, double notional, date settlement_date,
     date maturity_date, const string& discount_curve_name, Frequency frequency,

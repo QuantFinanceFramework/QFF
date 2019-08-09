@@ -1,5 +1,6 @@
 #include <Actual360.h>
 #include <Actual365.h>
+#include <AveragedOvernightIndex.h>
 #include <CompositeCalendar.h>
 #include <CurveInterpolator.h>
 #include <DiscountFactorCurve.h>
@@ -289,6 +290,28 @@ int main() {
   auto npv2 = libor_3m_irs_generated->Evaluate(market, "USD");
   std::cout << "NPV from manual swap generation:  " << npv.amount << '\n';
   std::cout << "NPV from swap generator:  " << npv2.amount << '\n';
+
+  AveragedOvernightIndex averaged_ff{"USD",
+                                     "USD_FedFunds",
+                                     Actual360(),
+                                     Period(0, TimeUnit::b),
+                                     Period(1, TimeUnit::b),
+                                     NewYorkCalendar(),
+                                     ModifiedFollowing(),
+                                     Period(-2, TimeUnit::b)};
+
+  auto ff_swap = SwapScheduler::MakeBasisSwap(
+      "USD", 1000000.0, date(2019, 3, 21), date(2022, 3, 21), "USD_FedFunds",
+      Frequency::Quarterly,
+      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
+      ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), averaged_ff, 1,
+      0.00260025, true, date(2019, 3, 21), 0.0, Frequency::Quarterly,
+      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
+      ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), libor_3m_index,
+      1, 0.0, true, date(2019, 3, 21), 0.0);
+
+  auto npv3 = ff_swap->Evaluate(market, "USD");
+  std::cout << "NPV from Fed Fund Swap " << npv3.amount << '\n';
 
   return 0;
 }

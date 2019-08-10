@@ -36,6 +36,8 @@ Period operator-(const Period& lhs, const Period& rhs) {
   throw std::logic_error{"Different unit used in Period arithmetic"};
 }
 
+Period operator-(const Period& rhs) { return Period(-rhs.length, rhs.unit); }
+
 date ShiftDate(const date& original_date, const Period& period,
                const ICalendar& calendar,
                const IBusinessDayConvention& convention) {

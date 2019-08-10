@@ -5,7 +5,8 @@ namespace qff {
 AveragedOvernightIndex::AveragedOvernightIndex(
     string currency_code, string curve_name, const IDayCounter& day_counter,
     Period fixing_lag, Period publication_lag, const ICalendar& fixing_calendar,
-    const IBusinessDayConvention& convention, Period rate_cut_off)
+    const IBusinessDayConvention& convention, Period rate_cut_off,
+    bool is_approximation)
     : currency_code_{std::move(currency_code)},
       curve_name_{std::move(curve_name)},
       day_counter_(day_counter.Clone()),
@@ -13,75 +14,85 @@ AveragedOvernightIndex::AveragedOvernightIndex(
       publication_lag_{publication_lag},
       fixing_calendar_(fixing_calendar.Clone()),
       convention_(convention.Clone()),
-      rate_cut_off_{rate_cut_off} {};
+      rate_cut_off_{rate_cut_off},
+      is_approximation_(is_approximation){};
 
 unique_ptr<IIndex> AveragedOvernightIndex::Clone() const {
   return std::make_unique<AveragedOvernightIndex>(
       currency_code_, curve_name_, *day_counter_, fixing_lag_, publication_lag_,
-      *fixing_calendar_, *convention_, rate_cut_off_);
+      *fixing_calendar_, *convention_, rate_cut_off_, is_approximation_);
 }
 
 double AveragedOvernightIndex::GetRate(const date& accrual_start,
                                        const date& accrual_end,
                                        const IMarketData& market_data) const {
-  if (rate_dates_.empty()) {
-    GenerateRateDates(accrual_start, accrual_end);
-    GenerateFixingDates();
-    GenerateAccrualFactors();
-  }
-
   const auto year_fraction =
       day_counter_->CalculateYearFraction(accrual_start, accrual_end);
 
-  auto rate_sum = 0.0;
-
-  for (auto i = 0; i < size(fixing_dates_); ++i) {
-    if (fixing_dates_[i] < market_data.GetMarketDate()) {
-      rate_sum += market_data.GetPastFixing(curve_name_, fixing_dates_[i]) *
-                  accrual_factors_[i];
-    }
-    rate_sum +=
-        (market_data.GetDiscountFactor(curve_name_, rate_dates_[i]) /
-             market_data.GetDiscountFactor(curve_name_, rate_dates_[i + 1]) -
-         1.0);
+  if (accrual_start > ShiftDate(market_data.GetMarketDate(), publication_lag_,
+                                *fixing_calendar_) &&
+      is_approximation_) {
+    return (log(market_data.GetDiscountFactor(curve_name_, accrual_start)) -
+           log(market_data.GetDiscountFactor(curve_name_, accrual_end))) /
+               year_fraction;
   }
 
-  return rate_sum / year_fraction;
+  if (fixing_dates_.empty()) {
+    GenerateDates(accrual_start, accrual_end);
+  }
+
+  auto rate_sum = 0.0;
+
+  const auto itr =
+      std::upper_bound(fixing_dates_.begin(), fixing_dates_.end(),
+                       ShiftDate(market_data.GetMarketDate(), -publication_lag_,
+                                 *fixing_calendar_));
+
+  const auto averaged_past_rate = std::transform_reduce(
+      fixing_dates_.begin(), itr, accrual_factors_.begin(), 0.0, std::plus(),
+      [&](auto fixing_date, auto factor) {
+        return market_data.GetPastFixing(curve_name_, fixing_date) * factor;
+      });
+
+  const auto averaged_future_rate = std::transform_reduce(
+      itr, std::prev(fixing_dates_.end()), std::next(itr), 0.0, std::plus(),
+      [&](auto s, auto e) {
+        return (market_data.GetDiscountFactor(curve_name_, s) /
+                    market_data.GetDiscountFactor(curve_name_, e) -
+                1.0);
+      });
+
+  const auto last_future_rate =
+      (market_data.GetDiscountFactor(curve_name_, fixing_dates_.back()) /
+           market_data.GetDiscountFactor(curve_name_, accrual_end) -
+       1.0);
+
+  return (averaged_past_rate + averaged_future_rate + last_future_rate) /
+         year_fraction;
 }
 
 date AveragedOvernightIndex::GetFixingDate(const date& date) const {
   return ShiftDate(date, fixing_lag_, *fixing_calendar_);
 }
 
-void AveragedOvernightIndex::GenerateRateDates(const date& first_date,
-                                               const date& last_date) const {
-  rate_dates_.clear();
-  auto tmp_date = first_date;
+void AveragedOvernightIndex::GenerateDates(const date& accrual_start,
+                                           const date& accrual_end) const {
+  fixing_dates_.clear();
+  accrual_factors_.clear();
   const auto cut_off_date =
-      ShiftDate(last_date, rate_cut_off_, *fixing_calendar_);
+      ShiftDate(accrual_end, rate_cut_off_, *fixing_calendar_);
+  auto tmp_date = accrual_start;
   while (tmp_date <= cut_off_date) {
-    rate_dates_.emplace_back(tmp_date);
+    fixing_dates_.emplace_back(tmp_date);
     tmp_date = ShiftDate(tmp_date, Period(1, TimeUnit::b), *fixing_calendar_);
   }
-  if (cut_off_date != last_date) rate_dates_.emplace_back(last_date);
-}
-
-void AveragedOvernightIndex::GenerateFixingDates() const {
-  fixing_dates_.clear();
-  std::transform(rate_dates_.begin(), std::prev(rate_dates_.end()),
-                 std::back_inserter(fixing_dates_), [&](auto s) {
-                   return ShiftDate(s, fixing_lag_ + publication_lag_,
-                                    *fixing_calendar_);
-                 });
-}
-
-void AveragedOvernightIndex::GenerateAccrualFactors() const {
-  accrual_factors_.clear();
-  accrual_factors_.reserve(size(rate_dates_) - 1);
-  std::transform(rate_dates_.begin(), std::prev(rate_dates_.end()),
-                 std::next(rate_dates_.begin()),
+  accrual_factors_.reserve(size(fixing_dates_));
+  std::transform(fixing_dates_.begin(), std::prev(fixing_dates_.end()),
+                 std::next(fixing_dates_.begin()),
                  std::back_inserter(accrual_factors_), [&](auto s, auto e) {
                    return day_counter_->CalculateYearFraction(s, e);
                  });
+  accrual_factors_.emplace_back(
+      day_counter_->CalculateYearFraction(fixing_dates_.back(), accrual_end));
 }
 }  // namespace qff

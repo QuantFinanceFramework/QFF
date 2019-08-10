@@ -21,7 +21,7 @@ class AveragedOvernightIndex : public IIndex {
                            Period publication_lag,
                            const ICalendar& fixing_calendar,
                            const IBusinessDayConvention& convention,
-                           Period rate_cut_off);
+                           Period rate_cut_off, bool is_approximation);
 
   ~AveragedOvernightIndex() = default;
 
@@ -32,9 +32,7 @@ class AveragedOvernightIndex : public IIndex {
 
  private:
   date GetFixingDate(const date& date) const;
-  void GenerateRateDates(const date& first_date, const date& last_date) const;
-  void GenerateFixingDates() const;
-  void GenerateAccrualFactors() const;
+  void GenerateDates(const date& accrual_start, const date& accrual_end) const;
 
   string currency_code_;
   string curve_name_;
@@ -44,7 +42,7 @@ class AveragedOvernightIndex : public IIndex {
   unique_ptr<ICalendar> fixing_calendar_;
   unique_ptr<IBusinessDayConvention> convention_;
   Period rate_cut_off_;
-  mutable vector<date> rate_dates_;
+  bool is_approximation_;
   mutable vector<date> fixing_dates_;
   mutable vector<double> accrual_factors_;
 };

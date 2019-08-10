@@ -26,6 +26,8 @@ Period operator+(const Period& lhs, const Period& rhs);
 
 Period operator-(const Period& lhs, const Period& rhs);
 
+Period operator-(const Period& rhs);
+
 date ShiftDate(const date& original_date, const Period& period,
                const ICalendar& calendar,
                const IBusinessDayConvention& convention = Unadjusted());

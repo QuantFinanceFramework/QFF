@@ -40,7 +40,8 @@ class CompoundedOvernightIndex : public IIndex {
   Period publication_lag_{};
   unique_ptr<ICalendar> fixing_calendar_;
   unique_ptr<IBusinessDayConvention> convention_;
-  mutable vector<date> fixing_dates_;
+  mutable vector<date> accrual_dates_;
   mutable vector<double> accrual_factors_;
+  mutable vector<date> fixing_dates_;
 };
 }  // namespace qff

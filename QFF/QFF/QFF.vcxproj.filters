@@ -237,6 +237,9 @@
     <ClInclude Include="AveragedOvernightIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
+    <ClInclude Include="FlatZeroCurve.h">
+      <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -346,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="AveragedOvernightIndex.cpp">
       <Filter>Source Files\Indices</Filter>
+    </ClCompile>
+    <ClCompile Include="FlatZeroCurve.cpp">
+      <Filter>Source Files\MarketData\Curves</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

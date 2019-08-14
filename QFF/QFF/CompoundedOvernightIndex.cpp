@@ -25,10 +25,14 @@ double CompoundedOvernightIndex::GetRate(const date& accrual_start,
                                          const IMarketData& market_data) const {
   const auto year_fraction =
       day_counter_->CalculateYearFraction(accrual_start, accrual_end);
+  const auto rate_start =
+      ShiftDate(accrual_start, fixing_lag_, *fixing_calendar_);
+  const auto rate_end = ShiftDate(accrual_end, fixing_lag_, *fixing_calendar_);
 
-  if (accrual_start > ShiftDate(market_data.GetMarketDate(), publication_lag_, *fixing_calendar_)) {
-    return (market_data.GetDiscountFactor(curve_name_, accrual_start) /
-                market_data.GetDiscountFactor(curve_name_, accrual_end) -
+  if (rate_start > ShiftDate(market_data.GetMarketDate(), publication_lag_,
+                             *fixing_calendar_)) {
+    return (market_data.GetDiscountFactor(curve_name_, rate_start) /
+                market_data.GetDiscountFactor(curve_name_, rate_end) -
             1.0) /
            year_fraction;
   }
@@ -37,7 +41,8 @@ double CompoundedOvernightIndex::GetRate(const date& accrual_start,
     GenerateDates(accrual_start, accrual_end);
   }
 
-  const auto itr = std::upper_bound(fixing_dates_.begin(), fixing_dates_.end(),
+  const auto itr =
+      std::upper_bound(fixing_dates_.begin(), fixing_dates_.end(),
                        ShiftDate(market_data.GetMarketDate(), -publication_lag_,
                                  *fixing_calendar_));
 
@@ -56,21 +61,29 @@ double CompoundedOvernightIndex::GetRate(const date& accrual_start,
 
 void CompoundedOvernightIndex::GenerateDates(const date& accrual_start,
                                              const date& accrual_end) const {
-  fixing_dates_.clear();
+  accrual_dates_.clear();
   accrual_factors_.clear();
+  fixing_dates_.clear();
 
   auto tmp_date = accrual_start;
   while (tmp_date < accrual_end) {
-    fixing_dates_.emplace_back(tmp_date);
+    accrual_dates_.emplace_back(tmp_date);
     tmp_date = ShiftDate(tmp_date, Period(1, TimeUnit::b), *fixing_calendar_);
   }
-  accrual_factors_.reserve(size(fixing_dates_));
-  std::transform(fixing_dates_.begin(), std::prev(fixing_dates_.end()),
-                 std::next(fixing_dates_.begin()),
+
+  accrual_factors_.reserve(size(accrual_dates_));
+  std::transform(accrual_dates_.begin(), std::prev(accrual_dates_.end()),
+                 std::next(accrual_dates_.begin()),
                  std::back_inserter(accrual_factors_), [&](auto s, auto e) {
                    return day_counter_->CalculateYearFraction(s, e);
                  });
   accrual_factors_.emplace_back(
-      day_counter_->CalculateYearFraction(fixing_dates_.back(), accrual_end));
+      day_counter_->CalculateYearFraction(accrual_dates_.back(), accrual_end));
+
+  fixing_dates_.reserve(size(accrual_dates_));
+  std::transform(accrual_dates_.begin(), accrual_dates_.end(),
+                 std::back_inserter(fixing_dates_), [&](auto date) {
+                   return ShiftDate(date, fixing_lag_, *fixing_calendar_);
+                 });
 }
 }  // namespace qff

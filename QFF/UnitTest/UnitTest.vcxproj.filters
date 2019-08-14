@@ -40,6 +40,12 @@
     <ClCompile Include="SwapSchedulerTest.cpp">
       <Filter>Products</Filter>
     </ClCompile>
+    <ClCompile Include="IborIndexTest.cpp">
+      <Filter>Indices</Filter>
+    </ClCompile>
+    <ClCompile Include="CompoundedOvernightIndexTest.cpp">
+      <Filter>Indices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">
@@ -74,6 +80,9 @@
     </Filter>
     <Filter Include="Products">
       <UniqueIdentifier>{deb7c829-22c0-44bc-88d4-3dc5a7c1ab4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Indices">
+      <UniqueIdentifier>{b2cab2f0-32a6-4f42-bff0-d13c0ec8f883}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

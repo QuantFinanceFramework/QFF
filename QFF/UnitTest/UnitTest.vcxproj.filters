@@ -46,6 +46,9 @@
     <ClCompile Include="CompoundedOvernightIndexTest.cpp">
       <Filter>Indices</Filter>
     </ClCompile>
+    <ClCompile Include="AveragedOvernightIndexTest.cpp">
+      <Filter>Indices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pricer">

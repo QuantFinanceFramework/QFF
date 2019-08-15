@@ -49,6 +49,7 @@
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="AveragedOvernightIndexTest.cpp" />
     <ClCompile Include="BusinessDayConventionTest.cpp" />
     <ClCompile Include="CompositeCalendarTest.cpp" />
     <ClCompile Include="CompoundedOvernightIndexTest.cpp" />

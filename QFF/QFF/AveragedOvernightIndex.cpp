@@ -33,8 +33,8 @@ double AveragedOvernightIndex::GetRate(const date& accrual_start,
                                 *fixing_calendar_) &&
       is_approximation_) {
     return (log(market_data.GetDiscountFactor(curve_name_, accrual_start)) -
-           log(market_data.GetDiscountFactor(curve_name_, accrual_end))) /
-               year_fraction;
+            log(market_data.GetDiscountFactor(curve_name_, accrual_end))) /
+           year_fraction;
   }
 
   if (fixing_dates_.empty()) {
@@ -48,13 +48,13 @@ double AveragedOvernightIndex::GetRate(const date& accrual_start,
                        ShiftDate(market_data.GetMarketDate(), -publication_lag_,
                                  *fixing_calendar_));
 
-  const auto averaged_past_rate = std::transform_reduce(
+  const auto past_rate_sum = std::transform_reduce(
       fixing_dates_.begin(), itr, accrual_factors_.begin(), 0.0, std::plus(),
       [&](auto fixing_date, auto factor) {
         return market_data.GetPastFixing(curve_name_, fixing_date) * factor;
       });
 
-  const auto averaged_future_rate = std::transform_reduce(
+  const auto future_rate_sum = std::transform_reduce(
       itr, std::prev(fixing_dates_.end()), std::next(itr), 0.0, std::plus(),
       [&](auto s, auto e) {
         return (market_data.GetDiscountFactor(curve_name_, s) /
@@ -62,12 +62,19 @@ double AveragedOvernightIndex::GetRate(const date& accrual_start,
                 1.0);
       });
 
-  const auto last_future_rate =
-      (market_data.GetDiscountFactor(curve_name_, fixing_dates_.back()) /
-           market_data.GetDiscountFactor(curve_name_, accrual_end) -
-       1.0);
+  const auto last_fixing_start = fixing_dates_.back();
+  const auto last_fixing_end = ShiftDate(
+      fixing_dates_.back(), Period(1, TimeUnit::b), *fixing_calendar_);
+  const auto last_year_fraction =
+      day_counter_->CalculateYearFraction(last_fixing_start, last_fixing_end);
 
-  return (averaged_past_rate + averaged_future_rate + last_future_rate) /
+  const auto last_future_rate =
+      (market_data.GetDiscountFactor(curve_name_, last_fixing_start) /
+           market_data.GetDiscountFactor(curve_name_, last_fixing_end) -
+       1.0) /
+      last_year_fraction * accrual_factors_.back();
+
+  return (past_rate_sum + future_rate_sum + last_future_rate) /
          year_fraction;
 }
 

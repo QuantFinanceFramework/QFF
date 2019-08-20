@@ -116,6 +116,8 @@ int main() {
   curve_set.emplace(std::make_pair("USD_FedFunds", std::move(fed_funds)));
   curve_set.emplace(std::make_pair("USD_LIBOR_3M", std::move(usd_libor_3m)));
 
+  map<string, unique_ptr<ICreditCurve>> credit_curve_set;
+
   map<string, map<date, double>> past_fixing_set{
       std::make_pair("USD_FedFunds",
                      map{std::make_pair(date(2019, 3, 1), 0.024),
@@ -190,6 +192,7 @@ int main() {
                          std::make_pair(date(2019, 4, 10), 0.026035)})};
 
   const MarketData market{market_date, std::move(curve_set),
+                          std::move(credit_curve_set),
                           std::move(past_fixing_set)};
 
   CompoundedOvernightIndex comp_ff{"USD",

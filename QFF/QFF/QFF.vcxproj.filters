@@ -255,6 +255,9 @@
     <ClInclude Include="DateFunctions.h">
       <Filter>Header Files\Date</Filter>
     </ClInclude>
+    <ClInclude Include="CdsPremium.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -373,6 +376,9 @@
     </ClCompile>
     <ClCompile Include="DateFunctions.cpp">
       <Filter>Source Files\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="CdsPremium.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

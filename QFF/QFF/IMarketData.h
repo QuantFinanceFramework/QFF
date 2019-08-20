@@ -16,11 +16,8 @@ class IMarketData {
   virtual double GetDiscountFactor(const string& curve_name,
                                    const date& query_date) const = 0;
 
-  virtual double GetForwardRate(const string& curve_name, const date& start_date,
-                                const date& end_date) const = 0;
-
-  virtual double GetZeroRate(const string& curve_name,
-                             const date& query_date) const = 0;
+  virtual double GetSurvivalProbability(const string& curve_name,
+                                   const date& query_date) const = 0;
 
   virtual double GetPastFixing(const string& curve_name,
                                const date& query_date) const = 0;

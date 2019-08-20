@@ -160,6 +160,7 @@
     <ClInclude Include="CompoundedOvernightIndex.h" />
     <ClInclude Include="ConstantParameter.h" />
     <ClInclude Include="Currency.h" />
+    <ClInclude Include="DateFunctions.h" />
     <ClInclude Include="DiscountFactorCurve.h" />
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="FixedCashflow.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="IBusinessDayConvention.h" />
     <ClInclude Include="ICalendar.h" />
     <ClInclude Include="ICashflow.h" />
+    <ClInclude Include="ICreditCurve.h" />
     <ClInclude Include="IDayCounter.h" />
     <ClInclude Include="IIndex.h" />
     <ClInclude Include="IProduct.h" />
@@ -192,6 +194,7 @@
     <ClInclude Include="Preceding.h" />
     <ClInclude Include="PseudoNormalRsg.h" />
     <ClInclude Include="SobolNormalRsg.h" />
+    <ClInclude Include="SurvivalCurve.h" />
     <ClInclude Include="Swap.h" />
     <ClInclude Include="SwapScheduler.h" />
     <ClInclude Include="SydneyCalendar.h" />
@@ -210,6 +213,7 @@
     <ClCompile Include="ConstantParameter.cpp" />
     <ClCompile Include="Currency.cpp" />
     <ClCompile Include="CurveInterpolator.cpp" />
+    <ClCompile Include="DateFunctions.cpp" />
     <ClCompile Include="DiscountFactorCurve.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="FixedCashflow.cpp" />
@@ -230,6 +234,7 @@
     <ClCompile Include="Preceding.cpp" />
     <ClCompile Include="PseudoNormalRsg.cpp" />
     <ClCompile Include="SobolNormalRsg.cpp" />
+    <ClCompile Include="SurvivalCurve.cpp" />
     <ClCompile Include="Swap.cpp" />
     <ClCompile Include="Leg.cpp" />
     <ClCompile Include="SwapScheduler.cpp" />

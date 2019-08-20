@@ -39,8 +39,6 @@ class DiscountFactorCurve : public IInterestRateCurve {
   double GetZeroRate(double query_time) const override;
 
  private:
-  double DateToTime(const date& date) const;
-
   date curve_date_;
   vector<date> dates_;
   map<double, double> discount_factors_map_;

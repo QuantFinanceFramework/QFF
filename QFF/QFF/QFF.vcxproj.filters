@@ -97,6 +97,12 @@
     <Filter Include="Header Files\Products\Cashflows">
       <UniqueIdentifier>{f29d0c76-ef6f-4e7b-a778-5a23419bc718}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Date">
+      <UniqueIdentifier>{5cac0a82-0112-4ee3-b891-98c2290d2681}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Date">
+      <UniqueIdentifier>{b9ecc3c9-0219-40e8-834b-2a13593e0bb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICalendar.h">
@@ -210,9 +216,6 @@
     <ClInclude Include="IborIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
-    <ClInclude Include="Period.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FixedCashflow.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
@@ -239,6 +242,18 @@
     </ClInclude>
     <ClInclude Include="FlatZeroCurve.h">
       <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="ICreditCurve.h">
+      <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="SurvivalCurve.h">
+      <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Period.h">
+      <Filter>Header Files\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="DateFunctions.h">
+      <Filter>Header Files\Date</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -326,9 +341,6 @@
     <ClCompile Include="IborIndex.cpp">
       <Filter>Source Files\Indices</Filter>
     </ClCompile>
-    <ClCompile Include="Period.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FixedCashflow.cpp">
       <Filter>Source Files\Products\Cashflows</Filter>
     </ClCompile>
@@ -352,6 +364,15 @@
     </ClCompile>
     <ClCompile Include="FlatZeroCurve.cpp">
       <Filter>Source Files\MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="SurvivalCurve.cpp">
+      <Filter>Source Files\MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="Period.cpp">
+      <Filter>Source Files\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="DateFunctions.cpp">
+      <Filter>Source Files\Date</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

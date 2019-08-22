@@ -4,20 +4,21 @@
 namespace qff {
 class NewYorkCalendar : public BaseCalendar {
  public:
-  unique_ptr<ICalendar> Clone() const override;
-  bool IsHoliday(const date& query_date) const override;
+  std::unique_ptr<ICalendar> Clone() const override;
+  bool IsHoliday(const boost::gregorian::date& query_date) const override;
 
-  protected:
-  date AdjustHoliday(const date& holiday) const override;
+ protected:
+  boost::gregorian::date AdjustHoliday(
+      const boost::gregorian::date& holiday) const override;
 
  private:
-  date MartinLutherKingsBirthday(int year) const;
-  date WashingtonsBirthday(int year) const;
-  static date MemorialDay(int year);
-  date IndependenceDay(int year) const;
-  date LabourDay(int year) const;
-  date ColumbusDay(int year) const;
-  date VeteransDay(int year) const;
-  date ThanksgivingDay(int year) const;
+  boost::gregorian::date MartinLutherKingsBirthday(int year) const;
+  boost::gregorian::date WashingtonsBirthday(int year) const;
+  static boost::gregorian::date MemorialDay(int year);
+  boost::gregorian::date IndependenceDay(int year) const;
+  boost::gregorian::date LabourDay(int year) const;
+  boost::gregorian::date ColumbusDay(int year) const;
+  boost::gregorian::date VeteransDay(int year) const;
+  boost::gregorian::date ThanksgivingDay(int year) const;
 };
 }  // namespace qff

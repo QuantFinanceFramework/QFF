@@ -9,6 +9,10 @@
 #include "gtest/gtest.h"
 
 using namespace qff;
+using boost::gregorian::date;
+using std::map;
+using std::string;
+using std::unique_ptr;
 
 class CompoundedOvernightIndexFixture : public testing::Test {
  public:
@@ -25,7 +29,8 @@ class CompoundedOvernightIndexFixture : public testing::Test {
                                  std::make_pair(date(2019, 1, 2), 0.024)}));
 
     market_ = std::make_unique<MarketData>(
-        date(2019, 1, 2), std::move(curve_set), std::move(credit_curve_set), std::move(past_fixing));
+        date(2019, 1, 2), std::move(curve_set), std::move(credit_curve_set),
+        std::move(past_fixing));
   }
 
  protected:

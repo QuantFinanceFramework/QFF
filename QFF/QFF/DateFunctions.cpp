@@ -1,5 +1,7 @@
 #include "DateFunctions.h"
 
+using boost::gregorian::date;
+
 namespace qff {
 double DateToTime(const IDayCounter& day_counter, const date& start_date,
                   const date& end_date) {

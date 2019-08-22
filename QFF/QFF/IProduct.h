@@ -4,14 +4,12 @@
 #include "IMarketData.h"
 
 namespace qff {
-using std::string;
-
 class IProduct {
  public:
   IProduct() = default;
   virtual ~IProduct() = default;
 
   virtual Currency Evaluate(const IMarketData& market_data,
-                            const string& currency_code) const = 0;
+                            const std::string& currency_code) const = 0;
 };
 }  // namespace qff

@@ -1,6 +1,10 @@
 #include "AveragedOvernightIndex.h"
 #include "numeric"
 
+using boost::gregorian::date;
+using std::string;
+using std::unique_ptr;
+
 namespace qff {
 AveragedOvernightIndex::AveragedOvernightIndex(
     string currency_code, string curve_name, const IDayCounter& day_counter,
@@ -41,8 +45,6 @@ double AveragedOvernightIndex::GetRate(const date& accrual_start,
     GenerateDates(accrual_start, accrual_end);
   }
 
-  auto rate_sum = 0.0;
-
   const auto itr =
       std::upper_bound(fixing_dates_.begin(), fixing_dates_.end(),
                        ShiftDate(market_data.GetMarketDate(), -publication_lag_,
@@ -74,8 +76,7 @@ double AveragedOvernightIndex::GetRate(const date& accrual_start,
        1.0) /
       last_year_fraction * accrual_factors_.back();
 
-  return (past_rate_sum + future_rate_sum + last_future_rate) /
-         year_fraction;
+  return (past_rate_sum + future_rate_sum + last_future_rate) / year_fraction;
 }
 
 date AveragedOvernightIndex::GetFixingDate(const date& date) const {

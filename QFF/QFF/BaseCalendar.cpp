@@ -1,5 +1,8 @@
 #include "BaseCalendar.h"
 
+using boost::gregorian::date;
+using std::unique_ptr;
+
 namespace qff {
 unique_ptr<ICalendar> BaseCalendar::Clone() const {
   return std::make_unique<BaseCalendar>();
@@ -18,7 +21,7 @@ bool BaseCalendar::IsWeekend(const date &query_date) const {
 }
 
 date BaseCalendar::AdjustHoliday(const date &holiday) const {
-	const auto w = holiday.day_of_week();
+  const auto w = holiday.day_of_week();
   if (w == boost::gregorian::Saturday)
     return holiday + boost::gregorian::days(2);
   if (w == boost::gregorian::Sunday) return holiday + boost::gregorian::days(1);
@@ -70,8 +73,8 @@ date BaseCalendar::ChristmasDay(int year) const {
   return AdjustHoliday(date(year, 12, 25));
 }
 date BaseCalendar::BoxingDay(int year) const {
-	const auto boxing_day = date(year, 12, 26);
-	const auto day_of_week = boxing_day.day_of_week();
+  const auto boxing_day = date(year, 12, 26);
+  const auto day_of_week = boxing_day.day_of_week();
   if (day_of_week == boost::gregorian::Saturday)
     return boxing_day + boost::gregorian::days(2);
   if (day_of_week == boost::gregorian::Sunday)

@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 
 using namespace qff;
+using boost::gregorian::date;
 
 TEST(Actual360Test, CalculateYearFractionTest) {
   const Actual360 day_counter{};

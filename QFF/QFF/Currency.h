@@ -2,17 +2,15 @@
 #include <string>
 
 namespace qff {
-using std::string;
-
 struct Currency {
   Currency() = default;
-  Currency(string currency_code, double amount);
+  Currency(std::string currency_code, double amount);
   ~Currency() = default;
 
   Currency& operator+=(const Currency& rhs);
   Currency& operator-=(const Currency& rhs);
 
-  string currency_code;
+  std::string currency_code;
   double amount{};
 };
 

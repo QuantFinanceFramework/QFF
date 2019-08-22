@@ -7,34 +7,35 @@
 #include "IInterpolator.h"
 
 namespace qff {
-using std::map;
-using std::vector;
 
 class SurvivalCurve : public ICreditCurve {
  public:
   SurvivalCurve() = default;
-  SurvivalCurve(date curve_date, vector<date> dates,
-                const vector<double>& survival_probabilities,
+  SurvivalCurve(boost::gregorian::date curve_date,
+                std::vector<boost::gregorian::date> dates,
+                const std::vector<double>& survival_probabilities,
                 const IInterpolator& interpolator,
                 const IDayCounter& day_counter);
 
-  SurvivalCurve(date&& curve_date, vector<date>&& dates,
-                map<double, double>&& survival_probabilities_map,
-                unique_ptr<IInterpolator> interpolator,
-                unique_ptr<IDayCounter> day_counter);
+  SurvivalCurve(boost::gregorian::date&& curve_date,
+                std::vector<boost::gregorian::date>&& dates,
+                std::map<double, double>&& survival_probabilities_map,
+                std::unique_ptr<IInterpolator> interpolator,
+                std::unique_ptr<IDayCounter> day_counter);
 
   ~SurvivalCurve() = default;
 
-  date GetCurveDate() const;
+  boost::gregorian::date GetCurveDate() const;
 
-  double GetSurvivalProbability(const date& query_date) const override;
+  double GetSurvivalProbability(
+      const boost::gregorian::date& query_date) const override;
   double GetSurvivalProbability(double query_time) const override;
 
  private:
-  date curve_date_;
-  vector<date> dates_;
-  map<double, double> survival_probabilities_map_;
-  unique_ptr<IInterpolator> interpolator_;
-  unique_ptr<IDayCounter> day_counter_;
+  boost::gregorian::date curve_date_;
+  std::vector<boost::gregorian::date> dates_;
+  std::map<double, double> survival_probabilities_map_;
+  std::unique_ptr<IInterpolator> interpolator_;
+  std::unique_ptr<IDayCounter> day_counter_;
 };
 }  // namespace qff

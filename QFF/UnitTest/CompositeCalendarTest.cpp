@@ -3,6 +3,7 @@
 #include <NewYorkCalendar.h>
 #include "gtest/gtest.h"
 
+using boost::gregorian::date;
 using namespace qff;
 
 TEST(CompositeCalendarTest, IsBusinessDayTest_MemorialDay) {

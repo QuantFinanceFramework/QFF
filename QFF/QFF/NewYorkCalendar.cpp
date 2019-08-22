@@ -1,25 +1,30 @@
 #include "NewYorkCalendar.h"
 
+using boost::gregorian::date;
+using std::unique_ptr;
+
 namespace qff {
 unique_ptr<ICalendar> NewYorkCalendar::Clone() const {
   return std::make_unique<NewYorkCalendar>();
 }
 
 bool NewYorkCalendar::IsHoliday(const date& query_date) const {
-	const auto year = query_date.year();
-  return (
-      (query_date == NewYearsDay(year)) ||
-      (query_date == MartinLutherKingsBirthday(year)) ||
-      (query_date == WashingtonsBirthday(year)) ||
-      (query_date == MemorialDay(year)) ||
-      (query_date == IndependenceDay(year)) || (query_date == LabourDay(year)) ||
-      (query_date == ColumbusDay(year)) || (query_date == VeteransDay(year)) ||
-      (query_date == ThanksgivingDay(year)) ||
-      (query_date == ChristmasDay(year) || query_date == NewYearsDay(year + 1)));
+  const auto year = query_date.year();
+  return ((query_date == NewYearsDay(year)) ||
+          (query_date == MartinLutherKingsBirthday(year)) ||
+          (query_date == WashingtonsBirthday(year)) ||
+          (query_date == MemorialDay(year)) ||
+          (query_date == IndependenceDay(year)) ||
+          (query_date == LabourDay(year)) ||
+          (query_date == ColumbusDay(year)) ||
+          (query_date == VeteransDay(year)) ||
+          (query_date == ThanksgivingDay(year)) ||
+          (query_date == ChristmasDay(year) ||
+           query_date == NewYearsDay(year + 1)));
 }
 
 date NewYorkCalendar::AdjustHoliday(const date& holiday) const {
-	const auto w = holiday.day_of_week();
+  const auto w = holiday.day_of_week();
   if (w == boost::gregorian::Saturday)
     return holiday - boost::gregorian::days(1);
   if (w == boost::gregorian::Sunday) return holiday + boost::gregorian::days(1);

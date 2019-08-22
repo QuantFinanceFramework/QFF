@@ -7,6 +7,7 @@
 #include "gtest/gtest.h"
 
 using namespace qff;
+using boost::gregorian::date;
 
 TEST(SwapSchedulerTest, TestMakeSchedule) {
   const CompositeCalendar calender{NewYorkCalendar(), LondonCalendar()};

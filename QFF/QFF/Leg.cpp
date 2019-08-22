@@ -1,6 +1,10 @@
 #include "Leg.h"
 #include <numeric>
 
+using std::unique_ptr;
+using std::vector;
+using std::string;
+
 namespace qff {
 
 Leg::Leg(vector<unique_ptr<ICashflow>> cashflows)

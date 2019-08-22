@@ -1,10 +1,8 @@
 #pragma once
-#include <string>
+#include <string_view>
 
 namespace qff {
-using std::string;
-
-double Black76Formula(double forward_price, double strike, double discount_factor,
-                      double time_to_maturity, double volatility,
-                      const string& option_type);
+double Black76Formula(double forward_price, double strike,
+                      double discount_factor, double time_to_maturity,
+                      double volatility, std::string_view option_type);
 }  // namespace qff

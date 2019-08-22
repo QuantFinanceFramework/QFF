@@ -5,7 +5,6 @@
 #include "Unadjusted.h"
 
 namespace qff {
-using boost::gregorian::date;
 
 enum class TimeUnit { d, w, m, y, b };
 
@@ -28,8 +27,9 @@ Period operator-(const Period& lhs, const Period& rhs);
 
 Period operator-(const Period& rhs);
 
-date ShiftDate(const date& original_date, const Period& period,
-               const ICalendar& calendar,
-               const IBusinessDayConvention& convention = Unadjusted());
+boost::gregorian::date ShiftDate(
+    const boost::gregorian::date& original_date, const Period& period,
+    const ICalendar& calendar,
+    const IBusinessDayConvention& convention = Unadjusted());
 
 }  // namespace qff

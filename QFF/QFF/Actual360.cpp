@@ -1,5 +1,8 @@
 #include "Actual360.h"
 
+using boost::gregorian::date;
+using std::unique_ptr;
+
 namespace qff {
 unique_ptr<IDayCounter> Actual360::Clone() const {
   return std::make_unique<Actual360>();

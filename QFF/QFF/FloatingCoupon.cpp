@@ -1,5 +1,8 @@
 #include "FloatingCoupon.h"
 
+using std::string;
+using boost::gregorian::date;
+
 namespace qff {
 FloatingCoupon::FloatingCoupon(double notional, string currency_code,
                                date accrual_start_date, date accrual_end_date,

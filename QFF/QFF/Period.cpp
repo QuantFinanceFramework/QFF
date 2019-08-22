@@ -3,6 +3,8 @@
 #include "Following.h"
 #include "Preceding.h"
 
+using boost::gregorian::date;
+
 namespace qff {
 Period::Period(int length, TimeUnit unit) : length(length), unit(unit) {}
 

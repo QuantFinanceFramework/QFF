@@ -19,6 +19,11 @@
 #include <vector>
 
 using namespace qff;
+using boost::gregorian::date;
+using std::map;
+using std::string;
+using std::unique_ptr;
+using std::vector;
 
 int main() {
   const date market_date{2019, 4, 10};

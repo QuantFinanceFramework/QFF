@@ -258,6 +258,9 @@
     <ClInclude Include="CdsPremium.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
+    <ClInclude Include="CdsProtection.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -378,6 +381,9 @@
       <Filter>Source Files\Date</Filter>
     </ClCompile>
     <ClCompile Include="CdsPremium.cpp">
+      <Filter>Source Files\Products\Cashflows</Filter>
+    </ClCompile>
+    <ClCompile Include="CdsProtection.cpp">
       <Filter>Source Files\Products\Cashflows</Filter>
     </ClCompile>
   </ItemGroup>

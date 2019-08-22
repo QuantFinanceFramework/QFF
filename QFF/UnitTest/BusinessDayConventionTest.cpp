@@ -4,6 +4,7 @@
 #include <Preceding.h>
 #include "gtest/gtest.h"
 
+using boost::gregorian::date;
 using namespace qff;
 
 TEST(FollowingTest, AdjustTest) {

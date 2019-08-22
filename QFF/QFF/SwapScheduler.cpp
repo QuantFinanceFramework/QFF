@@ -5,6 +5,12 @@
 #include "FloatingCoupon.h"
 #include "numeric"
 
+using boost::gregorian::date;
+using std::map;
+using std::string;
+using std::unique_ptr;
+using std::vector;
+
 namespace qff {
 
 using std::vector;
@@ -53,8 +59,8 @@ unique_ptr<Swap> SwapScheduler::MakeInterestRateSwap(
       floating_business_day_convention, floating_payment_lag,
       floating_day_counter, index, leverage, margin, is_front_stub, stub_date);
   if (is_payer)
-    return std::make_unique<Swap>(std::move(*floating), std::move(*fixed));
-  return std::make_unique<Swap>(std::move(*fixed), std::move(*floating));
+    return std::make_unique<Swap>(std::move(floating), std::move(fixed));
+  return std::make_unique<Swap>(std::move(fixed), std::move(floating));
 }
 
 unique_ptr<Swap> SwapScheduler::MakeBasisSwap(
@@ -84,7 +90,7 @@ unique_ptr<Swap> SwapScheduler::MakeBasisSwap(
       p_leg_index, p_leg_leverage, p_leg_margin, p_leg_is_front_stub,
       p_leg_stub_date);
 
-  return std::make_unique<Swap>(std::move(*receive_leg), std::move(*pay_leg));
+  return std::make_unique<Swap>(std::move(receive_leg), std::move(pay_leg));
 }
 
 unique_ptr<Leg> SwapScheduler::MakeFixedLeg(

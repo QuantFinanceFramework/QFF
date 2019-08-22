@@ -1,39 +1,42 @@
 #pragma once
 #include <map>
 #include <memory>
-#include "IInterestRateCurve.h"
 #include "ICreditCurve.h"
+#include "IInterestRateCurve.h"
 #include "IMarketData.h"
 
 namespace qff {
-using std::map;
-using std::unique_ptr;
 
 class MarketData : public IMarketData {
  public:
   MarketData() = default;
-  MarketData(date market_date,
-             map<string, unique_ptr<IInterestRateCurve>> curve_set,
-             map<string, unique_ptr<ICreditCurve>> credit_curve_set,
-             map<string, map<date, double>> past_fixing_set);
+  MarketData(
+      boost::gregorian::date market_date,
+      std::map<std::string, std::unique_ptr<IInterestRateCurve>> curve_set,
+      std::map<std::string, std::unique_ptr<ICreditCurve>> credit_curve_set,
+      std::map<std::string, std::map<boost::gregorian::date, double>>
+          past_fixing_set);
 
   ~MarketData() = default;
 
-  date GetMarketDate() const override;
+  boost::gregorian::date GetMarketDate() const override;
 
-  double GetDiscountFactor(const string& curve_name,
-                           const date& query_date) const override;
+  double GetDiscountFactor(
+      const std::string& curve_name,
+      const boost::gregorian::date& query_date) const override;
 
-  double GetSurvivalProbability(const string& curve_name,
-                                const date& query_date) const override;
+  double GetSurvivalProbability(
+      const std::string& curve_name,
+      const boost::gregorian::date& query_date) const override;
 
-  double GetPastFixing(const string& curve_name,
-                       const date& query_date) const override;
+  double GetPastFixing(const std::string& curve_name,
+                       const boost::gregorian::date& query_date) const override;
 
  private:
-  date market_date_;
-  map<string, unique_ptr<IInterestRateCurve>> curve_set_;
-  map<string, unique_ptr<ICreditCurve>> credit_curve_set_;
-  map<string, map<date, double>> past_fixing_set_;
+  boost::gregorian::date market_date_;
+  std::map<std::string, std::unique_ptr<IInterestRateCurve>> curve_set_;
+  std::map<std::string, std::unique_ptr<ICreditCurve>> credit_curve_set_;
+  std::map<std::string, std::map<boost::gregorian::date, double>>
+      past_fixing_set_;
 };
 }  // namespace qff

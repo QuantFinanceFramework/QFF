@@ -3,6 +3,11 @@
 #include <cmath>
 #include "DateFunctions.h"
 
+using boost::gregorian::date;
+using std::map;
+using std::unique_ptr;
+using std::vector;
+
 namespace qff {
 DiscountFactorCurve::DiscountFactorCurve(date curve_date, vector<date> dates,
                                          const vector<double>& discount_factors,
@@ -15,7 +20,10 @@ DiscountFactorCurve::DiscountFactorCurve(date curve_date, vector<date> dates,
   std::transform(
       dates_.begin(), dates_.end(), discount_factors.begin(),
       std::inserter(discount_factors_map_, discount_factors_map_.end()),
-      [&](auto date, auto discount_factor) { return std::make_pair(DateToTime(*day_counter_, curve_date_, date), discount_factor); });
+      [&](auto date, auto discount_factor) {
+        return std::make_pair(DateToTime(*day_counter_, curve_date_, date),
+                              discount_factor);
+      });
 }
 
 DiscountFactorCurve::DiscountFactorCurve(

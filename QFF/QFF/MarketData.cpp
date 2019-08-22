@@ -1,5 +1,10 @@
 #include "MarketData.h"
 
+using boost::gregorian::date;
+using std::map;
+using std::string;
+using std::unique_ptr;
+
 namespace qff {
 MarketData::MarketData(date market_date,
                        map<string, unique_ptr<IInterestRateCurve>> curve_set,

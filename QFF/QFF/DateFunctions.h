@@ -3,8 +3,8 @@
 #include "IDayCounter.h"
 
 namespace qff {
-using boost::gregorian::date;
-
-double DateToTime(const IDayCounter& day_counter, const date& start_date, const date& end_date);
+double DateToTime(const IDayCounter& day_counter,
+                  const boost::gregorian::date& start_date,
+                  const boost::gregorian::date& end_date);
 
 }

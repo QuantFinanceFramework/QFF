@@ -1,6 +1,10 @@
 #include "CompoundedOvernightIndex.h"
 #include <numeric>
 
+using boost::gregorian::date;
+using std::string;
+using std::unique_ptr;
+
 namespace qff {
 CompoundedOvernightIndex::CompoundedOvernightIndex(
     string currency_code, string curve_name, const IDayCounter& day_counter,

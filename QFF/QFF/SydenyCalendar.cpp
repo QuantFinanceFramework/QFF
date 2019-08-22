@@ -1,5 +1,8 @@
 #include "SydneyCalendar.h"
 
+using boost::gregorian::date;
+using std::unique_ptr;
+
 namespace qff {
 using boost::date_time::next_weekday;
 
@@ -8,7 +11,7 @@ unique_ptr<ICalendar> SydneyCalendar::Clone() const {
 }
 
 bool SydneyCalendar::IsHoliday(const date& query_date) const {
-	const auto year = query_date.year();
+  const auto year = query_date.year();
   return (
       (query_date == NewYearsDay(year)) || (query_date == AustraliaDay(year)) ||
       (query_date == GoodFriday(year)) || (query_date == EasterMonday(year)) ||

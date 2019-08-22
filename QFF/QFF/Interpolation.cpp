@@ -1,6 +1,8 @@
 #include "Interpolation.h"
 #include <cmath>
 
+using std::map;
+
 namespace qff {
 double LinearInterpol(const double& query, const map<double, double>& data) {
   const auto position = data.find(query);
@@ -35,7 +37,7 @@ double LogLinearInterpol(const double& query, const map<double, double>& data) {
 
     const auto delta =
         (query - previous->first) / (next->first - previous->first);
-    return pow(next->second, delta) * pow(previous->second, 1-delta);
+    return pow(next->second, delta) * pow(previous->second, 1 - delta);
   }
   return position->second;
 }

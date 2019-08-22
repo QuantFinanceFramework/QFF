@@ -1,7 +1,11 @@
 #include "SurvivalCurve.h"
 #include <algorithm>
-#include <cmath>
 #include "DateFunctions.h"
+
+using boost::gregorian::date;
+using std::map;
+using std::unique_ptr;
+using std::vector;
 
 namespace qff {
 SurvivalCurve::SurvivalCurve(date curve_date, vector<date> dates,

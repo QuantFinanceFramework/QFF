@@ -15,12 +15,12 @@ class SobolNormalRsg : public INormalRandomSequenceGenerator {
   SobolNormalRsg(size_t dimension);
   ~SobolNormalRsg() = default;
 
-  vector<double> GenerateNormalSequence() override;
+  std::vector<double> GenerateNormalSequence() override;
   void SetDimension(size_t dimension) override;
 
  private:
-  size_t m_dimension{};
-  boost::random::sobol m_engine;
-  sobol_generator m_generator;
+  size_t dimension_;
+  boost::random::sobol engine_;
+  sobol_generator generator_;
 };
 }  // namespace qff

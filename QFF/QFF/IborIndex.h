@@ -8,33 +8,32 @@
 #include "Period.h"
 
 namespace qff {
-using std::string;
-using std::unique_ptr;
-
 class IborIndex : public IIndex {
  public:
   IborIndex() = default;
-  IborIndex(string currency_code, string curve_name,
+  IborIndex(std::string currency_code, std::string curve_name,
             const IDayCounter& day_counter, Period fixing_lag,
             const ICalendar& fixing_calendar,
             const IBusinessDayConvention& convention, Period tenor);
 
   ~IborIndex() = default;
 
-  unique_ptr<IIndex> Clone() const override;
+  std::unique_ptr<IIndex> Clone() const override;
 
-  double GetRate(const date& accrual_start, const date& accrual_end,
+  double GetRate(const boost::gregorian::date& accrual_start,
+                 const boost::gregorian::date& accrual_end,
                  const IMarketData& market_data) const override;
 
  private:
-  date GetFixingDate(const date& start_date) const;
+  boost::gregorian::date GetFixingDate(
+      const boost::gregorian::date& start_date) const;
 
-  string currency_code_;
-  string curve_name_;
-  unique_ptr<IDayCounter> day_counter_;
-  Period fixing_lag_{};
-  unique_ptr<ICalendar> fixing_calendar_;
-  unique_ptr<IBusinessDayConvention> convention_;
+  std::string currency_code_;
+  std::string curve_name_;
+  std::unique_ptr<IDayCounter> day_counter_;
+  Period fixing_lag_;
+  std::unique_ptr<ICalendar> fixing_calendar_;
+  std::unique_ptr<IBusinessDayConvention> convention_;
   Period tenor_;
 };
 }  // namespace qff

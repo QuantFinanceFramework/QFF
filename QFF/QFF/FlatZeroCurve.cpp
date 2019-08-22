@@ -1,4 +1,7 @@
 #include "FlatZeroCurve.h"
+
+using boost::gregorian::date;
+
 namespace qff {
 FlatZeroCurve::FlatZeroCurve(date curve_date, double zero_rate, const IDayCounter& day_counter)
     : curve_date_(curve_date), zero_rate_(zero_rate), day_counter_(day_counter.Clone()) {}

@@ -157,6 +157,7 @@
     <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="CdsPremium.h" />
+    <ClInclude Include="CdsProtection.h" />
     <ClInclude Include="CompositeCalendar.h" />
     <ClInclude Include="CompoundedOvernightIndex.h" />
     <ClInclude Include="ConstantParameter.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp" />
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="CdsPremium.cpp" />
+    <ClCompile Include="CdsProtection.cpp" />
     <ClCompile Include="CompositeCalendar.cpp" />
     <ClCompile Include="CompoundedOvernightIndex.cpp" />
     <ClCompile Include="ConstantParameter.cpp" />

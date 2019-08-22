@@ -1,4 +1,8 @@
 #include "CdsPremium.h"
+
+using boost::gregorian::date;
+using std::string;
+
 namespace qff {
 CdsPremium::CdsPremium(double notional, string currency_code,
                        date accrual_start_date, date accrual_end_date,
@@ -22,9 +26,11 @@ Currency CdsPremium::Evaluate(const IMarketData& market_data,
   const auto discount_factor =
       market_data.GetDiscountFactor(discount_curve_name_, payment_date_);
 
-  const auto survival_probability_start = market_data.GetSurvivalProbability(survival_curve_name_, accrual_start_date_);
+  const auto survival_probability_start = market_data.GetSurvivalProbability(
+      survival_curve_name_, accrual_start_date_);
 
-  const auto survival_probability_end = market_data.GetSurvivalProbability(survival_curve_name_,accrual_end_date_);
+  const auto survival_probability_end = market_data.GetSurvivalProbability(
+      survival_curve_name_, accrual_end_date_);
 
   const auto npv = GetPaymentAmount(market_data) * discount_factor * 0.5 *
                    (survival_probability_end + survival_probability_start);

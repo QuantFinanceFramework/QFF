@@ -1,4 +1,5 @@
 #include "IborIndex.h"
+#include "DateFunctions.h"
 
 using boost::gregorian::date;
 using std::string;

@@ -4,6 +4,7 @@
 #include "FixedCoupon.h"
 #include "FloatingCoupon.h"
 #include "numeric"
+#include "DateFunctions.h"
 
 using boost::gregorian::date;
 using std::map;

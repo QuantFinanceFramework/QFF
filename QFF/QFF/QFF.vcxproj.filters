@@ -144,9 +144,6 @@
     <ClInclude Include="SobolNormalRsg.h">
       <Filter>Header Files\Random</Filter>
     </ClInclude>
-    <ClInclude Include="BeasleySpringerMoroInverseNormalCDF.h">
-      <Filter>Header Files\Functions</Filter>
-    </ClInclude>
     <ClInclude Include="NormalRsgFactory.h">
       <Filter>Header Files\Random</Filter>
     </ClInclude>
@@ -258,8 +255,11 @@
     <ClInclude Include="CdsPremium.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
-    <ClInclude Include="CdsProtection.h">
-      <Filter>Header Files\Products\Cashflows</Filter>
+    <ClInclude Include="BeasleySpringerMoroInverseNormalCdf.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultLeg.h">
+      <Filter>Header Files\Products</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,9 +289,6 @@
     </ClCompile>
     <ClCompile Include="SobolNormalRsg.cpp">
       <Filter>Source Files\Random</Filter>
-    </ClCompile>
-    <ClCompile Include="BeasleySpringerMoroInverseNormalCDF.cpp">
-      <Filter>Source Files\Functions</Filter>
     </ClCompile>
     <ClCompile Include="NormalRsgFactory.cpp">
       <Filter>Source Files\Random</Filter>
@@ -383,8 +380,11 @@
     <ClCompile Include="CdsPremium.cpp">
       <Filter>Source Files\Products\Cashflows</Filter>
     </ClCompile>
-    <ClCompile Include="CdsProtection.cpp">
-      <Filter>Source Files\Products\Cashflows</Filter>
+    <ClCompile Include="BeasleySpringerMoroInverseNormalCdf.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultLeg.cpp">
+      <Filter>Source Files\Products</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

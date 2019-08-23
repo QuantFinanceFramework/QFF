@@ -1,8 +1,4 @@
 #pragma once
-#include <boost/date_time/gregorian/gregorian.hpp>
-#include "IBusinessDayConvention.h"
-#include "ICalendar.h"
-#include "Unadjusted.h"
 
 namespace qff {
 
@@ -26,10 +22,5 @@ Period operator+(const Period& lhs, const Period& rhs);
 Period operator-(const Period& lhs, const Period& rhs);
 
 Period operator-(const Period& rhs);
-
-boost::gregorian::date ShiftDate(
-    const boost::gregorian::date& original_date, const Period& period,
-    const ICalendar& calendar,
-    const IBusinessDayConvention& convention = Unadjusted());
 
 }  // namespace qff

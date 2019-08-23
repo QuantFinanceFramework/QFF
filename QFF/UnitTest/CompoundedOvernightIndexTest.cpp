@@ -46,10 +46,8 @@ TEST_F(CompoundedOvernightIndexFixture, GetRate_Past) {
                                        BaseCalendar(),
                                        Unadjusted()};
 
-  const auto rate = index.GetRate(
-      date(2018, 12, 31),
-      ShiftDate(date(2018, 12, 31), Period(1, TimeUnit::m), BaseCalendar()),
-      *market_);
+  const auto rate =
+      index.GetRate(date(2018, 12, 31), date(2019, 1, 31), *market_);
 
   EXPECT_NEAR(rate, 0.020372386, 0.0001);
 }
@@ -63,10 +61,7 @@ TEST_F(CompoundedOvernightIndexFixture, GetRate) {
                                        BaseCalendar(),
                                        Unadjusted()};
 
-  const auto rate = index.GetRate(
-      date(2019, 4, 1),
-      ShiftDate(date(2019, 4, 1), Period(3, TimeUnit::m), BaseCalendar()),
-      *market_);
+  const auto rate = index.GetRate(date(2019, 4, 1), date(2019, 7, 1), *market_);
 
   EXPECT_NEAR(rate, 0.020049946, 0.0001);
 }
@@ -80,10 +75,8 @@ TEST_F(CompoundedOvernightIndexFixture, GetRate_Past_ZeroPublicationLag) {
                                        BaseCalendar(),
                                        Unadjusted()};
 
-  const auto rate = index.GetRate(
-      date(2018, 12, 31),
-      ShiftDate(date(2018, 12, 31), Period(1, TimeUnit::m), BaseCalendar()),
-      *market_);
+  const auto rate =
+      index.GetRate(date(2018, 12, 31), date(2019, 1, 31), *market_);
 
   EXPECT_NEAR(rate, 0.020501616, 0.0001);
 }

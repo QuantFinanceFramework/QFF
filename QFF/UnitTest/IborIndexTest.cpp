@@ -46,10 +46,7 @@ TEST_F(IborIndexTestFixture, GetRate_Past) {
                         Unadjusted(),
                         Period{3, TimeUnit::m}};
 
-  const auto rate = index.GetRate(
-      date(2019, 1, 2),
-      ShiftDate(date(2019, 1, 2), Period(3, TimeUnit::m), BaseCalendar()),
-      *market_);
+  const auto rate = index.GetRate(date(2019, 1, 2), date(2019, 4, 2), *market_);
 
   EXPECT_NEAR(rate, 0.026, 0.0001);
 }
@@ -63,10 +60,7 @@ TEST_F(IborIndexTestFixture, GetRate) {
                         Unadjusted(),
                         Period{3, TimeUnit::m}};
 
-  const auto rate = index.GetRate(
-      date(2019, 4, 1),
-      ShiftDate(date(2019, 4, 1), Period(3, TimeUnit::m), BaseCalendar()),
-      *market_);
+  const auto rate = index.GetRate(date(2019, 4, 1), date(2019, 7, 1), *market_);
 
   EXPECT_NEAR(rate, 0.020049946, 0.0001);
 }

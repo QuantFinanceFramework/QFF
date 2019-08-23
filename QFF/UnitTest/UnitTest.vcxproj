@@ -55,13 +55,13 @@
     <ClCompile Include="CompoundedOvernightIndexTest.cpp" />
     <ClCompile Include="ConstantParameterTest.cpp" />
     <ClCompile Include="CurrencyTest.cpp" />
+    <ClCompile Include="DateFunctionsTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="DiscountFactorCurveTest.cpp" />
     <ClCompile Include="IborIndexTest.cpp" />
     <ClCompile Include="InterpolationTest.cpp" />
     <ClCompile Include="LondonCalendarTest.cpp" />
     <ClCompile Include="NewYorkCalendarTest.cpp" />
-    <ClCompile Include="PeriodTest.cpp" />
     <ClCompile Include="PiecewiseConstantParameterTest.cpp" />
     <ClCompile Include="SwapSchedulerTest.cpp" />
     <ClCompile Include="SydneyCalendarTest.cpp" />

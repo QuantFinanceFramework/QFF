@@ -1,4 +1,4 @@
-#include "BeasleySpringerMoroInverseNormalCDF.h"
+#include "BeasleySpringerMoroInverseNormalCdf.h"
 #include <cmath>
 
 namespace qff {

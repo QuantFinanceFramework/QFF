@@ -1,5 +1,5 @@
 #include <BaseCalendar.h>
-#include <Period.h>
+#include <DateFunctions.h>
 #include <Unadjusted.h>
 #include "gtest/gtest.h"
 

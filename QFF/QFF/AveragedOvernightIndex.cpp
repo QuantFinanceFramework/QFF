@@ -1,5 +1,6 @@
 #include "AveragedOvernightIndex.h"
 #include "numeric"
+#include "DateFunctions.h"
 
 using boost::gregorian::date;
 using std::string;
@@ -19,7 +20,7 @@ AveragedOvernightIndex::AveragedOvernightIndex(
       fixing_calendar_(fixing_calendar.Clone()),
       convention_(convention.Clone()),
       rate_cut_off_{rate_cut_off},
-      is_approximation_(is_approximation){};
+      is_approximation_(is_approximation){}
 
 unique_ptr<IIndex> AveragedOvernightIndex::Clone() const {
   return std::make_unique<AveragedOvernightIndex>(

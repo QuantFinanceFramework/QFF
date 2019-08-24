@@ -1,13 +1,14 @@
 #include "SwapScheduler.h"
 #include <algorithm>
 #include <vector>
+#include "CdsPremium.h"
+#include "DateFunctions.h"
+#include "DefaultLeg.h"
 #include "FixedCoupon.h"
 #include "FloatingCoupon.h"
 #include "numeric"
-#include "DateFunctions.h"
 
 using boost::gregorian::date;
-using std::map;
 using std::string;
 using std::unique_ptr;
 using std::vector;
@@ -35,6 +36,32 @@ Period FrequencyToPeriod(Frequency frequency) {
     default:
       throw std::invalid_argument("invalid Frequency");
   }
+}
+
+std::unique_ptr<Swap> SwapScheduler::MakeCreditDefaultSwap(
+    const std::string& currency_code, double notional,
+    boost::gregorian::date start_date, boost::gregorian::date maturity_date,
+    bool is_protection_buyer, const std::string& discount_curve_name,
+    const std::string& survival_curve_name, Frequency premium_frequency,
+    const ICalendar& premium_leg_calendar,
+    const IBusinessDayConvention& premium_leg_convention,
+    Period premium_payment_lag, const IDayCounter& premium_day_counter,
+    double cds_spread, double recovery_rate, bool is_front_stub,
+    boost::gregorian::date stub_date) {
+  auto premium_leg = MakePremiumLeg(
+      currency_code, notional, start_date, maturity_date, discount_curve_name,
+      survival_curve_name, premium_frequency, premium_leg_calendar,
+      premium_leg_convention, premium_payment_lag, premium_day_counter,
+      cds_spread, is_front_stub, stub_date);
+
+  auto default_leg = std::make_unique<DefaultLeg>(
+      notional, currency_code, start_date, maturity_date, discount_curve_name,
+      survival_curve_name, recovery_rate, Frequency::Daily);
+
+  if (is_protection_buyer)
+    return std::make_unique<Swap>(std::move(default_leg),
+                                  std::move(premium_leg));
+  return std::make_unique<Swap>(std::move(premium_leg), std::move(default_leg));
 }
 
 unique_ptr<Swap> SwapScheduler::MakeInterestRateSwap(
@@ -92,6 +119,32 @@ unique_ptr<Swap> SwapScheduler::MakeBasisSwap(
       p_leg_stub_date);
 
   return std::make_unique<Swap>(std::move(receive_leg), std::move(pay_leg));
+}
+
+std::unique_ptr<Leg> SwapScheduler::MakePremiumLeg(
+    const std::string& currency_code, double notional,
+    boost::gregorian::date start_date, boost::gregorian::date maturity_date,
+    const std::string& discount_curve_name,
+    const std::string& survival_curve_name, Frequency frequency,
+    const ICalendar& payment_calendar, const IBusinessDayConvention& convention,
+    Period payment_lag, const IDayCounter& day_counter, double cds_spread,
+    bool is_front_stub, boost::gregorian::date stub_date) {
+  auto schedule =
+      MakeSchedule(start_date, maturity_date, frequency, payment_calendar,
+                   convention, is_front_stub, stub_date);
+
+  vector<unique_ptr<ICashflow>> cf_collection;
+
+  std::transform(
+      schedule.begin(), std::prev(schedule.end()), std::next(schedule.begin()),
+      std::back_inserter(cf_collection), [&](auto start, auto end) {
+        return std::make_unique<CdsPremium>(
+            notional, currency_code, start, end,
+            ShiftDate(end, payment_lag, payment_calendar), discount_curve_name,
+            survival_curve_name, day_counter, cds_spread);
+      });
+
+  return std::make_unique<Leg>(std::move(cf_collection));
 }
 
 unique_ptr<Leg> SwapScheduler::MakeFixedLeg(

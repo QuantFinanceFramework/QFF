@@ -3,9 +3,9 @@
 #include <vector>
 #include "CdsPremium.h"
 #include "DateFunctions.h"
-#include "DefaultLeg.h"
 #include "FixedCoupon.h"
 #include "FloatingCoupon.h"
+#include "ProtectionLeg.h"
 #include "numeric"
 
 using boost::gregorian::date;
@@ -40,7 +40,7 @@ Period FrequencyToPeriod(Frequency frequency) {
 
 std::unique_ptr<Swap> SwapScheduler::MakeCreditDefaultSwap(
     const std::string& currency_code, double notional,
-    boost::gregorian::date start_date, boost::gregorian::date maturity_date,
+    boost::gregorian::date effective_date, boost::gregorian::date maturity_date,
     bool is_protection_buyer, const std::string& discount_curve_name,
     const std::string& survival_curve_name, Frequency premium_frequency,
     const ICalendar& premium_leg_calendar,
@@ -49,19 +49,21 @@ std::unique_ptr<Swap> SwapScheduler::MakeCreditDefaultSwap(
     double cds_spread, double recovery_rate, bool is_front_stub,
     boost::gregorian::date stub_date) {
   auto premium_leg = MakePremiumLeg(
-      currency_code, notional, start_date, maturity_date, discount_curve_name,
-      survival_curve_name, premium_frequency, premium_leg_calendar,
-      premium_leg_convention, premium_payment_lag, premium_day_counter,
-      cds_spread, is_front_stub, stub_date);
+      currency_code, notional, effective_date, maturity_date,
+      discount_curve_name, survival_curve_name, premium_frequency,
+      premium_leg_calendar, premium_leg_convention, premium_payment_lag,
+      premium_day_counter, cds_spread, is_front_stub, stub_date);
 
-  auto default_leg = std::make_unique<DefaultLeg>(
-      notional, currency_code, start_date, maturity_date, discount_curve_name,
-      survival_curve_name, recovery_rate, Frequency::Daily);
+  auto protection_leg = std::make_unique<ProtectionLeg>(
+      notional, currency_code, effective_date, maturity_date,
+      discount_curve_name, survival_curve_name, recovery_rate,
+      Frequency::Daily);
 
   if (is_protection_buyer)
-    return std::make_unique<Swap>(std::move(default_leg),
+    return std::make_unique<Swap>(std::move(protection_leg),
                                   std::move(premium_leg));
-  return std::make_unique<Swap>(std::move(premium_leg), std::move(default_leg));
+  return std::make_unique<Swap>(std::move(premium_leg),
+                                std::move(protection_leg));
 }
 
 unique_ptr<Swap> SwapScheduler::MakeInterestRateSwap(
@@ -194,26 +196,25 @@ unique_ptr<Leg> SwapScheduler::MakeFloatingLeg(
   return std::make_unique<Leg>(std::move(cf_collection));
 }
 vector<date> SwapScheduler::MakeSchedule(
-    date settlement_date, date maturity_date, Frequency frequency,
+    date start_date, date maturity_date, Frequency frequency,
     const ICalendar& calendar, const IBusinessDayConvention& convention,
     bool is_front_stub, date stub_date) {
-  auto schedule =
-      MakeUnadjustedSchedule(settlement_date, maturity_date, frequency,
-                             calendar, is_front_stub, stub_date);
-  for (auto& element : schedule) {
-    element = convention.Adjust(element, calendar);
-  }
+  auto schedule = MakeUnadjustedSchedule(start_date, maturity_date, frequency,
+                                         calendar, is_front_stub, stub_date);
+  std::transform(std::next(schedule.begin()), schedule.end(),
+                 std::next(schedule.begin()),
+                 [&](auto date) { return convention.Adjust(date, calendar); });
   return schedule;
 }
 
 vector<date> SwapScheduler::MakeUnadjustedSchedule(
-    date settlement_date, date maturity_date, Frequency frequency,
+    date start_date, date maturity_date, Frequency frequency,
     const ICalendar& calendar, bool is_front_stub, date stub_date) {
   const auto tenor = FrequencyToPeriod(frequency);
   vector<date> schedule;
-  schedule.emplace_back(settlement_date);
+  schedule.emplace_back(start_date);
   if (is_front_stub) {
-    if (stub_date != settlement_date) schedule.emplace_back(stub_date);
+    if (stub_date != start_date) schedule.emplace_back(stub_date);
     while (schedule.back() < maturity_date) {
       schedule.emplace_back(ShiftDate(schedule.back(), tenor, calendar));
     }

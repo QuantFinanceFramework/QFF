@@ -1,4 +1,4 @@
-#include "DefaultLeg.h"
+#include "ProtectionLeg.h"
 #include <numeric>
 #include "BaseCalendar.h"
 #include "DateFunctions.h"
@@ -6,8 +6,8 @@
 using boost::gregorian::date;
 using std::string;
 
-namespace qff {
-DefaultLeg::DefaultLeg(double notional, string currency_code, date start_date,
+namespace qff{
+ProtectionLeg::ProtectionLeg(double notional, string currency_code, date start_date,
                        date end_date, string discount_curve_name,
                        string survival_curve_name, double recovery_rate,
                        Frequency estimation_frequency)
@@ -20,12 +20,12 @@ DefaultLeg::DefaultLeg(double notional, string currency_code, date start_date,
       recovery_rate_(recovery_rate),
       estimation_frequency_(estimation_frequency) {}
 
-Currency DefaultLeg::Evaluate(const IMarketData& market_data,
+Currency ProtectionLeg::Evaluate(const IMarketData& market_data,
                               const string& currency_code) const {
   if (estimation_schedule_.empty()) {
     estimation_schedule_ = SwapScheduler::MakeUnadjustedSchedule(
-        start_date_, end_date_, estimation_frequency_, BaseCalendar(), true,
-        start_date_);
+	    start_date_, end_date_, estimation_frequency_, BaseCalendar(), true,
+	    start_date_);
   }
   const auto discounted_default_probability = std::transform_reduce(
       estimation_schedule_.begin(), std::prev(estimation_schedule_.end()),

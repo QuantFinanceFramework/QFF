@@ -103,6 +103,9 @@ int main() {
 
   std::cout.precision(15);
 
-  std::cout << "JPM CDS NPV: " << jpm_cds->Evaluate(market, "USD").amount << '\n';
+  const auto result = jpm_cds->Evaluate(market, "USD").amount;
+
+  std::cout << "JPM CDS NPV: " << result << '\n';
+
   return 0;
 }

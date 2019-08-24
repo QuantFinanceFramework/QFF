@@ -12,8 +12,8 @@ using boost::gregorian::date;
 TEST(SwapSchedulerTest, TestMakeSchedule) {
   const CompositeCalendar calender{NewYorkCalendar(), LondonCalendar()};
   const auto schedule = SwapScheduler::MakeSchedule(
-      date(2019, 3, 21), date(2023, 3, 21), Frequency::Quarterly, calender,
-      ModifiedFollowing(), true, date(2019, 3, 21));
+	  date(2019, 3, 21), date(2023, 3, 21), Frequency::Quarterly, calender,
+	  ModifiedFollowing(), true, date(2019, 3, 21));
   EXPECT_THAT(schedule,
               testing::ElementsAre(
                   date(2019, 3, 21), date(2019, 6, 21), date(2019, 9, 23),

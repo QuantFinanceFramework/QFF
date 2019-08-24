@@ -258,7 +258,7 @@
     <ClInclude Include="BeasleySpringerMoroInverseNormalCdf.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultLeg.h">
+    <ClInclude Include="ProtectionLeg.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
   </ItemGroup>
@@ -383,7 +383,7 @@
     <ClCompile Include="BeasleySpringerMoroInverseNormalCdf.cpp">
       <Filter>Source Files\Functions</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultLeg.cpp">
+    <ClCompile Include="ProtectionLeg.cpp">
       <Filter>Source Files\Products</Filter>
     </ClCompile>
   </ItemGroup>

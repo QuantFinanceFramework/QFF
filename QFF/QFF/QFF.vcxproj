@@ -162,7 +162,6 @@
     <ClInclude Include="ConstantParameter.h" />
     <ClInclude Include="Currency.h" />
     <ClInclude Include="DateFunctions.h" />
-    <ClInclude Include="DefaultLeg.h" />
     <ClInclude Include="DiscountFactorCurve.h" />
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="FixedCashflow.h" />
@@ -194,6 +193,7 @@
     <ClInclude Include="Period.h" />
     <ClInclude Include="PiecewiseConstantParameter.h" />
     <ClInclude Include="Preceding.h" />
+    <ClInclude Include="ProtectionLeg.h" />
     <ClInclude Include="PseudoNormalRsg.h" />
     <ClInclude Include="SobolNormalRsg.h" />
     <ClInclude Include="SurvivalCurve.h" />
@@ -217,7 +217,6 @@
     <ClCompile Include="Currency.cpp" />
     <ClCompile Include="CurveInterpolator.cpp" />
     <ClCompile Include="DateFunctions.cpp" />
-    <ClCompile Include="DefaultLeg.cpp" />
     <ClCompile Include="DiscountFactorCurve.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="FixedCashflow.cpp" />
@@ -236,6 +235,7 @@
     <ClCompile Include="Period.cpp" />
     <ClCompile Include="PiecewiseConstantParameter.cpp" />
     <ClCompile Include="Preceding.cpp" />
+    <ClCompile Include="ProtectionLeg.cpp" />
     <ClCompile Include="PseudoNormalRsg.cpp" />
     <ClCompile Include="SobolNormalRsg.cpp" />
     <ClCompile Include="SurvivalCurve.cpp" />

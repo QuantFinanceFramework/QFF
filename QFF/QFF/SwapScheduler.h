@@ -28,7 +28,7 @@ class SwapScheduler {
  public:
   static std::unique_ptr<Swap> MakeCreditDefaultSwap(
       const std::string& currency_code, double notional,
-      boost::gregorian::date start_date, boost::gregorian::date maturity_date,
+      boost::gregorian::date effective_date, boost::gregorian::date maturity_date,
       bool is_protection_buyer, const std::string& discount_curve_name,
       const std::string& survival_curve_name, Frequency premium_frequency,
       const ICalendar& premium_leg_calendar,
@@ -101,15 +101,15 @@ class SwapScheduler {
       double margin, bool is_front_stub, boost::gregorian::date stub_date);
 
   static std::vector<boost::gregorian::date> MakeSchedule(
-      boost::gregorian::date settlement_date,
-      boost::gregorian::date maturity_date, Frequency frequency,
-      const ICalendar& calendar, const IBusinessDayConvention& convention,
-      bool is_front_stub, boost::gregorian::date stub_date);
+	  boost::gregorian::date start_date,
+	  boost::gregorian::date maturity_date, Frequency frequency,
+	  const ICalendar& calendar, const IBusinessDayConvention& convention,
+	  bool is_front_stub, boost::gregorian::date stub_date);
 
   static std::vector<boost::gregorian::date> MakeUnadjustedSchedule(
-      boost::gregorian::date settlement_date,
-      boost::gregorian::date maturity_date, Frequency frequency,
-      const ICalendar& calendar, bool is_front_stub,
-      boost::gregorian::date stub_date);
+	  boost::gregorian::date start_date,
+	  boost::gregorian::date maturity_date, Frequency frequency,
+	  const ICalendar& calendar, bool is_front_stub,
+	  boost::gregorian::date stub_date);
 };
 }  // namespace qff

@@ -4,14 +4,14 @@
 #include "SwapScheduler.h"
 
 namespace qff {
-class DefaultLeg : public IProduct {
+class ProtectionLeg : public IProduct {
  public:
-  DefaultLeg() = default;
-  DefaultLeg(double notional, std::string currency_code,
+  ProtectionLeg() = default;
+  ProtectionLeg(double notional, std::string currency_code,
              boost::gregorian::date start_date, boost::gregorian::date end_date,
              std::string discount_curve_name, std::string survival_curve_name,
              double recovery_rate, Frequency estimation_frequency);
-  ~DefaultLeg() = default;
+  ~ProtectionLeg() = default;
 
   Currency Evaluate(const IMarketData& market_data,
                     const std::string& currency_code) const override;

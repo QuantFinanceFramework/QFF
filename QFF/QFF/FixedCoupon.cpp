@@ -1,5 +1,7 @@
 #include "FixedCoupon.h"
-#include <utility>
+
+using boost::gregorian::date;
+using std::string;
 
 namespace qff {
 FixedCoupon::FixedCoupon(double notional, string currency_code,

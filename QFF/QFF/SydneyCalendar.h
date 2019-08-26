@@ -4,14 +4,14 @@
 namespace qff {
 class SydneyCalendar : public BaseCalendar {
  public:
-  unique_ptr<ICalendar> Clone() const override;
-  bool IsHoliday(const date& query_date) const override;
+  std::unique_ptr<ICalendar> Clone() const override;
+  bool IsHoliday(const boost::gregorian::date& query_date) const override;
 
  private:
-  date AustraliaDay(int year) const;
-  date AnzacDay(int year) const;
-  static date QueensBirthday(int year);
-  static date BankHoliday(int year);
-  static date LabourDay(int year);
+  boost::gregorian::date AustraliaDay(int year) const;
+  boost::gregorian::date AnzacDay(int year) const;
+  static boost::gregorian::date QueensBirthday(int year);
+  static boost::gregorian::date BankHoliday(int year);
+  static boost::gregorian::date LabourDay(int year);
 };
 }  // namespace qff

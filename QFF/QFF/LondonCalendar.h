@@ -4,12 +4,12 @@
 namespace qff {
 class LondonCalendar : public BaseCalendar {
  public:
-  unique_ptr<ICalendar> Clone() const override;
-  bool IsHoliday(const date& query_date) const override;
+  std::unique_ptr<ICalendar> Clone() const override;
+  bool IsHoliday(const boost::gregorian::date& query_date) const override;
 
  private:
-  date EarlyMayBankHoliday(int year) const;
-  static date SpringBankHoliday(int year);
-  static date SummerBankHoliday(int year);
+  boost::gregorian::date EarlyMayBankHoliday(int year) const;
+  static boost::gregorian::date SpringBankHoliday(int year);
+  static boost::gregorian::date SummerBankHoliday(int year);
 };
 }  // namespace qff

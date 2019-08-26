@@ -6,6 +6,8 @@
 #include "gtest/gtest.h"
 
 using namespace qff;
+using boost::gregorian::date;
+using std::string;
 
 class DiscountFactorCurveTestFixture : public ::testing::Test {
  protected:
@@ -51,8 +53,7 @@ class DiscountFactorCurveTestFixture : public ::testing::Test {
                                          0.432445222643056,
                                          0.327738486248511};
 
-    CurveInterpolator interpolator{LogLinearInterpol,
-                                   LogLinearExtrapol};
+    CurveInterpolator interpolator{LogLinearInterpol, LogLinearExtrapol};
     Actual365 day_counter{};
     libor_3m_ =
         new DiscountFactorCurve{curve_date, std::move(dates), discount_factors,
@@ -62,16 +63,16 @@ class DiscountFactorCurveTestFixture : public ::testing::Test {
 };
 
 TEST_F(DiscountFactorCurveTestFixture, GetDiscountFactor_Pillar) {
-  EXPECT_NEAR(libor_3m_->GetDiscountFactor(date(2049, 3, 22)), 0.432445222643056,
-              0.0000001);
+  EXPECT_NEAR(libor_3m_->GetDiscountFactor(date(2049, 3, 22)),
+              0.432445222643056, 0.0000001);
 }
 
 TEST_F(DiscountFactorCurveTestFixture, GetDiscountFactor_Interpol) {
-  EXPECT_NEAR(libor_3m_->GetDiscountFactor(date(2023, 5, 15)), 0.902997858382675,
-              0.0000001);
+  EXPECT_NEAR(libor_3m_->GetDiscountFactor(date(2023, 5, 15)),
+              0.902997858382675, 0.0000001);
 }
 
 TEST_F(DiscountFactorCurveTestFixture, GetDiscountFactor_Extrapol) {
-  EXPECT_NEAR(libor_3m_->GetDiscountFactor(date(2060, 5, 15)), 0.317507394906338,
-              0.0000001);
+  EXPECT_NEAR(libor_3m_->GetDiscountFactor(date(2060, 5, 15)),
+              0.317507394906338, 0.0000001);
 }

@@ -9,14 +9,19 @@
 #include "gtest/gtest.h"
 
 using namespace qff;
+using boost::gregorian::date;
+using std::map;
+using std::string;
+using std::unique_ptr;
 
-class AveragedOvernightIndexFixture : public testing::Test {
+class AveragedOvernightIndexTestFixture : public testing::Test {
  public:
-  AveragedOvernightIndexFixture() {
+  AveragedOvernightIndexTestFixture() {
     auto curve =
         std::make_unique<FlatZeroCurve>(date(2019, 1, 2), 0.02, Actual365());
     map<std::string, std::unique_ptr<IInterestRateCurve>> curve_set;
     curve_set.emplace(std::make_pair("OIS", std::move(curve)));
+    map<string, unique_ptr<ICreditCurve>> credit_curve_set;
     map<std::string, map<date, double>> past_fixing;
     past_fixing.emplace(std::make_pair(
         "OIS", map<date, double>{std::make_pair(date(2018, 12, 31), 0.026),
@@ -24,14 +29,15 @@ class AveragedOvernightIndexFixture : public testing::Test {
                                  std::make_pair(date(2019, 1, 2), 0.024)}));
 
     market_ = std::make_unique<MarketData>(
-        date(2019, 1, 2), std::move(curve_set), std::move(past_fixing));
+        date(2019, 1, 2), std::move(curve_set), std::move(credit_curve_set),
+        std::move(past_fixing));
   }
 
  protected:
   unique_ptr<MarketData> market_;
 };
 
-TEST_F(AveragedOvernightIndexFixture, GetRate_Past) {
+TEST_F(AveragedOvernightIndexTestFixture, GetRate_Past) {
   const AveragedOvernightIndex index{"USD",
                                      "OIS",
                                      Actual365(),
@@ -42,15 +48,13 @@ TEST_F(AveragedOvernightIndexFixture, GetRate_Past) {
                                      Period(-2, TimeUnit::b),
                                      false};
 
-  const auto rate = index.GetRate(
-      date(2018, 12, 31),
-      ShiftDate(date(2018, 12, 31), Period(1, TimeUnit::m), BaseCalendar()),
-      *market_);
+  const auto rate =
+      index.GetRate(date(2018, 12, 31), date(2019, 1, 31), *market_);
 
   EXPECT_NEAR(rate, 0.02035577555959, 0.0001);
 }
 
-TEST_F(AveragedOvernightIndexFixture, GetRate) {
+TEST_F(AveragedOvernightIndexTestFixture, GetRate) {
   const AveragedOvernightIndex index{"USD",
                                      "OIS",
                                      Actual365(),
@@ -61,10 +65,7 @@ TEST_F(AveragedOvernightIndexFixture, GetRate) {
                                      Period(-2, TimeUnit::b),
                                      false};
 
-  const auto rate = index.GetRate(
-      date(2019, 4, 1),
-      ShiftDate(date(2019, 4, 1), Period(1, TimeUnit::m), BaseCalendar()),
-      *market_);
+  const auto rate = index.GetRate(date(2019, 4, 1), date(2019, 5, 1), *market_);
 
   EXPECT_NEAR(rate, 0.02000098634341, 0.0001);
 }

@@ -1,18 +1,22 @@
 #include "LondonCalendar.h"
 
+using boost::gregorian::date;
+using std::unique_ptr;
+
 namespace qff {
 unique_ptr<ICalendar> LondonCalendar::Clone() const {
   return std::make_unique<LondonCalendar>();
 }
 
 bool LondonCalendar::IsHoliday(const date& query_date) const {
-	const auto year = query_date.year();
-  return ((query_date == NewYearsDay(year)) || (query_date == GoodFriday(year)) ||
-          (query_date == EasterMonday(year)) ||
-          (query_date == EarlyMayBankHoliday(year)) ||
-          (query_date == SpringBankHoliday(year)) ||
-          (query_date == SummerBankHoliday(year)) ||
-          (query_date == ChristmasDay(year)) || (query_date == BoxingDay(year)));
+  const auto year = query_date.year();
+  return (
+      (query_date == NewYearsDay(year)) || (query_date == GoodFriday(year)) ||
+      (query_date == EasterMonday(year)) ||
+      (query_date == EarlyMayBankHoliday(year)) ||
+      (query_date == SpringBankHoliday(year)) ||
+      (query_date == SummerBankHoliday(year)) ||
+      (query_date == ChristmasDay(year)) || (query_date == BoxingDay(year)));
 }
 
 date LondonCalendar::EarlyMayBankHoliday(int year) const {

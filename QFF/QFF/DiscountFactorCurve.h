@@ -6,45 +6,43 @@
 #include "IInterpolator.h"
 
 namespace qff {
-using std::map;
-using std::unique_ptr;
-using std::vector;
 
 class DiscountFactorCurve : public IInterestRateCurve {
  public:
   DiscountFactorCurve() = default;
 
-  DiscountFactorCurve(date curve_date, vector<date> dates,
-                      const vector<double>& discount_factors,
+  DiscountFactorCurve(boost::gregorian::date curve_date,
+                      std::vector<boost::gregorian::date> dates,
+                      const std::vector<double>& discount_factors,
                       const IInterpolator& interpolator,
                       const IDayCounter& day_counter);
 
-  DiscountFactorCurve(date&& curve_date, vector<date>&& dates,
-                      map<double, double>&& discount_factors_map,
-                      unique_ptr<IInterpolator> interpolator,
-                      unique_ptr<IDayCounter> day_counter);
+  DiscountFactorCurve(boost::gregorian::date&& curve_date,
+                      std::vector<boost::gregorian::date>&& dates,
+                      std::map<double, double>&& discount_factors_map,
+                      std::unique_ptr<IInterpolator> interpolator,
+                      std::unique_ptr<IDayCounter> day_counter);
 
   ~DiscountFactorCurve() = default;
 
-  date GetCurveDate() const;
+  boost::gregorian::date GetCurveDate() const;
 
-  double GetDiscountFactor(const date& query_date) const override;
+  double GetDiscountFactor(
+      const boost::gregorian::date& query_date) const override;
   double GetDiscountFactor(double query_time) const override;
 
-  double GetForwardRate(const date& start_date,
-                        const date& end_date) const override;
+  double GetForwardRate(const boost::gregorian::date& start_date,
+                        const boost::gregorian::date& end_date) const override;
   double GetForwardRate(double start_time, double end_time) const override;
 
-  double GetZeroRate(const date& query_date) const override;
+  double GetZeroRate(const boost::gregorian::date& query_date) const override;
   double GetZeroRate(double query_time) const override;
 
  private:
-  double DateToTime(const date& date) const;
-
-  date curve_date_;
-  vector<date> dates_;
-  map<double, double> discount_factors_map_;
-  unique_ptr<IInterpolator> interpolator_;
-  unique_ptr<IDayCounter> day_counter_;
+  boost::gregorian::date curve_date_;
+  std::vector<boost::gregorian::date> dates_;
+  std::map<double, double> discount_factors_map_;
+  std::unique_ptr<IInterpolator> interpolator_;
+  std::unique_ptr<IDayCounter> day_counter_;
 };
 }  // namespace qff

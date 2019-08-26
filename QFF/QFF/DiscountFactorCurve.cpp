@@ -1,7 +1,12 @@
 #include "DiscountFactorCurve.h"
 #include <algorithm>
 #include <cmath>
-#include <utility>
+#include "DateFunctions.h"
+
+using boost::gregorian::date;
+using std::map;
+using std::unique_ptr;
+using std::vector;
 
 namespace qff {
 DiscountFactorCurve::DiscountFactorCurve(date curve_date, vector<date> dates,
@@ -15,7 +20,10 @@ DiscountFactorCurve::DiscountFactorCurve(date curve_date, vector<date> dates,
   std::transform(
       dates_.begin(), dates_.end(), discount_factors.begin(),
       std::inserter(discount_factors_map_, discount_factors_map_.end()),
-      [&](auto d, auto df) { return std::make_pair(this->DateToTime(d), df); });
+      [&](auto date, auto discount_factor) {
+        return std::make_pair(DateToTime(*day_counter_, curve_date_, date),
+                              discount_factor);
+      });
 }
 
 DiscountFactorCurve::DiscountFactorCurve(
@@ -31,7 +39,7 @@ DiscountFactorCurve::DiscountFactorCurve(
 date DiscountFactorCurve::GetCurveDate() const { return curve_date_; }
 
 double DiscountFactorCurve::GetDiscountFactor(const date& query_date) const {
-  return GetDiscountFactor(DateToTime(query_date));
+  return GetDiscountFactor(DateToTime(*day_counter_, curve_date_, query_date));
 }
 
 double DiscountFactorCurve::GetDiscountFactor(double query_time) const {
@@ -40,7 +48,8 @@ double DiscountFactorCurve::GetDiscountFactor(double query_time) const {
 
 double DiscountFactorCurve::GetForwardRate(const date& start_date,
                                            const date& end_date) const {
-  return GetForwardRate(DateToTime(start_date), DateToTime(end_date));
+  return GetForwardRate(DateToTime(*day_counter_, curve_date_, start_date),
+                        DateToTime(*day_counter_, curve_date_, end_date));
 }
 
 double DiscountFactorCurve::GetForwardRate(double start_time,
@@ -50,14 +59,10 @@ double DiscountFactorCurve::GetForwardRate(double start_time,
 }
 
 double DiscountFactorCurve::GetZeroRate(const date& query_date) const {
-  return GetZeroRate(DateToTime(query_date));
+  return GetZeroRate(DateToTime(*day_counter_, curve_date_, query_date));
 }
 
 double DiscountFactorCurve::GetZeroRate(double query_time) const {
   return -log(GetDiscountFactor(query_time)) / query_time;
-}
-
-double DiscountFactorCurve::DateToTime(const date& date) const {
-  return day_counter_->CalculateYearFraction(curve_date_, date);
 }
 }  // namespace qff

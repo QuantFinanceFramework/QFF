@@ -1,9 +1,10 @@
 #include <BaseCalendar.h>
-#include <Period.h>
+#include <DateFunctions.h>
 #include <Unadjusted.h>
 #include "gtest/gtest.h"
 
 using namespace qff;
+using boost::gregorian::date;
 
 TEST(ShiftDateTest, TwoBusinessDays) {
   date original_date(2018, 12, 1);

@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 
 using namespace qff;
+using boost::gregorian::date;
 
 class NewYorkCalendarTestFixture : public ::testing::TestWithParam<date> {
  protected:
@@ -17,7 +18,7 @@ TEST_F(NewYorkCalendarTestFixture, IsBusinessDayTest_Holiday) {
 }
 
 TEST_P(NewYorkCalendarTestFixture, IsHolidayTest_Holidays) {
-	const auto holiday = GetParam();
+  const auto holiday = GetParam();
   EXPECT_TRUE(nyc_.IsHoliday(holiday));
 }
 

@@ -3,12 +3,11 @@
 #include "IParameter.h"
 
 namespace qff {
-using std::map;
 
 class PiecewiseConstantParameter : public IParameter {
  public:
   PiecewiseConstantParameter() = default;
-  PiecewiseConstantParameter(map<double, double> value);
+  PiecewiseConstantParameter(std::map<double, double> value);
 
   ~PiecewiseConstantParameter() = default;
 
@@ -17,6 +16,6 @@ class PiecewiseConstantParameter : public IParameter {
   double IntegralSquare(double time1, double time2) const override;
 
  private:
-  map<double, double> value_;
+  std::map<double, double> value_;
 };
 }  // namespace qff

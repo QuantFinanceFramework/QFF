@@ -2,6 +2,9 @@
 #include "Following.h"
 #include "Preceding.h"
 
+using boost::gregorian::date;
+using std::unique_ptr;
+
 namespace qff {
 unique_ptr<IBusinessDayConvention> ModifiedFollowing::Clone() const {
   return std::make_unique<ModifiedFollowing>();

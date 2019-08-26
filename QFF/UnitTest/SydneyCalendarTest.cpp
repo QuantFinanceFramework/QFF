@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 
 using namespace qff;
+using boost::gregorian::date;
 
 class SydneyCalendarTestFixture : public ::testing::TestWithParam<date> {
  protected:

@@ -8,7 +8,7 @@ class ICashflow : public IProduct{
   ICashflow() = default;
   virtual ~ICashflow() = default;
 
-  virtual date GetPaymentDate() const = 0;
+  virtual boost::gregorian::date GetPaymentDate() const = 0;
   virtual double GetPaymentAmount(const IMarketData& market_data) const = 0;
 };
 }  // namespace qff

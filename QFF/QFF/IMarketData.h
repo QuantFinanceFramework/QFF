@@ -3,26 +3,24 @@
 #include <string>
 
 namespace qff {
-using boost::gregorian::date;
-using std::string;
 
 class IMarketData {
  public:
   IMarketData() = default;
   virtual ~IMarketData() = default;
 
-  virtual date GetMarketDate() const = 0;
+  virtual boost::gregorian::date GetMarketDate() const = 0;
 
-  virtual double GetDiscountFactor(const string& curve_name,
-                                   const date& query_date) const = 0;
+  virtual double GetDiscountFactor(
+      const std::string& curve_name,
+      const boost::gregorian::date& query_date) const = 0;
 
-  virtual double GetForwardRate(const string& curve_name, const date& start_date,
-                                const date& end_date) const = 0;
+  virtual double GetSurvivalProbability(
+      const std::string& curve_name,
+      const boost::gregorian::date& query_date) const = 0;
 
-  virtual double GetZeroRate(const string& curve_name,
-                             const date& query_date) const = 0;
-
-  virtual double GetPastFixing(const string& curve_name,
-                               const date& query_date) const = 0;
+  virtual double GetPastFixing(
+      const std::string& curve_name,
+      const boost::gregorian::date& query_date) const = 0;
 };
 }  // namespace qff

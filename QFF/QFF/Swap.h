@@ -1,19 +1,20 @@
 #pragma once
 #include "IProduct.h"
-#include "Leg.h"
+#include <memory>
 
 namespace qff {
 class Swap : public IProduct {
  public:
   Swap() = default;
-  Swap(Leg&& receive_leg, Leg&& pay_leg);
+  Swap(std::unique_ptr<IProduct> receive_leg,
+       std::unique_ptr<IProduct> pay_leg);
   ~Swap() = default;
 
   Currency Evaluate(const IMarketData& market_data,
-                    const string& currency_code) const override;
+                    const std::string& currency_code) const override;
 
  private:
-  Leg receiveLeg_;
-  Leg payLeg_;
+  std::unique_ptr<IProduct> receive_leg_;
+  std::unique_ptr<IProduct> pay_leg_;
 };
 }  // namespace qff

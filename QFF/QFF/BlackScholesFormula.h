@@ -1,10 +1,8 @@
 #pragma once
-#include <string>
+#include <string_view>
 
 namespace qff {
-using std::string;
-
 double BlackScholesFormula(double spot, double strike, double discount_factor,
                            double time_to_maturity, double volatility,
-                           const string& option_type);
+                           std::string_view option_type);
 }  // namespace qff

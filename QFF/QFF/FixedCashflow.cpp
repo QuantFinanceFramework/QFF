@@ -1,4 +1,8 @@
 #include "FixedCashflow.h"
+
+using boost::gregorian::date;
+using std::string;
+
 namespace qff {
 FixedCashflow::FixedCashflow(double payment_amount, string currency_code,
                              date payment_date, string discount_curve_name)

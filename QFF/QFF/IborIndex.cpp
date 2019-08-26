@@ -1,4 +1,9 @@
 #include "IborIndex.h"
+#include "DateFunctions.h"
+
+using boost::gregorian::date;
+using std::string;
+using std::unique_ptr;
 
 namespace qff {
 IborIndex::IborIndex(string currency_code, string curve_name,
@@ -10,7 +15,8 @@ IborIndex::IborIndex(string currency_code, string curve_name,
       day_counter_(day_counter.Clone()),
       fixing_lag_{fixing_lag},
       fixing_calendar_(fixing_calendar.Clone()),
-      convention_(convention.Clone()), tenor_(tenor) {}
+      convention_(convention.Clone()),
+      tenor_(tenor) {}
 
 unique_ptr<IIndex> IborIndex::Clone() const {
   return std::make_unique<IborIndex>(currency_code_, curve_name_, *day_counter_,

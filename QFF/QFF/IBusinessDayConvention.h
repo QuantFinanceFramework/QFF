@@ -4,17 +4,15 @@
 #include "ICalendar.h"
 
 namespace qff {
-using boost::gregorian::date;
-using std::unique_ptr;
-
 class IBusinessDayConvention {
  public:
   IBusinessDayConvention() = default;
   virtual ~IBusinessDayConvention() = default;
 
-  virtual unique_ptr<IBusinessDayConvention> Clone() const = 0;
+  virtual std::unique_ptr<IBusinessDayConvention> Clone() const = 0;
 
-  virtual date Adjust(const date& original_date,
-                      const ICalendar& calendar) const = 0;
+  virtual boost::gregorian::date Adjust(
+      const boost::gregorian::date& original_date,
+      const ICalendar& calendar) const = 0;
 };
 }  // namespace qff

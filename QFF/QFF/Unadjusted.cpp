@@ -1,5 +1,8 @@
 #include "Unadjusted.h"
 
+using boost::gregorian::date;
+using std::unique_ptr;
+
 namespace qff {
 unique_ptr<IBusinessDayConvention> Unadjusted::Clone() const {
   return std::make_unique<Unadjusted>();

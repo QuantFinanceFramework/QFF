@@ -1,5 +1,10 @@
 #include "CompoundedOvernightIndex.h"
 #include <numeric>
+#include "DateFunctions.h"
+
+using boost::gregorian::date;
+using std::string;
+using std::unique_ptr;
 
 namespace qff {
 CompoundedOvernightIndex::CompoundedOvernightIndex(
@@ -12,7 +17,7 @@ CompoundedOvernightIndex::CompoundedOvernightIndex(
       fixing_lag_{fixing_lag},
       publication_lag_{publication_lag},
       fixing_calendar_(fixing_calendar.Clone()),
-      convention_(convention.Clone()){};
+      convention_(convention.Clone()){}
 
 unique_ptr<IIndex> CompoundedOvernightIndex::Clone() const {
   return std::make_unique<CompoundedOvernightIndex>(

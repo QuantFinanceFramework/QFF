@@ -1,18 +1,21 @@
 #include "CurveInterpolator.h"
-#include <utility>
+
+using std::function;
+using std::map;
+using std::unique_ptr;
 
 namespace qff {
 
 unique_ptr<IInterpolator> CurveInterpolator::Clone() const {
-  return std::make_unique<CurveInterpolator>(interpol_func_, right_extrapol_func_);
+  return std::make_unique<CurveInterpolator>(interpol_func_,
+                                             right_extrapol_func_);
 }
 
 CurveInterpolator::CurveInterpolator(
     function<double(const double&, const map<double, double>&)> interpol_func,
     function<double(const double&, const map<double, double>&)>
         right_extrpol_func)
-    : interpol_func_(interpol_func),
-      right_extrapol_func_(right_extrpol_func) {}
+    : interpol_func_(interpol_func), right_extrapol_func_(right_extrpol_func) {}
 
 double CurveInterpolator::Interpol(const double& query_time,
                                    const map<double, double>& data) const {

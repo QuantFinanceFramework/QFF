@@ -1,5 +1,10 @@
 #include "AveragedOvernightIndex.h"
 #include "numeric"
+#include "DateFunctions.h"
+
+using boost::gregorian::date;
+using std::string;
+using std::unique_ptr;
 
 namespace qff {
 AveragedOvernightIndex::AveragedOvernightIndex(
@@ -15,7 +20,7 @@ AveragedOvernightIndex::AveragedOvernightIndex(
       fixing_calendar_(fixing_calendar.Clone()),
       convention_(convention.Clone()),
       rate_cut_off_{rate_cut_off},
-      is_approximation_(is_approximation){};
+      is_approximation_(is_approximation){}
 
 unique_ptr<IIndex> AveragedOvernightIndex::Clone() const {
   return std::make_unique<AveragedOvernightIndex>(
@@ -40,8 +45,6 @@ double AveragedOvernightIndex::GetRate(const date& accrual_start,
   if (fixing_dates_.empty()) {
     GenerateDates(accrual_start, accrual_end);
   }
-
-  auto rate_sum = 0.0;
 
   const auto itr =
       std::upper_bound(fixing_dates_.begin(), fixing_dates_.end(),
@@ -74,8 +77,7 @@ double AveragedOvernightIndex::GetRate(const date& accrual_start,
        1.0) /
       last_year_fraction * accrual_factors_.back();
 
-  return (past_rate_sum + future_rate_sum + last_future_rate) /
-         year_fraction;
+  return (past_rate_sum + future_rate_sum + last_future_rate) / year_fraction;
 }
 
 date AveragedOvernightIndex::GetFixingDate(const date& date) const {

@@ -7,18 +7,19 @@ class BaseCalendar : public ICalendar {
   BaseCalendar() = default;
   ~BaseCalendar() = default;
 
-  unique_ptr<ICalendar> Clone() const override;
+  std::unique_ptr<ICalendar> Clone() const override;
 
-  bool IsBusinessDay(const date& query_date) const final;
-  bool IsHoliday(const date& query_date) const override;
-  bool IsWeekend(const date& query_date) const final;
+  bool IsBusinessDay(const boost::gregorian::date& query_date) const final;
+  bool IsHoliday(const boost::gregorian::date& query_date) const override;
+  bool IsWeekend(const boost::gregorian::date& query_date) const final;
 
  protected:
-  virtual date AdjustHoliday(const date& holiday) const;
-  date NewYearsDay(int year) const;
-  static date EasterMonday(int year);
-  static date GoodFriday(int year);
-  date ChristmasDay(int year) const;
-  date BoxingDay(int year) const;
+  virtual boost::gregorian::date AdjustHoliday(
+      const boost::gregorian::date& holiday) const;
+  boost::gregorian::date NewYearsDay(int year) const;
+  static boost::gregorian::date EasterMonday(int year);
+  static boost::gregorian::date GoodFriday(int year);
+  boost::gregorian::date ChristmasDay(int year) const;
+  boost::gregorian::date BoxingDay(int year) const;
 };
 }  // namespace qff

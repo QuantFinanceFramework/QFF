@@ -27,7 +27,6 @@
     <ClCompile Include="CompositeCalendarTest.cpp">
       <Filter>Calendar</Filter>
     </ClCompile>
-    <ClCompile Include="PeriodTest.cpp" />
     <ClCompile Include="DiscountFactorCurveTest.cpp">
       <Filter>MarketData\Curves</Filter>
     </ClCompile>
@@ -48,6 +47,18 @@
     </ClCompile>
     <ClCompile Include="AveragedOvernightIndexTest.cpp">
       <Filter>Indices</Filter>
+    </ClCompile>
+    <ClCompile Include="DateFunctionsTest.cpp">
+      <Filter>Date</Filter>
+    </ClCompile>
+    <ClCompile Include="FlatZeroCurveTest.cpp">
+      <Filter>MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="FlatHazardRateTest.cpp">
+      <Filter>MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="CdsPremiumTest.cpp">
+      <Filter>Products\Cashflows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +97,12 @@
     </Filter>
     <Filter Include="Indices">
       <UniqueIdentifier>{b2cab2f0-32a6-4f42-bff0-d13c0ec8f883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Date">
+      <UniqueIdentifier>{c819da82-2e1e-49bb-a716-6991c52b1e8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Products\Cashflows">
+      <UniqueIdentifier>{be0354df-808a-499e-8362-f7b6c99ae956}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

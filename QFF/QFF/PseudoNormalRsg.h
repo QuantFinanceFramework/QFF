@@ -9,12 +9,12 @@ class PseudoNormalRsg : public INormalRandomSequenceGenerator {
   PseudoNormalRsg(size_t dimension);
   ~PseudoNormalRsg() = default;
 
-  vector<double> GenerateNormalSequence() override;
+  std::vector<double> GenerateNormalSequence() override;
   void SetDimension(size_t dimension) override;
 
  private:
-  size_t m_dimension;
-  std::mt19937 m_rng;
-  std::normal_distribution<double> m_dist;
+  size_t dimension_;
+  std::mt19937 rng_;
+  std::normal_distribution<double> dist_;
 };
 }  // namespace qff

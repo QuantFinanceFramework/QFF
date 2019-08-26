@@ -2,6 +2,8 @@
 #include <cmath>
 #include <utility>
 
+using std::map;
+
 namespace qff {
 PiecewiseConstantParameter::PiecewiseConstantParameter(
 	map<double, double> value)

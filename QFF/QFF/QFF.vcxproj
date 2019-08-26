@@ -166,6 +166,7 @@
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="FixedCashflow.h" />
     <ClInclude Include="FixedCoupon.h" />
+    <ClInclude Include="FlatHazardRateCurve.h" />
     <ClInclude Include="FlatZeroCurve.h" />
     <ClInclude Include="FloatingCoupon.h" />
     <ClInclude Include="Following.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="FixedCashflow.cpp" />
     <ClCompile Include="FixedCoupon.cpp" />
+    <ClCompile Include="FlatHazardRateCurve.cpp" />
     <ClCompile Include="FlatZeroCurve.cpp" />
     <ClCompile Include="FloatingCoupon.cpp" />
     <ClCompile Include="Following.cpp" />

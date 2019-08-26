@@ -261,6 +261,9 @@
     <ClInclude Include="ProtectionLeg.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
+    <ClInclude Include="FlatHazardRateCurve.h">
+      <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -385,6 +388,9 @@
     </ClCompile>
     <ClCompile Include="ProtectionLeg.cpp">
       <Filter>Source Files\Products</Filter>
+    </ClCompile>
+    <ClCompile Include="FlatHazardRateCurve.cpp">
+      <Filter>Source Files\MarketData\Curves</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

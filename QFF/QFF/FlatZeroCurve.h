@@ -24,8 +24,6 @@ class FlatZeroCurve : public IInterestRateCurve {
   double GetZeroRate(double query_time) const override;
 
  private:
-  double DateToTime(const boost::gregorian::date& date) const;
-
   boost::gregorian::date curve_date_;
   double zero_rate_;
   std::unique_ptr<IDayCounter> day_counter_;

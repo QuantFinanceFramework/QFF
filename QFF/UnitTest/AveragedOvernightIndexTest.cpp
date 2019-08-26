@@ -14,9 +14,9 @@ using std::map;
 using std::string;
 using std::unique_ptr;
 
-class AveragedOvernightIndexFixture : public testing::Test {
+class AveragedOvernightIndexTestFixture : public testing::Test {
  public:
-  AveragedOvernightIndexFixture() {
+  AveragedOvernightIndexTestFixture() {
     auto curve =
         std::make_unique<FlatZeroCurve>(date(2019, 1, 2), 0.02, Actual365());
     map<std::string, std::unique_ptr<IInterestRateCurve>> curve_set;
@@ -37,7 +37,7 @@ class AveragedOvernightIndexFixture : public testing::Test {
   unique_ptr<MarketData> market_;
 };
 
-TEST_F(AveragedOvernightIndexFixture, GetRate_Past) {
+TEST_F(AveragedOvernightIndexTestFixture, GetRate_Past) {
   const AveragedOvernightIndex index{"USD",
                                      "OIS",
                                      Actual365(),
@@ -54,7 +54,7 @@ TEST_F(AveragedOvernightIndexFixture, GetRate_Past) {
   EXPECT_NEAR(rate, 0.02035577555959, 0.0001);
 }
 
-TEST_F(AveragedOvernightIndexFixture, GetRate) {
+TEST_F(AveragedOvernightIndexTestFixture, GetRate) {
   const AveragedOvernightIndex index{"USD",
                                      "OIS",
                                      Actual365(),

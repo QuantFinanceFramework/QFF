@@ -51,6 +51,7 @@
   <ItemGroup>
     <ClCompile Include="AveragedOvernightIndexTest.cpp" />
     <ClCompile Include="BusinessDayConventionTest.cpp" />
+    <ClCompile Include="CdsPremiumTest.cpp" />
     <ClCompile Include="CompositeCalendarTest.cpp" />
     <ClCompile Include="CompoundedOvernightIndexTest.cpp" />
     <ClCompile Include="ConstantParameterTest.cpp" />
@@ -58,6 +59,8 @@
     <ClCompile Include="DateFunctionsTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="DiscountFactorCurveTest.cpp" />
+    <ClCompile Include="FlatHazardRateTest.cpp" />
+    <ClCompile Include="FlatZeroCurveTest.cpp" />
     <ClCompile Include="IborIndexTest.cpp" />
     <ClCompile Include="InterpolationTest.cpp" />
     <ClCompile Include="LondonCalendarTest.cpp" />

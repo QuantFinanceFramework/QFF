@@ -25,7 +25,7 @@ void put_on_tape(It begin, It end) {
   std::for_each(begin, end, [](aad_double& n) { n.put_on_tape(); });
 }
 
-//	Convert collection between double and Number or reverse
+//	Convert collection between double and aad_double or reverse
 template <typename It1, typename It2>
 void convert_collection(It1 src_begin, It1 src_end, It2 dest_begin) {
   using dest_type = std::remove_reference_t<decltype(*dest_begin)>;

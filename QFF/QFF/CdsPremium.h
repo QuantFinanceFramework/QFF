@@ -14,8 +14,6 @@ class CdsPremium : public ICashflow {
              std::string discount_curve_name, std::string survival_curve_name,
              const IDayCounter& day_counter, double cds_spread);
 
-  ~CdsPremium() = default;
-
   Currency Evaluate(const IMarketData& market_data,
                     const std::string& currency_code) const override;
 

@@ -5,9 +5,9 @@
 namespace qff {
 class PseudoNormalRsg : public INormalRandomSequenceGenerator {
  public:
+  PseudoNormalRsg() = default;
   PseudoNormalRsg(size_t dimension, unsigned int seed);
-  PseudoNormalRsg(size_t dimension);
-  ~PseudoNormalRsg() = default;
+  explicit PseudoNormalRsg(size_t dimension);
 
   std::vector<double> GenerateNormalSequence() override;
   void SetDimension(size_t dimension) override;

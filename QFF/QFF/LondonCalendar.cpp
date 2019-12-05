@@ -5,7 +5,7 @@ using std::unique_ptr;
 
 namespace qff {
 unique_ptr<ICalendar> LondonCalendar::Clone() const {
-  return std::make_unique<LondonCalendar>();
+  return std::make_unique<LondonCalendar>(*this);
 }
 
 bool LondonCalendar::IsHoliday(const date& query_date) const {

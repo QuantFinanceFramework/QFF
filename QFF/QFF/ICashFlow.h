@@ -5,7 +5,6 @@
 namespace qff {
 class ICashflow : public IProduct{
  public:
-  ICashflow() = default;
   virtual ~ICashflow() = default;
 
   virtual boost::gregorian::date GetPaymentDate() const = 0;

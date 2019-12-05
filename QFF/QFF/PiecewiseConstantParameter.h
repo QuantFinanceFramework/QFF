@@ -9,8 +9,6 @@ class PiecewiseConstantParameter : public IParameter {
   PiecewiseConstantParameter() = default;
   PiecewiseConstantParameter(std::map<double, double> value);
 
-  ~PiecewiseConstantParameter() = default;
-
   double operator[](double time) const override;
   double Integral(double time1, double time2) const override;
   double IntegralSquare(double time1, double time2) const override;

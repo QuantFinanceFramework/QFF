@@ -6,7 +6,6 @@ namespace qff {
 
 class IInterpolator {
  public:
-  IInterpolator() = default;
   virtual ~IInterpolator() = default;
 
   virtual std::unique_ptr<IInterpolator> Clone() const = 0;

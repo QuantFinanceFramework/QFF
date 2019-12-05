@@ -5,7 +5,6 @@
 namespace qff {
 class IDayCounter {
  public:
-  IDayCounter() = default;
   virtual ~IDayCounter() = default;
 
   virtual std::unique_ptr<IDayCounter> Clone() const = 0;

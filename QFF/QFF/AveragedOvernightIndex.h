@@ -19,8 +19,6 @@ class AveragedOvernightIndex : public IIndex {
                          const IBusinessDayConvention& convention,
                          Period rate_cut_off, bool is_approximation);
 
-  ~AveragedOvernightIndex() = default;
-
   std::unique_ptr<IIndex> Clone() const override;
 
   double GetRate(const boost::gregorian::date& accrual_start,

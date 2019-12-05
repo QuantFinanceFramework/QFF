@@ -11,7 +11,6 @@ class ProtectionLeg : public IProduct {
              boost::gregorian::date start_date, boost::gregorian::date end_date,
              std::string discount_curve_name, std::string survival_curve_name,
              double recovery_rate, Frequency estimation_frequency);
-  ~ProtectionLeg() = default;
 
   Currency Evaluate(const IMarketData& market_data,
                     const std::string& currency_code) const override;

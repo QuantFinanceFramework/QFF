@@ -6,7 +6,6 @@
 namespace qff {
 class IBusinessDayConvention {
  public:
-  IBusinessDayConvention() = default;
   virtual ~IBusinessDayConvention() = default;
 
   virtual std::unique_ptr<IBusinessDayConvention> Clone() const = 0;

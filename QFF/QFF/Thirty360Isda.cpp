@@ -5,16 +5,16 @@ using std::unique_ptr;
 
 namespace qff {
 unique_ptr<IDayCounter> Thirty360Isda::Clone() const {
-  return std::make_unique<Thirty360Isda>();
+  return std::make_unique<Thirty360Isda>(*this);
 }
 
 double Thirty360Isda::CalculateYearFraction(const date& start_date,
                                             const date& end_date,
                                             const bool& is_maturity) const {
-  int y1 = start_date.year();
-  int y2 = end_date.year();
-  int m1 = start_date.month();
-  int m2 = end_date.month();
+  const int y1 = start_date.year();
+  const int y2 = end_date.year();
+  const int m1 = start_date.month();
+  const int m2 = end_date.month();
   int d1 = start_date.day();
   int d2 = end_date.day();
 

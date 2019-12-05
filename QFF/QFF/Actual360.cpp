@@ -5,7 +5,7 @@ using std::unique_ptr;
 
 namespace qff {
 unique_ptr<IDayCounter> Actual360::Clone() const {
-  return std::make_unique<Actual360>();
+  return std::make_unique<Actual360>(*this);
 }
 
 double Actual360::CalculateYearFraction(const date& start_date,

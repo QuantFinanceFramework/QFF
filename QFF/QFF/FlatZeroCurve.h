@@ -10,7 +10,6 @@ class FlatZeroCurve : public IInterestRateCurve {
   FlatZeroCurve() = default;
   FlatZeroCurve(boost::gregorian::date curve_date, double zero_rate,
                 const IDayCounter& day_counter);
-  ~FlatZeroCurve() = default;
 
   boost::gregorian::date GetCurveDate() const;
 

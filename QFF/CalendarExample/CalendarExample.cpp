@@ -2,6 +2,7 @@
 #include <LondonCalendar.h>
 #include <NewYorkCalendar.h>
 #include <SydneyCalendar.h>
+#include <USGovernmentBondCalender.h>
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <iostream>
 
@@ -13,6 +14,7 @@ int main() {
   const auto comp =
       CompositeCalendar(SydneyCalendar(), NewYorkCalendar(), LondonCalendar());
   const auto comp2 = comp.Clone();
+  const USGovernmentBondCalender ugb{};
 
   const date bank_holiday(2019, 8, 5);
   std::cout << "Bank Holiday is a holiday in Sydney: "

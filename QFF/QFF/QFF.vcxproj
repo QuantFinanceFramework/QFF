@@ -203,6 +203,7 @@
     <ClInclude Include="SydneyCalendar.h" />
     <ClInclude Include="Thirty360Isda.h" />
     <ClInclude Include="Unadjusted.h" />
+    <ClInclude Include="USGovernmentBondCalender.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actual360.cpp" />
@@ -247,6 +248,7 @@
     <ClCompile Include="SydenyCalendar.cpp" />
     <ClCompile Include="Thirty360Isda.cpp" />
     <ClCompile Include="Unadjusted.cpp" />
+    <ClCompile Include="USGovernmentBondCalender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

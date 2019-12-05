@@ -264,6 +264,9 @@
     <ClInclude Include="FlatHazardRateCurve.h">
       <Filter>Header Files\MarketData\Curves</Filter>
     </ClInclude>
+    <ClInclude Include="USGovernmentBondCalender.h">
+      <Filter>Header Files\Calendar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -391,6 +394,9 @@
     </ClCompile>
     <ClCompile Include="FlatHazardRateCurve.cpp">
       <Filter>Source Files\MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="USGovernmentBondCalender.cpp">
+      <Filter>Source Files\Calendar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

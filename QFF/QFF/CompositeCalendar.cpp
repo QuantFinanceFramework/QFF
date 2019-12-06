@@ -8,14 +8,14 @@ using std::vector;
 namespace qff {
 CompositeCalendar::CompositeCalendar(
     vector<unique_ptr<ICalendar>> calendar_list)
-    : calendar_list_(std::move(calendar_list)) {}
+  : calendar_list_(std::move(calendar_list)) {}
 
 unique_ptr<ICalendar> CompositeCalendar::Clone() const {
-  vector<unique_ptr<ICalendar>> calendarList(sizeof(calendar_list_));
+  vector<unique_ptr<ICalendar>> calendar_list(size(calendar_list_));
   std::transform(calendar_list_.begin(), calendar_list_.end(),
-                 calendarList.begin(),
+                 calendar_list.begin(),
                  [](const auto& p) { return p->Clone(); });
-  return std::make_unique<CompositeCalendar>(std::move(calendarList));
+  return std::make_unique<CompositeCalendar>(std::move(calendar_list));
 }
 
 bool CompositeCalendar::IsHoliday(const date& query_date) const {

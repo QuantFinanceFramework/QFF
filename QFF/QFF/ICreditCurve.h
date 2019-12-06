@@ -5,7 +5,6 @@ namespace qff {
 
 class ICreditCurve {
  public:
-  ICreditCurve() = default;
   virtual ~ICreditCurve() = default;
 
   virtual double GetSurvivalProbability(

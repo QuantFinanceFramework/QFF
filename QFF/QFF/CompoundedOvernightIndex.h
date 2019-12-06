@@ -18,8 +18,6 @@ class CompoundedOvernightIndex : public IIndex {
                            const ICalendar& fixing_calendar,
                            const IBusinessDayConvention& convention);
 
-  ~CompoundedOvernightIndex() = default;
-
   std::unique_ptr<IIndex> Clone() const override;
 
   double GetRate(const boost::gregorian::date& accrual_start,

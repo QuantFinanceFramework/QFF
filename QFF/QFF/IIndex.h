@@ -7,7 +7,6 @@ namespace qff {
 
 class IIndex {
  public:
-  IIndex() = default;
   virtual ~IIndex() = default;
 
   virtual std::unique_ptr<IIndex> Clone() const = 0;

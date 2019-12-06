@@ -6,7 +6,7 @@ namespace qff {
 
 Swap::Swap(std::unique_ptr<IProduct> receive_leg,
            std::unique_ptr<IProduct> pay_leg)
-    : receive_leg_(move(receive_leg)), pay_leg_(std::move(pay_leg)) {}
+    : receive_leg_(std::move(receive_leg)), pay_leg_(std::move(pay_leg)) {}
 
 Currency Swap::Evaluate(const IMarketData& market_data,
                         const string& currency_code) const {

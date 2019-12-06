@@ -2,7 +2,7 @@
 #include "IDayCounter.h"
 
 namespace qff {
-class Thirty360Isda : public IDayCounter {
+class Thirty360Isda final : public IDayCounter {
  public:
   std::unique_ptr<IDayCounter> Clone() const override;
   double CalculateYearFraction(const boost::gregorian::date& start_date,

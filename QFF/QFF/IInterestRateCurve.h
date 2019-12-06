@@ -5,7 +5,6 @@ namespace qff {
 
 class IInterestRateCurve {
  public:
-  IInterestRateCurve() = default;
   virtual ~IInterestRateCurve() = default;
 
   virtual double GetDiscountFactor(

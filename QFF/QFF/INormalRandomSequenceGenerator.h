@@ -5,7 +5,6 @@ namespace qff {
 
 class INormalRandomSequenceGenerator {
  public:
-  INormalRandomSequenceGenerator() = default;
   virtual ~INormalRandomSequenceGenerator() = default;
 
   virtual std::vector<double> GenerateNormalSequence() = 0;

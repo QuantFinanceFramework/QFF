@@ -9,7 +9,6 @@ class FlatHazardRateCurve : public ICreditCurve {
   FlatHazardRateCurve() = default;
   FlatHazardRateCurve(boost::gregorian::date curve_date, double hazard_rate,
                       const IDayCounter& day_counter);
-  ~FlatHazardRateCurve() = default;
 
   boost::gregorian::date GetCurveDate() const;
 

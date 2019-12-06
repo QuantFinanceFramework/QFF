@@ -14,8 +14,6 @@ class FixedCoupon : public ICashflow {
               std::string discount_curve_name, const IDayCounter& day_counter,
               double rate);
 
-  ~FixedCoupon() = default;
-
   Currency Evaluate(const IMarketData& market_data,
                     const std::string& currency_code) const override;
 

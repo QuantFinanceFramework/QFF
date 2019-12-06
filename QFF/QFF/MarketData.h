@@ -17,8 +17,6 @@ class MarketData : public IMarketData {
       std::map<std::string, std::map<boost::gregorian::date, double>>
           past_fixing_set);
 
-  ~MarketData() = default;
-
   boost::gregorian::date GetMarketDate() const override;
 
   double GetDiscountFactor(

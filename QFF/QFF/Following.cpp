@@ -5,7 +5,7 @@ using std::unique_ptr;
 
 namespace qff {
 unique_ptr<IBusinessDayConvention> Following::Clone() const {
-  return std::make_unique<Following>();
+  return std::make_unique<Following>(*this);
 }
 
 date Following::Adjust(const date& original_date,

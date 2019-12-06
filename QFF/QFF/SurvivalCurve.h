@@ -23,8 +23,6 @@ class SurvivalCurve : public ICreditCurve {
                 std::unique_ptr<IInterpolator> interpolator,
                 std::unique_ptr<IDayCounter> day_counter);
 
-  ~SurvivalCurve() = default;
-
   boost::gregorian::date GetCurveDate() const;
 
   double GetSurvivalProbability(

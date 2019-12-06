@@ -5,9 +5,7 @@ namespace qff {
 class ConstantParameter : public IParameter {
  public:
   ConstantParameter() = default;
-  ConstantParameter(double value);
-
-  ~ConstantParameter() = default;
+  explicit ConstantParameter(double value);
 
   double operator[](double time) const override;
   double Integral(double time1, double time2) const override;
@@ -15,6 +13,6 @@ class ConstantParameter : public IParameter {
 
  private:
   double value_;
-  double valueSquare_;
+  double value_square_;
 };
 }  // namespace qff

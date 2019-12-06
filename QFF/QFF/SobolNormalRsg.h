@@ -12,8 +12,7 @@ class SobolNormalRsg : public INormalRandomSequenceGenerator {
 
  public:
   SobolNormalRsg() = default;
-  SobolNormalRsg(size_t dimension);
-  ~SobolNormalRsg() = default;
+  explicit SobolNormalRsg(size_t dimension);
 
   std::vector<double> GenerateNormalSequence() override;
   void SetDimension(size_t dimension) override;

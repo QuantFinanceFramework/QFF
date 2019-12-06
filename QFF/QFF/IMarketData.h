@@ -6,7 +6,6 @@ namespace qff {
 
 class IMarketData {
  public:
-  IMarketData() = default;
   virtual ~IMarketData() = default;
 
   virtual boost::gregorian::date GetMarketDate() const = 0;

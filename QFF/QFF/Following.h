@@ -2,7 +2,7 @@
 #include "IBusinessDayConvention.h"
 
 namespace qff {
-class Following : public IBusinessDayConvention {
+class Following final : public IBusinessDayConvention {
  public:
   std::unique_ptr<IBusinessDayConvention> Clone() const override;
 

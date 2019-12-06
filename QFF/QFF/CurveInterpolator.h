@@ -14,8 +14,6 @@ class CurveInterpolator : public IInterpolator {
       std::function<double(const double&, const std::map<double, double>&)>
           right_extrpol_func);
 
-  ~CurveInterpolator() = default;
-
   double Interpol(const double& query_time,
                   const std::map<double, double>& data) const override;
 

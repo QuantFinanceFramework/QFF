@@ -5,7 +5,7 @@ using std::unique_ptr;
 
 namespace qff {
 unique_ptr<IBusinessDayConvention> Unadjusted::Clone() const {
-  return std::make_unique<Unadjusted>();
+  return std::make_unique<Unadjusted>(*this);
 }
 
 date Unadjusted::Adjust(const date& original_date,

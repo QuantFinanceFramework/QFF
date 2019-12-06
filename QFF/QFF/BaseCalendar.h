@@ -4,9 +4,6 @@
 namespace qff {
 class BaseCalendar : public ICalendar {
  public:
-  BaseCalendar() = default;
-  ~BaseCalendar() = default;
-
   std::unique_ptr<ICalendar> Clone() const override;
 
   bool IsBusinessDay(const boost::gregorian::date& query_date) const final;

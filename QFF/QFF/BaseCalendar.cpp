@@ -5,7 +5,7 @@ using std::unique_ptr;
 
 namespace qff {
 unique_ptr<ICalendar> BaseCalendar::Clone() const {
-  return std::make_unique<BaseCalendar>();
+  return std::make_unique<BaseCalendar>(*this);
 }
 
 bool BaseCalendar::IsBusinessDay(const date &query_date) const {

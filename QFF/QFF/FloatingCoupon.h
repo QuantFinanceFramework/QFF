@@ -17,8 +17,6 @@ class FloatingCoupon : public ICashflow {
              std::string discount_curve_name, const IDayCounter& day_counter,
              const IIndex& index, double leverage, double margin);
 
-  ~FloatingCoupon() = default;
-
   Currency Evaluate(const IMarketData& market_data,
                     const std::string& currency_code) const override;
 

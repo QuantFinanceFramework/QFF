@@ -5,7 +5,6 @@
 namespace qff {
 class ICalendar {
  public:
-  ICalendar() = default;
   virtual ~ICalendar() = default;
 
   virtual std::unique_ptr<ICalendar> Clone() const = 0;

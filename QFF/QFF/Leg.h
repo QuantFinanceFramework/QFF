@@ -11,8 +11,6 @@ class Leg : public IProduct {
   Leg() = default;
   Leg(std::vector<std::unique_ptr<ICashflow>> cashflows);
 
-  ~Leg() = default;
-
   Currency Evaluate(const IMarketData& market_data,
                     const std::string& currency_code) const override;
 

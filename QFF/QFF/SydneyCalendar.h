@@ -2,7 +2,7 @@
 #include "BaseCalendar.h"
 
 namespace qff {
-class SydneyCalendar : public BaseCalendar {
+class SydneyCalendar final : public BaseCalendar {
  public:
   std::unique_ptr<ICalendar> Clone() const override;
   bool IsHoliday(const boost::gregorian::date& query_date) const override;

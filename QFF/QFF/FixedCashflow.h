@@ -7,7 +7,6 @@ class FixedCashflow : public ICashflow {
   FixedCashflow(double payment_amount, std::string currency_code,
                 boost::gregorian::date payment_date,
                 std::string discount_curve_name);
-  ~FixedCashflow() = default;
 
   Currency Evaluate(const IMarketData& market_data,
                     const std::string& currency_code) const override;

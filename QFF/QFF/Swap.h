@@ -8,7 +8,6 @@ class Swap : public IProduct {
   Swap() = default;
   Swap(std::unique_ptr<IProduct> receive_leg,
        std::unique_ptr<IProduct> pay_leg);
-  ~Swap() = default;
 
   Currency Evaluate(const IMarketData& market_data,
                     const std::string& currency_code) const override;

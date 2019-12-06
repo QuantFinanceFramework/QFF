@@ -3,7 +3,6 @@
 namespace qff {
 class IParameter {
  public:
-  IParameter() = default;
   virtual ~IParameter() = default;
 
   virtual double operator[](double time) const = 0;

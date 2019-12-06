@@ -23,8 +23,6 @@ class DiscountFactorCurve : public IInterestRateCurve {
                       std::unique_ptr<IInterpolator> interpolator,
                       std::unique_ptr<IDayCounter> day_counter);
 
-  ~DiscountFactorCurve() = default;
-
   boost::gregorian::date GetCurveDate() const;
 
   double GetDiscountFactor(

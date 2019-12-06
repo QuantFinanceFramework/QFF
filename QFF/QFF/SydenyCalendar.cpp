@@ -7,7 +7,7 @@ namespace qff {
 using boost::date_time::next_weekday;
 
 unique_ptr<ICalendar> SydneyCalendar::Clone() const {
-  return std::make_unique<SydneyCalendar>();
+  return std::make_unique<SydneyCalendar>(*this);
 }
 
 bool SydneyCalendar::IsHoliday(const date& query_date) const {

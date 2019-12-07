@@ -18,7 +18,7 @@
     <ClCompile Include="AadAdvancedExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ParametricCurve.cpp">
+    <ClCompile Include="ConcreteInstrument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,11 +29,17 @@
     <ClInclude Include="DiscountCurve.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Bond.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ParametricCurve.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IInstrument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteInstrument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ class DiscountCurve final : public ICurve<T> {
   explicit DiscountCurve(std::vector<T> discount_factors)
       : discount_factors_(std::move(discount_factors)) {}
 
-  T GetDiscountFactor(size_t itr) const override;
+  T GetDiscountFactor(double time) const override;
 
   std::vector<double> GetAdjoints() const override;
 
@@ -19,8 +19,10 @@ class DiscountCurve final : public ICurve<T> {
 };
 
 template <typename T>
-T DiscountCurve<T>::GetDiscountFactor(size_t itr) const {
-  return discount_factors_[itr];
+T DiscountCurve<T>::GetDiscountFactor(double time) const {
+  if (time <= 1.0) return T(discount_factors_[0]);
+  if (time <= 2.0) return T(discount_factors_[1]);
+  if (time <= 3.0) return T(discount_factors_[2]);
 }
 
 template <typename T>

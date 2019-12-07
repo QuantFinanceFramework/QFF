@@ -1,5 +1,4 @@
 #pragma once
-#include <algorithm>
 #include "../AAD/aad_all.h"
 #include "ICurve.h"
 
@@ -9,7 +8,7 @@ class ParametricCurve final : public ICurve<T> {
   ParametricCurve() = default;
   ParametricCurve(T m, T c) : m_{m}, c_{c} {};
 
-  T GetDiscountFactor(size_t itr) const override;
+  T GetDiscountFactor(double time) const override;
 
   std::vector<double> GetAdjoints() const override;
 
@@ -19,8 +18,8 @@ class ParametricCurve final : public ICurve<T> {
 };
 
 template <typename T>
-T ParametricCurve<T>::GetDiscountFactor(size_t itr) const {
-  return T(m_ * itr + c_);
+T ParametricCurve<T>::GetDiscountFactor(double time) const {
+  return T(m_ * time + c_);
 }
 
 template <typename T>

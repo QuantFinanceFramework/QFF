@@ -13,6 +13,6 @@ class IInstrument {
 
  private:
   virtual double EvaluateImpl(const ICurve<double>& curve) const = 0;
-  virtual aad::aad_double EvaluateImpl(
-      const ICurve<aad::aad_double>& curve) const = 0;
+  virtual aad::a_double EvaluateImpl(
+      const ICurve<aad::a_double>& curve) const = 0;
 };

@@ -7,11 +7,11 @@
 using namespace aad;
 
 int main() {
-  auto tape = *aad_double::tape;
+  auto tape = *a_double::tape;
   tape.clear();
 
   std::vector dfs{0.99, 0.97, 0.94};
-  std::vector<aad_double> aad_dfs(3);
+  std::vector<a_double> aad_dfs(3);
   convert_collection(dfs.begin(), dfs.end(), aad_dfs.begin());
 
   const DiscountCurve d{std::move(dfs)};
@@ -28,14 +28,14 @@ int main() {
 
   auto instrument_result_aad = instrument.Evaluate(d_aad);
   instrument_result_aad.propagate_to_start();
-  std::cout << "NPV using DiscountCurve<aad_double> = "
+  std::cout << "NPV using DiscountCurve<a_double> = "
             << instrument_result_aad.value() << '\n';
   auto adjoints_aad = d_aad.GetAdjoints();
-  for (auto& a : adjoints_aad) std::cout << "Adjoint (aad_double)" << a << '\n';
+  for (auto& a : adjoints_aad) std::cout << "Adjoint (a_double)" << a << '\n';
 
   tape.rewind();
   const ParametricCurve p{-0.05, 1.0};
-  const ParametricCurve p_aad{aad_double{-0.05}, aad_double{1.0}};
+  const ParametricCurve p_aad{a_double{-0.05}, a_double{1.0}};
 
   const auto instrument_result_p = instrument.Evaluate(p);
   std::cout << "NPV using ParametricCurve<double> = " << instrument_result_p
@@ -45,11 +45,11 @@ int main() {
 
   auto instrument_result_aad_p = instrument.Evaluate(p_aad);
   instrument_result_aad_p.propagate_to_start();
-  std::cout << "NPV using ParametricCurve<aad_double> = "
+  std::cout << "NPV using ParametricCurve<a_double> = "
             << instrument_result_aad_p.value() << '\n';
   auto adjoints_aad_p = p_aad.GetAdjoints();
   for (auto& a : adjoints_aad_p)
-    std::cout << "Adjoint (aad_double)" << a << '\n';
+    std::cout << "Adjoint (a_double)" << a << '\n';
 
   return EXIT_SUCCESS;
 }

@@ -10,8 +10,8 @@ class ConcreteInstrument final : public IInstrument {
 
  private:
   double EvaluateImpl(const ICurve<double>& curve) const override;
-  aad::aad_double EvaluateImpl(
-      const ICurve<aad::aad_double>& curve) const override;
+  aad::a_double EvaluateImpl(
+      const ICurve<aad::a_double>& curve) const override;
 
   double notional_{};
   std::vector<double> payment_times_{};

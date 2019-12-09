@@ -31,7 +31,7 @@ std::vector<double> DiscountCurve<T>::GetAdjoints() const {
 }
 
 template <>
-inline std::vector<double> DiscountCurve<aad::aad_double>::GetAdjoints() const {
+inline std::vector<double> DiscountCurve<aad::a_double>::GetAdjoints() const {
   std::vector<double> adjoints(size(discount_factors_));
   std::transform(discount_factors_.begin(), discount_factors_.end(),
                  adjoints.begin(), [](const auto& d) { return d.adjoint(); });

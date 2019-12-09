@@ -28,6 +28,6 @@ std::vector<double> ParametricCurve<T>::GetAdjoints() const {
 }
 
 template <>
-inline std::vector<double> ParametricCurve<aad::aad_double>::GetAdjoints() const {
+inline std::vector<double> ParametricCurve<aad::a_double>::GetAdjoints() const {
   return std::vector<double>{m_.adjoint(), c_.adjoint()};
 }

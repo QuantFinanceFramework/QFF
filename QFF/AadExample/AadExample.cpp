@@ -4,14 +4,14 @@
 
 int main() {
   using namespace aad;
-  auto tape = *aad_double::tape;
+  auto tape = *a_double::tape;
   tape.clear();
 
-  aad_double x(15.0);
-  aad_double y(20.0);
-  aad_double z(1.0);
+  a_double x(15.0);
+  a_double y(20.0);
+  a_double z(1.0);
 
-  auto result = aad_double(x * y + z);
+  auto result = a_double(x * y + z);
 
   result.propagate_to_start();
 
@@ -22,11 +22,11 @@ int main() {
 
   tape.rewind();
 
-  aad_double a(1.0);
-  aad_double b(20.0);
-  aad_double c(30.0);
+  a_double a(1.0);
+  a_double b(20.0);
+  a_double c(30.0);
 
-  auto result2 = aad_double(exp(a) + b - pow(c, 2));
+  auto result2 = a_double(exp(a) + b - pow(c, 2));
 
   result2.propagate_to_start();
 
@@ -38,10 +38,10 @@ int main() {
   tape.rewind();
 
   std::vector vx_double{1.0, 20.0, 30.0};
-  std::vector<aad_double> vx(3);
+  std::vector<a_double> vx(3);
   convert_collection(vx_double.begin(), vx_double.end(), vx.begin());
-  const auto func = [](const std::vector<aad_double>& v) {
-    return aad_double(exp(v[0]) + v[1] - pow(v[2], 2));
+  const auto func = [](const std::vector<a_double>& v) {
+    return a_double(exp(v[0]) + v[1] - pow(v[2], 2));
   };
 
   auto result3 = func(vx);

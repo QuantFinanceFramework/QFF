@@ -15,7 +15,7 @@ public:
   explicit operator double() const { return value(); }
 };
 
-//  Note that aad_double is a leaf expression
+//  Note that a_double is a leaf expression
 //  Defined in the bottom of the file
 
 //  Binary expression
@@ -39,7 +39,7 @@ class binary_expression
   //  Value accessors
   [[nodiscard]] double value() const { return value_; }
 
-  //	Expression template magic
+  //  Expression template magic
   //  Expressions know
   //  AT COMPILE TIME
   //  the number of active inputs in their sub-expressions
@@ -66,7 +66,7 @@ class binary_expression
     //  Push on the right
     if (RightExpression::num_actives > 0) {
       //  Note left push processed LeftExpression::num_actives numbers
-      //  So the next aad_double to be processed is ProcessedActives +
+      //  So the next a_double to be processed is ProcessedActives +
       //  LeftExpression::num_actives
       rhs_.push_adjoint<TotalActives,
                         ProcessedActives + LeftExpression::num_actives>(
@@ -255,7 +255,7 @@ class unary_expression
   //  Value accessors
   [[nodiscard]] double value() const { return value_; }
 
-  //	Expression template magic
+  //  Expression template magic
   enum { num_actives = Expression::num_actives };
 
   //  Push adjoint down the expression
@@ -637,25 +637,25 @@ expression<Expression> operator+(const expression<Expression>& rhs) {
   return rhs;
 }
 
-//  The aad_double type, also an expression
+//  The a_double type, also an expression
 
-class aad_double : public expression<aad_double> {
+class a_double : public expression<a_double> {
  public:
   //  Expression template magic
   enum { num_actives = 1 };
 
   //  Push adjoint
-  //  aad_doubles are expression leaves,
-  //      push_adjoint() receives their adjoint in the expression
-  //  aad_doubles don't "push" anything, they register their derivatives on tape
+  //  a_doubles are expression leaves,
+  //  push_adjoint() receives their adjoint in the expression
+  //  a_doubles don't "push" anything, they register their derivatives on tape
   template <size_t TotalActives, size_t ProcessedActives>
   void push_adjoint(
       //  Node for the complete expression
       node& expr_node,
-      //  Adjoint accumulated for this aad_double, in the expression
+      //  Adjoint accumulated for this a_double, in the expression
       const double adjoint) const {
-    //  adjoint = d (expression) / d (thisaad_double) : register on tape
-    //  note ProcessedActives: index of this aad_double on the node on tape
+    //  adjoint = d (expression) / d (this->a_double) : register on tape
+    //  note ProcessedActives: index of this a_double on the node on tape
 
     //  Register adjoint
     expr_node.p_adj_ptrs_[ProcessedActives] =
@@ -670,14 +670,14 @@ class aad_double : public expression<aad_double> {
 
   //  Constructors
 
-  aad_double() = default;
+  a_double() = default;
 
-  explicit aad_double(const double val) : value_(val) {
+  explicit a_double(const double val) : value_(val) {
     //  Create leaf
     node_ = create_multi_node<0>();
   }
 
-  aad_double& operator=(const double val) {
+  a_double& operator=(const double val) {
     value_ = val;
     //  Create leaf
     node_ = create_multi_node<0>();
@@ -691,13 +691,13 @@ class aad_double : public expression<aad_double> {
   //  Construct or assign from expression
 
   template <typename Expression>
-  explicit aad_double(const expression<Expression>& e) : value_(e.value()) {
+  explicit a_double(const expression<Expression>& e) : value_(e.value()) {
     //  Flatten Expression expression
     from_expr<Expression>(static_cast<const Expression&>(e));
   }
 
   template <typename Expression>
-  aad_double& operator=(const expression<Expression>& e) {
+  a_double& operator=(const expression<Expression>& e) {
     value_ = e.value();
     //  Flatten Expression expression
     from_expr<Expression>(static_cast<const Expression&>(e));
@@ -751,7 +751,7 @@ class aad_double : public expression<aad_double> {
   //  Set the adjoint on this node to 1,
   //  Then propagate from the node
   void propagate_adjoints(
-      //  We start on this aad_double's node
+      //  We start on this a_double's node
       const tape::iterator& propagate_to) {
     //  Set this adjoint to 1
     adjoint() = 1.0;
@@ -792,25 +792,25 @@ class aad_double : public expression<aad_double> {
   //  Unary operators
 
   template <typename Expression>
-  aad_double& operator+=(const expression<Expression>& e) {
+  a_double& operator+=(const expression<Expression>& e) {
     *this = *this + e;
     return *this;
   }
 
   template <typename Expression>
-  aad_double& operator*=(const expression<Expression>& e) {
+  a_double& operator*=(const expression<Expression>& e) {
     *this = *this * e;
     return *this;
   }
 
   template <typename Expression>
-  aad_double& operator-=(const expression<Expression>& e) {
+  a_double& operator-=(const expression<Expression>& e) {
     *this = *this - e;
     return *this;
   }
 
   template <typename Expression>
-  aad_double& operator/=(const expression<Expression>& e) {
+  a_double& operator/=(const expression<Expression>& e) {
     *this = *this / e;
     return *this;
   }
@@ -826,7 +826,7 @@ private:
   //      that derivatives are pushed through the expression's DAG
   template <typename Expression>
   void from_expr(
-      //  Expression expression, will be flattened into this aad_double
+      //  Expression expression, will be flattened into this a_double
       const expression<Expression>& e) {
     //  Build expression node on tape
     auto* node = create_multi_node<Expression::num_actives>();
@@ -839,7 +839,7 @@ private:
     node_ = node;
   }
 
-  //  The value and node for this aad_double, same as traditional
+  //  The value and node for this a_double, same as traditional
   double value_{};
   node* node_{};
 };

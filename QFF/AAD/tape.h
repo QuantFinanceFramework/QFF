@@ -10,7 +10,7 @@ constexpr size_t data_size = 65536;     //	Data in bytes
 class tape {
  public:
   //  Build note in place and return a pointer
-  //	N : aad_double of children (arguments)
+  //	N : a_double of children (arguments)
   template <size_t N>
   node* record_node() {
     //  Construct the node in place on tape
@@ -123,6 +123,6 @@ private:
 
   friend auto set_num_results_for_aad(bool, size_t);
   friend struct num_results_resetter_for_aad;
-  friend class aad_double;
+  friend class a_double;
 };
 }  // namespace aad

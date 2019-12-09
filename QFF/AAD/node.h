@@ -48,7 +48,7 @@ class node {
 
 private:
   friend class tape;
-  friend class aad_double;
+  friend class a_double;
   friend auto set_num_results_for_aad(bool, size_t);
   friend struct num_results_resetter_for_aad;
 

@@ -22,10 +22,10 @@ inline auto set_num_results_for_aad(const bool is_multi = false,
 //	Put collection on tape
 template <typename It>
 void put_on_tape(It begin, It end) {
-  std::for_each(begin, end, [](aad_double& n) { n.put_on_tape(); });
+  std::for_each(begin, end, [](a_double& n) { n.put_on_tape(); });
 }
 
-//	Convert collection between double and aad_double or reverse
+//	Convert collection between double and a_double or reverse
 template <typename It1, typename It2>
 void convert_collection(It1 src_begin, It1 src_end, It2 dest_begin) {
   using dest_type = std::remove_reference_t<decltype(*dest_begin)>;

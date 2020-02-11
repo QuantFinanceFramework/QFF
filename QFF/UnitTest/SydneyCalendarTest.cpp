@@ -17,6 +17,10 @@ TEST_F(SydneyCalendarTestFixture, isBusinessDayTest_Holiday) {
   EXPECT_FALSE(syd_.IsBusinessDay(date(2019, 4, 19)));
 }
 
+TEST_F(SydneyCalendarTestFixture, isBusinessDayTest_MondayAfterAnzac) {
+  EXPECT_TRUE(syd_.IsBusinessDay(date(2021, 4, 26)));
+}
+
 TEST_P(SydneyCalendarTestFixture, isHolidayTest_Holidays) {
   const auto holiday = GetParam();
   EXPECT_TRUE(syd_.IsHoliday(holiday));

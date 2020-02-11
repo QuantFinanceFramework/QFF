@@ -24,20 +24,22 @@ date SydneyCalendar::AustraliaDay(int year) const {
   return AdjustHoliday(date(year, 1, 26));
 }
 
-date SydneyCalendar::AnzacDay(int year) const {
-  return AdjustHoliday(date(year, 4, 25));
-}
+// ANZAC day is not adjusted in NSW.
+date SydneyCalendar::AnzacDay(int year) { return date(year, 4, 25); }
 
+// Queen's Birthday public holiday on the second Monday in June.
 date SydneyCalendar::QueensBirthday(int year) {
   return next_weekday(date(year, 6, 8),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
 
+// NSW Bank Holiday on the first Monday in August.
 date SydneyCalendar::BankHoliday(int year) {
   return next_weekday(date(year, 8, 1),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));
 }
 
+// Labour Day public holiday on the first Monday in October.
 date SydneyCalendar::LabourDay(int year) {
   return next_weekday(date(year, 10, 1),
                       boost::gregorian::greg_weekday(boost::date_time::Monday));

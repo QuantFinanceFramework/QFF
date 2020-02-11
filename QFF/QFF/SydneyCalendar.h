@@ -9,7 +9,7 @@ class SydneyCalendar final : public BaseCalendar {
 
  private:
   boost::gregorian::date AustraliaDay(int year) const;
-  boost::gregorian::date AnzacDay(int year) const;
+  static boost::gregorian::date AnzacDay(int year);
   static boost::gregorian::date QueensBirthday(int year);
   static boost::gregorian::date BankHoliday(int year);
   static boost::gregorian::date LabourDay(int year);

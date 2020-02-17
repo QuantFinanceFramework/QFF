@@ -159,7 +159,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actual360.cpp" />
+    <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
+    <ClCompile Include="PyQff.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QFF\QFF.vcxproj">

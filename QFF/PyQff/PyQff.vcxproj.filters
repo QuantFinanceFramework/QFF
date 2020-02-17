@@ -13,13 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Functions">
+      <UniqueIdentifier>{5790e5e9-96c2-4b1b-834f-8633cadd5e31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DayCounter">
+      <UniqueIdentifier>{224ce135-ef60-4406-b9fa-df9956e4ecaf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BlackScholesFormula.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="PyQff.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Black76Formula.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actual360.cpp">
+      <Filter>Source Files\DayCounter</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

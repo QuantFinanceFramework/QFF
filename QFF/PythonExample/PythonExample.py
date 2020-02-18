@@ -20,3 +20,8 @@ print(act365.CalculateYearFraction(d1,d2))
 london = pyqff.LondonCalendar()
 print(london)
 print(london.IsHoliday(d1))
+print(london.IsWeekend(d1))
+print(london.IsBusinessDay(d1))
+
+following = pyqff.Following();
+print(pyqff.boost_date_to_string(following.Adjust(d1,london)))

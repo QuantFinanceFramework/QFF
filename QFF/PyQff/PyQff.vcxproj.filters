@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Calendar">
       <UniqueIdentifier>{0dad782a-22a0-4cd1-ae20-a3220fda9f22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\BusinessDayConventions">
+      <UniqueIdentifier>{71aeff7a-c289-4fbf-98a1-d86244965a91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -56,6 +59,27 @@
     </ClCompile>
     <ClCompile Include="SydneyCalendar.cpp">
       <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="Following.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifiedFollowing.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="Preceding.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="Unadjusted.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="ICalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="IDayCounter.cpp">
+      <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="IBusinessDayConvention.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -164,10 +164,17 @@
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="BoostDate.cpp" />
+    <ClCompile Include="Following.cpp" />
+    <ClCompile Include="IBusinessDayConvention.cpp" />
+    <ClCompile Include="ICalendar.cpp" />
+    <ClCompile Include="IDayCounter.cpp" />
     <ClCompile Include="LondonCalendar.cpp" />
+    <ClCompile Include="ModifiedFollowing.cpp" />
     <ClCompile Include="NewYorkCalendar.cpp" />
+    <ClCompile Include="Preceding.cpp" />
     <ClCompile Include="PyQff.cpp" />
     <ClCompile Include="SydneyCalendar.cpp" />
+    <ClCompile Include="Unadjusted.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QFF\QFF.vcxproj">

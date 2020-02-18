@@ -19,6 +19,9 @@
     <Filter Include="Source Files\DayCounter">
       <UniqueIdentifier>{224ce135-ef60-4406-b9fa-df9956e4ecaf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Date">
+      <UniqueIdentifier>{45b0bcf2-0a21-41c7-adaa-790db6d5a4e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -35,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="Actual360.cpp">
       <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="BoostDate.cpp">
+      <Filter>Source Files\Date</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

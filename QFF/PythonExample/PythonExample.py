@@ -7,7 +7,8 @@ print(pyqff.black_76_formula(100, 90, 0.98, 1, 0.2, "call"))
 
 act360 = pyqff.Actual360()
 act365 = pyqff.Actual365()
-print(act360)
+thirty360 = pyqff.Thirty360Isda()
+print(thirty360)
 
 d1 = pyqff.as_boost_date("2018-02-10")
 d2 = pyqff.as_boost_date("2018-12-30")

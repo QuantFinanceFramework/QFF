@@ -81,5 +81,8 @@
     <ClCompile Include="IBusinessDayConvention.cpp">
       <Filter>Source Files\BusinessDayConventions</Filter>
     </ClCompile>
+    <ClCompile Include="Thirty360Isda.cpp">
+      <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

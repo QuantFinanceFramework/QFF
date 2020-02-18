@@ -22,6 +22,9 @@
     <Filter Include="Source Files\Date">
       <UniqueIdentifier>{45b0bcf2-0a21-41c7-adaa-790db6d5a4e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Calendar">
+      <UniqueIdentifier>{0dad782a-22a0-4cd1-ae20-a3220fda9f22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -41,6 +44,18 @@
     </ClCompile>
     <ClCompile Include="BoostDate.cpp">
       <Filter>Source Files\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="Actual365.cpp">
+      <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="LondonCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="NewYorkCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="SydneyCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

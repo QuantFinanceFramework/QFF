@@ -160,10 +160,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actual360.cpp" />
+    <ClCompile Include="Actual365.cpp" />
     <ClCompile Include="Black76Formula.cpp" />
     <ClCompile Include="BlackScholesFormula.cpp" />
     <ClCompile Include="BoostDate.cpp" />
+    <ClCompile Include="LondonCalendar.cpp" />
+    <ClCompile Include="NewYorkCalendar.cpp" />
     <ClCompile Include="PyQff.cpp" />
+    <ClCompile Include="SydneyCalendar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QFF\QFF.vcxproj">

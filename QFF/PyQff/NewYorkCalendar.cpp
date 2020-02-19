@@ -6,9 +6,5 @@ using namespace pybind11::literals;
 
 void init_new_york_calendar(py::module &m) {
   py::class_<qff::NewYorkCalendar, qff::ICalendar>(m, "NewYorkCalendar")
-      .def(py::init<>())
-      .def("IsHoliday", &qff::NewYorkCalendar::IsHoliday, "query_date"_a)
-      .def("IsBusinessDay", &qff::NewYorkCalendar::IsBusinessDay,
-           "query_date"_a)
-      .def("IsWeekend", &qff::NewYorkCalendar::IsWeekend, "query_date"_a);
+      .def(py::init<>());
 }

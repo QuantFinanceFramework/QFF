@@ -24,6 +24,11 @@ void init_modified_following(py::module &);
 void init_preceding(py::module &);
 void init_unadjusted(py::module &);
 
+void init_i_interest_rate_curve(py::module &);
+void init_flat_zero_curve(py::module &);
+
+void init_i_credit_curve(py::module &);
+
 PYBIND11_MODULE(pyqff, m) {
   init_black_scholes_formula(m);
   init_black_76_formula(m);
@@ -47,4 +52,9 @@ PYBIND11_MODULE(pyqff, m) {
   init_modified_following(m);
   init_preceding(m);
   init_unadjusted(m);
+
+  init_i_interest_rate_curve(m);
+  init_flat_zero_curve(m);
+
+  init_i_credit_curve(m);
 }

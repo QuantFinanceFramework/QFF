@@ -37,12 +37,6 @@
     <Filter Include="Source Files\Pricer">
       <UniqueIdentifier>{ca6eb20f-4fbd-4f9a-addc-cc0f00b54563}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\MarketData">
-      <UniqueIdentifier>{84c671d6-f62c-498b-b1e9-5cfd5415102a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\MarketData">
-      <UniqueIdentifier>{968493cc-1a9f-4f8b-b942-beaaf883084e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Currency">
       <UniqueIdentifier>{960ce2a4-d795-4e1f-ad7a-897156348598}</UniqueIdentifier>
     </Filter>
@@ -54,12 +48,6 @@
     </Filter>
     <Filter Include="Source Files\Functions">
       <UniqueIdentifier>{fa0f09bc-f239-4eed-b104-b287fc89f4d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\MarketData\Curves">
-      <UniqueIdentifier>{8109ad32-39b9-41d4-965d-82e9191ca8c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\MarketData\Curves">
-      <UniqueIdentifier>{3a52e4ff-1d38-4e3b-abac-2595fcac8c17}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Random">
       <UniqueIdentifier>{badbd839-f83a-4edf-b78f-6b760a7e2bb9}</UniqueIdentifier>
@@ -103,6 +91,18 @@
     <Filter Include="Header Files\Date">
       <UniqueIdentifier>{b9ecc3c9-0219-40e8-834b-2a13593e0bb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Market">
+      <UniqueIdentifier>{84c671d6-f62c-498b-b1e9-5cfd5415102a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Market\Curves">
+      <UniqueIdentifier>{8109ad32-39b9-41d4-965d-82e9191ca8c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Market">
+      <UniqueIdentifier>{968493cc-1a9f-4f8b-b942-beaaf883084e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Market\Curves">
+      <UniqueIdentifier>{3a52e4ff-1d38-4e3b-abac-2595fcac8c17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICalendar.h">
@@ -112,7 +112,7 @@
       <Filter>Header Files\DayCounter</Filter>
     </ClInclude>
     <ClInclude Include="MarketData.h">
-      <Filter>Header Files\MarketData</Filter>
+      <Filter>Header Files\Market</Filter>
     </ClInclude>
     <ClInclude Include="Black76Formula.h">
       <Filter>Header Files\Functions</Filter>
@@ -124,7 +124,7 @@
       <Filter>Header Files\Products</Filter>
     </ClInclude>
     <ClInclude Include="IMarketData.h">
-      <Filter>Header Files\MarketData</Filter>
+      <Filter>Header Files\Market</Filter>
     </ClInclude>
     <ClInclude Include="INormalRandomSequenceGenerator.h">
       <Filter>Header Files\Random</Filter>
@@ -151,10 +151,10 @@
       <Filter>Header Files\Currency</Filter>
     </ClInclude>
     <ClInclude Include="DiscountFactorCurve.h">
-      <Filter>Header Files\MarketData\Curves</Filter>
+      <Filter>Header Files\Market\Curves</Filter>
     </ClInclude>
     <ClInclude Include="IInterestRateCurve.h">
-      <Filter>Header Files\MarketData\Curves</Filter>
+      <Filter>Header Files\Market\Curves</Filter>
     </ClInclude>
     <ClInclude Include="IInterpolator.h">
       <Filter>Header Files\Interpolator</Filter>
@@ -238,13 +238,13 @@
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
     <ClInclude Include="FlatZeroCurve.h">
-      <Filter>Header Files\MarketData\Curves</Filter>
+      <Filter>Header Files\Market\Curves</Filter>
     </ClInclude>
     <ClInclude Include="ICreditCurve.h">
-      <Filter>Header Files\MarketData\Curves</Filter>
+      <Filter>Header Files\Market\Curves</Filter>
     </ClInclude>
     <ClInclude Include="SurvivalCurve.h">
-      <Filter>Header Files\MarketData\Curves</Filter>
+      <Filter>Header Files\Market\Curves</Filter>
     </ClInclude>
     <ClInclude Include="Period.h">
       <Filter>Header Files\Date</Filter>
@@ -262,7 +262,7 @@
       <Filter>Header Files\Products</Filter>
     </ClInclude>
     <ClInclude Include="FlatHazardRateCurve.h">
-      <Filter>Header Files\MarketData\Curves</Filter>
+      <Filter>Header Files\Market\Curves</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -276,7 +276,7 @@
       <Filter>Source Files\Products</Filter>
     </ClCompile>
     <ClCompile Include="MarketData.cpp">
-      <Filter>Source Files\MarketData</Filter>
+      <Filter>Source Files\Market</Filter>
     </ClCompile>
     <ClCompile Include="PseudoNormalRsg.cpp">
       <Filter>Source Files\Random</Filter>
@@ -300,7 +300,7 @@
       <Filter>Source Files\Currency</Filter>
     </ClCompile>
     <ClCompile Include="DiscountFactorCurve.cpp">
-      <Filter>Source Files\MarketData\Curves</Filter>
+      <Filter>Source Files\Market\Curves</Filter>
     </ClCompile>
     <ClCompile Include="Interpolation.cpp">
       <Filter>Source Files\Functions</Filter>
@@ -369,10 +369,10 @@
       <Filter>Source Files\Indices</Filter>
     </ClCompile>
     <ClCompile Include="FlatZeroCurve.cpp">
-      <Filter>Source Files\MarketData\Curves</Filter>
+      <Filter>Source Files\Market\Curves</Filter>
     </ClCompile>
     <ClCompile Include="SurvivalCurve.cpp">
-      <Filter>Source Files\MarketData\Curves</Filter>
+      <Filter>Source Files\Market\Curves</Filter>
     </ClCompile>
     <ClCompile Include="Period.cpp">
       <Filter>Source Files\Date</Filter>
@@ -390,7 +390,7 @@
       <Filter>Source Files\Products</Filter>
     </ClCompile>
     <ClCompile Include="FlatHazardRateCurve.cpp">
-      <Filter>Source Files\MarketData\Curves</Filter>
+      <Filter>Source Files\Market\Curves</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

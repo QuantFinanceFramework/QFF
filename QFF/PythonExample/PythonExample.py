@@ -26,3 +26,6 @@ print(london.IsBusinessDay(d1))
 
 following = pyqff.Following();
 print(pyqff.boost_date_to_string(following.Adjust(d1,london)))
+
+f = pyqff.FlatZeroCurve(d1, 0.02, act360)
+print(pyqff.boost_date_to_string(f.GetCurveDate()))

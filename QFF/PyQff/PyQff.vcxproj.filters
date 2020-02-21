@@ -28,6 +28,12 @@
     <Filter Include="Source Files\BusinessDayConventions">
       <UniqueIdentifier>{71aeff7a-c289-4fbf-98a1-d86244965a91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Market">
+      <UniqueIdentifier>{ea22c3e7-765f-4217-a3b4-68337b09e615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Market\Curve">
+      <UniqueIdentifier>{699f10e2-aafc-4ef9-9129-0fd3f1f997b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -83,6 +89,15 @@
     </ClCompile>
     <ClCompile Include="Thirty360Isda.cpp">
       <Filter>Source Files\DayCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="ICreditCurve.cpp">
+      <Filter>Source Files\Market\Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="IInterestRateCurve.cpp">
+      <Filter>Source Files\Market\Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="FlatZeroCurve.cpp">
+      <Filter>Source Files\Market\Curve</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

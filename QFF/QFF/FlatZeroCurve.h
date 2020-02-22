@@ -5,7 +5,7 @@
 
 namespace qff {
 
-class FlatZeroCurve : public IInterestRateCurve {
+class FlatZeroCurve final : public IInterestRateCurve {
  public:
   FlatZeroCurve() = default;
   FlatZeroCurve(boost::gregorian::date curve_date, double zero_rate,

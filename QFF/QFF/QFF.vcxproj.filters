@@ -264,6 +264,9 @@
     <ClInclude Include="FlatHazardRateCurve.h">
       <Filter>Header Files\MarketData\Curves</Filter>
     </ClInclude>
+    <ClInclude Include="ZeroRateCurve.h">
+      <Filter>Header Files\MarketData\Curves</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Black76Formula.cpp">
@@ -390,6 +393,9 @@
       <Filter>Source Files\Products</Filter>
     </ClCompile>
     <ClCompile Include="FlatHazardRateCurve.cpp">
+      <Filter>Source Files\MarketData\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="ZeroRateCurve.cpp">
       <Filter>Source Files\MarketData\Curves</Filter>
     </ClCompile>
   </ItemGroup>

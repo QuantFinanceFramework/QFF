@@ -4,7 +4,7 @@
 #include "IDayCounter.h"
 
 namespace qff {
-class FlatHazardRateCurve : public ICreditCurve {
+class FlatHazardRateCurve final : public ICreditCurve {
  public:
   FlatHazardRateCurve() = default;
   FlatHazardRateCurve(boost::gregorian::date curve_date, double hazard_rate,

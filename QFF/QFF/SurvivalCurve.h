@@ -8,7 +8,7 @@
 
 namespace qff {
 
-class SurvivalCurve : public ICreditCurve {
+class SurvivalCurve final : public ICreditCurve {
  public:
   SurvivalCurve() = default;
   SurvivalCurve(boost::gregorian::date curve_date,

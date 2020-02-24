@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AAD", "AAD\AAD.vcxproj", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AadExample", "AadExample\AadExample.vcxproj", "{BFA8427B-E83A-4ED0-9C17-D05D6096A1A8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AadAdvancedExample", "AadAdvancedExample\AadAdvancedExample.vcxproj", "{1CF4A115-DEFA-4870-9AD3-B33974FA4FDD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QFF_AAD", "QFF_AAD\QFF_AAD.vcxproj", "{1CF4A115-DEFA-4870-9AD3-B33974FA4FDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

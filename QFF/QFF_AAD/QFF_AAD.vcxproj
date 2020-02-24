@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>AadAdvancedExample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>QFF_AAD</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -159,23 +160,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AadAdvancedExample.cpp" />
-    <ClCompile Include="ConcreteInstrument.cpp" />
+    <ClCompile Include="QffAadExample.cpp" />
+    <ClCompile Include="Actual365.cpp" />
+    <ClCompile Include="DateFunctions.cpp" />
+    <ClCompile Include="Following.cpp" />
+    <ClCompile Include="Period.cpp" />
+    <ClCompile Include="Preceding.cpp" />
+    <ClCompile Include="Unadjusted.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AAD\AAD.vcxproj">
       <Project>{918669e5-99aa-486b-902c-452e4eb260c9}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\QFF\QFF.vcxproj">
-      <Project>{402d5e73-85dc-491c-ab73-dd75d50cd2a3}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actual365.h" />
     <ClInclude Include="ConcreteInstrument.h" />
-    <ClInclude Include="DiscountCurve.h" />
-    <ClInclude Include="ICurve.h" />
-    <ClInclude Include="IInstrument.h" />
-    <ClInclude Include="ParametricCurve.h" />
+    <ClInclude Include="CurveInterpolator.h" />
+    <ClInclude Include="DateFunctions.h" />
+    <ClInclude Include="DiscountFactorsCurve.h" />
+    <ClInclude Include="Following.h" />
+    <ClInclude Include="IBusinessDayConvention.h" />
+    <ClInclude Include="ICalendar.h" />
+    <ClInclude Include="IDayCounter.h" />
+    <ClInclude Include="IInterestRateCurve.h" />
+    <ClInclude Include="IInterpolator.h" />
+    <ClInclude Include="InterestRateCurve.h" />
+    <ClInclude Include="Interpolation.h" />
+    <ClInclude Include="IProduct.h" />
+    <ClInclude Include="Period.h" />
+    <ClInclude Include="Preceding.h" />
+    <ClInclude Include="Unadjusted.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

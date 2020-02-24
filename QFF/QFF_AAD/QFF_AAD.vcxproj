@@ -175,10 +175,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actual365.h" />
-    <ClInclude Include="ConcreteInstrument.h" />
+    <ClInclude Include="Black76Formula.h" />
+    <ClInclude Include="BlackScholesFormula.h" />
+    <ClInclude Include="FixedCashflow.h" />
     <ClInclude Include="CurveInterpolator.h" />
     <ClInclude Include="DateFunctions.h" />
-    <ClInclude Include="DiscountFactorsCurve.h" />
+    <ClInclude Include="DiscountFactorCurve.h" />
     <ClInclude Include="Following.h" />
     <ClInclude Include="IBusinessDayConvention.h" />
     <ClInclude Include="ICalendar.h" />
@@ -191,6 +193,7 @@
     <ClInclude Include="Period.h" />
     <ClInclude Include="Preceding.h" />
     <ClInclude Include="Unadjusted.h" />
+    <ClInclude Include="ZeroRateCurve.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

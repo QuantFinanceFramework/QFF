@@ -13,81 +13,168 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\BusinessDayConventions">
+      <UniqueIdentifier>{298f0f82-7e20-4e08-8265-12c3a38b708e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Date">
+      <UniqueIdentifier>{b25c8e7f-d955-4b92-8ae1-d2bb03590d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Functions">
+      <UniqueIdentifier>{e58159cb-dce5-4ebe-9986-f46a1ce8843b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Indices">
+      <UniqueIdentifier>{4750f413-3eb8-43af-a091-d87dcbd83bda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parameters">
+      <UniqueIdentifier>{11e36d87-a90a-4135-8bd1-598b8ab15b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Pricers">
+      <UniqueIdentifier>{fd787a95-b75d-4d7f-b13d-9f0e68a66f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Products">
+      <UniqueIdentifier>{66bf03b6-fb93-4859-aeda-0a15170b1102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BusinessDayConventions">
+      <UniqueIdentifier>{c02d0b13-68bc-4d89-902b-3e314caa3563}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Date">
+      <UniqueIdentifier>{026592c6-01fc-4c4d-8017-e31920acefdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Functions">
+      <UniqueIdentifier>{54eb6613-bac9-43b6-ba1d-cb084194c6b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Calendars">
+      <UniqueIdentifier>{e800abf0-cda2-4e8c-ba7b-d4a39747580a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Calendars">
+      <UniqueIdentifier>{a03bf31b-f4a2-43f1-8cd3-1e0e935241b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Currencies">
+      <UniqueIdentifier>{b5669aee-d6f5-4288-aaf8-fec6fc0ea86e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Currencies">
+      <UniqueIdentifier>{37d38738-23ba-4980-8bd8-ecc127c235eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DayCounters">
+      <UniqueIdentifier>{d058e818-0862-4fc6-a2eb-0ea4094abba6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DayCounters">
+      <UniqueIdentifier>{96c2abec-1481-442b-adc2-c9247d1c330d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Indices">
+      <UniqueIdentifier>{304c29f2-b4b4-4803-9035-356954fdce75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpolators">
+      <UniqueIdentifier>{69454032-3b2e-40f9-8a58-6b8a4517f836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpolators">
+      <UniqueIdentifier>{21db15b1-8ac3-4e65-9350-56186ada5380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Markets">
+      <UniqueIdentifier>{f73c24ab-b600-4b40-9091-bb37db2a1177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Markets">
+      <UniqueIdentifier>{d8c5b255-1ad2-49fd-80f2-ef620b2bd6ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Randoms">
+      <UniqueIdentifier>{afd9474a-8166-451c-b43e-8cccfc24c919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Randoms">
+      <UniqueIdentifier>{01c3fb79-fe95-495a-9273-a8ea4c3e300c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Products">
+      <UniqueIdentifier>{941bffba-30e4-4718-a272-27b601a18f9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parameters">
+      <UniqueIdentifier>{470e77aa-9b7a-4d2e-a7d1-46b3378923c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Pricers">
+      <UniqueIdentifier>{38f3da38-1735-42e7-bc1d-b863ab43b0df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DateFunctions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Period.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Unadjusted.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Preceding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Following.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Actual365.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="QffAadExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Actual365.cpp">
+      <Filter>Source Files\DayCounters</Filter>
+    </ClCompile>
+    <ClCompile Include="DateFunctions.cpp">
+      <Filter>Source Files\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="Following.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="Period.cpp">
+      <Filter>Source Files\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="Preceding.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="Unadjusted.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConcreteInstrument.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Actual365.h">
+      <Filter>Header Files\DayCounters</Filter>
     </ClInclude>
-    <ClInclude Include="IInterestRateCurve.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IProduct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DiscountFactorsCurve.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IDayCounter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DateFunctions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InterestRateCurve.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IBusinessDayConvention.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ICalendar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Period.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Unadjusted.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Preceding.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IInterpolator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Interpolation.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="FixedCashflow.h">
+      <Filter>Header Files\Products</Filter>
     </ClInclude>
     <ClInclude Include="CurveInterpolator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="DiscountFactorCurve.h">
+      <Filter>Header Files\Markets</Filter>
     </ClInclude>
     <ClInclude Include="Following.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\BusinessDayConventions</Filter>
     </ClInclude>
-    <ClInclude Include="Actual365.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="IBusinessDayConvention.h">
+      <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
+    <ClInclude Include="ICalendar.h">
+      <Filter>Header Files\Calendars</Filter>
+    </ClInclude>
+    <ClInclude Include="IDayCounter.h">
+      <Filter>Header Files\DayCounters</Filter>
+    </ClInclude>
+    <ClInclude Include="IInterestRateCurve.h">
+      <Filter>Header Files\Markets</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="IInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="InterestRateCurve.h">
+      <Filter>Header Files\Markets</Filter>
+    </ClInclude>
+    <ClInclude Include="IProduct.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="Period.h">
+      <Filter>Header Files\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="Unadjusted.h">
+      <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
+    <ClInclude Include="Preceding.h">
+      <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
+    <ClInclude Include="ZeroRateCurve.h">
+      <Filter>Header Files\Markets</Filter>
+    </ClInclude>
+    <ClInclude Include="DateFunctions.h">
+      <Filter>Header Files\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="Black76Formula.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackScholesFormula.h">
+      <Filter>Header Files\Functions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

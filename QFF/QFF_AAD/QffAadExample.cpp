@@ -6,6 +6,7 @@
 #include "CurveInterpolator.h"
 #include "DiscountFactorCurve.h"
 #include "FixedCashflow.h"
+#include "Interpolation.h"
 #include "ZeroRateCurve.h"
 
 using namespace aad;
@@ -16,20 +17,25 @@ int main() {
   auto tape = *a_double::tape;
   tape.clear();
 
-  const std::vector pillars{date(2020, 4, 10), date(2022, 4, 10),
-                            date(2024, 4, 10)};
-  std::vector dfs{0.99, 0.97, 0.94};
-  std::vector<a_double> aad_dfs(3);
+  const std::vector pillars{date(2019, 4, 10), date(2020, 4, 10),
+                            date(2022, 4, 10), date(2024, 4, 10)};
+  std::vector dfs{1.0, 0.980144965261876, 0.938889453837808, 0.882376020877698};
+  std::vector<a_double> aad_dfs(size(dfs));
   convert_collection(dfs.begin(), dfs.end(), aad_dfs.begin());
 
   const date market_date{2019, 4, 10};
 
-  const DiscountFactorCurve d{market_date, Actual365{},
-                              CurveInterpolator<double>{}, pillars, dfs};
+  const DiscountFactorCurve d{
+      market_date, Actual365{},
+      CurveInterpolator<double>{&LogLinearInterpol<double>,
+                                &LogLinearExtrapol<double>},
+      pillars, dfs};
 
-  const DiscountFactorCurve d_aad{market_date, Actual365{},
-                                  CurveInterpolator<a_double>{}, pillars,
-                                  aad_dfs};
+  const DiscountFactorCurve d_aad{
+      market_date, Actual365{},
+      CurveInterpolator<a_double>{&LogLinearInterpol<a_double>,
+                                  &LogLinearExtrapol<a_double>},
+      pillars, aad_dfs};
 
   const FixedCashflow instrument{100.0, date(2022, 4, 10)};
 
@@ -49,15 +55,21 @@ int main() {
 
   tape.rewind();
 
-  std::vector zeros{0.02, 0.021, 0.022};
-  std::vector<a_double> aad_zeros(3);
+  std::vector zeros{0.02, 0.02, 0.021, 0.025};
+  std::vector<a_double> aad_zeros(size(zeros));
   convert_collection(zeros.begin(), zeros.end(), aad_zeros.begin());
 
-  const ZeroRateCurve z{market_date, Actual365{}, CurveInterpolator<double>{},
-                        pillars, zeros};
+  const ZeroRateCurve z{
+      market_date, Actual365{},
+      CurveInterpolator<double>{&ProductLinearInterpol<double>,
+                                &ProductLinearExtrapol<double>},
+      pillars, zeros};
 
-  const ZeroRateCurve z_aad{market_date, Actual365{},
-                            CurveInterpolator<a_double>{}, pillars, aad_zeros};
+  const ZeroRateCurve z_aad{
+      market_date, Actual365{},
+      CurveInterpolator<a_double>{&ProductLinearInterpol<a_double>,
+                                  &ProductLinearExtrapol<a_double>},
+      pillars, aad_zeros};
 
   const auto instrument_result_z = instrument.Evaluate(z);
   std::cout << "NPV using ZeroRateCurve<double> = " << instrument_result_z

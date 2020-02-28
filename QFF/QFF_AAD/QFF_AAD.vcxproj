@@ -160,12 +160,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseCalendar.cpp" />
+    <ClCompile Include="CompositeCalendar.cpp" />
+    <ClCompile Include="LondonCalendar.cpp" />
+    <ClCompile Include="ModifiedFollowing.cpp" />
+    <ClCompile Include="NewYorkCalendar.cpp" />
     <ClCompile Include="QffAadExample.cpp" />
     <ClCompile Include="Actual365.cpp" />
     <ClCompile Include="DateFunctions.cpp" />
     <ClCompile Include="Following.cpp" />
     <ClCompile Include="Period.cpp" />
     <ClCompile Include="Preceding.cpp" />
+    <ClCompile Include="SydenyCalendar.cpp" />
     <ClCompile Include="Unadjusted.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,8 +181,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actual365.h" />
+    <ClInclude Include="BaseCalendar.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesFormula.h" />
+    <ClInclude Include="CompositeCalendar.h" />
     <ClInclude Include="FixedCashflow.h" />
     <ClInclude Include="CurveInterpolator.h" />
     <ClInclude Include="DateFunctions.h" />
@@ -195,9 +203,13 @@
     <ClInclude Include="Interpolation.h" />
     <ClInclude Include="IPricingEnvironment.h" />
     <ClInclude Include="IProduct.h" />
+    <ClInclude Include="LondonCalendar.h" />
+    <ClInclude Include="ModifiedFollowing.h" />
+    <ClInclude Include="NewYorkCalendar.h" />
     <ClInclude Include="Period.h" />
     <ClInclude Include="Preceding.h" />
     <ClInclude Include="PricingEnvironment.h" />
+    <ClInclude Include="SydneyCalendar.h" />
     <ClInclude Include="Unadjusted.h" />
     <ClInclude Include="ZeroRateCurve.h" />
   </ItemGroup>

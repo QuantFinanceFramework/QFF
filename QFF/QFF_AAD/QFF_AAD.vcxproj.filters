@@ -61,6 +61,9 @@
     <Filter Include="Header Files\PricingEnvironment">
       <UniqueIdentifier>{d8c5b255-1ad2-49fd-80f2-ef620b2bd6ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Calendars">
+      <UniqueIdentifier>{5d7d9acb-da72-4fea-a3c3-d38364068253}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="QffAadExample.cpp">
@@ -83,6 +86,24 @@
     </ClCompile>
     <ClCompile Include="Unadjusted.cpp">
       <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifiedFollowing.cpp">
+      <Filter>Source Files\BusinessDayConventions</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCalendar.cpp">
+      <Filter>Source Files\Calendars</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeCalendar.cpp">
+      <Filter>Source Files\Calendars</Filter>
+    </ClCompile>
+    <ClCompile Include="LondonCalendar.cpp">
+      <Filter>Source Files\Calendars</Filter>
+    </ClCompile>
+    <ClCompile Include="NewYorkCalendar.cpp">
+      <Filter>Source Files\Calendars</Filter>
+    </ClCompile>
+    <ClCompile Include="SydenyCalendar.cpp">
+      <Filter>Source Files\Calendars</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +184,24 @@
     </ClInclude>
     <ClInclude Include="FloatingCoupon.h">
       <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="ModifiedFollowing.h">
+      <Filter>Header Files\BusinessDayConventions</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseCalendar.h">
+      <Filter>Header Files\Calendars</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeCalendar.h">
+      <Filter>Header Files\Calendars</Filter>
+    </ClInclude>
+    <ClInclude Include="LondonCalendar.h">
+      <Filter>Header Files\Calendars</Filter>
+    </ClInclude>
+    <ClInclude Include="NewYorkCalendar.h">
+      <Filter>Header Files\Calendars</Filter>
+    </ClInclude>
+    <ClInclude Include="SydneyCalendar.h">
+      <Filter>Header Files\Calendars</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

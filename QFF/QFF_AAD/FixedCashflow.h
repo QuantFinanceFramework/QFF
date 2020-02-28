@@ -1,32 +1,51 @@
 #pragma once
 #include <boost/date_time/gregorian/gregorian.hpp>
 
-#include "IProduct.h"
+#include "ICashflow.h"
+
 namespace qff_a {
-class FixedCashflow final : public IProduct {
+class FixedCashflow final : public ICashflow {
  public:
-  FixedCashflow() = default;
-  FixedCashflow(double payment_amount, boost::gregorian::date payment_date)
-      : payment_amount_{payment_amount}, payment_date_{payment_date} {};
+  FixedCashflow(double payment_amount, boost::gregorian::date payment_date,
+                std::string discount_curve_name);
+
+  boost::gregorian::date GetPaymentDate() const override {
+    return payment_date_;
+  }
+
+  std::string GetDiscountCurveName() const override {
+    return discount_curve_name_;
+  }
+
+  double GetPaymentAmount(
+      const IPricingEnvironment<double>& environment) const override {
+    return GetPaymentAmountImpl(environment);
+  }
+
+  aad::a_double GetPaymentAmount(
+      const IPricingEnvironment<aad::a_double>& environment) const override {
+    return GetPaymentAmountImpl(environment);
+  }
 
  private:
-  double EvaluateImpl(const IInterestRateCurve<double>& curve) const final {
-    return EvaluateImpl<double>(curve);
-  }
-  aad::a_double EvaluateImpl(
-      const IInterestRateCurve<aad::a_double>& curve) const final {
-    return EvaluateImpl<aad::a_double>(curve);
-  }
-
   template <typename T>
-  T EvaluateImpl(const IInterestRateCurve<T>& curve) const;
+  T GetPaymentAmountImpl(const IPricingEnvironment<T>& environment) const;
 
   double payment_amount_{};
   boost::gregorian::date payment_date_;
+  std::string discount_curve_name_;
 };
 
+inline FixedCashflow::FixedCashflow(double payment_amount,
+                                    boost::gregorian::date payment_date,
+                                    std::string discount_curve_name)
+    : payment_amount_{payment_amount},
+      payment_date_{payment_date},
+      discount_curve_name_(std::move(discount_curve_name)) {}
+
 template <typename T>
-T FixedCashflow::EvaluateImpl(const IInterestRateCurve<T>& curve) const {
-  return T(payment_amount_ * curve.GetDiscountFactor(payment_date_));
+T FixedCashflow::GetPaymentAmountImpl(
+    const IPricingEnvironment<T>& environment) const {
+  return T(payment_amount_);
 }
 }  // namespace qff_a

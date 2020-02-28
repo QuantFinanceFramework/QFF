@@ -1,5 +1,6 @@
 #pragma once
 #include <algorithm>
+
 #include "../AAD/aad_all.h"
 #include "IInterpolator.h"
 #include "InterestRateCurve.h"
@@ -9,15 +10,16 @@ template <typename T>
 class DiscountFactorCurve final : public InterestRateCurve<T> {
  public:
   DiscountFactorCurve(boost::gregorian::date curve_date,
-                       const IDayCounter& day_counter,
-                       const IInterpolator<T>& interpolator,
-                       std::vector<boost::gregorian::date> pillar_dates,
-                       const std::vector<T>& discount_factors);
+                      const IDayCounter& day_counter,
+                      const IInterpolator<T>& interpolator,
+                      std::vector<boost::gregorian::date> pillar_dates,
+                      const std::vector<T>& discount_factors);
+
+  T GetDiscountFactorImpl(double time) const override;
+
+  std::vector<double> GetAdjoints() const override;
 
  private:
-  T GetDiscountFactorImpl(double time) const final;
-  std::vector<double> GetAdjointsImpl() const final;
-
   std::unique_ptr<IInterpolator<T>> interpolator_;
   std::vector<boost::gregorian::date> pillar_dates_;
   std::map<double, T> discount_factors_map_;
@@ -42,20 +44,19 @@ DiscountFactorCurve<T>::DiscountFactorCurve(
             discount_factor);
       });
 }
-
 template <typename T>
 T DiscountFactorCurve<T>::GetDiscountFactorImpl(double time) const {
-  return {interpolator_->Interpol(time, discount_factors_map_)};
+  return interpolator_->Interpol(time, discount_factors_map_);
 }
 
 template <typename T>
-std::vector<double> DiscountFactorCurve<T>::GetAdjointsImpl() const {
+std::vector<double> DiscountFactorCurve<T>::GetAdjoints() const {
   return std::vector<double>(size(pillar_dates_));
 }
 
 template <>
-inline std::vector<double>
-DiscountFactorCurve<aad::a_double>::GetAdjointsImpl() const {
+inline std::vector<double> DiscountFactorCurve<aad::a_double>::GetAdjoints()
+    const {
   std::vector<double> adjoints(size(pillar_dates_));
   std::transform(discount_factors_map_.begin(), discount_factors_map_.end(),
                  adjoints.begin(),

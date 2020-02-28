@@ -16,14 +16,17 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
       std::map<std::string, std::map<boost::gregorian::date, double>>
           past_rate_fixing_set);
 
-  boost::gregorian::date GetPricingDate() const final;
+  boost::gregorian::date GetPricingDate() const override;
 
   T GetDiscountFactor(const std::string& curve_name,
-                      const boost::gregorian::date& query_date) const final;
+                      const boost::gregorian::date& query_date) const override;
 
   double GetPastRateFixing(
       const std::string& curve_name,
-      const boost::gregorian::date& query_date) const final;
+      const boost::gregorian::date& query_date) const override;
+
+  std::vector<double> GetCurveAdjoints(
+      const std::string& curve_name) const override;
 
  private:
   boost::gregorian::date pricing_date_;
@@ -63,5 +66,12 @@ double PricingEnvironment<T>::GetPastRateFixing(
     const boost::gregorian::date& query_date) const {
   const auto curve_itr = past_rate_fixing_set_.find(curve_name);
   return curve_itr->second.find(query_date)->second;
+}
+
+template <typename T>
+std::vector<double> PricingEnvironment<T>::GetCurveAdjoints(
+    const std::string& curve_name) const {
+  const auto curve_itr = rate_curves_set_.find(curve_name);
+  return curve_itr->second->GetAdjoints();
 }
 }  // namespace qff_a

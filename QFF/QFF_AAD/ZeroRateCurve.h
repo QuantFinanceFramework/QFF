@@ -15,10 +15,11 @@ class ZeroRateCurve final : public InterestRateCurve<T> {
                 std::vector<boost::gregorian::date> pillar_dates,
                 const std::vector<T>& zero_rates);
 
- private:
-  T GetDiscountFactorImpl(double time) const final;
-  std::vector<double> GetAdjointsImpl() const final;
+  T GetDiscountFactorImpl(double time) const override;
 
+  std::vector<double> GetAdjoints() const override;
+
+ private:
   T GetZeroRate(double time) const;
 
   std::unique_ptr<IInterpolator<T>> interpolator_;
@@ -43,24 +44,23 @@ ZeroRateCurve<T>::ZeroRateCurve(
                        zeros);
                  });
 }
-
 template <typename T>
 T ZeroRateCurve<T>::GetDiscountFactorImpl(double time) const {
   return T(exp(-GetZeroRate(time) * time));
 }
 
 template <typename T>
-std::vector<double> ZeroRateCurve<T>::GetAdjointsImpl() const {
-  return std::vector<double>(size(pillar_dates_));
-}
-template <typename T>
 T ZeroRateCurve<T>::GetZeroRate(double time) const {
   return {interpolator_->Interpol(time, zero_rates_map_)};
 }
 
+template <typename T>
+std::vector<double> ZeroRateCurve<T>::GetAdjoints() const {
+  return std::vector<double>(size(pillar_dates_));
+}
+
 template <>
-inline std::vector<double> ZeroRateCurve<aad::a_double>::GetAdjointsImpl()
-    const {
+inline std::vector<double> ZeroRateCurve<aad::a_double>::GetAdjoints() const {
   std::vector<double> adjoints(size(pillar_dates_));
   std::transform(zero_rates_map_.begin(), zero_rates_map_.end(),
                  adjoints.begin(),

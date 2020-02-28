@@ -17,5 +17,8 @@ class IPricingEnvironment {
   virtual double GetPastRateFixing(
       const std::string& curve_name,
       const boost::gregorian::date& query_date) const = 0;
+
+  virtual std::vector<double> GetCurveAdjoints(
+      const std::string& curve_name) const = 0;
 };
 }  // namespace qff_a

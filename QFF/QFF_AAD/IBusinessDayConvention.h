@@ -1,6 +1,7 @@
 #pragma once
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <memory>
+
 #include "ICalendar.h"
 
 namespace qff_a {

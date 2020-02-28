@@ -158,6 +158,12 @@
     <ClInclude Include="IborIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
+    <ClInclude Include="ICashflow.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatingCoupon.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -181,10 +181,12 @@
     <ClInclude Include="CurveInterpolator.h" />
     <ClInclude Include="DateFunctions.h" />
     <ClInclude Include="DiscountFactorCurve.h" />
+    <ClInclude Include="FloatingCoupon.h" />
     <ClInclude Include="Following.h" />
     <ClInclude Include="IborIndex.h" />
     <ClInclude Include="IBusinessDayConvention.h" />
     <ClInclude Include="ICalendar.h" />
+    <ClInclude Include="ICashflow.h" />
     <ClInclude Include="IDayCounter.h" />
     <ClInclude Include="IIndex.h" />
     <ClInclude Include="IInterestRateCurve.h" />

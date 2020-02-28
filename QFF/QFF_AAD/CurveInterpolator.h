@@ -3,7 +3,6 @@
 #include <utility>
 
 #include "IInterpolator.h"
-#include "Interpolation.h"
 
 namespace qff_a {
 template <typename T>
@@ -30,7 +29,8 @@ CurveInterpolator<T>::CurveInterpolator(
     std::function<T(const double&, const std::map<double, T>&)> interpol_func,
     std::function<T(const double&, const std::map<double, T>&)>
         right_extrpol_func)
-    : interpol_func_(std::move(interpol_func)), right_extrapol_func_(std::move(right_extrpol_func)) {}
+    : interpol_func_(std::move(interpol_func)),
+      right_extrapol_func_(std::move(right_extrpol_func)) {}
 
 template <typename T>
 T CurveInterpolator<T>::Interpol(const double& query_time,

@@ -17,7 +17,21 @@ class IborIndex final : public IIndex {
             const ICalendar& fixing_calendar,
             const IBusinessDayConvention& convention, Period tenor);
 
-  std::unique_ptr<IIndex> Clone() const final;
+  std::unique_ptr<IIndex> Clone() const override;
+
+  double GetRate(
+      const boost::gregorian::date& accrual_start,
+      const boost::gregorian::date& accrual_end,
+      const IPricingEnvironment<double>& pricing_environment) const override {
+    return GetRateImpl(accrual_start, accrual_end, pricing_environment);
+  }
+
+  aad::a_double GetRate(const boost::gregorian::date& accrual_start,
+                        const boost::gregorian::date& accrual_end,
+                        const IPricingEnvironment<aad::a_double>&
+                            pricing_environment) const override {
+    return GetRateImpl(accrual_start, accrual_end, pricing_environment);
+  }
 
  private:
   boost::gregorian::date GetFixingDate(
@@ -27,20 +41,6 @@ class IborIndex final : public IIndex {
   T GetRateImpl(const boost::gregorian::date& accrual_start,
                 const boost::gregorian::date& accrual_end,
                 const IPricingEnvironment<T>& pricing_environment) const;
-
-  double GetRateImpl(
-      const boost::gregorian::date& accrual_start,
-      const boost::gregorian::date& accrual_end,
-      const IPricingEnvironment<double>& pricing_environment) const final {
-    return GetRateImpl(accrual_start, accrual_end, pricing_environment);
-  }
-
-  aad::a_double GetRateImpl(const boost::gregorian::date& accrual_start,
-                            const boost::gregorian::date& accrual_end,
-                            const IPricingEnvironment<aad::a_double>&
-                                pricing_environment) const final {
-    return GetRateImpl(accrual_start, accrual_end, pricing_environment);
-  }
 
   std::string currency_code_;
   std::string curve_name_;

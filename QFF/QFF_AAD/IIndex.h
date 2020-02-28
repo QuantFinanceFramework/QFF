@@ -12,20 +12,12 @@ class IIndex {
 
   virtual std::unique_ptr<IIndex> Clone() const = 0;
 
-  template <typename T>
-  T GetRate(const boost::gregorian::date& accrual_start,
-            const boost::gregorian::date& accrual_end,
-            const IPricingEnvironment<T>& pricing_environment) const {
-    return GetRateImpl(accrual_start, accrual_end, pricing_environment);
-  }
-
- private:
-  virtual double GetRateImpl(
+  virtual double GetRate(
       const boost::gregorian::date& accrual_start,
       const boost::gregorian::date& accrual_end,
       const IPricingEnvironment<double>& pricing_environment) const = 0;
 
-  virtual aad::a_double GetRateImpl(
+  virtual aad::a_double GetRate(
       const boost::gregorian::date& accrual_start,
       const boost::gregorian::date& accrual_end,
       const IPricingEnvironment<aad::a_double>& pricing_environment) const = 0;

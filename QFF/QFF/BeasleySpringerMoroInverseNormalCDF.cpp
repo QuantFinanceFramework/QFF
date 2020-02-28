@@ -1,13 +1,14 @@
 #include "BeasleySpringerMoroInverseNormalCdf.h"
+
 #include <cmath>
 
 namespace qff {
 double InverseCumulativeNormal(double u) {
-  static double a[4] = {2.50662823884, -18.61500062529, 41.39119773534,
-                        -25.44106049637};
-  static double b[4] = {-8.47351093090, 23.08336743743, -21.06224101826,
-                        3.13082909833};
-  static double c[9] = {
+  static constexpr double a[4] = {2.50662823884, -18.61500062529,
+                                  41.39119773534, -25.44106049637};
+  static constexpr double b[4] = {-8.47351093090, 23.08336743743,
+                                  -21.06224101826, 3.13082909833};
+  static constexpr double c[9] = {
       0.3374754822726147, 0.9761690190917186, 0.1607979714918209,
       0.0276438810333863, 0.0038405729373609, 0.0003951896511919,
       0.0000321767881768, 0.0000002888167364, 0.0000003960315187};

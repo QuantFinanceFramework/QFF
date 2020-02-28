@@ -105,6 +105,12 @@
     <ClCompile Include="SydenyCalendar.cpp">
       <Filter>Source Files\Calendars</Filter>
     </ClCompile>
+    <ClCompile Include="Actual360.cpp">
+      <Filter>Source Files\DayCounters</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirty360Isda.cpp">
+      <Filter>Source Files\DayCounters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actual365.h">
@@ -202,6 +208,15 @@
     </ClInclude>
     <ClInclude Include="SydneyCalendar.h">
       <Filter>Header Files\Calendars</Filter>
+    </ClInclude>
+    <ClInclude Include="Actual360.h">
+      <Filter>Header Files\DayCounters</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirty360Isda.h">
+      <Filter>Header Files\DayCounters</Filter>
+    </ClInclude>
+    <ClInclude Include="CompoundedOvernightIndex.h">
+      <Filter>Header Files\Indices</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

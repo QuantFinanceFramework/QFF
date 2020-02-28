@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actual360.cpp" />
     <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="CompositeCalendar.cpp" />
     <ClCompile Include="LondonCalendar.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Period.cpp" />
     <ClCompile Include="Preceding.cpp" />
     <ClCompile Include="SydenyCalendar.cpp" />
+    <ClCompile Include="Thirty360Isda.cpp" />
     <ClCompile Include="Unadjusted.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -180,11 +182,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actual360.h" />
     <ClInclude Include="Actual365.h" />
     <ClInclude Include="BaseCalendar.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="CompositeCalendar.h" />
+    <ClInclude Include="CompoundedOvernightIndex.h" />
     <ClInclude Include="FixedCashflow.h" />
     <ClInclude Include="CurveInterpolator.h" />
     <ClInclude Include="DateFunctions.h" />
@@ -210,6 +214,7 @@
     <ClInclude Include="Preceding.h" />
     <ClInclude Include="PricingEnvironment.h" />
     <ClInclude Include="SydneyCalendar.h" />
+    <ClInclude Include="Thirty360Isda.h" />
     <ClInclude Include="Unadjusted.h" />
     <ClInclude Include="ZeroRateCurve.h" />
   </ItemGroup>

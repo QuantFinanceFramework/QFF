@@ -4,14 +4,15 @@
 #include <DiscountFactorCurve.h>
 #include <Following.h>
 #include <Interpolation.h>
-#include <MarketData.h>
 #include <NewYorkCalendar.h>
+#include <PricingEnvironment.h>
 #include <SurvivalCurve.h>
 #include <SwapScheduler.h>
+
 #include <memory>
 #include <vector>
 
-using namespace qff;
+using namespace qff_a;
 using boost::gregorian::date;
 using std::map;
 using std::string;
@@ -19,9 +20,11 @@ using std::unique_ptr;
 using std::vector;
 
 int main() {
-  const date market_date{2019, 5, 31};
+  const date pricing_date{2019, 5, 31};
 
-  const CurveInterpolator interpolator{LogLinearInterpol, LogLinearExtrapol};
+  auto interpolator = CurveInterpolator<double>{&LogLinearInterpol<double>,
+                                                &LogLinearExtrapol<double>};
+
   const Actual365 day_counter{};
 
   vector ff_pillars{date(2019, 5, 31), date(2019, 6, 3),  date(2019, 6, 13),
@@ -64,10 +67,10 @@ int main() {
                 0.532421621864522,
                 0.432473480293818};
 
-  auto fed_funds = std::make_unique<DiscountFactorCurve>(
-      market_date, std::move(ff_pillars), ff_dfs, interpolator, day_counter);
+  auto fed_funds = std::make_unique<DiscountFactorCurve<double>>(
+      pricing_date, day_counter, interpolator, std::move(ff_pillars), ff_dfs);
 
-  map<string, unique_ptr<IInterestRateCurve>> curve_set;
+  map<string, unique_ptr<IInterestRateCurve<double>>> curve_set;
   curve_set.emplace(std::make_pair("USD_FedFunds", std::move(fed_funds)));
 
   vector jpm_pillars{date(2019, 5, 31), date(2019, 12, 20), date(2020, 6, 22),
@@ -83,17 +86,17 @@ int main() {
                  0.915853317711067,
                  0.856150071905017};
 
-  auto jpm_credit = std::make_unique<SurvivalCurve>(
-      market_date, std::move(jpm_pillars), jpm_sps, interpolator, day_counter);
+  auto jpm_credit = std::make_unique<SurvivalCurve<double>>(
+      pricing_date, std::move(jpm_pillars), jpm_sps, interpolator, day_counter);
 
-  map<string, unique_ptr<ICreditCurve>> credit_curve_set;
+  map<string, unique_ptr<ICreditCurve<double>>> credit_curve_set;
   credit_curve_set.emplace(std::make_pair("JPM", std::move(jpm_credit)));
 
   map<string, map<date, double>> past_fixing_set;
 
-  const MarketData market{market_date, std::move(curve_set),
-                          std::move(credit_curve_set),
-                          std::move(past_fixing_set)};
+  const PricingEnvironment environment{pricing_date, std::move(curve_set),
+                                       std::move(past_fixing_set),
+                                       std::move(credit_curve_set)};
 
   auto jpm_cds = SwapScheduler::MakeCreditDefaultSwap(
       "USD", 1000000.0, date(2019, 6, 1), date(2029, 6, 20), true,
@@ -103,7 +106,7 @@ int main() {
 
   std::cout.precision(15);
 
-  const auto result = jpm_cds->Evaluate(market, "USD").amount;
+  const auto result = jpm_cds->Evaluate(environment, "USD");
 
   std::cout << "JPM CDS NPV: " << result << '\n';
 

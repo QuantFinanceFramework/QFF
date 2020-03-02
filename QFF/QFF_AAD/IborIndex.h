@@ -51,6 +51,19 @@ class IborIndex final : public IIndex {
   Period tenor_;
 };
 
+inline IborIndex::IborIndex(std::string currency_code, std::string curve_name,
+                            const IDayCounter& day_counter, Period fixing_lag,
+                            const ICalendar& fixing_calendar,
+                            const IBusinessDayConvention& convention,
+                            Period tenor)
+    : currency_code_{std::move(currency_code)},
+      curve_name_{std::move(curve_name)},
+      day_counter_(day_counter.Clone()),
+      fixing_lag_{fixing_lag},
+      fixing_calendar_(fixing_calendar.Clone()),
+      convention_(convention.Clone()),
+      tenor_(tenor) {}
+
 inline std::unique_ptr<IIndex> IborIndex::Clone() const {
   return std::make_unique<IborIndex>(currency_code_, curve_name_, *day_counter_,
                                      fixing_lag_, *fixing_calendar_,

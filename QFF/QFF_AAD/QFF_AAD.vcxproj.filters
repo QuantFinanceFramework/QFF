@@ -248,6 +248,9 @@
     <ClInclude Include="SurvivalCurve.h">
       <Filter>Header Files\PricingEnvironment</Filter>
     </ClInclude>
+    <ClInclude Include="AveragedOvernightIndex.h">
+      <Filter>Header Files\Indices</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -117,7 +117,7 @@ T CompoundedOvernightIndex::GetRateImpl(
       ShiftDate(accrual_start, fixing_lag_, *fixing_calendar_);
   const auto rate_end = ShiftDate(accrual_end, fixing_lag_, *fixing_calendar_);
 
-  if (rate_start > ShiftDate(pricing_environment.GetMarketDate(),
+  if (rate_start > ShiftDate(pricing_environment.GetPricingDate(),
                              publication_lag_, *fixing_calendar_)) {
     return T((pricing_environment.GetDiscountFactor(curve_name_, rate_start) /
                   pricing_environment.GetDiscountFactor(curve_name_, rate_end) -
@@ -131,15 +131,15 @@ T CompoundedOvernightIndex::GetRateImpl(
 
   const auto itr =
       std::upper_bound(fixing_dates_.begin(), fixing_dates_.end(),
-                       ShiftDate(pricing_environment.GetMarketDate(),
+                       ShiftDate(pricing_environment.GetPricingDate(),
                                  -publication_lag_, *fixing_calendar_));
 
   const auto compounded_past_rate = std::transform_reduce(
       fixing_dates_.begin(), itr, accrual_factors_.begin(), 1.0,
       std::multiplies(), [&](auto fixing_date, auto factor) {
-        return T(1.0 +
-                 pricing_environment.GetPastFixing(curve_name_, fixing_date) *
-                     factor);
+        return 1.0 +
+               pricing_environment.GetPastRateFixing(curve_name_, fixing_date) *
+                   factor;
       });
   return T(
       (compounded_past_rate *

@@ -8,6 +8,7 @@
 #include "FixedCashflow.h"
 #include "Interpolation.h"
 #include "PricingEnvironment.h"
+#include "SurvivalCurve.h"
 #include "ZeroRateCurve.h"
 
 using namespace std;
@@ -37,8 +38,10 @@ int main() {
   map<string, unique_ptr<IInterestRateCurve<double>>> usd_curve_set;
   usd_curve_set.emplace("std", move(usd_std_df));
 
+  map<string, unique_ptr<ICreditCurve<double>>> credit_curve_set;
+
   const auto environment = make_unique<PricingEnvironment<double>>(
-      market_date, move(usd_curve_set), fixings);
+      market_date, move(usd_curve_set), fixings, move(credit_curve_set));
 
   std::vector<a_double> aad_dfs(size(dfs));
   convert_collection(dfs.begin(), dfs.end(), aad_dfs.begin());
@@ -52,8 +55,10 @@ int main() {
   map<string, unique_ptr<IInterestRateCurve<a_double>>> usd_curve_set_a;
   usd_curve_set_a.emplace("std", move(usd_std_df_a));
 
+  map<string, unique_ptr<ICreditCurve<a_double>>> credit_curve_set_a;
+
   const auto environment_a = make_unique<PricingEnvironment<a_double>>(
-      market_date, move(usd_curve_set_a), fixings);
+      market_date, move(usd_curve_set_a), fixings, move(credit_curve_set_a));
 
   const FixedCashflow instrument{100.0, date(2022, 4, 10), "std"};
 
@@ -61,7 +66,7 @@ int main() {
   std::cout << "NPV using DiscountFactorCurve<double> = " << instrument_result
             << '\n';
 
-  auto adjoints = environment->GetCurveAdjoints("std");
+  auto adjoints = environment->GetInterestRateAdjoints("std");
 
   for (auto& a : adjoints) std::cout << "Adjoint (double)" << a << '\n';
 
@@ -69,7 +74,7 @@ int main() {
   instrument_result_aad.propagate_to_start();
   std::cout << "NPV using DiscountFactorCurve<a_double> = "
             << instrument_result_aad.value() << '\n';
-  auto adjoints_aad = environment_a->GetCurveAdjoints("std");
+  auto adjoints_aad = environment_a->GetInterestRateAdjoints("std");
   for (auto& a : adjoints_aad) std::cout << "Adjoint (a_double)" << a << '\n';
 
   tape.rewind();
@@ -86,8 +91,10 @@ int main() {
 
   usd_curve_set_z.emplace("std", move(usd_std_z));
 
+  map<string, unique_ptr<ICreditCurve<double>>> credit_curve_set_z;
+
   const auto environment_z = make_unique<PricingEnvironment<double>>(
-      market_date, move(usd_curve_set_z), fixings);
+      market_date, move(usd_curve_set_z), fixings, move(credit_curve_set_z));
 
   std::vector<a_double> aad_zeros(size(zeros));
 
@@ -103,21 +110,24 @@ int main() {
 
   usd_curve_set_z_a.emplace("std", move(usd_std_z_a));
 
+  map<string, unique_ptr<ICreditCurve<a_double>>> credit_curve_set_z_a;
+
   const auto environment_z_a = make_unique<PricingEnvironment<a_double>>(
-      market_date, move(usd_curve_set_z_a), fixings);
+      market_date, move(usd_curve_set_z_a), fixings,
+      move(credit_curve_set_z_a));
 
   const auto instrument_result_z = instrument.Evaluate(*environment_z, "USD");
   std::cout << "NPV using ZeroRateCurve<double> = " << instrument_result_z
             << '\n';
 
-  auto adjoints_z = environment_z->GetCurveAdjoints("std");
+  auto adjoints_z = environment_z->GetInterestRateAdjoints("std");
   for (auto& a : adjoints_z) std::cout << "Adjoint (double)" << a << '\n';
 
   auto instrument_result_aad_z = instrument.Evaluate(*environment_z_a, "USD");
   instrument_result_aad_z.propagate_to_start();
   std::cout << "NPV using ZeroRateCurve<a_double> = "
             << instrument_result_aad_z.value() << '\n';
-  auto adjoints_aad_z = environment_z_a->GetCurveAdjoints("std");
+  auto adjoints_aad_z = environment_z_a->GetInterestRateAdjoints("std");
   for (auto& a : adjoints_aad_z) std::cout << "Adjoint (a_double)" << a << '\n';
 
   tape.rewind();

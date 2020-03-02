@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <memory>
-
+#include "ICreditCurve.h"
 #include "IInterestRateCurve.h"
 #include "IPricingEnvironment.h"
 
@@ -14,7 +14,9 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
       std::map<std::string, std::unique_ptr<IInterestRateCurve<T>>>
           rate_curves_set,
       std::map<std::string, std::map<boost::gregorian::date, double>>
-          past_rate_fixing_set);
+          past_rate_fixing_set,
+      std::map<std::string, std::unique_ptr<ICreditCurve<T>>>
+          credit_curves_set);
 
   boost::gregorian::date GetPricingDate() const override;
 
@@ -25,7 +27,14 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
       const std::string& curve_name,
       const boost::gregorian::date& query_date) const override;
 
-  std::vector<double> GetCurveAdjoints(
+  std::vector<double> GetInterestRateAdjoints(
+      const std::string& curve_name) const override;
+
+  T GetSurvivalProbability(
+      const std::string& curve_name,
+      const boost::gregorian::date& query_date) const override;
+
+  std::vector<double> GetCreditAdjoints(
       const std::string& curve_name) const override;
 
  private:
@@ -34,6 +43,7 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
       rate_curves_set_;
   std::map<std::string, std::map<boost::gregorian::date, double>>
       past_rate_fixing_set_;
+  std::map<std::string, std::unique_ptr<ICreditCurve<T>>> credit_curves_set_;
 };
 
 template <typename T>
@@ -42,10 +52,12 @@ PricingEnvironment<T>::PricingEnvironment(
     std::map<std::string, std::unique_ptr<IInterestRateCurve<T>>>
         rate_curves_set,
     std::map<std::string, std::map<boost::gregorian::date, double>>
-        past_rate_fixing_set)
+        past_rate_fixing_set,
+    std::map<std::string, std::unique_ptr<ICreditCurve<T>>> credit_curves_set)
     : pricing_date_(pricing_date),
       rate_curves_set_(std::move(rate_curves_set)),
-      past_rate_fixing_set_(std::move(past_rate_fixing_set)) {}
+      past_rate_fixing_set_(std::move(past_rate_fixing_set)),
+      credit_curves_set_(std::move(credit_curves_set)) {}
 
 template <typename T>
 boost::gregorian::date PricingEnvironment<T>::GetPricingDate() const {
@@ -69,9 +81,23 @@ double PricingEnvironment<T>::GetPastRateFixing(
 }
 
 template <typename T>
-std::vector<double> PricingEnvironment<T>::GetCurveAdjoints(
+std::vector<double> PricingEnvironment<T>::GetInterestRateAdjoints(
     const std::string& curve_name) const {
   const auto curve_itr = rate_curves_set_.find(curve_name);
+  return curve_itr->second->GetAdjoints();
+}
+template <typename T>
+T PricingEnvironment<T>::GetSurvivalProbability(
+    const std::string& curve_name,
+    const boost::gregorian::date& query_date) const {
+  const auto curve_itr = credit_curves_set_.find(curve_name);
+  return curve_itr->second->GetSurvivalProbability(query_date);
+}
+
+template <typename T>
+std::vector<double> PricingEnvironment<T>::GetCreditAdjoints(
+    const std::string& curve_name) const {
+  const auto curve_itr = credit_curves_set_.find(curve_name);
   return curve_itr->second->GetAdjoints();
 }
 }  // namespace qff_a

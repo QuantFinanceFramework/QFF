@@ -64,6 +64,9 @@
     <Filter Include="Source Files\Calendars">
       <UniqueIdentifier>{5d7d9acb-da72-4fea-a3c3-d38364068253}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Products">
+      <UniqueIdentifier>{7e9013d1-7dc8-46b8-9939-493ffc617804}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="QffAadExample.cpp">
@@ -110,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="Thirty360Isda.cpp">
       <Filter>Source Files\DayCounters</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapScheduler.cpp">
+      <Filter>Source Files\Products</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +223,30 @@
     </ClInclude>
     <ClInclude Include="CompoundedOvernightIndex.h">
       <Filter>Header Files\Indices</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedCoupon.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="Leg.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="Swap.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapScheduler.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="CdsPremium.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtectionLeg.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="ICreditCurve.h">
+      <Filter>Header Files\PricingEnvironment</Filter>
+    </ClInclude>
+    <ClInclude Include="SurvivalCurve.h">
+      <Filter>Header Files\PricingEnvironment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

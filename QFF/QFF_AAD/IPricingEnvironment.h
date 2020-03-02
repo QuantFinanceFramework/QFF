@@ -14,11 +14,18 @@ class IPricingEnvironment {
       const std::string& curve_name,
       const boost::gregorian::date& query_date) const = 0;
 
+  virtual T GetSurvivalProbability(
+      const std::string& curve_name,
+      const boost::gregorian::date& query_date) const = 0;
+
   virtual double GetPastRateFixing(
       const std::string& curve_name,
       const boost::gregorian::date& query_date) const = 0;
 
-  virtual std::vector<double> GetCurveAdjoints(
+  virtual std::vector<double> GetInterestRateAdjoints(
+      const std::string& curve_name) const = 0;
+
+  virtual std::vector<double> GetCreditAdjoints(
       const std::string& curve_name) const = 0;
 };
 }  // namespace qff_a

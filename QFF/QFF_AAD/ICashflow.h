@@ -8,13 +8,13 @@ class ICashflow : public IProduct {
   virtual ~ICashflow() = default;
 
   double Evaluate(const IPricingEnvironment<double>& environment,
-                  const std::string& currency_code) const override final{
+                  const std::string& currency_code) const override {
     return EvaluateImpl(environment, currency_code);
   }
 
   aad::a_double Evaluate(
       const IPricingEnvironment<aad::a_double>& environment,
-      const std::string& currency_code) const override final{
+      const std::string& currency_code) const override {
     return EvaluateImpl(environment, currency_code);
   }
 

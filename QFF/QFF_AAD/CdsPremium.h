@@ -14,6 +14,18 @@ class CdsPremium final : public ICashflow {
              std::string discount_curve_name, std::string survival_curve_name,
              const IDayCounter& day_counter, double cds_spread);
 
+  //Override ICashflow implementation
+  double Evaluate(const IPricingEnvironment<double>& environment,
+                  const std::string& currency_code) const override {
+    return EvaluateImpl(environment, currency_code);
+  }
+
+  // Override ICashflow implementation
+  aad::a_double Evaluate(const IPricingEnvironment<aad::a_double>& environment,
+                         const std::string& currency_code) const override {
+    return EvaluateImpl(environment, currency_code);
+  }
+
   boost::gregorian::date GetPaymentDate() const override {
     return payment_date_;
   }

@@ -291,5 +291,6 @@ int main() {
   std::cout << "IRS NPV: " << irs2->Evaluate(environment, "USD") << '\n';
   std::cout << "OIS NPV: " << ois3->Evaluate(environment, "USD") << '\n';
   std::cout << "FF Swap NPV: " << ff_swap->Evaluate(environment, "USD") << '\n';
+
   return 0;
 }

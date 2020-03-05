@@ -69,9 +69,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="QffAadExample.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Actual365.cpp">
       <Filter>Source Files\DayCounters</Filter>
     </ClCompile>
@@ -250,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="AveragedOvernightIndex.h">
       <Filter>Header Files\Indices</Filter>
+    </ClInclude>
+    <ClInclude Include="GenerateInterestRateDeltas.h">
+      <Filter>Header Files\Functions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

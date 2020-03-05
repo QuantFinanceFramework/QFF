@@ -11,6 +11,8 @@ class IInterestRateCurve {
   virtual T GetDiscountFactor(
       const boost::gregorian::date& query_date) const = 0;
 
+  virtual void PutOnTape() const = 0;
+	
   virtual std::vector<double> GetAdjoints() const = 0;
 };
 }  // namespace qff_a

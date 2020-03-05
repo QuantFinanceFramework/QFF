@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <memory>
+
 #include "ICreditCurve.h"
 #include "IInterestRateCurve.h"
 #include "IPricingEnvironment.h"
@@ -26,6 +27,10 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
   double GetPastRateFixing(
       const std::string& curve_name,
       const boost::gregorian::date& query_date) const override;
+
+  void PutInterestRateCurvesOnTape() const override;
+
+  std::vector<std::vector<double>> GetInterestRateAdjoints() const override;
 
   std::vector<double> GetInterestRateAdjoints(
       const std::string& curve_name) const override;
@@ -78,6 +83,23 @@ double PricingEnvironment<T>::GetPastRateFixing(
     const boost::gregorian::date& query_date) const {
   const auto curve_itr = past_rate_fixing_set_.find(curve_name);
   return curve_itr->second.find(query_date)->second;
+}
+
+template <typename T>
+void PricingEnvironment<T>::PutInterestRateCurvesOnTape() const {
+  for (auto& m : rate_curves_set_) {
+  	m.second->PutOnTape();
+  }
+}
+
+template <typename T>
+std::vector<std::vector<double>>
+PricingEnvironment<T>::GetInterestRateAdjoints() const {
+  std::vector<std::vector<double>> adjoints;
+  std::transform(rate_curves_set_.begin(), rate_curves_set_.end(),
+                 std::back_inserter(adjoints),
+                 [](auto& c) { return c.second->GetAdjoints(); });
+  return adjoints;
 }
 
 template <typename T>

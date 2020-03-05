@@ -17,6 +17,8 @@ class ZeroRateCurve final : public InterestRateCurve<T> {
 
   T GetDiscountFactorImpl(double time) const override;
 
+  void PutOnTape() const override;
+
   std::vector<double> GetAdjoints() const override;
 
  private:
@@ -47,6 +49,20 @@ ZeroRateCurve<T>::ZeroRateCurve(
 template <typename T>
 T ZeroRateCurve<T>::GetDiscountFactorImpl(double time) const {
   return T(exp(-GetZeroRate(time) * time));
+}
+
+template <typename T>
+void ZeroRateCurve<T>::PutOnTape() const
+{
+}
+
+template <>
+void ZeroRateCurve<aad::a_double>::PutOnTape() const
+{
+	for (auto& m : zero_rates_map_)
+	{
+    const_cast<aad::a_double&>(m.second).put_on_tape();
+	}
 }
 
 template <typename T>

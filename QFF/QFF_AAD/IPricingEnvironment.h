@@ -22,6 +22,10 @@ class IPricingEnvironment {
       const std::string& curve_name,
       const boost::gregorian::date& query_date) const = 0;
 
+  virtual void PutInterestRateCurvesOnTape() const = 0;
+
+  virtual std::vector<std::vector<double>> GetInterestRateAdjoints() const = 0;
+
   virtual std::vector<double> GetInterestRateAdjoints(
       const std::string& curve_name) const = 0;
 

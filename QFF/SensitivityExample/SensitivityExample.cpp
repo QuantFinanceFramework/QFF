@@ -6,6 +6,7 @@
 #include "CurveInterpolator.h"
 #include "DiscountFactorCurve.h"
 #include "FixedCashflow.h"
+#include "GenerateInterestRateDeltas.h"
 #include "Interpolation.h"
 #include "PricingEnvironment.h"
 #include "SurvivalCurve.h"
@@ -17,9 +18,6 @@ using namespace qff_a;
 using boost::gregorian::date;
 
 int main() {
-  auto tape = *a_double::tape;
-  tape.clear();
-
   const date market_date{2019, 4, 10};
 
   const std::vector pillars{date(2019, 4, 10), date(2020, 4, 10),
@@ -62,22 +60,18 @@ int main() {
 
   const FixedCashflow instrument{100.0, date(2022, 4, 10), "std"};
 
-  const auto instrument_result = instrument.Evaluate(*environment, "USD");
-  std::cout << "NPV using DiscountFactorCurve<double> = " << instrument_result
-            << '\n';
+  auto npv = instrument.Evaluate(*environment, "USD");
 
-  auto adjoints = environment->GetInterestRateAdjoints("std");
+  auto adjoints = GenerateInterestRateDeltas(instrument, *environment_a, "USD");
 
-  for (auto& a : adjoints) std::cout << "Adjoint (double)" << a << '\n';
+  std::cout << "NPV = " << npv << '\n';
 
-  auto instrument_result_aad = instrument.Evaluate(*environment_a, "USD");
-  instrument_result_aad.propagate_to_start();
-  std::cout << "NPV using DiscountFactorCurve<a_double> = "
-            << instrument_result_aad.value() << '\n';
-  auto adjoints_aad = environment_a->GetInterestRateAdjoints("std");
-  for (auto& a : adjoints_aad) std::cout << "Adjoint (a_double)" << a << '\n';
-
-  tape.rewind();
+  std::cout << "DF Deltas:" << '\n';
+  for (auto& i : adjoints)
+    for (auto& d : i) {
+      std::cout << d << '\n';
+    }
+  std::cout << '\n';
 
   std::vector zeros{0.02, 0.02, 0.021, 0.025};
 
@@ -116,19 +110,20 @@ int main() {
       market_date, move(usd_curve_set_z_a), fixings,
       move(credit_curve_set_z_a));
 
-  const auto instrument_result_z = instrument.Evaluate(*environment_z, "USD");
-  std::cout << "NPV using ZeroRateCurve<double> = " << instrument_result_z
-            << '\n';
+  auto npv_z = instrument.Evaluate(*environment_z, "USD");
+  auto adjoints_z =
+      GenerateInterestRateDeltas(instrument, *environment_z_a, "USD");
 
-  auto adjoints_z = environment_z->GetInterestRateAdjoints("std");
-  for (auto& a : adjoints_z) std::cout << "Adjoint (double)" << a << '\n';
+  std::cout << "NPV = " << npv << '\n';
 
-  auto instrument_result_aad_z = instrument.Evaluate(*environment_z_a, "USD");
-  instrument_result_aad_z.propagate_to_start();
-  std::cout << "NPV using ZeroRateCurve<a_double> = "
-            << instrument_result_aad_z.value() << '\n';
-  auto adjoints_aad_z = environment_z_a->GetInterestRateAdjoints("std");
-  for (auto& a : adjoints_aad_z) std::cout << "Adjoint (a_double)" << a << '\n';
+  std::cout << "Zero Deltas:" << '\n';
+  for (auto& i : adjoints_z)
+    for (auto& d : i) {
+      std::cout << d << '\n';
+    }
+  std::cout << '\n';
+
+  auto tape = *a_double::tape;
 
   tape.rewind();
 
@@ -144,6 +139,7 @@ int main() {
   black_result.propagate_to_start();
   std::cout << "Delta = " << spot.adjoint() << '\n';
   std::cout << "Vega = " << v.adjoint() << '\n';
+
   tape.rewind();
 
   return EXIT_SUCCESS;

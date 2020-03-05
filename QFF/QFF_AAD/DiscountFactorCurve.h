@@ -17,6 +17,8 @@ class DiscountFactorCurve final : public InterestRateCurve<T> {
 
   T GetDiscountFactorImpl(double time) const override;
 
+  void PutOnTape() const override;
+
   std::vector<double> GetAdjoints() const override;
 
  private:
@@ -47,6 +49,16 @@ DiscountFactorCurve<T>::DiscountFactorCurve(
 template <typename T>
 T DiscountFactorCurve<T>::GetDiscountFactorImpl(double time) const {
   return interpolator_->Interpol(time, discount_factors_map_);
+}
+
+template <typename T>
+void DiscountFactorCurve<T>::PutOnTape() const {}
+
+template <>
+void DiscountFactorCurve<aad::a_double>::PutOnTape() const {
+  for (auto& m : discount_factors_map_) {
+    const_cast<aad::a_double&>(m.second).put_on_tape();
+  }
 }
 
 template <typename T>

@@ -1,0 +1,81 @@
+#pragma once
+#include <numeric>
+#include <vector>
+#include "BaseCalendar.h"
+#include "IProduct.h"
+#include "SwapScheduler.h"
+
+namespace qff_a {
+class ProtectionLeg final : public IProduct {
+ public:
+  ProtectionLeg(double notional, std::string currency_code,
+                boost::gregorian::date start_date,
+                boost::gregorian::date end_date,
+                std::string discount_curve_name,
+                std::string survival_curve_name, double recovery_rate,
+                Frequency estimation_frequency);
+
+  double Evaluate(const IPricingEnvironment<double>& environment,
+                  const std::string& currency_code) const override {
+    return EvaluateImpl(environment, currency_code);
+  }
+
+  aad::a_double Evaluate(const IPricingEnvironment<aad::a_double>& environment,
+                         const std::string& currency_code) const override {
+    return EvaluateImpl(environment, currency_code);
+  }
+
+ private:
+  template <typename T>
+  T EvaluateImpl(const IPricingEnvironment<T>& environment,
+                 const std::string& currency_code) const;
+
+  double notional_{};
+  std::string currency_code_;
+  boost::gregorian::date start_date_;
+  boost::gregorian::date end_date_;
+  std::string discount_curve_name_;
+  std::string survival_curve_name_;
+  double recovery_rate_{};
+  Frequency estimation_frequency_;
+  mutable std::vector<boost::gregorian::date> estimation_schedule_;
+};
+
+inline ProtectionLeg::ProtectionLeg(double notional, std::string currency_code,
+                                    boost::gregorian::date start_date,
+                                    boost::gregorian::date end_date,
+                                    std::string discount_curve_name,
+                                    std::string survival_curve_name,
+                                    double recovery_rate,
+                                    Frequency estimation_frequency)
+    : notional_(notional),
+      currency_code_(std::move(currency_code)),
+      start_date_(start_date),
+      end_date_(end_date),
+      discount_curve_name_(std::move(discount_curve_name)),
+      survival_curve_name_(std::move(survival_curve_name)),
+      recovery_rate_(recovery_rate),
+      estimation_frequency_(estimation_frequency) {}
+
+template <typename T>
+T ProtectionLeg::EvaluateImpl(const IPricingEnvironment<T>& environment,
+                              const std::string& currency_code) const {
+  if (estimation_schedule_.empty()) {
+    estimation_schedule_ = SwapScheduler::MakeUnadjustedSchedule(
+        start_date_, end_date_, estimation_frequency_, BaseCalendar(), true,
+        start_date_);
+  }
+  const auto discounted_default_probability = std::transform_reduce(
+      estimation_schedule_.begin(), std::prev(estimation_schedule_.end()),
+      std::next(estimation_schedule_.begin()), T(0.0), std::plus(),
+      [&](auto start, auto end) {
+        return (environment.GetSurvivalProbability(survival_curve_name_,
+                                                   start) -
+                environment.GetSurvivalProbability(survival_curve_name_, end)) *
+               environment.GetDiscountFactor(discount_curve_name_, end);
+      });
+  const auto loss_given_default = notional_ * (1.0 - recovery_rate_);
+
+  return T(loss_given_default * discounted_default_probability);
+}
+}  // namespace qff_a

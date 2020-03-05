@@ -7,18 +7,18 @@
 #include <DiscountFactorCurve.h>
 #include <IborIndex.h>
 #include <Interpolation.h>
-#include <Leg.h>
 #include <LondonCalendar.h>
-#include <MarketData.h>
 #include <ModifiedFollowing.h>
 #include <NewYorkCalendar.h>
+#include <PricingEnvironment.h>
 #include <Swap.h>
 #include <SwapScheduler.h>
 #include <Thirty360Isda.h>
+
 #include <memory>
 #include <vector>
 
-using namespace qff;
+using namespace qff_a;
 using boost::gregorian::date;
 using std::map;
 using std::string;
@@ -26,9 +26,10 @@ using std::unique_ptr;
 using std::vector;
 
 int main() {
-  const date market_date{2019, 4, 10};
+  const date pricing_date{2019, 4, 10};
 
-  const CurveInterpolator interpolator{LogLinearInterpol, LogLinearExtrapol};
+  auto interpolator = CurveInterpolator<double>{&LogLinearInterpol<double>,
+                                                &LogLinearExtrapol<double>};
   const Actual365 day_counter{};
 
   vector ff_pillars{date(2019, 4, 10),  date(2019, 4, 11), date(2019, 4, 23),
@@ -110,18 +111,18 @@ int main() {
                       0.449232212159018,
                       0.344825397474425};
 
-  auto fed_funds = std::make_unique<DiscountFactorCurve>(
-      market_date, std::move(ff_pillars), ff_dfs, interpolator, day_counter);
+  auto fed_funds = std::make_unique<DiscountFactorCurve<double>>(
+      pricing_date, day_counter, interpolator, std::move(ff_pillars), ff_dfs);
 
-  auto usd_libor_3m = std::make_unique<DiscountFactorCurve>(
-      market_date, std::move(libor_3m_pillars), libor_3m_dfs, interpolator,
-      day_counter);
+  auto usd_libor_3m = std::make_unique<DiscountFactorCurve<double>>(
+      pricing_date, day_counter, interpolator, std::move(libor_3m_pillars),
+      libor_3m_dfs);
 
-  map<string, unique_ptr<IInterestRateCurve>> curve_set;
+  map<string, unique_ptr<IInterestRateCurve<double>>> curve_set;
   curve_set.emplace(std::make_pair("USD_FedFunds", std::move(fed_funds)));
   curve_set.emplace(std::make_pair("USD_LIBOR_3M", std::move(usd_libor_3m)));
 
-  map<string, unique_ptr<ICreditCurve>> credit_curve_set;
+  map<string, unique_ptr<ICreditCurve<double>>> credit_curve_set;
 
   map<string, map<date, double>> past_fixing_set{
       std::make_pair("USD_FedFunds",
@@ -196,9 +197,9 @@ int main() {
                          std::make_pair(date(2019, 4, 9), 0.0258125),
                          std::make_pair(date(2019, 4, 10), 0.026035)})};
 
-  const MarketData market{market_date, std::move(curve_set),
-                          std::move(credit_curve_set),
-                          std::move(past_fixing_set)};
+  const PricingEnvironment environment{pricing_date, std::move(curve_set),
+                                       std::move(past_fixing_set),
+                                       std::move(credit_curve_set)};
 
   CompoundedOvernightIndex comp_ff{"USD",
                                    "USD_FedFunds",
@@ -284,12 +285,13 @@ int main() {
 
   std::cout.precision(15);
 
-  std::cout << "OIS NPV: " << ois->Evaluate(market, "USD").amount << '\n';
-  std::cout << "IRS NPV: " << irs->Evaluate(market, "USD").amount << '\n';
-  std::cout << "OIS NPV: " << ois2->Evaluate(market, "USD").amount << '\n';
-  std::cout << "IRS NPV: " << irs2->Evaluate(market, "USD").amount << '\n';
-  std::cout << "OIS NPV: " << ois3->Evaluate(market, "USD").amount << '\n';
-  std::cout << "FF Swap NPV: " << ff_swap->Evaluate(market, "USD").amount
-            << '\n';
+  std::cout << "OIS NPV: " << ois->Evaluate(environment, "USD") << '\n';
+  std::cout << "IRS NPV: " << irs->Evaluate(environment, "USD") << '\n';
+  std::cout << "OIS NPV: " << ois2->Evaluate(environment, "USD") << '\n';
+  std::cout << "IRS NPV: " << irs2->Evaluate(environment, "USD") << '\n';
+  std::cout << "OIS NPV: " << ois3->Evaluate(environment, "USD") << '\n';
+  std::cout << "FF Swap NPV: " << ff_swap->Evaluate(environment, "USD") << '\n';
+  std::cout << "FF Swap NPV: " << ff_swap->Evaluate(environment, "USD") << '\n';
+  std::cout << "FF Swap NPV: " << ff_swap->Evaluate(environment, "USD") << '\n';
   return 0;
 }

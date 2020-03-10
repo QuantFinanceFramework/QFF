@@ -68,7 +68,8 @@ int main() {
                 0.432473480293818};
 
   auto fed_funds = std::make_unique<DiscountFactorCurve<double>>(
-      pricing_date, day_counter, interpolator, std::move(ff_pillars), ff_dfs);
+      pricing_date, "USD_FF", day_counter, interpolator, std::move(ff_pillars),
+      ff_dfs);
 
   map<string, unique_ptr<IInterestRateCurve<double>>> curve_set;
   curve_set.emplace(std::make_pair("USD_FedFunds", std::move(fed_funds)));

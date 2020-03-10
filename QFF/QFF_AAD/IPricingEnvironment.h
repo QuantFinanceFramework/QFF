@@ -1,6 +1,6 @@
 #pragma once
 #include <boost/date_time/gregorian/gregorian.hpp>
-#include <string>
+#include "IInterestRateCurve.h"
 
 namespace qff_a {
 template <typename T>
@@ -24,9 +24,9 @@ class IPricingEnvironment {
 
   virtual void PutInterestRateCurvesOnTape() const = 0;
 
-  virtual std::vector<std::vector<double>> GetInterestRateAdjoints() const = 0;
+  virtual IrDeltas GetInterestRateAdjoints() const = 0;
 
-  virtual std::vector<double> GetInterestRateAdjoints(
+  virtual IrDeltas GetInterestRateAdjoints(
       const std::string& curve_name) const = 0;
 
   virtual std::vector<double> GetCreditAdjoints(

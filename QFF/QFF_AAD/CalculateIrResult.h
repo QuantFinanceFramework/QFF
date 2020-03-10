@@ -1,12 +1,10 @@
 #pragma once
-#include <vector>
-
 #include "IPricingEnvironment.h"
 #include "IProduct.h"
+#include "IrResult.h"
 
 namespace qff_a {
-
-std::vector<std::vector<double>> GenerateInterestRateDeltas(
+inline IrResult CalculateIrResult(
     const IProduct& product,
     const IPricingEnvironment<aad::a_double>& environment,
     const std::string& currency_code) {
@@ -15,8 +13,8 @@ std::vector<std::vector<double>> GenerateInterestRateDeltas(
   environment.PutInterestRateCurvesOnTape();
   auto result = product.Evaluate(environment, currency_code);
   result.propagate_to_start();
-  auto adjoints = environment.GetInterestRateAdjoints();
+  auto deltas = environment.GetInterestRateAdjoints();
   tape.rewind();
-  return adjoints;
+  return IrResult{result.value(), std::move(deltas)};
 }
 }  // namespace qff_a

@@ -3,10 +3,10 @@
 
 #include "Actual365.h"
 #include "BlackScholesFormula.h"
+#include "CalculateIrResult.h"
 #include "CurveInterpolator.h"
 #include "DiscountFactorCurve.h"
 #include "FixedCashflow.h"
-#include "GenerateInterestRateDeltas.h"
 #include "Interpolation.h"
 #include "PricingEnvironment.h"
 #include "SurvivalCurve.h"
@@ -27,25 +27,11 @@ int main() {
 
   std::vector dfs{1.0, 0.980144965261876, 0.938889453837808, 0.882376020877698};
 
-  auto usd_std_df = std::make_unique<DiscountFactorCurve<double>>(
-      market_date, Actual365{},
-      CurveInterpolator<double>{&LogLinearInterpol<double>,
-                                &LogLinearExtrapol<double>},
-      pillars, dfs);
-
-  map<string, unique_ptr<IInterestRateCurve<double>>> usd_curve_set;
-  usd_curve_set.emplace("std", move(usd_std_df));
-
-  map<string, unique_ptr<ICreditCurve<double>>> credit_curve_set;
-
-  const auto environment = make_unique<PricingEnvironment<double>>(
-      market_date, move(usd_curve_set), fixings, move(credit_curve_set));
-
   std::vector<a_double> aad_dfs(size(dfs));
   convert_collection(dfs.begin(), dfs.end(), aad_dfs.begin());
 
   auto usd_std_df_a = std::make_unique<DiscountFactorCurve<a_double>>(
-      market_date, Actual365{},
+      market_date, "USD_STD", Actual365{},
       CurveInterpolator<a_double>{&LogLinearInterpol<a_double>,
                                   &LogLinearExtrapol<a_double>},
       pillars, aad_dfs);
@@ -60,42 +46,23 @@ int main() {
 
   const FixedCashflow instrument{100.0, date(2022, 4, 10), "std"};
 
-  auto npv = instrument.Evaluate(*environment, "USD");
+  std::cout.precision(15);
 
-  auto adjoints = GenerateInterestRateDeltas(instrument, *environment_a, "USD");
+  auto result = CalculateIrResult(instrument, *environment_a, "EUR");
 
-  std::cout << "NPV = " << npv << '\n';
-
-  std::cout << "DF Deltas:" << '\n';
-  for (auto& i : adjoints)
-    for (auto& d : i) {
-      std::cout << d << '\n';
-    }
+  std::cout << "NPV = " << result.GetNpv() << '\n';
+  std::cout << "DF Deltas : " << '\n';
+  result.PrintDeltas();
   std::cout << '\n';
 
   std::vector zeros{0.02, 0.02, 0.021, 0.025};
-
-  auto usd_std_z = std::make_unique<ZeroRateCurve<double>>(
-      market_date, Actual365{},
-      CurveInterpolator<double>{&ProductLinearInterpol<double>,
-                                &ProductLinearExtrapol<double>},
-      pillars, zeros);
-
-  map<string, unique_ptr<IInterestRateCurve<double>>> usd_curve_set_z;
-
-  usd_curve_set_z.emplace("std", move(usd_std_z));
-
-  map<string, unique_ptr<ICreditCurve<double>>> credit_curve_set_z;
-
-  const auto environment_z = make_unique<PricingEnvironment<double>>(
-      market_date, move(usd_curve_set_z), fixings, move(credit_curve_set_z));
 
   std::vector<a_double> aad_zeros(size(zeros));
 
   convert_collection(zeros.begin(), zeros.end(), aad_zeros.begin());
 
   auto usd_std_z_a = std::make_unique<ZeroRateCurve<a_double>>(
-      market_date, Actual365{},
+      market_date, "USD_STD", Actual365{},
       CurveInterpolator<a_double>{&ProductLinearInterpol<a_double>,
                                   &ProductLinearExtrapol<a_double>},
       pillars, aad_zeros);
@@ -110,17 +77,11 @@ int main() {
       market_date, move(usd_curve_set_z_a), fixings,
       move(credit_curve_set_z_a));
 
-  auto npv_z = instrument.Evaluate(*environment_z, "USD");
-  auto adjoints_z =
-      GenerateInterestRateDeltas(instrument, *environment_z_a, "USD");
+  auto result_z = CalculateIrResult(instrument, *environment_z_a, "EUR");
 
-  std::cout << "NPV = " << npv << '\n';
-
-  std::cout << "Zero Deltas:" << '\n';
-  for (auto& i : adjoints_z)
-    for (auto& d : i) {
-      std::cout << d << '\n';
-    }
+  std::cout << "NPV = " << result_z.GetNpv() << '\n';
+  std::cout << "Zero Deltas : " << '\n';
+  result_z.PrintDeltas();
   std::cout << '\n';
 
   auto tape = *a_double::tape;

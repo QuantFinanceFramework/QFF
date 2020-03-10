@@ -67,6 +67,12 @@
     <Filter Include="Source Files\Products">
       <UniqueIdentifier>{7e9013d1-7dc8-46b8-9939-493ffc617804}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Results">
+      <UniqueIdentifier>{9c603fae-ea66-4c0e-8096-cfa26f0c36e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Results">
+      <UniqueIdentifier>{d0005dc9-2ad2-4eaf-9b78-56f4a3c66cf7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actual365.cpp">
@@ -113,6 +119,12 @@
     </ClCompile>
     <ClCompile Include="SwapScheduler.cpp">
       <Filter>Source Files\Products</Filter>
+    </ClCompile>
+    <ClCompile Include="IrResult.cpp">
+      <Filter>Source Files\Results</Filter>
+    </ClCompile>
+    <ClCompile Include="IrDeltas.cpp">
+      <Filter>Source Files\Results</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -248,7 +260,13 @@
     <ClInclude Include="AveragedOvernightIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
-    <ClInclude Include="GenerateInterestRateDeltas.h">
+    <ClInclude Include="IrDeltas.h">
+      <Filter>Header Files\Results</Filter>
+    </ClInclude>
+    <ClInclude Include="IrResult.h">
+      <Filter>Header Files\Results</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculateIrResult.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
   </ItemGroup>

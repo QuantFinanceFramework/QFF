@@ -30,9 +30,9 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
 
   void PutInterestRateCurvesOnTape() const override;
 
-  std::vector<std::vector<double>> GetInterestRateAdjoints() const override;
+  IrDeltas GetInterestRateAdjoints() const override;
 
-  std::vector<double> GetInterestRateAdjoints(
+  IrDeltas GetInterestRateAdjoints(
       const std::string& curve_name) const override;
 
   T GetSurvivalProbability(
@@ -88,26 +88,26 @@ double PricingEnvironment<T>::GetPastRateFixing(
 template <typename T>
 void PricingEnvironment<T>::PutInterestRateCurvesOnTape() const {
   for (auto& m : rate_curves_set_) {
-  	m.second->PutOnTape();
+    m.second->PutOnTape();
   }
 }
 
 template <typename T>
-std::vector<std::vector<double>>
-PricingEnvironment<T>::GetInterestRateAdjoints() const {
-  std::vector<std::vector<double>> adjoints;
-  std::transform(rate_curves_set_.begin(), rate_curves_set_.end(),
-                 std::back_inserter(adjoints),
-                 [](auto& c) { return c.second->GetAdjoints(); });
-  return adjoints;
+IrDeltas PricingEnvironment<T>::GetInterestRateAdjoints() const {
+  IrDeltas result;
+  for (const auto& s : rate_curves_set_) {
+    result.Append(s.second->GetAdjoints());
+  }
+  return result;
 }
 
 template <typename T>
-std::vector<double> PricingEnvironment<T>::GetInterestRateAdjoints(
+IrDeltas PricingEnvironment<T>::GetInterestRateAdjoints(
     const std::string& curve_name) const {
   const auto curve_itr = rate_curves_set_.find(curve_name);
   return curve_itr->second->GetAdjoints();
 }
+
 template <typename T>
 T PricingEnvironment<T>::GetSurvivalProbability(
     const std::string& curve_name,

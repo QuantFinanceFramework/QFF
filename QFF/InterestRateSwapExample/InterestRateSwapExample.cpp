@@ -1,6 +1,7 @@
 #include <Actual360.h>
 #include <Actual365.h>
 #include <AveragedOvernightIndex.h>
+#include <CalculateIrResult.h>
 #include <CompositeCalendar.h>
 #include <CompoundedOvernightIndex.h>
 #include <CurveInterpolator.h>
@@ -11,13 +12,14 @@
 #include <ModifiedFollowing.h>
 #include <NewYorkCalendar.h>
 #include <PricingEnvironment.h>
-#include <Swap.h>
 #include <SwapScheduler.h>
 #include <Thirty360Isda.h>
+#include <ZeroRateCurve.h>
 
 #include <memory>
 #include <vector>
 
+using namespace aad;
 using namespace qff_a;
 using boost::gregorian::date;
 using std::map;
@@ -26,272 +28,143 @@ using std::unique_ptr;
 using std::vector;
 
 int main() {
-  const date pricing_date{2019, 4, 10};
+  const date pricing_date{2020, 1, 31};
 
-  auto interpolator = CurveInterpolator<double>{&LogLinearInterpol<double>,
-                                                &LogLinearExtrapol<double>};
+  auto interpolator = CurveInterpolator<a_double>{
+      &ProductLinearInterpol<a_double>, &ProductLinearExtrapol<a_double>};
   const Actual365 day_counter{};
 
-  vector ff_pillars{date(2019, 4, 10),  date(2019, 4, 11), date(2019, 4, 23),
-                    date(2019, 4, 30),  date(2019, 5, 15), date(2019, 6, 14),
-                    date(2019, 7, 16),  date(2019, 8, 14), date(2019, 9, 16),
-                    date(2019, 10, 17), date(2020, 1, 15), date(2020, 4, 15),
-                    date(2020, 10, 13), date(2021, 4, 12), date(2022, 4, 12),
-                    date(2023, 4, 12),  date(2024, 4, 12), date(2025, 4, 14),
-                    date(2026, 4, 13),  date(2027, 4, 12), date(2028, 4, 12),
-                    date(2029, 4, 12),  date(2031, 4, 15), date(2034, 4, 12),
-                    date(2039, 4, 12),  date(2044, 4, 12), date(2049, 4, 12),
-                    date(2059, 4, 14)};
+  vector ff_pillars{
+      date(2020, 2, 3), date(2020, 2, 13), date(2020, 2, 20), date(2020, 3, 6),
+      date(2020, 4, 8), date(2020, 5, 6),  date(2020, 6, 8),  date(2020, 7, 8),
+      date(2020, 8, 6), date(2020, 11, 6), date(2021, 2, 8),  date(2021, 8, 4),
+      date(2022, 2, 4), date(2023, 2, 6),  date(2024, 2, 5),  date(2025, 2, 4),
+      date(2026, 2, 4), date(2027, 2, 4),  date(2028, 2, 4),  date(2029, 2, 5),
+      date(2030, 2, 4), date(2032, 2, 4),  date(2035, 2, 5),  date(2040, 2, 6),
+      date(2045, 2, 6), date(2050, 2, 4),  date(2060, 2, 4)};
 
-  vector ff_dfs{1.0,
-                0.999933060036814,
-                0.999130291045838,
-                0.998662818019684,
-                0.997662058686208,
-                0.995666785372217,
-                0.993547188517104,
-                0.991670166146898,
-                0.989508739055556,
-                0.987543379364211,
-                0.981897675254078,
-                0.976450670204002,
-                0.966507784738812,
-                0.957061923551266,
-                0.93850904682124,
-                0.919941928129991,
-                0.900866632043426,
-                0.88100225718891,
-                0.86102483897881,
-                0.840725601470964,
-                0.820345186093549,
-                0.799861038269815,
-                0.759285732624141,
-                0.702560741801866,
-                0.617919636280566,
-                0.546496626071902,
-                0.484272219004205,
-                0.381066661016916};
+  vector ff_zeros{0.0157142629201847, 0.0160406863209875, 0.0160824439348794,
+                  0.0161134455264112, 0.0160416235621084, 0.0159570512563784,
+                  0.0158228733810686, 0.0156275866647933, 0.0154711858102748,
+                  0.0148764481371773, 0.0142306690193869, 0.0132755841877428,
+                  0.0126999728943875, 0.0121777751396347, 0.0120243963064879,
+                  0.012061471498624,  0.0122453808443152, 0.0124577010089707,
+                  0.0127362002510347, 0.0130122544457647, 0.0133075208792979,
+                  0.0138503783924619, 0.0144669449582222, 0.0150971255186208,
+                  0.0153189459232633, 0.0153272725963219, 0.0152905184676551};
 
-  vector libor_3m_pillars{
-      date(2019, 4, 10),  date(2019, 7, 12),  date(2019, 9, 19),
-      date(2019, 12, 18), date(2020, 3, 18),  date(2020, 6, 18),
-      date(2020, 9, 17),  date(2020, 12, 16), date(2021, 3, 16),
-      date(2021, 6, 17),  date(2021, 9, 16),  date(2021, 12, 15),
-      date(2022, 3, 15),  date(2022, 6, 16),  date(2023, 4, 12),
-      date(2024, 4, 12),  date(2025, 4, 14),  date(2026, 4, 13),
-      date(2027, 4, 12),  date(2028, 4, 12),  date(2029, 4, 12),
-      date(2031, 4, 15),  date(2034, 4, 12),  date(2039, 4, 12),
-      date(2044, 4, 12),  date(2049, 4, 12),  date(2059, 4, 14)};
+  std::vector<a_double> ff_zeros_a(size(ff_zeros));
+  convert_collection(ff_zeros.begin(), ff_zeros.end(), ff_zeros_a.begin());
 
-  vector libor_3m_dfs{1.0,
-                      0.993375470765473,
-                      0.988574512099469,
-                      0.982431456339511,
-                      0.976321420472281,
-                      0.970456929836142,
-                      0.964902535731033,
-                      0.959586573019396,
-                      0.954350030543054,
-                      0.949047761594921,
-                      0.943893793847415,
-                      0.938829986054228,
-                      0.933764987974085,
-                      0.928526156745888,
-                      0.911614655482877,
-                      0.890657808353375,
-                      0.86893249956175,
-                      0.84718148983994,
-                      0.82518698042637,
-                      0.803173244039273,
-                      0.78119121095432,
-                      0.737852153499424,
-                      0.677411309128505,
-                      0.588239132082424,
-                      0.513513201101991,
-                      0.449232212159018,
-                      0.344825397474425};
+  auto ff_curve = std::make_unique<ZeroRateCurve<a_double>>(
+      pricing_date, "USD_FF", day_counter, interpolator, std::move(ff_pillars),
+      ff_zeros_a);
 
-  auto fed_funds = std::make_unique<DiscountFactorCurve<double>>(
-      pricing_date, day_counter, interpolator, std::move(ff_pillars), ff_dfs);
+  vector libor3m_pillars{
+      date(2020, 5, 4),   date(2020, 6, 18),  date(2020, 9, 17),
+      date(2020, 12, 16), date(2021, 3, 16),  date(2021, 6, 17),
+      date(2021, 9, 16),  date(2021, 12, 15), date(2022, 3, 15),
+      date(2022, 6, 16),  date(2022, 9, 15),  date(2022, 12, 21),
+      date(2023, 3, 21),  date(2024, 2, 6),   date(2025, 2, 4),
+      date(2026, 2, 4),   date(2027, 2, 4),   date(2028, 2, 4),
+      date(2029, 2, 6),   date(2030, 2, 5),   date(2032, 2, 4),
+      date(2035, 2, 6),   date(2040, 2, 6),   date(2045, 2, 6),
+      date(2050, 2, 4),   date(2060, 2, 4)};
 
-  auto usd_libor_3m = std::make_unique<DiscountFactorCurve<double>>(
-      pricing_date, day_counter, interpolator, std::move(libor_3m_pillars),
-      libor_3m_dfs);
+  vector libor3m_zeros{
+      0.0178381083493583, 0.0173969812276502, 0.0168642145140453,
+      0.016289592662108,  0.0158679325431119, 0.0153823991234107,
+      0.0150126372200794, 0.0147145816665658, 0.0145246258808826,
+      0.0143506404390577, 0.0142273222259718, 0.0141323537142728,
+      0.0140837805673723, 0.0139972646586653, 0.0140599580931725,
+      0.0142562020820564, 0.0144740641410424, 0.0147642468871795,
+      0.0150532567844303, 0.0153470803109129, 0.0158999075443918,
+      0.0165137979181888, 0.0171474776654111, 0.0173679270402262,
+      0.0173759527633301, 0.017339032984036};
 
-  map<string, unique_ptr<IInterestRateCurve<double>>> curve_set;
-  curve_set.emplace(std::make_pair("USD_FedFunds", std::move(fed_funds)));
-  curve_set.emplace(std::make_pair("USD_LIBOR_3M", std::move(usd_libor_3m)));
+  std::vector<a_double> libor3m_zeros_a(size(libor3m_zeros));
+  convert_collection(libor3m_zeros.begin(), libor3m_zeros.end(),
+                     libor3m_zeros_a.begin());
 
-  map<string, unique_ptr<ICreditCurve<double>>> credit_curve_set;
+  auto libor3m_curve = std::make_unique<ZeroRateCurve<a_double>>(
+      pricing_date, "USD_LIBOR_3M", day_counter, interpolator,
+      std::move(libor3m_pillars), libor3m_zeros_a);
+
+  map<string, unique_ptr<IInterestRateCurve<a_double>>> curve_set;
+  curve_set.emplace(std::make_pair("USD_FF", std::move(ff_curve)));
+  curve_set.emplace(std::make_pair("USD_LIBOR_3M", std::move(libor3m_curve)));
+
+  map<string, unique_ptr<ICreditCurve<a_double>>> credit_curve_set;
 
   map<string, map<date, double>> past_fixing_set{
-      std::make_pair("USD_FedFunds",
-                     map{std::make_pair(date(2019, 3, 1), 0.024),
-                         std::make_pair(date(2019, 3, 2), 0.024),
-                         std::make_pair(date(2019, 3, 3), 0.024),
-                         std::make_pair(date(2019, 3, 4), 0.024),
-                         std::make_pair(date(2019, 3, 5), 0.024),
-                         std::make_pair(date(2019, 3, 6), 0.024),
-                         std::make_pair(date(2019, 3, 7), 0.024),
-                         std::make_pair(date(2019, 3, 8), 0.024),
-                         std::make_pair(date(2019, 3, 9), 0.024),
-                         std::make_pair(date(2019, 3, 10), 0.024),
-                         std::make_pair(date(2019, 3, 11), 0.024),
-                         std::make_pair(date(2019, 3, 12), 0.024),
-                         std::make_pair(date(2019, 3, 13), 0.024),
-                         std::make_pair(date(2019, 3, 14), 0.024),
-                         std::make_pair(date(2019, 3, 15), 0.024),
-                         std::make_pair(date(2019, 3, 16), 0.024),
-                         std::make_pair(date(2019, 3, 17), 0.024),
-                         std::make_pair(date(2019, 3, 18), 0.024),
-                         std::make_pair(date(2019, 3, 19), 0.024),
-                         std::make_pair(date(2019, 3, 20), 0.0241),
-                         std::make_pair(date(2019, 3, 21), 0.0241),
-                         std::make_pair(date(2019, 3, 22), 0.0241),
-                         std::make_pair(date(2019, 3, 23), 0.0241),
-                         std::make_pair(date(2019, 3, 24), 0.0241),
-                         std::make_pair(date(2019, 3, 25), 0.024),
-                         std::make_pair(date(2019, 3, 26), 0.024),
-                         std::make_pair(date(2019, 3, 27), 0.0241),
-                         std::make_pair(date(2019, 3, 28), 0.0241),
-                         std::make_pair(date(2019, 3, 29), 0.0243),
-                         std::make_pair(date(2019, 3, 30), 0.0243),
-                         std::make_pair(date(2019, 3, 31), 0.0243),
-                         std::make_pair(date(2019, 4, 1), 0.0241),
-                         std::make_pair(date(2019, 4, 2), 0.0241),
-                         std::make_pair(date(2019, 4, 3), 0.0241),
-                         std::make_pair(date(2019, 4, 4), 0.0241),
-                         std::make_pair(date(2019, 4, 5), 0.0241),
-                         std::make_pair(date(2019, 4, 6), 0.0241),
-                         std::make_pair(date(2019, 4, 7), 0.0241),
-                         std::make_pair(date(2019, 4, 8), 0.0241),
-                         std::make_pair(date(2019, 4, 9), 0.0241)}),
+      std::make_pair("USD_FF", map{std::make_pair(date(2020, 1, 27), 0.0155),
+                                   std::make_pair(date(2020, 1, 28), 0.0155),
+                                   std::make_pair(date(2020, 1, 29), 0.0155),
+                                   std::make_pair(date(2020, 1, 30), 0.016)}),
       std::make_pair("USD_LIBOR_3M",
-                     map{std::make_pair(date(2019, 3, 1), 0.025985),
-                         std::make_pair(date(2019, 3, 4), 0.0260763),
-                         std::make_pair(date(2019, 3, 5), 0.0260663),
-                         std::make_pair(date(2019, 3, 6), 0.025945),
-                         std::make_pair(date(2019, 3, 7), 0.0260063),
-                         std::make_pair(date(2019, 3, 8), 0.0259663),
-                         std::make_pair(date(2019, 3, 11), 0.0260825),
-                         std::make_pair(date(2019, 3, 12), 0.0259325),
-                         std::make_pair(date(2019, 3, 13), 0.0261088),
-                         std::make_pair(date(2019, 3, 14), 0.0261463),
-                         std::make_pair(date(2019, 3, 15), 0.0262525),
-                         std::make_pair(date(2019, 3, 18), 0.0263263),
-                         std::make_pair(date(2019, 3, 19), 0.0261275),
-                         std::make_pair(date(2019, 3, 20), 0.02607),
-                         std::make_pair(date(2019, 3, 21), 0.026015),
-                         std::make_pair(date(2019, 3, 22), 0.0260988),
-                         std::make_pair(date(2019, 3, 25), 0.0260875),
-                         std::make_pair(date(2019, 3, 26), 0.0259738),
-                         std::make_pair(date(2019, 3, 27), 0.02601),
-                         std::make_pair(date(2019, 3, 28), 0.0259175),
-                         std::make_pair(date(2019, 3, 29), 0.0259975),
-                         std::make_pair(date(2019, 4, 1), 0.025955),
-                         std::make_pair(date(2019, 4, 2), 0.0260238),
-                         std::make_pair(date(2019, 4, 3), 0.0259775),
-                         std::make_pair(date(2019, 4, 4), 0.0258863),
-                         std::make_pair(date(2019, 4, 5), 0.0259213),
-                         std::make_pair(date(2019, 4, 8), 0.02584),
-                         std::make_pair(date(2019, 4, 9), 0.0258125),
-                         std::make_pair(date(2019, 4, 10), 0.026035)})};
+                     map{std::make_pair(date(2020, 1, 27), 0.017745),
+                         std::make_pair(date(2020, 1, 28), 0.017695),
+                         std::make_pair(date(2020, 1, 29), 0.0177713),
+                         std::make_pair(date(2020, 1, 30), 0.0176325),
+                         std::make_pair(date(2020, 1, 31), 0.0175113)})};
 
   const PricingEnvironment environment{pricing_date, std::move(curve_set),
                                        std::move(past_fixing_set),
                                        std::move(credit_curve_set)};
 
-  CompoundedOvernightIndex comp_ff{"USD",
-                                   "USD_FedFunds",
-                                   Actual360(),
-                                   Period(0, TimeUnit::b),
-                                   Period(1, TimeUnit::b),
-                                   NewYorkCalendar(),
-                                   ModifiedFollowing()};
-
-  AveragedOvernightIndex averaged_ff{"USD",
-                                     "USD_FedFunds",
-                                     Actual360(),
-                                     Period(0, TimeUnit::b),
-                                     Period(1, TimeUnit::b),
-                                     NewYorkCalendar(),
-                                     ModifiedFollowing(),
-                                     Period(-2, TimeUnit::b),
-                                     false};
-
-  IborIndex libor_3m_index{"USD",
-                           "USD_LIBOR_3M",
-                           Actual360(),
-                           Period{-2, TimeUnit::b},
-                           LondonCalendar(),
-                           ModifiedFollowing(),
-                           Period{3, TimeUnit::m}};
-
-  string discount_curve_name{"USD_FedFunds"};
+  CompoundedOvernightIndex ff_compounded_index{"USD",
+                                               "USD_FF",
+                                               Actual360(),
+                                               Period(0, TimeUnit::b),
+                                               Period(1, TimeUnit::b),
+                                               NewYorkCalendar(),
+                                               ModifiedFollowing()};
 
   auto ois = SwapScheduler::MakeInterestRateSwap(
-      "USD", 10000000.0, date(2019, 3, 10), date(2022, 3, 10), false,
-      "USD_FedFunds", Frequency::Annually, NewYorkCalendar(),
-      ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.025,
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Annually, NewYorkCalendar(), ModifiedFollowing(),
-      Period(2, TimeUnit::b), Actual360(), comp_ff, 1, 0, true,
-      date(2019, 3, 10), 0.0);
-
-  auto irs = SwapScheduler::MakeInterestRateSwap(
-      "USD", 10000000.0, date(2019, 3, 10), date(2022, 3, 10), false,
-      discount_curve_name, Frequency::Semiannually,
-      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
-      ModifiedFollowing(), Period{0, TimeUnit::b}, Thirty360Isda(), 0.025,
-      Frequency::Quarterly,
-      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
-      ModifiedFollowing(), Period{0, TimeUnit::b}, Actual360(), libor_3m_index,
-      1.0, 0.0, true, date(2019, 3, 10), 0.0);
-
-  auto ois2 = SwapScheduler::MakeInterestRateSwap(
-      "USD", 10000000.0, date(2019, 4, 12), date(2022, 4, 12), false,
-      "USD_FedFunds", Frequency::Annually, NewYorkCalendar(),
-      ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.025,
+      Period(2, TimeUnit::b), Actual360(), 0.012093142296278,
       Frequency::Annually, NewYorkCalendar(), ModifiedFollowing(),
-      Period(2, TimeUnit::b), Actual360(), comp_ff, 1, 0, true,
-      date(2019, 4, 12), 0.0);
-
-  auto irs2 = SwapScheduler::MakeInterestRateSwap(
-      "USD", 10000000.0, date(2019, 4, 12), date(2022, 4, 12), false,
-      discount_curve_name, Frequency::Semiannually,
-      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
-      ModifiedFollowing(), Period{0, TimeUnit::b}, Thirty360Isda(), 0.025,
-      Frequency::Quarterly,
-      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
-      ModifiedFollowing(), Period{0, TimeUnit::b}, Actual360(), libor_3m_index,
-      1.0, 0.0, true, date(2019, 4, 12), 0.0);
-
-  auto ois3 = SwapScheduler::MakeInterestRateSwap(
-      "USD", 10000000.0, date(2019, 3, 28), date(2022, 3, 28), false,
-      "USD_FedFunds", Frequency::Annually, NewYorkCalendar(),
-      ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.0,
-      Frequency::Annually, NewYorkCalendar(), ModifiedFollowing(),
-      Period(2, TimeUnit::b), Actual360(), comp_ff, 1, 0, true,
-      date(2019, 3, 28), 0.0);
-
-  auto ff_swap = SwapScheduler::MakeBasisSwap(
-      "USD", 10000000.0, date(2019, 4, 12), date(2022, 4, 12), "USD_FedFunds",
-      Frequency::Quarterly,
-      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
-      ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), averaged_ff, 1,
-      0.00228125, true, date(2019, 4, 12), 0.0, Frequency::Quarterly,
-      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
-      ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), libor_3m_index,
-      1, 0, true, date(2019, 4, 12), 0.0);
+      Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0, true,
+      date(2020, 2, 4), 0.0);
 
   std::cout.precision(15);
 
-  std::cout << "OIS NPV: " << ois->Evaluate(environment, "USD") << '\n';
-  std::cout << "IRS NPV: " << irs->Evaluate(environment, "USD") << '\n';
-  std::cout << "OIS NPV: " << ois2->Evaluate(environment, "USD") << '\n';
-  std::cout << "IRS NPV: " << irs2->Evaluate(environment, "USD") << '\n';
-  std::cout << "OIS NPV: " << ois3->Evaluate(environment, "USD") << '\n';
-  std::cout << "FF Swap NPV: " << ff_swap->Evaluate(environment, "USD") << '\n';
-  std::cout << "FF Swap NPV: " << ff_swap->Evaluate(environment, "USD") << '\n';
-  std::cout << "FF Swap NPV: " << ff_swap->Evaluate(environment, "USD") << '\n';
+  auto ois_result = CalculateIrResult(*ois, environment, "USD");
+
+  std::cout << "OIS NPV = " << ois_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "OIS Zero Deltas : " << '\n';
+  ois_result.PrintDeltas();
+  std::cout << '\n';
+
+  IborIndex ibor_index{"USD",
+                       "USD_LIBOR_3M",
+                       Actual360(),
+                       Period(-2, TimeUnit::b),
+                       LondonCalendar(),
+                       ModifiedFollowing(),
+                       Period(3, TimeUnit::m)};
+
+  auto irs = SwapScheduler::MakeInterestRateSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
+      Frequency::Semiannually,
+      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
+      ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.015,
+      Frequency::Quarterly,
+      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
+      ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), ibor_index, 1,
+      0.0, true, date(2020, 2, 4), 0.0);
+
+  auto irs_result = CalculateIrResult(*irs, environment, "USD");
+
+  std::cout << "IRS NPV = " << irs_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "IRS Zero Deltas : " << '\n';
+  irs_result.PrintDeltas();
+  std::cout << '\n';
+
   return 0;
 }

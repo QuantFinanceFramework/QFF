@@ -163,6 +163,8 @@
     <ClCompile Include="Actual360.cpp" />
     <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="CompositeCalendar.cpp" />
+    <ClCompile Include="IrDeltas.cpp" />
+    <ClCompile Include="IrResult.cpp" />
     <ClCompile Include="LondonCalendar.cpp" />
     <ClCompile Include="ModifiedFollowing.cpp" />
     <ClCompile Include="NewYorkCalendar.cpp" />
@@ -198,7 +200,7 @@
     <ClInclude Include="FixedCoupon.h" />
     <ClInclude Include="FloatingCoupon.h" />
     <ClInclude Include="Following.h" />
-    <ClInclude Include="GenerateInterestRateDeltas.h" />
+    <ClInclude Include="CalculateIrResult.h" />
     <ClInclude Include="IborIndex.h" />
     <ClInclude Include="IBusinessDayConvention.h" />
     <ClInclude Include="ICalendar.h" />
@@ -212,6 +214,8 @@
     <ClInclude Include="Interpolation.h" />
     <ClInclude Include="IPricingEnvironment.h" />
     <ClInclude Include="IProduct.h" />
+    <ClInclude Include="IrDeltas.h" />
+    <ClInclude Include="IrResult.h" />
     <ClInclude Include="Leg.h" />
     <ClInclude Include="LondonCalendar.h" />
     <ClInclude Include="ModifiedFollowing.h" />

@@ -9,7 +9,7 @@ namespace qff_a {
 template <typename T>
 class ZeroRateCurve final : public InterestRateCurve<T> {
  public:
-  ZeroRateCurve(boost::gregorian::date curve_date,
+  ZeroRateCurve(boost::gregorian::date curve_date, std::string curve_name,
                 const IDayCounter& day_counter,
                 const IInterpolator<T>& interpolator,
                 std::vector<boost::gregorian::date> pillar_dates,
@@ -19,7 +19,7 @@ class ZeroRateCurve final : public InterestRateCurve<T> {
 
   void PutOnTape() const override;
 
-  std::vector<double> GetAdjoints() const override;
+  IrDeltas GetAdjoints() const override;
 
  private:
   T GetZeroRate(double time) const;
@@ -30,11 +30,11 @@ class ZeroRateCurve final : public InterestRateCurve<T> {
 };
 template <typename T>
 ZeroRateCurve<T>::ZeroRateCurve(
-    boost::gregorian::date curve_date, const IDayCounter& day_counter,
-    const IInterpolator<T>& interpolator,
+    boost::gregorian::date curve_date, std::string curve_name,
+    const IDayCounter& day_counter, const IInterpolator<T>& interpolator,
     std::vector<boost::gregorian::date> pillar_dates,
     const std::vector<T>& zero_rates)
-    : InterestRateCurve<T>(curve_date, day_counter),
+    : InterestRateCurve<T>(curve_date, curve_name, day_counter),
       interpolator_(interpolator.Clone()),
       pillar_dates_(std::move(pillar_dates)) {
   std::transform(pillar_dates_.begin(), pillar_dates_.end(), zero_rates.begin(),
@@ -52,17 +52,13 @@ T ZeroRateCurve<T>::GetDiscountFactorImpl(double time) const {
 }
 
 template <typename T>
-void ZeroRateCurve<T>::PutOnTape() const
-{
-}
+void ZeroRateCurve<T>::PutOnTape() const {}
 
 template <>
-void ZeroRateCurve<aad::a_double>::PutOnTape() const
-{
-	for (auto& m : zero_rates_map_)
-	{
+void ZeroRateCurve<aad::a_double>::PutOnTape() const {
+  for (auto& m : zero_rates_map_) {
     const_cast<aad::a_double&>(m.second).put_on_tape();
-	}
+  }
 }
 
 template <typename T>
@@ -71,16 +67,24 @@ T ZeroRateCurve<T>::GetZeroRate(double time) const {
 }
 
 template <typename T>
-std::vector<double> ZeroRateCurve<T>::GetAdjoints() const {
-  return std::vector<double>(size(pillar_dates_));
+IrDeltas ZeroRateCurve<T>::GetAdjoints() const {
+  return IrDeltas{};
 }
 
 template <>
-inline std::vector<double> ZeroRateCurve<aad::a_double>::GetAdjoints() const {
-  std::vector<double> adjoints(size(pillar_dates_));
+inline IrDeltas ZeroRateCurve<aad::a_double>::GetAdjoints() const {
+  std::vector<std::string> pillar;
+  std::transform(pillar_dates_.begin(), pillar_dates_.end(),
+                 std::back_inserter(pillar), [&](const auto& d) {
+                   return GetCurveName() + "_" +
+                          boost::gregorian::to_iso_extended_string(d);
+                 });
+
+  std::vector<double> deltas;
   std::transform(zero_rates_map_.begin(), zero_rates_map_.end(),
-                 adjoints.begin(),
-                 [](const auto& itr) { return itr.second.adjoint(); });
-  return adjoints;
+                 std::back_inserter(deltas),
+                 [](const auto& m) { return m.second.adjoint(); });
+
+  return IrDeltas{std::move(pillar), std::move(deltas)};
 }
 }  // namespace qff_a

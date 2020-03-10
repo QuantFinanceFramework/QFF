@@ -9,7 +9,7 @@ namespace qff_a {
 template <typename T>
 class DiscountFactorCurve final : public InterestRateCurve<T> {
  public:
-  DiscountFactorCurve(boost::gregorian::date curve_date,
+  DiscountFactorCurve(boost::gregorian::date curve_date, std::string curve_name,
                       const IDayCounter& day_counter,
                       const IInterpolator<T>& interpolator,
                       std::vector<boost::gregorian::date> pillar_dates,
@@ -19,7 +19,7 @@ class DiscountFactorCurve final : public InterestRateCurve<T> {
 
   void PutOnTape() const override;
 
-  std::vector<double> GetAdjoints() const override;
+  IrDeltas GetAdjoints() const override;
 
  private:
   std::unique_ptr<IInterpolator<T>> interpolator_;
@@ -29,11 +29,11 @@ class DiscountFactorCurve final : public InterestRateCurve<T> {
 
 template <typename T>
 DiscountFactorCurve<T>::DiscountFactorCurve(
-    boost::gregorian::date curve_date, const IDayCounter& day_counter,
-    const IInterpolator<T>& interpolator,
+    boost::gregorian::date curve_date, std::string curve_name,
+    const IDayCounter& day_counter, const IInterpolator<T>& interpolator,
     std::vector<boost::gregorian::date> pillar_dates,
     const std::vector<T>& discount_factors)
-    : InterestRateCurve<T>(curve_date, day_counter),
+    : InterestRateCurve<T>(curve_date, curve_name, day_counter),
       interpolator_(interpolator.Clone()),
       pillar_dates_(std::move(pillar_dates)) {
   std::transform(
@@ -62,17 +62,24 @@ void DiscountFactorCurve<aad::a_double>::PutOnTape() const {
 }
 
 template <typename T>
-std::vector<double> DiscountFactorCurve<T>::GetAdjoints() const {
-  return std::vector<double>(size(pillar_dates_));
+IrDeltas DiscountFactorCurve<T>::GetAdjoints() const {
+  return IrDeltas{};
 }
 
 template <>
-inline std::vector<double> DiscountFactorCurve<aad::a_double>::GetAdjoints()
-    const {
-  std::vector<double> adjoints(size(pillar_dates_));
+inline IrDeltas DiscountFactorCurve<aad::a_double>::GetAdjoints() const {
+  std::vector<std::string> pillar;
+  std::transform(pillar_dates_.begin(), pillar_dates_.end(),
+                 std::back_inserter(pillar), [&](const auto& d) {
+                   return GetCurveName() + "_" +
+                          boost::gregorian::to_iso_extended_string(d);
+                 });
+
+  std::vector<double> deltas;
   std::transform(discount_factors_map_.begin(), discount_factors_map_.end(),
-                 adjoints.begin(),
-                 [](const auto& itr) { return itr.second.adjoint(); });
-  return adjoints;
+                 std::back_inserter(deltas),
+                 [](const auto& m) { return m.second.adjoint(); });
+
+  return IrDeltas{std::move(pillar), std::move(deltas)};
 }
 }  // namespace qff_a

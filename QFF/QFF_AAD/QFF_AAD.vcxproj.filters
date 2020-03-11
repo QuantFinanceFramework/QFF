@@ -126,6 +126,9 @@
     <ClCompile Include="IrDeltas.cpp">
       <Filter>Source Files\Results</Filter>
     </ClCompile>
+    <ClCompile Include="UsBondMarketCalendar.cpp">
+      <Filter>Source Files\Calendars</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actual365.h">
@@ -268,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="CalculateIrResult.h">
       <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="UsBondMarketCalendar.h">
+      <Filter>Header Files\Calendars</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

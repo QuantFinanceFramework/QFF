@@ -177,6 +177,7 @@
     <ClCompile Include="SydenyCalendar.cpp" />
     <ClCompile Include="Thirty360Isda.cpp" />
     <ClCompile Include="Unadjusted.cpp" />
+    <ClCompile Include="UsBondMarketCalendar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AAD\AAD.vcxproj">
@@ -230,6 +231,7 @@
     <ClInclude Include="SydneyCalendar.h" />
     <ClInclude Include="Thirty360Isda.h" />
     <ClInclude Include="Unadjusted.h" />
+    <ClInclude Include="UsBondMarketCalendar.h" />
     <ClInclude Include="ZeroRateCurve.h" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 
 using boost::gregorian::date;
-using namespace qff;
+using namespace qff_a;
 
 TEST(FollowingTest, Adjust) {
   Following convention{};

@@ -4,37 +4,28 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc" />
     <ClCompile Include="DayCounterTest.cpp">
-      <Filter>DayCounter</Filter>
-    </ClCompile>
-    <ClCompile Include="ConstantParameterTest.cpp">
-      <Filter>Parameters</Filter>
-    </ClCompile>
-    <ClCompile Include="PiecewiseConstantParameterTest.cpp">
-      <Filter>Parameters</Filter>
+      <Filter>DayCounters</Filter>
     </ClCompile>
     <ClCompile Include="BusinessDayConventionTest.cpp">
       <Filter>BusinessDayConventions</Filter>
     </ClCompile>
     <ClCompile Include="SydneyCalendarTest.cpp">
-      <Filter>Calendar</Filter>
+      <Filter>Calendars</Filter>
     </ClCompile>
     <ClCompile Include="NewYorkCalendarTest.cpp">
-      <Filter>Calendar</Filter>
+      <Filter>Calendars</Filter>
     </ClCompile>
     <ClCompile Include="LondonCalendarTest.cpp">
-      <Filter>Calendar</Filter>
+      <Filter>Calendars</Filter>
     </ClCompile>
     <ClCompile Include="CompositeCalendarTest.cpp">
-      <Filter>Calendar</Filter>
+      <Filter>Calendars</Filter>
     </ClCompile>
     <ClCompile Include="DiscountFactorCurveTest.cpp">
-      <Filter>MarketData\Curves</Filter>
+      <Filter>PricingEnvironment\Curves</Filter>
     </ClCompile>
     <ClCompile Include="InterpolationTest.cpp">
       <Filter>Functions</Filter>
-    </ClCompile>
-    <ClCompile Include="CurrencyTest.cpp">
-      <Filter>Currency</Filter>
     </ClCompile>
     <ClCompile Include="SwapSchedulerTest.cpp">
       <Filter>Products</Filter>
@@ -52,42 +43,15 @@
       <Filter>Date</Filter>
     </ClCompile>
     <ClCompile Include="FlatZeroCurveTest.cpp">
-      <Filter>MarketData\Curves</Filter>
+      <Filter>PricingEnvironment\Curves</Filter>
     </ClCompile>
-    <ClCompile Include="FlatHazardRateTest.cpp">
-      <Filter>MarketData\Curves</Filter>
-    </ClCompile>
-    <ClCompile Include="CdsPremiumTest.cpp">
-      <Filter>Products\Cashflows</Filter>
+    <ClCompile Include="UsBondMarketCalendarTest.cpp">
+      <Filter>Calendars</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Pricer">
-      <UniqueIdentifier>{2736c6cf-006d-4ac9-98d0-a0165a3ccf0f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Currency">
-      <UniqueIdentifier>{5723084b-20d5-4efb-9724-586e074c0470}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DayCounter">
-      <UniqueIdentifier>{4fd03935-bc76-4133-bd85-1f60c3983e07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MarketData">
-      <UniqueIdentifier>{dfa9d34e-32cd-4b44-94f0-7ad4b3920166}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Parameters">
-      <UniqueIdentifier>{89f21c1c-f5a8-4317-9b5e-e977a782eea8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="StochasticProcess">
-      <UniqueIdentifier>{83265fba-7705-4d29-8806-2eb726d1a9e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Calendar">
-      <UniqueIdentifier>{af38d746-05fb-4f07-bf54-7a21b71846e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="BusinessDayConventions">
       <UniqueIdentifier>{514b58bf-1863-412c-b4bf-a1687585e3c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MarketData\Curves">
-      <UniqueIdentifier>{3083f942-d1ca-46b4-9476-d46d68383d40}</UniqueIdentifier>
     </Filter>
     <Filter Include="Functions">
       <UniqueIdentifier>{a2698424-7e39-473d-83fe-326fd1e62f17}</UniqueIdentifier>
@@ -101,16 +65,28 @@
     <Filter Include="Date">
       <UniqueIdentifier>{c819da82-2e1e-49bb-a716-6991c52b1e8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Products\Cashflows">
-      <UniqueIdentifier>{be0354df-808a-499e-8362-f7b6c99ae956}</UniqueIdentifier>
+    <Filter Include="PricingEnvironment">
+      <UniqueIdentifier>{dfa9d34e-32cd-4b44-94f0-7ad4b3920166}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PricingEnvironment\Curves">
+      <UniqueIdentifier>{3083f942-d1ca-46b4-9476-d46d68383d40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Calendars">
+      <UniqueIdentifier>{af38d746-05fb-4f07-bf54-7a21b71846e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DayCounters">
+      <UniqueIdentifier>{4fd03935-bc76-4133-bd85-1f60c3983e07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pricers">
+      <UniqueIdentifier>{2736c6cf-006d-4ac9-98d0-a0165a3ccf0f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MarketDataStub.h">
-      <Filter>MarketData</Filter>
+    <ClInclude Include="PricingEnvironmentStub.h">
+      <Filter>PricingEnvironment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

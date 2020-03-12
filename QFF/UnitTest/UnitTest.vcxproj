@@ -33,52 +33,48 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>..\QFF_AAD;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>..\QFF_AAD;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>..\QFF_AAD;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>..\QFF;$(IncludePath)</IncludePath>
+    <IncludePath>..\QFF_AAD;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\BanksA\source\repos\Quantlib\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="AveragedOvernightIndexTest.cpp" />
     <ClCompile Include="BusinessDayConventionTest.cpp" />
-    <ClCompile Include="CdsPremiumTest.cpp" />
     <ClCompile Include="CompositeCalendarTest.cpp" />
     <ClCompile Include="CompoundedOvernightIndexTest.cpp" />
-    <ClCompile Include="ConstantParameterTest.cpp" />
-    <ClCompile Include="CurrencyTest.cpp" />
     <ClCompile Include="DateFunctionsTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="DiscountFactorCurveTest.cpp" />
-    <ClCompile Include="FlatHazardRateTest.cpp" />
     <ClCompile Include="FlatZeroCurveTest.cpp" />
     <ClCompile Include="IborIndexTest.cpp" />
     <ClCompile Include="InterpolationTest.cpp" />
     <ClCompile Include="LondonCalendarTest.cpp" />
     <ClCompile Include="NewYorkCalendarTest.cpp" />
-    <ClCompile Include="PiecewiseConstantParameterTest.cpp" />
     <ClCompile Include="SwapSchedulerTest.cpp" />
     <ClCompile Include="SydneyCalendarTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\QFF\QFF.vcxproj">
-      <Project>{402d5e73-85dc-491c-ab73-dd75d50cd2a3}</Project>
-    </ProjectReference>
+    <ClCompile Include="UsBondMarketCalendarTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MarketDataStub.h" />
+    <ClInclude Include="PricingEnvironmentStub.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QFF_AAD\QFF_AAD.vcxproj">
+      <Project>{1cf4a115-defa-4870-9ad3-b33974fa4fdd}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -105,7 +101,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -122,7 +118,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -137,7 +133,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -154,7 +150,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

@@ -55,15 +55,10 @@ template <typename T>
 void ZeroRateCurve<T>::PutOnTape() const {}
 
 template <>
-void ZeroRateCurve<aad::a_double>::PutOnTape() const {
+inline void ZeroRateCurve<aad::a_double>::PutOnTape() const {
   for (auto& m : zero_rates_map_) {
     const_cast<aad::a_double&>(m.second).put_on_tape();
   }
-}
-
-template <typename T>
-T ZeroRateCurve<T>::GetZeroRate(double time) const {
-  return {interpolator_->Interpol(time, zero_rates_map_)};
 }
 
 template <typename T>
@@ -86,5 +81,10 @@ inline IrDeltas ZeroRateCurve<aad::a_double>::GetAdjoints() const {
                  [](const auto& m) { return m.second.adjoint(); });
 
   return IrDeltas{std::move(pillar), std::move(deltas)};
+}
+
+template <typename T>
+T ZeroRateCurve<T>::GetZeroRate(double time) const {
+  return {interpolator_->Interpol(time, zero_rates_map_)};
 }
 }  // namespace qff_a

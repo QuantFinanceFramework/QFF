@@ -1,7 +1,7 @@
 #include <LondonCalendar.h>
 #include "gtest/gtest.h"
 
-using namespace qff;
+using namespace qff_a;
 using boost::gregorian::date;
 
 class LondonCalendarTestFixture : public ::testing::TestWithParam<date> {

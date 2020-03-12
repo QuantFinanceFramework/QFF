@@ -199,6 +199,7 @@
     <ClInclude Include="DateFunctions.h" />
     <ClInclude Include="DiscountFactorCurve.h" />
     <ClInclude Include="FixedCoupon.h" />
+    <ClInclude Include="FlatZeroRateCurve.h" />
     <ClInclude Include="FloatingCoupon.h" />
     <ClInclude Include="Following.h" />
     <ClInclude Include="CalculateIrResult.h" />

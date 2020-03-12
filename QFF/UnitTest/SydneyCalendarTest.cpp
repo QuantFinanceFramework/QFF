@@ -1,7 +1,7 @@
 #include <SydneyCalendar.h>
 #include "gtest/gtest.h"
 
-using namespace qff;
+using namespace qff_a;
 using boost::gregorian::date;
 
 class SydneyCalendarTestFixture : public ::testing::TestWithParam<date> {

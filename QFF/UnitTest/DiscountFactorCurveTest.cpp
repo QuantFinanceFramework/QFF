@@ -2,16 +2,18 @@
 #include <CurveInterpolator.h>
 #include <DiscountFactorCurve.h>
 #include <Interpolation.h>
+
 #include <vector>
+
 #include "gtest/gtest.h"
 
-using namespace qff;
+using namespace qff_a;
 using boost::gregorian::date;
 using std::string;
 
 class DiscountFactorCurveTestFixture : public ::testing::Test {
  protected:
-  DiscountFactorCurve* libor_3m_ = nullptr;
+  DiscountFactorCurve<double>* libor_3m_ = nullptr;
 
   void SetUp() override {
     date curve_date{2019, 3, 19};
@@ -53,11 +55,12 @@ class DiscountFactorCurveTestFixture : public ::testing::Test {
                                          0.432445222643056,
                                          0.327738486248511};
 
-    CurveInterpolator interpolator{LogLinearInterpol, LogLinearExtrapol};
+    CurveInterpolator<double> interpolator{LogLinearInterpol<double>,
+                                           LogLinearExtrapol<double>};
     Actual365 day_counter{};
-    libor_3m_ =
-        new DiscountFactorCurve{curve_date, std::move(dates), discount_factors,
-                                interpolator, day_counter};
+    libor_3m_ = new DiscountFactorCurve<double>{
+        curve_date,       "Std",           day_counter, interpolator,
+        std::move(dates), discount_factors};
   }
   void TearDown() override { delete libor_3m_; }
 };

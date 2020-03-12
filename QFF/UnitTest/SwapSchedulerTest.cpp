@@ -6,7 +6,7 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
-using namespace qff;
+using namespace qff_a;
 using boost::gregorian::date;
 
 TEST(SwapSchedulerTest, TestMakeSchedule) {

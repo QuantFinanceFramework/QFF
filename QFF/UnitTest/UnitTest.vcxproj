@@ -60,9 +60,10 @@
     <ClCompile Include="IborIndexTest.cpp" />
     <ClCompile Include="InterpolationTest.cpp" />
     <ClCompile Include="LondonCalendarTest.cpp" />
-    <ClCompile Include="NewYorkCalendarTest.cpp" />
+    <ClCompile Include="NewYorkFedCalendarTest.cpp" />
     <ClCompile Include="SwapSchedulerTest.cpp" />
     <ClCompile Include="SydneyCalendarTest.cpp" />
+    <ClCompile Include="Target2CalendarTest.cpp" />
     <ClCompile Include="UsBondMarketCalendarTest.cpp" />
   </ItemGroup>
   <ItemGroup>

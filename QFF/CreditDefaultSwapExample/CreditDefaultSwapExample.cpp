@@ -4,7 +4,7 @@
 #include <DiscountFactorCurve.h>
 #include <Following.h>
 #include <Interpolation.h>
-#include <NewYorkCalendar.h>
+#include <NewYorkFedCalendar.h>
 #include <PricingEnvironment.h>
 #include <SurvivalCurve.h>
 #include <SwapScheduler.h>
@@ -101,7 +101,7 @@ int main() {
 
   auto jpm_cds = SwapScheduler::MakeCreditDefaultSwap(
       "USD", 1000000.0, date(2019, 6, 1), date(2029, 6, 20), true,
-      "USD_FedFunds", "JPM", Frequency::Quarterly, NewYorkCalendar(),
+      "USD_FedFunds", "JPM", Frequency::Quarterly, NewYorkFedCalendar(),
       Following(), Period(0, TimeUnit::b), Actual360(), 0.00874761, 0.4, true,
       date(2019, 9, 20));
 

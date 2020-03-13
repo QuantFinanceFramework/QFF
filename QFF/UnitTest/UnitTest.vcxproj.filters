@@ -12,9 +12,6 @@
     <ClCompile Include="SydneyCalendarTest.cpp">
       <Filter>Calendars</Filter>
     </ClCompile>
-    <ClCompile Include="NewYorkCalendarTest.cpp">
-      <Filter>Calendars</Filter>
-    </ClCompile>
     <ClCompile Include="LondonCalendarTest.cpp">
       <Filter>Calendars</Filter>
     </ClCompile>
@@ -46,6 +43,12 @@
       <Filter>PricingEnvironment\Curves</Filter>
     </ClCompile>
     <ClCompile Include="UsBondMarketCalendarTest.cpp">
+      <Filter>Calendars</Filter>
+    </ClCompile>
+    <ClCompile Include="NewYorkFedCalendarTest.cpp">
+      <Filter>Calendars</Filter>
+    </ClCompile>
+    <ClCompile Include="Target2CalendarTest.cpp">
       <Filter>Calendars</Filter>
     </ClCompile>
   </ItemGroup>

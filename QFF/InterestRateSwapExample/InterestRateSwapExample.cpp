@@ -10,7 +10,7 @@
 #include <Interpolation.h>
 #include <LondonCalendar.h>
 #include <ModifiedFollowing.h>
-#include <NewYorkCalendar.h>
+#include <NewYorkFedCalendar.h>
 #include <PricingEnvironment.h>
 #include <SwapScheduler.h>
 #include <Thirty360Isda.h>
@@ -117,14 +117,14 @@ int main() {
                                                Actual360(),
                                                Period(0, TimeUnit::b),
                                                Period(1, TimeUnit::b),
-                                               NewYorkCalendar(),
+                                               NewYorkFedCalendar(),
                                                ModifiedFollowing()};
 
   auto ois = SwapScheduler::MakeInterestRateSwap(
       "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
-      Frequency::Annually, NewYorkCalendar(), ModifiedFollowing(),
+      Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(2, TimeUnit::b), Actual360(), 0.012093142296278,
-      Frequency::Annually, NewYorkCalendar(), ModifiedFollowing(),
+      Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0, true,
       date(2020, 2, 4), 0.0);
 
@@ -150,10 +150,10 @@ int main() {
   auto irs = SwapScheduler::MakeInterestRateSwap(
       "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Semiannually,
-      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
+      CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
       ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.015,
       Frequency::Quarterly,
-      CompositeCalendar(NewYorkCalendar(), LondonCalendar()),
+      CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
       ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), ibor_index, 1,
       0.0, true, date(2020, 2, 4), 0.0);
 

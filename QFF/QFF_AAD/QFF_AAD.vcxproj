@@ -167,7 +167,7 @@
     <ClCompile Include="IrResult.cpp" />
     <ClCompile Include="LondonCalendar.cpp" />
     <ClCompile Include="ModifiedFollowing.cpp" />
-    <ClCompile Include="NewYorkCalendar.cpp" />
+    <ClCompile Include="NewYorkFedCalendar.cpp" />
     <ClCompile Include="Actual365.cpp" />
     <ClCompile Include="DateFunctions.cpp" />
     <ClCompile Include="Following.cpp" />
@@ -175,6 +175,7 @@
     <ClCompile Include="Preceding.cpp" />
     <ClCompile Include="SwapScheduler.cpp" />
     <ClCompile Include="SydenyCalendar.cpp" />
+    <ClCompile Include="Target2Calendar.cpp" />
     <ClCompile Include="Thirty360Isda.cpp" />
     <ClCompile Include="Unadjusted.cpp" />
     <ClCompile Include="UsBondMarketCalendar.cpp" />
@@ -221,7 +222,7 @@
     <ClInclude Include="Leg.h" />
     <ClInclude Include="LondonCalendar.h" />
     <ClInclude Include="ModifiedFollowing.h" />
-    <ClInclude Include="NewYorkCalendar.h" />
+    <ClInclude Include="NewYorkFedCalendar.h" />
     <ClInclude Include="Period.h" />
     <ClInclude Include="Preceding.h" />
     <ClInclude Include="PricingEnvironment.h" />
@@ -230,6 +231,7 @@
     <ClInclude Include="Swap.h" />
     <ClInclude Include="SwapScheduler.h" />
     <ClInclude Include="SydneyCalendar.h" />
+    <ClInclude Include="Target2Calendar.h" />
     <ClInclude Include="Thirty360Isda.h" />
     <ClInclude Include="Unadjusted.h" />
     <ClInclude Include="UsBondMarketCalendar.h" />

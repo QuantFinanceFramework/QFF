@@ -1,30 +1,30 @@
-#include <NewYorkCalendar.h>
+#include <NewYorkFedCalendar.h>
 
 #include "gtest/gtest.h"
 
 using namespace qff_a;
 using boost::gregorian::date;
 
-class NewYorkCalendarTestFixture : public ::testing::TestWithParam<date> {
+class NewYorkFedCalendarTestFixture : public ::testing::TestWithParam<date> {
  protected:
-  NewYorkCalendar nyc_;
+  NewYorkFedCalendar nyc_;
 };
 
-TEST_F(NewYorkCalendarTestFixture, IsBusinessDayTest_Weekednd) {
+TEST_F(NewYorkFedCalendarTestFixture, IsBusinessDayTest_Weekednd) {
   EXPECT_FALSE(nyc_.IsBusinessDay(date(2019, 4, 20)));
 }
 
-TEST_F(NewYorkCalendarTestFixture, IsBusinessDayTest_Holiday) {
+TEST_F(NewYorkFedCalendarTestFixture, IsBusinessDayTest_Holiday) {
   EXPECT_FALSE(nyc_.IsBusinessDay(date(2019, 5, 27)));
 }
 
-TEST_P(NewYorkCalendarTestFixture, IsHolidayTest_Holidays) {
+TEST_P(NewYorkFedCalendarTestFixture, IsHolidayTest_Holidays) {
   const auto holiday = GetParam();
   EXPECT_TRUE(nyc_.IsHoliday(holiday));
 }
 
 INSTANTIATE_TEST_CASE_P(
-    Holidays, NewYorkCalendarTestFixture,
+    Holidays, NewYorkFedCalendarTestFixture,
     ::testing::Values(date(2020, 1, 20), date(2020, 2, 17), date(2020, 5, 25),
                       date(2020, 7, 4), date(2020, 9, 7), date(2020, 10, 12),
                       date(2020, 11, 11), date(2020, 11, 26),

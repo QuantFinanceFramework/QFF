@@ -3,7 +3,7 @@
 
 namespace qff_a {
 // Federal Reserve Bank of New York calendar
-class NewYorkCalendar final : public BaseCalendar {
+class NewYorkFedCalendar final : public BaseCalendar {
  public:
   std::unique_ptr<ICalendar> Clone() const override;
   bool IsHoliday(const boost::gregorian::date& query_date) const override;

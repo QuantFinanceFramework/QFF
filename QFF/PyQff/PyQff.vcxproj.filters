@@ -60,9 +60,6 @@
     <ClCompile Include="LondonCalendar.cpp">
       <Filter>Source Files\Calendar</Filter>
     </ClCompile>
-    <ClCompile Include="NewYorkCalendar.cpp">
-      <Filter>Source Files\Calendar</Filter>
-    </ClCompile>
     <ClCompile Include="SydneyCalendar.cpp">
       <Filter>Source Files\Calendar</Filter>
     </ClCompile>
@@ -96,8 +93,14 @@
     <ClCompile Include="IInterestRateCurve.cpp">
       <Filter>Source Files\Market\Curve</Filter>
     </ClCompile>
-    <ClCompile Include="FlatZeroCurve.cpp">
+    <ClCompile Include="InterestRateCurve.cpp">
       <Filter>Source Files\Market\Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="FlatZeroRateCurve.cpp">
+      <Filter>Source Files\Market\Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="NewYorkFedCalendar.cpp">
+      <Filter>Source Files\Calendar</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

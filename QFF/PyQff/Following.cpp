@@ -4,6 +4,6 @@
 namespace py = pybind11;
 
 void init_following(py::module &m) {
-  py::class_<qff::Following, qff::IBusinessDayConvention>(m, "Following")
+  py::class_<qff_a::Following, qff_a::IBusinessDayConvention>(m, "Following")
       .def(py::init<>());
 }

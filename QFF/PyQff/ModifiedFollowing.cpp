@@ -4,7 +4,7 @@
 namespace py = pybind11;
 
 void init_modified_following(py::module &m) {
-  py::class_<qff::ModifiedFollowing, qff::IBusinessDayConvention>(
+  py::class_<qff_a::ModifiedFollowing, qff_a::IBusinessDayConvention>(
       m, "ModifiedFollowing")
       .def(py::init<>());
 }

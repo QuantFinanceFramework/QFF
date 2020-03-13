@@ -4,6 +4,6 @@
 namespace py = pybind11;
 
 void init_actual_365(py::module &m) {
-  py::class_<qff::Actual365, qff::IDayCounter>(m, "Actual365")
+  py::class_<qff_a::Actual365, qff_a::IDayCounter>(m, "Actual365")
       .def(py::init<>());
 }

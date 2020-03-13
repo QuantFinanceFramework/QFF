@@ -4,6 +4,6 @@
 namespace py = pybind11;
 
 void init_preceding(py::module &m) {
-  py::class_<qff::Preceding, qff::IBusinessDayConvention>(m, "Preceding")
+  py::class_<qff_a::Preceding, qff_a::IBusinessDayConvention>(m, "Preceding")
       .def(py::init<>());
 }

@@ -15,7 +15,7 @@ void init_thirty_360_isda(py::module &);
 
 void init_i_calendar(py::module &);
 void init_sydney_calendar(py::module &);
-void init_new_york_calendar(py::module &);
+void init_new_york_fed_calendar(py::module &);
 void init_london_calendar(py::module &);
 
 void init_i_business_day_convention(py::module &);
@@ -25,7 +25,8 @@ void init_preceding(py::module &);
 void init_unadjusted(py::module &);
 
 void init_i_interest_rate_curve(py::module &);
-void init_flat_zero_curve(py::module &);
+void init_interest_rate_curve(py::module &);
+void init_flat_zero_rate_curve(py::module &);
 
 void init_i_credit_curve(py::module &);
 
@@ -44,7 +45,7 @@ PYBIND11_MODULE(pyqff, m) {
 
   init_i_calendar(m);
   init_sydney_calendar(m);
-  init_new_york_calendar(m);
+  init_new_york_fed_calendar(m);
   init_london_calendar(m);
 
   init_i_business_day_convention(m);
@@ -54,7 +55,8 @@ PYBIND11_MODULE(pyqff, m) {
   init_unadjusted(m);
 
   init_i_interest_rate_curve(m);
-  init_flat_zero_curve(m);
+  init_interest_rate_curve(m);
+  init_flat_zero_rate_curve(m);
 
   init_i_credit_curve(m);
 }

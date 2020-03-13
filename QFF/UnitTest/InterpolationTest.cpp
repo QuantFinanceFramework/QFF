@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 #include <map>
 
-using namespace qff;
+using namespace qff_a;
 
 class InterpolationTestFixture : public ::testing::Test {
  protected:

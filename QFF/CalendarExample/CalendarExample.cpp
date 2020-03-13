@@ -1,17 +1,17 @@
 #include <CompositeCalendar.h>
 #include <LondonCalendar.h>
-#include <NewYorkCalendar.h>
+#include <NewYorkFedCalendar.h>
 #include <SydneyCalendar.h>
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <iostream>
 
-using namespace qff;
+using namespace qff_a;
 using boost::gregorian::date;
 
 int main() {
   const SydneyCalendar syd{};
   const auto comp =
-      CompositeCalendar(SydneyCalendar(), NewYorkCalendar(), LondonCalendar());
+      CompositeCalendar(SydneyCalendar(), NewYorkFedCalendar(), LondonCalendar());
   const auto comp2 = comp.Clone();
 
   const date bank_holiday(2019, 8, 5);

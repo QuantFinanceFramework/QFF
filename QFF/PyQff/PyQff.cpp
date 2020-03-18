@@ -29,6 +29,13 @@ void init_interest_rate_curve(py::module &);
 void init_flat_zero_rate_curve(py::module &);
 
 void init_i_credit_curve(py::module &);
+void init_survival_curve(py::module &);
+
+void init_i_pricing_environment(py::module &);
+void init_pricing_environment(py::module &);
+
+void init_i_product(py::module &);
+void init_i_cashflow(py::module &);
 
 PYBIND11_MODULE(pyqff, m) {
   init_black_scholes_formula(m);
@@ -59,4 +66,11 @@ PYBIND11_MODULE(pyqff, m) {
   init_flat_zero_rate_curve(m);
 
   init_i_credit_curve(m);
+  init_survival_curve(m);
+
+  init_i_pricing_environment(m);
+  init_pricing_environment(m);
+
+  init_i_product(m);
+  init_i_cashflow(m);
 }

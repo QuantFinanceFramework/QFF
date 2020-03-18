@@ -22,17 +22,23 @@
     <Filter Include="Source Files\Date">
       <UniqueIdentifier>{45b0bcf2-0a21-41c7-adaa-790db6d5a4e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Calendar">
-      <UniqueIdentifier>{0dad782a-22a0-4cd1-ae20-a3220fda9f22}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\BusinessDayConventions">
       <UniqueIdentifier>{71aeff7a-c289-4fbf-98a1-d86244965a91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Market">
+    <Filter Include="Source Files\Calendars">
+      <UniqueIdentifier>{0dad782a-22a0-4cd1-ae20-a3220fda9f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PricingEnvironment">
       <UniqueIdentifier>{ea22c3e7-765f-4217-a3b4-68337b09e615}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Market\Curve">
+    <Filter Include="Source Files\PricingEnvironment\IrCurves">
       <UniqueIdentifier>{699f10e2-aafc-4ef9-9129-0fd3f1f997b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PricingEnvironment\CrCurves">
+      <UniqueIdentifier>{38f41edc-1734-4276-aa85-28a541d9da04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Products">
+      <UniqueIdentifier>{f59b3cf4-a1ce-4ffb-a77a-4d421d167879}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -58,10 +64,10 @@
       <Filter>Source Files\DayCounter</Filter>
     </ClCompile>
     <ClCompile Include="LondonCalendar.cpp">
-      <Filter>Source Files\Calendar</Filter>
+      <Filter>Source Files\Calendars</Filter>
     </ClCompile>
     <ClCompile Include="SydneyCalendar.cpp">
-      <Filter>Source Files\Calendar</Filter>
+      <Filter>Source Files\Calendars</Filter>
     </ClCompile>
     <ClCompile Include="Following.cpp">
       <Filter>Source Files\BusinessDayConventions</Filter>
@@ -76,7 +82,7 @@
       <Filter>Source Files\BusinessDayConventions</Filter>
     </ClCompile>
     <ClCompile Include="ICalendar.cpp">
-      <Filter>Source Files\Calendar</Filter>
+      <Filter>Source Files\Calendars</Filter>
     </ClCompile>
     <ClCompile Include="IDayCounter.cpp">
       <Filter>Source Files\DayCounter</Filter>
@@ -87,20 +93,35 @@
     <ClCompile Include="Thirty360Isda.cpp">
       <Filter>Source Files\DayCounter</Filter>
     </ClCompile>
-    <ClCompile Include="ICreditCurve.cpp">
-      <Filter>Source Files\Market\Curve</Filter>
-    </ClCompile>
-    <ClCompile Include="IInterestRateCurve.cpp">
-      <Filter>Source Files\Market\Curve</Filter>
-    </ClCompile>
-    <ClCompile Include="InterestRateCurve.cpp">
-      <Filter>Source Files\Market\Curve</Filter>
-    </ClCompile>
     <ClCompile Include="FlatZeroRateCurve.cpp">
-      <Filter>Source Files\Market\Curve</Filter>
+      <Filter>Source Files\PricingEnvironment\IrCurves</Filter>
     </ClCompile>
     <ClCompile Include="NewYorkFedCalendar.cpp">
-      <Filter>Source Files\Calendar</Filter>
+      <Filter>Source Files\Calendars</Filter>
+    </ClCompile>
+    <ClCompile Include="InterestRateCurve.cpp">
+      <Filter>Source Files\PricingEnvironment\IrCurves</Filter>
+    </ClCompile>
+    <ClCompile Include="IInterestRateCurve.cpp">
+      <Filter>Source Files\PricingEnvironment\IrCurves</Filter>
+    </ClCompile>
+    <ClCompile Include="ICreditCurve.cpp">
+      <Filter>Source Files\PricingEnvironment\CrCurves</Filter>
+    </ClCompile>
+    <ClCompile Include="IPricingEnvironment.cpp">
+      <Filter>Source Files\PricingEnvironment</Filter>
+    </ClCompile>
+    <ClCompile Include="PricingEnvironment.cpp">
+      <Filter>Source Files\PricingEnvironment</Filter>
+    </ClCompile>
+    <ClCompile Include="SurvivalCurve.cpp">
+      <Filter>Source Files\PricingEnvironment\CrCurves</Filter>
+    </ClCompile>
+    <ClCompile Include="IProduct.cpp">
+      <Filter>Source Files\Products</Filter>
+    </ClCompile>
+    <ClCompile Include="ICashflow.cpp">
+      <Filter>Source Files\Products</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

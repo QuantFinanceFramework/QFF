@@ -108,9 +108,12 @@ int main() {
                          std::make_pair(date(2020, 1, 30), 0.0176325),
                          std::make_pair(date(2020, 1, 31), 0.0175113)})};
 
-  const PricingEnvironment environment{pricing_date, std::move(curve_set),
-                                       std::move(past_fixing_set),
-                                       std::move(credit_curve_set)};
+  map<string, a_double> fx_today_map;
+  fx_today_map.emplace(std::make_pair("EURUSD", a_double(1.102231639)));
+
+  const PricingEnvironment environment{
+      pricing_date, std::move(curve_set), std::move(past_fixing_set),
+      std::move(credit_curve_set), std::move(fx_today_map)};
 
   CompoundedOvernightIndex ff_compounded_index{"USD",
                                                "USD_FF",
@@ -132,7 +135,8 @@ int main() {
 
   auto ois_result = CalculateIrResult(*ois, environment, "USD");
 
-  std::cout << "OIS NPV = " << ois_result.GetNpv() << '\n';
+  std::cout << "OIS NPV in " << ois_result.GetResultCurrency() << " = "
+            << ois_result.GetNpv() << '\n';
   std::cout << '\n';
 
   std::cout << "OIS Zero Deltas : " << '\n';
@@ -159,7 +163,8 @@ int main() {
 
   auto irs_result = CalculateIrResult(*irs, environment, "USD");
 
-  std::cout << "IRS NPV = " << irs_result.GetNpv() << '\n';
+  std::cout << "IRS NPV in " << irs_result.GetResultCurrency() << " = "
+            << irs_result.GetNpv() << '\n';
   std::cout << '\n';
 
   std::cout << "IRS Zero Deltas : " << '\n';

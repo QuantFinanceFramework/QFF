@@ -7,16 +7,19 @@ class ICashflow : public IProduct {
  public:
   virtual ~ICashflow() = default;
 
-  double Evaluate(const IPricingEnvironment<double>& environment,
-                  const std::string& currency_code) const override {
-    return EvaluateImpl(environment, currency_code);
+  Currency<double> Evaluate(
+      const IPricingEnvironment<double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
 
-  aad::a_double Evaluate(
+  Currency<aad::a_double> Evaluate(
       const IPricingEnvironment<aad::a_double>& environment,
-      const std::string& currency_code) const override {
-    return EvaluateImpl(environment, currency_code);
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
+
+  virtual std::string GetCurrencyCode() const = 0;
 
   virtual boost::gregorian::date GetPaymentDate() const = 0;
 
@@ -30,15 +33,19 @@ class ICashflow : public IProduct {
 
  private:
   template <typename T>
-  T EvaluateImpl(const IPricingEnvironment<T>& environment,
-                 const std::string& currency_code) const;
+  Currency<T> EvaluateImpl(const IPricingEnvironment<T>& environment,
+                           const std::string& valuation_currency) const;
 };
 
 template <typename T>
-T ICashflow::EvaluateImpl(const IPricingEnvironment<T>& environment,
-                          const std::string& currency_code) const {
-  return T(
+Currency<T> ICashflow::EvaluateImpl(
+    const IPricingEnvironment<T>& environment,
+    const std::string& valuation_currency) const {
+  auto npv =
       GetPaymentAmount(environment) *
-      environment.GetDiscountFactor(GetDiscountCurveName(), GetPaymentDate()));
+      environment.GetDiscountFactor(GetDiscountCurveName(), GetPaymentDate()) *
+      environment.GetFxToday(GetCurrencyCode(), valuation_currency);
+
+  return Currency(valuation_currency, T(npv));
 }
 }  // namespace qff_a

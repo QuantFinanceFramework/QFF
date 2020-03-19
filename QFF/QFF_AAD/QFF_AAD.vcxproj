@@ -163,6 +163,7 @@
     <ClCompile Include="Actual360.cpp" />
     <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="CompositeCalendar.cpp" />
+    <ClCompile Include="Currency.cpp" />
     <ClCompile Include="IrDeltas.cpp" />
     <ClCompile Include="IrResult.cpp" />
     <ClCompile Include="LondonCalendar.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="CdsPremium.h" />
     <ClInclude Include="CompositeCalendar.h" />
     <ClInclude Include="CompoundedOvernightIndex.h" />
+    <ClInclude Include="Currency.h" />
     <ClInclude Include="FixedCashflow.h" />
     <ClInclude Include="CurveInterpolator.h" />
     <ClInclude Include="DateFunctions.h" />

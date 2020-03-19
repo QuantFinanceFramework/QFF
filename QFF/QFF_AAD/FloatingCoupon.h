@@ -35,6 +35,8 @@ class FloatingCoupon final : public ICashflow {
     return discount_curve_name_;
   }
 
+  std::string GetCurrencyCode() const override;
+
  private:
   template <typename T>
   T GetRate(const IPricingEnvironment<T>& environment) const;
@@ -75,7 +77,11 @@ inline FloatingCoupon::FloatingCoupon(double notional,
       day_counter_(day_counter.Clone()),
       index_(index.Clone()),
       leverage_(leverage),
-      margin_(margin){};
+      margin_(margin) {}
+
+inline std::string FloatingCoupon::GetCurrencyCode() const {
+  return currency_code_;
+}
 
 template <typename T>
 T FloatingCoupon::GetRate(const IPricingEnvironment<T>& environment) const {

@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <memory>
+#include <stdexcept>
 
 #include "ICreditCurve.h"
 #include "IInterestRateCurve.h"
@@ -16,8 +17,8 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
           rate_curves_set,
       std::map<std::string, std::map<boost::gregorian::date, double>>
           past_rate_fixing_set,
-      std::map<std::string, std::unique_ptr<ICreditCurve<T>>>
-          credit_curves_set);
+      std::map<std::string, std::unique_ptr<ICreditCurve<T>>> credit_curves_set,
+      std::map<std::string, T> fx_today_map);
 
   boost::gregorian::date GetPricingDate() const override;
 
@@ -42,6 +43,9 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
   std::vector<double> GetCreditAdjoints(
       const std::string& curve_name) const override;
 
+  T GetFxToday(std::string base_currency,
+               std::string quote_currency) const override;
+
  private:
   boost::gregorian::date pricing_date_;
   std::map<std::string, std::unique_ptr<IInterestRateCurve<T>>>
@@ -49,6 +53,7 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
   std::map<std::string, std::map<boost::gregorian::date, double>>
       past_rate_fixing_set_;
   std::map<std::string, std::unique_ptr<ICreditCurve<T>>> credit_curves_set_;
+  std::map<std::string, T> fx_today_map_;
 };
 
 template <typename T>
@@ -58,11 +63,13 @@ PricingEnvironment<T>::PricingEnvironment(
         rate_curves_set,
     std::map<std::string, std::map<boost::gregorian::date, double>>
         past_rate_fixing_set,
-    std::map<std::string, std::unique_ptr<ICreditCurve<T>>> credit_curves_set)
+    std::map<std::string, std::unique_ptr<ICreditCurve<T>>> credit_curves_set,
+    std::map<std::string, T> fx_today_map)
     : pricing_date_(pricing_date),
       rate_curves_set_(std::move(rate_curves_set)),
       past_rate_fixing_set_(std::move(past_rate_fixing_set)),
-      credit_curves_set_(std::move(credit_curves_set)) {}
+      credit_curves_set_(std::move(credit_curves_set)),
+      fx_today_map_(std::move(fx_today_map)) {}
 
 template <typename T>
 boost::gregorian::date PricingEnvironment<T>::GetPricingDate() const {
@@ -121,5 +128,24 @@ std::vector<double> PricingEnvironment<T>::GetCreditAdjoints(
     const std::string& curve_name) const {
   const auto curve_itr = credit_curves_set_.find(curve_name);
   return curve_itr->second->GetAdjoints();
+}
+
+template <typename T>
+T PricingEnvironment<T>::GetFxToday(std::string base_currency,
+                                    std::string quote_currency) const {
+  if (base_currency == quote_currency) return T(1.0);
+
+  const auto fx_itr = fx_today_map_.find(base_currency + quote_currency);
+  if (fx_itr != fx_today_map_.end()) {
+    return fx_itr->second;
+  }
+
+  const auto inverse_fx_itr =
+      fx_today_map_.find(quote_currency + base_currency);
+  if (inverse_fx_itr != fx_today_map_.end()) {
+    return T(1.0 / inverse_fx_itr->second);
+  }
+
+  throw std::logic_error{"FX today rate cannot be found"};
 }
 }  // namespace qff_a

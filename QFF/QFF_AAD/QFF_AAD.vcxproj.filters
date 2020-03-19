@@ -138,6 +138,9 @@
     <ClCompile Include="Target2Calendar.cpp">
       <Filter>Source Files\Calendars</Filter>
     </ClCompile>
+    <ClCompile Include="Currency.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actual365.h">
@@ -289,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="Target2Calendar.h">
       <Filter>Header Files\Calendars</Filter>
+    </ClInclude>
+    <ClInclude Include="Currency.h">
+      <Filter>Header Files\Currencies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

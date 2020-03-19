@@ -10,20 +10,22 @@ class Swap final : public IProduct {
   Swap(std::unique_ptr<IProduct> receive_leg,
        std::unique_ptr<IProduct> pay_leg);
 
-  double Evaluate(const IPricingEnvironment<double>& environment,
-                  const std::string& currency_code) const override {
-    return EvaluateImpl(environment, currency_code);
+  Currency<double> Evaluate(
+      const IPricingEnvironment<double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
 
-  aad::a_double Evaluate(const IPricingEnvironment<aad::a_double>& environment,
-                         const std::string& currency_code) const override {
-    return EvaluateImpl(environment, currency_code);
+  Currency<aad::a_double> Evaluate(
+      const IPricingEnvironment<aad::a_double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
 
  private:
   template <typename T>
-  T EvaluateImpl(const IPricingEnvironment<T>& environment,
-                 const std::string& currency_code) const;
+  Currency<T> EvaluateImpl(const IPricingEnvironment<T>& environment,
+                           const std::string& valuation_currency) const;
 
   std::unique_ptr<IProduct> receive_leg_;
   std::unique_ptr<IProduct> pay_leg_;
@@ -34,9 +36,9 @@ inline Swap::Swap(std::unique_ptr<IProduct> receive_leg,
     : receive_leg_(std::move(receive_leg)), pay_leg_(std::move(pay_leg)) {}
 
 template <typename T>
-T Swap::EvaluateImpl(const IPricingEnvironment<T>& environment,
-                     const std::string& currency_code) const {
-  return T(receive_leg_->Evaluate(environment, currency_code) -
-           pay_leg_->Evaluate(environment, currency_code));
+Currency<T> Swap::EvaluateImpl(const IPricingEnvironment<T>& environment,
+                               const std::string& valuation_currency) const {
+  return receive_leg_->Evaluate(environment, valuation_currency) -
+         pay_leg_->Evaluate(environment, valuation_currency);
 }
 }  // namespace qff_a

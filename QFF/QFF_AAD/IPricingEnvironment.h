@@ -1,5 +1,6 @@
 #pragma once
 #include <boost/date_time/gregorian/gregorian.hpp>
+
 #include "IInterestRateCurve.h"
 
 namespace qff_a {
@@ -17,6 +18,11 @@ class IPricingEnvironment {
   virtual T GetSurvivalProbability(
       const std::string& curve_name,
       const boost::gregorian::date& query_date) const = 0;
+
+  // Currencies are quoted in relation to another currency,
+  // i.e. base currency / quote currency.
+  virtual T GetFxToday(std::string base_currency,
+                       std::string quote_currency) const = 0;
 
   virtual double GetPastRateFixing(
       const std::string& curve_name,

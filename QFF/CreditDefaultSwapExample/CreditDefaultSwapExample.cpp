@@ -95,9 +95,11 @@ int main() {
 
   map<string, map<date, double>> past_fixing_set;
 
-  const PricingEnvironment environment{pricing_date, std::move(curve_set),
-                                       std::move(past_fixing_set),
-                                       std::move(credit_curve_set)};
+  map<string, double> fx_today_map;
+
+  const PricingEnvironment environment{
+      pricing_date, std::move(curve_set), std::move(past_fixing_set),
+      std::move(credit_curve_set), std::move(fx_today_map)};
 
   auto jpm_cds = SwapScheduler::MakeCreditDefaultSwap(
       "USD", 1000000.0, date(2019, 6, 1), date(2029, 6, 20), true,
@@ -109,7 +111,8 @@ int main() {
 
   const auto result = jpm_cds->Evaluate(environment, "USD");
 
-  std::cout << "JPM CDS NPV: " << result << '\n';
+  std::cout << "JPM CDS NPV in " << result.currency_code << " = "
+            << result.amount << '\n';
 
   return 0;
 }

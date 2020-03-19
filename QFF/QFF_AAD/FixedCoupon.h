@@ -32,6 +32,8 @@ class FixedCoupon final : public ICashflow {
     return GetPaymentAmountImpl(environment);
   }
 
+  std::string GetCurrencyCode() const override;
+
  private:
   template <typename T>
   T GetPaymentAmountImpl(const IPricingEnvironment<T>& environment) const;
@@ -63,6 +65,10 @@ inline FixedCoupon::FixedCoupon(double notional, std::string currency_code,
       discount_curve_name_(std::move(discount_curve_name)),
       day_counter_(day_counter.Clone()),
       rate_(rate) {}
+
+inline std::string FixedCoupon::GetCurrencyCode() const {
+  return currency_code_;
+}
 
 template <typename T>
 T FixedCoupon::GetPaymentAmountImpl(

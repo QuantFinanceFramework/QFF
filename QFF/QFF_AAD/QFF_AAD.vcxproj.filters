@@ -79,6 +79,12 @@
     <Filter Include="Header Files\PricingEnvironment\CrCurves">
       <UniqueIdentifier>{735ac80c-e02b-49ec-a3d8-40b6e2d90c96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Products\Legs">
+      <UniqueIdentifier>{76547c44-502f-4b0c-8da1-09718a1eebdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Products\Cashflows">
+      <UniqueIdentifier>{28e30222-ef1b-4d46-af7a-ddaee228e92b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actual365.cpp">
@@ -146,9 +152,6 @@
     <ClInclude Include="Actual365.h">
       <Filter>Header Files\DayCounters</Filter>
     </ClInclude>
-    <ClInclude Include="FixedCashflow.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="CurveInterpolator.h">
       <Filter>Header Files\Interpolators</Filter>
     </ClInclude>
@@ -203,12 +206,6 @@
     <ClInclude Include="IborIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
-    <ClInclude Include="ICashflow.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="FloatingCoupon.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="ModifiedFollowing.h">
       <Filter>Header Files\BusinessDayConventions</Filter>
     </ClInclude>
@@ -233,22 +230,10 @@
     <ClInclude Include="CompoundedOvernightIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
-    <ClInclude Include="FixedCoupon.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="Leg.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="Swap.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
     <ClInclude Include="SwapScheduler.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="CdsPremium.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
-    <ClInclude Include="ProtectionLeg.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
     <ClInclude Include="AveragedOvernightIndex.h">
@@ -295,6 +280,39 @@
     </ClInclude>
     <ClInclude Include="Currency.h">
       <Filter>Header Files\Currencies</Filter>
+    </ClInclude>
+    <ClInclude Include="InterestRateSwap.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedLeg.h">
+      <Filter>Header Files\Products\Legs</Filter>
+    </ClInclude>
+    <ClInclude Include="Leg.h">
+      <Filter>Header Files\Products\Legs</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtectionLeg.h">
+      <Filter>Header Files\Products\Legs</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatingLeg.h">
+      <Filter>Header Files\Products\Legs</Filter>
+    </ClInclude>
+    <ClInclude Include="CdsPremium.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedCashflow.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedCoupon.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatingCoupon.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="ICashflow.h">
+      <Filter>Header Files\Products\Cashflows</Filter>
+    </ClInclude>
+    <ClInclude Include="BasisSwap.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

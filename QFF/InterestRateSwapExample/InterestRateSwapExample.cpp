@@ -131,12 +131,31 @@ int main() {
       Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0, true,
       date(2020, 2, 4), 0.0);
 
+  auto ois_par = SwapScheduler::MakeInterestRateSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
+      Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(2, TimeUnit::b), Actual360(), ois->GetParRate(environment).value(),
+      Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0, true,
+      date(2020, 2, 4), 0.0);
+
   std::cout.precision(15);
 
   auto ois_result = CalculateIrResult(*ois, environment, "USD");
+  auto ois_par_result = CalculateIrResult(*ois_par, environment, "USD");
 
   std::cout << "OIS NPV in " << ois_result.GetResultCurrency() << " = "
             << ois_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "Par OIS NPV in " << ois_par_result.GetResultCurrency() << " = "
+            << ois_par_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "Par-rate = " << ois->GetParRate(environment).value() << '\n';
+  std::cout << '\n';
+
+  std::cout << "BPV = " << ois->GetBasisPointValue(environment).value() << '\n';
   std::cout << '\n';
 
   std::cout << "OIS Zero Deltas : " << '\n';
@@ -161,10 +180,31 @@ int main() {
       ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), ibor_index, 1,
       0.0, true, date(2020, 2, 4), 0.0);
 
+  auto irs_par = SwapScheduler::MakeInterestRateSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
+      Frequency::Semiannually,
+      CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
+      ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(),
+      irs->GetParRate(environment).value(), Frequency::Quarterly,
+      CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
+      ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), ibor_index, 1,
+      0.0, true, date(2020, 2, 4), 0.0);
+
   auto irs_result = CalculateIrResult(*irs, environment, "USD");
+  auto irs_par_result = CalculateIrResult(*irs_par, environment, "USD");
 
   std::cout << "IRS NPV in " << irs_result.GetResultCurrency() << " = "
             << irs_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "Par IRS NPV in " << irs_par_result.GetResultCurrency() << " = "
+            << irs_par_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "Par-rate = " << irs->GetParRate(environment).value() << '\n';
+  std::cout << '\n';
+
+  std::cout << "BPV = " << irs->GetBasisPointValue(environment).value() << '\n';
   std::cout << '\n';
 
   std::cout << "IRS Zero Deltas : " << '\n';

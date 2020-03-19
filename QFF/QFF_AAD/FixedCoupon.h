@@ -21,23 +21,27 @@ class FixedCoupon final : public ICashflow {
   std::string GetDiscountCurveName() const override {
     return discount_curve_name_;
   }
+  std::string GetCurrencyCode() const override { return currency_code_; }
 
-  double GetPaymentAmount(
-      const IPricingEnvironment<double>& environment) const override {
-    return GetPaymentAmountImpl(environment);
+  template <typename T>
+  T GetScaledBasisPointValue(const IPricingEnvironment<T>& environment) const;
+
+  Currency<double> Evaluate(
+      const IPricingEnvironment<double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
 
-  aad::a_double GetPaymentAmount(
-      const IPricingEnvironment<aad::a_double>& environment) const override {
-    return GetPaymentAmountImpl(environment);
+  Currency<aad::a_double> Evaluate(
+      const IPricingEnvironment<aad::a_double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
-
-  std::string GetCurrencyCode() const override;
 
  private:
   template <typename T>
-  T GetPaymentAmountImpl(const IPricingEnvironment<T>& environment) const;
-
+  Currency<T> EvaluateImpl(const IPricingEnvironment<T>& environment,
+                           const std::string& valuation_currency) const;
   double notional_{};
   std::string currency_code_;
   boost::gregorian::date accrual_start_date_;
@@ -66,13 +70,21 @@ inline FixedCoupon::FixedCoupon(double notional, std::string currency_code,
       day_counter_(day_counter.Clone()),
       rate_(rate) {}
 
-inline std::string FixedCoupon::GetCurrencyCode() const {
-  return currency_code_;
+template <typename T>
+T FixedCoupon::GetScaledBasisPointValue(
+    const IPricingEnvironment<T>& environment) const {
+  return T(
+      notional_ * accrual_factor_ *
+      environment.GetDiscountFactor(GetDiscountCurveName(), GetPaymentDate()));
 }
 
 template <typename T>
-T FixedCoupon::GetPaymentAmountImpl(
-    const IPricingEnvironment<T>& environment) const {
-  return T(notional_ * rate_ * accrual_factor_);
+Currency<T> FixedCoupon::EvaluateImpl(
+    const IPricingEnvironment<T>& environment,
+    const std::string& valuation_currency) const {
+  auto npv = rate_ * GetScaledBasisPointValue(environment) *
+             environment.GetFxToday(GetCurrencyCode(), valuation_currency);
+
+  return Currency(valuation_currency, T(npv));
 }
 }  // namespace qff_a

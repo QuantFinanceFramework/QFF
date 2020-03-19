@@ -2,10 +2,14 @@
 #include <memory>
 #include <string>
 
+#include "BasisSwap.h"
+#include "FixedLeg.h"
+#include "FloatingLeg.h"
 #include "IBusinessDayConvention.h"
 #include "ICalendar.h"
 #include "IDayCounter.h"
 #include "IIndex.h"
+#include "InterestRateSwap.h"
 #include "Leg.h"
 #include "Period.h"
 #include "Swap.h"
@@ -39,7 +43,7 @@ class SwapScheduler {
       double cds_spread, double recovery_rate, bool is_front_stub,
       boost::gregorian::date stub_date);
 
-  static std::unique_ptr<Swap> MakeInterestRateSwap(
+  static std::unique_ptr<InterestRateSwap> MakeInterestRateSwap(
       const std::string& currency_code, double notional,
       boost::gregorian::date settlement_date,
       boost::gregorian::date maturity_date, bool is_payer,
@@ -54,23 +58,23 @@ class SwapScheduler {
       const IIndex& index, double leverage, double margin, bool is_front_stub,
       boost::gregorian::date stub_date, double stub_rate);
 
-  static std::unique_ptr<Swap> MakeBasisSwap(
+  static std::unique_ptr<BasisSwap> MakeBasisSwap(
       const std::string& currency_code, double notional,
       boost::gregorian::date settlement_date,
       boost::gregorian::date maturity_date,
-      const std::string& discount_curve_name, Frequency r_leg_frequency,
-      const ICalendar& r_leg_payment_calendar,
-      const IBusinessDayConvention& r_leg_business_day_convention,
-      Period r_leg_payment_lag, const IDayCounter& r_leg_day_counter,
-      const IIndex& r_leg_index, double r_leg_leverage, double r_leg_margin,
-      bool r_leg_is_front_stub, boost::gregorian::date r_leg_stub_date,
-      double r_leg_stub_rate, Frequency p_leg_frequency,
-      const ICalendar& p_leg_payment_calendar,
-      const IBusinessDayConvention& p_leg_business_day_convention,
-      Period p_leg_payment_lag, const IDayCounter& p_leg_day_counter,
-      const IIndex& p_leg_index, double p_leg_leverage, double p_leg_margin,
-      bool p_leg_is_front_stub, boost::gregorian::date p_leg_stub_date,
-      double p_leg_stub_rate);
+      const std::string& discount_curve_name, Frequency m_leg_frequency,
+      const ICalendar& m_leg_payment_calendar,
+      const IBusinessDayConvention& m_leg_business_day_convention,
+      Period m_leg_payment_lag, const IDayCounter& m_leg_day_counter,
+      const IIndex& m_leg_index, double m_leg_leverage, double margin,
+      bool m_leg_is_front_stub, boost::gregorian::date m_leg_stub_date,
+      double m_leg_stub_rate, Frequency f_leg_frequency,
+      const ICalendar& f_leg_payment_calendar,
+      const IBusinessDayConvention& f_leg_business_day_convention,
+      Period f_leg_payment_lag, const IDayCounter& f_leg_day_counter,
+      const IIndex& f_leg_index, double f_leg_leverage,
+      bool f_leg_is_front_stub, boost::gregorian::date f_leg_stub_date,
+      double f_leg_stub_rate, bool is_paying_margin);
 
   static std::unique_ptr<Leg> MakePremiumLeg(
       const std::string& currency_code, double notional,
@@ -82,7 +86,7 @@ class SwapScheduler {
       const IDayCounter& day_counter, double cds_spread, bool is_front_stub,
       boost::gregorian::date stub_date);
 
-  static std::unique_ptr<Leg> MakeFixedLeg(
+  static std::unique_ptr<FixedLeg> MakeFixedLeg(
       const std::string& currency_code, double notional,
       boost::gregorian::date settlement_date,
       boost::gregorian::date maturity_date,
@@ -92,7 +96,7 @@ class SwapScheduler {
       const IDayCounter& day_counter, double strike, bool is_front_stub,
       boost::gregorian::date stub_date);
 
-  static std::unique_ptr<Leg> MakeFloatingLeg(
+  static std::unique_ptr<FloatingLeg> MakeFloatingLeg(
       const std::string& currency_code, double notional,
       boost::gregorian::date settlement_date,
       boost::gregorian::date maturity_date,

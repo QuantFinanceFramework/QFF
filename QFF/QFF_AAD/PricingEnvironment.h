@@ -89,7 +89,14 @@ double PricingEnvironment<T>::GetPastRateFixing(
     const std::string& curve_name,
     const boost::gregorian::date& query_date) const {
   const auto curve_itr = past_rate_fixing_set_.find(curve_name);
-  return curve_itr->second.find(query_date)->second;
+  if (curve_itr == past_rate_fixing_set_.end()) {
+    throw std::logic_error{"Rate history is not past rate fixing set"};
+  }
+  const auto past_fixing_itr = curve_itr->second.find(query_date);
+  if (past_fixing_itr == curve_itr->second.end()) {
+    throw std::logic_error{"Past fixing cannot be found"};
+  }
+  return past_fixing_itr->second;
 }
 
 template <typename T>

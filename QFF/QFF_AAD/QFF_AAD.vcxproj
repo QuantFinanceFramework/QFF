@@ -191,6 +191,7 @@
     <ClInclude Include="Actual365.h" />
     <ClInclude Include="AveragedOvernightIndex.h" />
     <ClInclude Include="BaseCalendar.h" />
+    <ClInclude Include="BasisSwap.h" />
     <ClInclude Include="Black76Formula.h" />
     <ClInclude Include="BlackScholesFormula.h" />
     <ClInclude Include="CdsPremium.h" />
@@ -202,8 +203,10 @@
     <ClInclude Include="DateFunctions.h" />
     <ClInclude Include="DiscountFactorCurve.h" />
     <ClInclude Include="FixedCoupon.h" />
+    <ClInclude Include="FixedLeg.h" />
     <ClInclude Include="FlatZeroRateCurve.h" />
     <ClInclude Include="FloatingCoupon.h" />
+    <ClInclude Include="FloatingLeg.h" />
     <ClInclude Include="Following.h" />
     <ClInclude Include="CalculateIrResult.h" />
     <ClInclude Include="IborIndex.h" />
@@ -216,12 +219,13 @@
     <ClInclude Include="IInterestRateCurve.h" />
     <ClInclude Include="IInterpolator.h" />
     <ClInclude Include="InterestRateCurve.h" />
+    <ClInclude Include="InterestRateSwap.h" />
     <ClInclude Include="Interpolation.h" />
     <ClInclude Include="IPricingEnvironment.h" />
     <ClInclude Include="IProduct.h" />
     <ClInclude Include="IrDeltas.h" />
     <ClInclude Include="IrResult.h" />
-    <ClInclude Include="Leg.h" />
+    <ClInclude Include="GenericLeg.h" />
     <ClInclude Include="LondonCalendar.h" />
     <ClInclude Include="ModifiedFollowing.h" />
     <ClInclude Include="NewYorkFedCalendar.h" />
@@ -230,7 +234,7 @@
     <ClInclude Include="PricingEnvironment.h" />
     <ClInclude Include="ProtectionLeg.h" />
     <ClInclude Include="SurvivalCurve.h" />
-    <ClInclude Include="Swap.h" />
+    <ClInclude Include="GenericSwap.h" />
     <ClInclude Include="SwapScheduler.h" />
     <ClInclude Include="SydneyCalendar.h" />
     <ClInclude Include="Target2Calendar.h" />

@@ -225,7 +225,7 @@
     <ClInclude Include="IProduct.h" />
     <ClInclude Include="IrDeltas.h" />
     <ClInclude Include="IrResult.h" />
-    <ClInclude Include="Leg.h" />
+    <ClInclude Include="GenericLeg.h" />
     <ClInclude Include="LondonCalendar.h" />
     <ClInclude Include="ModifiedFollowing.h" />
     <ClInclude Include="NewYorkFedCalendar.h" />
@@ -234,7 +234,7 @@
     <ClInclude Include="PricingEnvironment.h" />
     <ClInclude Include="ProtectionLeg.h" />
     <ClInclude Include="SurvivalCurve.h" />
-    <ClInclude Include="Swap.h" />
+    <ClInclude Include="GenericSwap.h" />
     <ClInclude Include="SwapScheduler.h" />
     <ClInclude Include="SydneyCalendar.h" />
     <ClInclude Include="Target2Calendar.h" />

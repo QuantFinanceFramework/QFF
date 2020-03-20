@@ -230,9 +230,6 @@
     <ClInclude Include="CompoundedOvernightIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
-    <ClInclude Include="Swap.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="SwapScheduler.h">
       <Filter>Header Files\Products</Filter>
     </ClInclude>
@@ -287,9 +284,6 @@
     <ClInclude Include="FixedLeg.h">
       <Filter>Header Files\Products\Legs</Filter>
     </ClInclude>
-    <ClInclude Include="Leg.h">
-      <Filter>Header Files\Products\Legs</Filter>
-    </ClInclude>
     <ClInclude Include="ProtectionLeg.h">
       <Filter>Header Files\Products\Legs</Filter>
     </ClInclude>
@@ -311,8 +305,14 @@
     <ClInclude Include="ICashflow.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
+    <ClInclude Include="GenericSwap.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericLeg.h">
+      <Filter>Header Files\Products\Legs</Filter>
+    </ClInclude>
     <ClInclude Include="BasisSwap.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Products</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

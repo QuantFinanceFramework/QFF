@@ -1,6 +1,5 @@
 #include <Actual360.h>
 #include <Actual365.h>
-#include <AveragedOvernightIndex.h>
 #include <CalculateIrResult.h>
 #include <CompositeCalendar.h>
 #include <CompoundedOvernightIndex.h>
@@ -14,6 +13,7 @@
 #include <PricingEnvironment.h>
 #include <SwapScheduler.h>
 #include <Thirty360Isda.h>
+#include <UsBondMarketCalendar.h>
 #include <ZeroRateCurve.h>
 
 #include <memory>
@@ -90,9 +90,37 @@ int main() {
       pricing_date, "USD_LIBOR_3M", day_counter, interpolator,
       std::move(libor3m_pillars), libor3m_zeros_a);
 
+  vector sofr_pillars{
+      date(2020, 2, 3), date(2020, 2, 13), date(2020, 2, 20), date(2020, 3, 6),
+      date(2020, 4, 8), date(2020, 5, 6),  date(2020, 6, 8),  date(2020, 7, 8),
+      date(2020, 8, 6), date(2020, 11, 6), date(2021, 2, 8),  date(2021, 8, 6),
+      date(2022, 2, 8), date(2023, 2, 8),  date(2024, 2, 7),  date(2025, 2, 6),
+      date(2026, 2, 6), date(2027, 2, 8),  date(2028, 2, 8),  date(2029, 2, 7),
+      date(2030, 2, 6), date(2032, 2, 6),  date(2035, 2, 7),  date(2040, 2, 8),
+      date(2045, 2, 8), date(2050, 2, 8),  date(2060, 2, 6)};
+
+  vector sofr_zeros{0.0155115111621324, 0.0159627105145181, 0.016007651918168,
+                    0.0160889508973192, 0.0160450382715921, 0.0159760969280487,
+                    0.0158517967194372, 0.0156838471034493, 0.0155392748400634,
+                    0.0149713491734572, 0.0143452211370029, 0.0133421615063197,
+                    0.0127703101289814, 0.0122320136003192, 0.0120743776924345,
+                    0.012086480928962,  0.0122580732564621, 0.0124248966495594,
+                    0.0126903888461651, 0.012951533342499,  0.0132193237827014,
+                    0.0137198768700395, 0.0142521157256569, 0.0148329746749559,
+                    0.014997059129347,  0.0149464758441065, 0.0146574226546979};
+
+  std::vector<a_double> sofr_zeros_a(size(sofr_zeros));
+  convert_collection(sofr_zeros.begin(), sofr_zeros.end(),
+                     sofr_zeros_a.begin());
+
+  auto sofr_curve = std::make_unique<ZeroRateCurve<a_double>>(
+      pricing_date, "USD_SOFR", day_counter, interpolator,
+      std::move(sofr_pillars), sofr_zeros_a);
+
   map<string, unique_ptr<IInterestRateCurve<a_double>>> curve_set;
   curve_set.emplace(std::make_pair("USD_FF", std::move(ff_curve)));
   curve_set.emplace(std::make_pair("USD_LIBOR_3M", std::move(libor3m_curve)));
+  curve_set.emplace(std::make_pair("USD_SOFR", std::move(sofr_curve)));
 
   map<string, unique_ptr<ICreditCurve<a_double>>> credit_curve_set;
 
@@ -106,7 +134,12 @@ int main() {
                          std::make_pair(date(2020, 1, 28), 0.017695),
                          std::make_pair(date(2020, 1, 29), 0.0177713),
                          std::make_pair(date(2020, 1, 30), 0.0176325),
-                         std::make_pair(date(2020, 1, 31), 0.0175113)})};
+                         std::make_pair(date(2020, 1, 31), 0.0175113)}),
+      std::make_pair("USD_SOFR",
+                     map{std::make_pair(date(2020, 1, 27), 0.0153),
+                         std::make_pair(date(2020, 1, 28), 0.0153),
+                         std::make_pair(date(2020, 1, 29), 0.0153),
+                         std::make_pair(date(2020, 1, 30), 0.0158)})};
 
   map<string, a_double> fx_today_map;
   fx_today_map.emplace(std::make_pair("EURUSD", a_double(1.102231639)));
@@ -152,7 +185,7 @@ int main() {
             << ois_par_result.GetNpv() << '\n';
   std::cout << '\n';
 
-  std::cout << "Par-rate = " << ois->GetParRate(environment).value() << '\n';
+  std::cout << "3Y Par-rate = " << ois->GetParRate(environment).value() << '\n';
   std::cout << '\n';
 
   std::cout << "BPV = " << ois->GetBasisPointValue(environment).value() << '\n';
@@ -201,7 +234,7 @@ int main() {
             << irs_par_result.GetNpv() << '\n';
   std::cout << '\n';
 
-  std::cout << "Par-rate = " << irs->GetParRate(environment).value() << '\n';
+  std::cout << "3Y Par-rate = " << irs->GetParRate(environment).value() << '\n';
   std::cout << '\n';
 
   std::cout << "BPV = " << irs->GetBasisPointValue(environment).value() << '\n';
@@ -209,6 +242,98 @@ int main() {
 
   std::cout << "IRS Zero Deltas : " << '\n';
   irs_result.PrintDeltas();
+  std::cout << '\n';
+
+  CompoundedOvernightIndex sofr_compounded_index{"USD",
+                                                 "USD_SOFR",
+                                                 Actual360(),
+                                                 Period(0, TimeUnit::b),
+                                                 Period(1, TimeUnit::b),
+                                                 UsBondMarketCalendar(),
+                                                 ModifiedFollowing()};
+
+  auto sofr_ois = SwapScheduler::MakeInterestRateSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2030, 2, 4), true, "USD_FF",
+      Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(2, TimeUnit::b), Actual360(), 0.013, Frequency::Annually,
+      NewYorkFedCalendar(), ModifiedFollowing(), Period(2, TimeUnit::b),
+      Actual360(), sofr_compounded_index, 1, 0.0, true, date(2020, 2, 4), 0.0);
+
+  auto sofr_ois_par = SwapScheduler::MakeInterestRateSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2030, 2, 4), true, "USD_FF",
+      Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(2, TimeUnit::b), Actual360(),
+      sofr_ois->GetParRate(environment).value(), Frequency::Annually,
+      NewYorkFedCalendar(), ModifiedFollowing(), Period(2, TimeUnit::b),
+      Actual360(), sofr_compounded_index, 1, 0.0, true, date(2020, 2, 4), 0.0);
+
+  auto sofr_ois_result = CalculateIrResult(*sofr_ois, environment, "USD");
+  auto sofr_ois_par_result =
+      CalculateIrResult(*sofr_ois_par, environment, "USD");
+
+  std::cout << "SOFR OIS NPV in " << sofr_ois_result.GetResultCurrency()
+            << " = " << sofr_ois_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "Par SOFR OIS NPV in " << sofr_ois_par_result.GetResultCurrency()
+            << " = " << sofr_ois_par_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "10Y SOFR Par-rate = "
+            << sofr_ois->GetParRate(environment).value() << '\n';
+  std::cout << '\n';
+
+  std::cout << "BPV = " << sofr_ois->GetBasisPointValue(environment).value()
+            << '\n';
+  std::cout << '\n';
+
+  std::cout << "SOFR OIS Zero Deltas : " << '\n';
+  sofr_ois_result.PrintDeltas();
+  std::cout << '\n';
+
+  auto sofr_ff_basis = SwapScheduler::MakeBasisSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), "USD_FF",
+      Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(2, TimeUnit::b), Actual360(), sofr_compounded_index, 1.0,
+      -0.000057, true, date(2020, 2, 4), 0.0, Frequency::Quarterly,
+      NewYorkFedCalendar(), ModifiedFollowing(), Period(2, TimeUnit::b),
+      Actual360(), ff_compounded_index, 1.0, true, date(2020, 2, 4), 0.0,
+      false);
+
+  auto sofr_ff_basis_par = SwapScheduler::MakeBasisSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), "USD_FF",
+      Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(2, TimeUnit::b), Actual360(), sofr_compounded_index, 1.0,
+      sofr_ff_basis->GetParRate(environment).value(), true, date(2020, 2, 4),
+      0.0, Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1.0, true,
+      date(2020, 2, 4), 0.0, false);
+
+  auto sofr_ff_basis_result =
+      CalculateIrResult(*sofr_ff_basis, environment, "USD");
+  auto sofr_ff_basis_par_result =
+      CalculateIrResult(*sofr_ff_basis_par, environment, "USD");
+
+  std::cout << "SOFR FF Basis NPV in "
+            << sofr_ff_basis_result.GetResultCurrency() << " = "
+            << sofr_ff_basis_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "Par SOFR FF Basis NPV in "
+            << sofr_ff_basis_par_result.GetResultCurrency() << " = "
+            << sofr_ff_basis_par_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "3Y SOFR FF Basis Par-rate = "
+            << sofr_ff_basis->GetParRate(environment).value() << '\n';
+  std::cout << '\n';
+
+  std::cout << "BPV = "
+            << sofr_ff_basis->GetBasisPointValue(environment).value() << '\n';
+  std::cout << '\n';
+
+  std::cout << "SOFR FF Basis Zero Deltas : " << '\n';
+  sofr_ff_basis_result.PrintDeltas();
   std::cout << '\n';
 
   return 0;

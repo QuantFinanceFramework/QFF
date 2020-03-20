@@ -10,9 +10,9 @@
 #include "IDayCounter.h"
 #include "IIndex.h"
 #include "InterestRateSwap.h"
-#include "Leg.h"
+#include "GenericLeg.h"
 #include "Period.h"
-#include "Swap.h"
+#include "GenericSwap.h"
 #include "boost/date_time/gregorian/gregorian.hpp"
 
 namespace qff_a {
@@ -31,7 +31,7 @@ Period FrequencyToPeriod(Frequency frequency);
 
 class SwapScheduler {
  public:
-  static std::unique_ptr<Swap> MakeCreditDefaultSwap(
+  static std::unique_ptr<GenericSwap> MakeCreditDefaultSwap(
       const std::string& currency_code, double notional,
       boost::gregorian::date effective_date,
       boost::gregorian::date maturity_date, bool is_protection_buyer,
@@ -76,7 +76,7 @@ class SwapScheduler {
       bool f_leg_is_front_stub, boost::gregorian::date f_leg_stub_date,
       double f_leg_stub_rate, bool is_paying_margin);
 
-  static std::unique_ptr<Leg> MakePremiumLeg(
+  static std::unique_ptr<GenericLeg> MakePremiumLeg(
       const std::string& currency_code, double notional,
       boost::gregorian::date start_date, boost::gregorian::date maturity_date,
       const std::string& discount_curve_name,

@@ -72,7 +72,7 @@ T FloatingLeg::GetZeroMarginNpv(
   auto npv = std::accumulate(
       cashflows_.begin(), cashflows_.end(), T(0.0), [&](auto result, auto& p) {
         return result +
-               p->GetRate(environment) * GetScaledBasisPointValue(environment);
+               p->GetRate(environment) * p->GetScaledBasisPointValue(environment);
       });
   return T(npv);
 }

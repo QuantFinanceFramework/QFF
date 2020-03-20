@@ -40,7 +40,7 @@ Period FrequencyToPeriod(Frequency frequency) {
   }
 }
 
-std::unique_ptr<Swap> SwapScheduler::MakeCreditDefaultSwap(
+std::unique_ptr<GenericSwap> SwapScheduler::MakeCreditDefaultSwap(
     const std::string& currency_code, double notional,
     boost::gregorian::date effective_date, boost::gregorian::date maturity_date,
     bool is_protection_buyer, const std::string& discount_curve_name,
@@ -62,9 +62,9 @@ std::unique_ptr<Swap> SwapScheduler::MakeCreditDefaultSwap(
       Frequency::Daily);
 
   if (is_protection_buyer)
-    return std::make_unique<Swap>(std::move(protection_leg),
+    return std::make_unique<GenericSwap>(std::move(protection_leg),
                                   std::move(premium_leg));
-  return std::make_unique<Swap>(std::move(premium_leg),
+  return std::make_unique<GenericSwap>(std::move(premium_leg),
                                 std::move(protection_leg));
 }
 
@@ -141,7 +141,7 @@ unique_ptr<BasisSwap> SwapScheduler::MakeBasisSwap(
                                      std::move(floating_leg));
 }
 
-std::unique_ptr<Leg> SwapScheduler::MakePremiumLeg(
+std::unique_ptr<GenericLeg> SwapScheduler::MakePremiumLeg(
     const std::string& currency_code, double notional,
     boost::gregorian::date start_date, boost::gregorian::date maturity_date,
     const std::string& discount_curve_name,
@@ -164,7 +164,7 @@ std::unique_ptr<Leg> SwapScheduler::MakePremiumLeg(
             survival_curve_name, day_counter, cds_spread);
       });
 
-  return std::make_unique<Leg>(std::move(cf_collection));
+  return std::make_unique<GenericLeg>(std::move(cf_collection));
 }
 
 unique_ptr<FixedLeg> SwapScheduler::MakeFixedLeg(

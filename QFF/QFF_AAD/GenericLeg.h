@@ -7,11 +7,12 @@
 #include "IProduct.h"
 
 namespace qff_a {
-
-class Leg final : public IProduct {
+// GenericLeg holds a vector of ICashflow; therefore, it can represent any leg
+// structures, e.g. fixed leg, floating leg, and other exotic leg structures.
+class GenericLeg final : public IProduct {
  public:
-  Leg() = default;
-  explicit Leg(std::vector<std::unique_ptr<ICashflow>> cashflows);
+  GenericLeg() = default;
+  explicit GenericLeg(std::vector<std::unique_ptr<ICashflow>> cashflows);
 
   Currency<double> Evaluate(
       const IPricingEnvironment<double>& environment,
@@ -33,12 +34,13 @@ class Leg final : public IProduct {
   std::vector<std::unique_ptr<ICashflow>> cashflows_;
 };
 
-inline Leg::Leg(std::vector<std::unique_ptr<ICashflow>> cashflows)
+inline GenericLeg::GenericLeg(std::vector<std::unique_ptr<ICashflow>> cashflows)
     : cashflows_(std::move(cashflows)) {}
 
 template <typename T>
-Currency<T> Leg::EvaluateImpl(const IPricingEnvironment<T>& environment,
-                              const std::string& valuation_currency) const {
+Currency<T> GenericLeg::EvaluateImpl(
+    const IPricingEnvironment<T>& environment,
+    const std::string& valuation_currency) const {
   auto npv = std::accumulate(
       cashflows_.begin(), cashflows_.end(), T(0.0), [&](auto result, auto& p) {
         return result + p->Evaluate(environment, valuation_currency).amount;

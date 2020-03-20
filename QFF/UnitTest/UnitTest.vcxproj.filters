@@ -54,6 +54,9 @@
     <ClCompile Include="CurrencyTest.cpp">
       <Filter>Currencies</Filter>
     </ClCompile>
+    <ClCompile Include="FixedCashflowTest.cpp">
+      <Filter>Products</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="BusinessDayConventions">

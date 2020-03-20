@@ -11,5 +11,17 @@ class ICashflow : public IProduct {
   virtual boost::gregorian::date GetPaymentDate() const = 0;
 
   virtual std::string GetDiscountCurveName() const = 0;
+
+ protected:
+  template <typename T>
+  bool IsExpired(const IPricingEnvironment<T>& environment) const;
 };
+
+template <typename T>
+bool ICashflow::IsExpired(const IPricingEnvironment<T>& environment) const {
+  if (GetPaymentDate() < environment.GetPricingDate()) {
+    return true;
+  }
+  return false;
+}
 }  // namespace qff_a

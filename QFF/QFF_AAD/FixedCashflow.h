@@ -56,6 +56,9 @@ template <typename T>
 Currency<T> FixedCashflow::EvaluateImpl(
     const IPricingEnvironment<T>& environment,
     const std::string& valuation_currency) const {
+  if (IsExpired(environment)) {
+    return Currency(valuation_currency, T(0.0));
+  }
   auto npv =
       payment_amount_ *
       environment.GetDiscountFactor(GetDiscountCurveName(), GetPaymentDate()) *

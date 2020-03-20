@@ -88,6 +88,9 @@ inline FloatingCoupon::FloatingCoupon(double notional,
 template <typename T>
 T FloatingCoupon::GetScaledBasisPointValue(
     const IPricingEnvironment<T>& environment) const {
+  if (IsExpired(environment)) {
+    return T(0.0);
+  }
   return T(
       notional_ * accrual_factor_ *
       environment.GetDiscountFactor(GetDiscountCurveName(), GetPaymentDate()));
@@ -103,6 +106,9 @@ template <typename T>
 Currency<T> FloatingCoupon::EvaluateImpl(
     const IPricingEnvironment<T>& environment,
     const std::string& valuation_currency) const {
+  if (IsExpired(environment)) {
+    return Currency(valuation_currency, T(0.0));
+  }
   auto npv = (GetRate(environment) + margin_) *
              GetScaledBasisPointValue(environment) *
              environment.GetFxToday(GetCurrencyCode(), valuation_currency);

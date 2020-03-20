@@ -85,6 +85,9 @@ template <typename T>
 Currency<T> CdsPremium::EvaluateImpl(
     const IPricingEnvironment<T>& environment,
     const std::string& valuation_currency) const {
+  if (IsExpired(environment)) {
+    return Currency(valuation_currency, T(0.0));
+  }
   const auto discount_factor =
       environment.GetDiscountFactor(discount_curve_name_, payment_date_);
 

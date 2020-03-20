@@ -53,9 +53,11 @@
     <ClCompile Include="BusinessDayConventionTest.cpp" />
     <ClCompile Include="CompositeCalendarTest.cpp" />
     <ClCompile Include="CompoundedOvernightIndexTest.cpp" />
+    <ClCompile Include="CurrencyTest.cpp" />
     <ClCompile Include="DateFunctionsTest.cpp" />
     <ClCompile Include="DayCounterTest.cpp" />
     <ClCompile Include="DiscountFactorCurveTest.cpp" />
+    <ClCompile Include="FixedCashflowTest.cpp" />
     <ClCompile Include="FlatZeroCurveTest.cpp" />
     <ClCompile Include="IborIndexTest.cpp" />
     <ClCompile Include="InterpolationTest.cpp" />
@@ -98,7 +100,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
@@ -115,7 +117,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>

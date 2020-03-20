@@ -41,14 +41,17 @@ int main() {
 
   map<string, unique_ptr<ICreditCurve<a_double>>> credit_curve_set_a;
 
-  const auto environment_a = make_unique<PricingEnvironment<a_double>>(
-      market_date, move(usd_curve_set_a), fixings, move(credit_curve_set_a));
+  map<string, a_double> fx_today_map;
 
-  const FixedCashflow instrument{100.0, date(2022, 4, 10), "std"};
+  const auto environment_a = make_unique<PricingEnvironment<a_double>>(
+      market_date, move(usd_curve_set_a), fixings, move(credit_curve_set_a),
+      move(fx_today_map));
+
+  const FixedCashflow instrument{100.0, "USD", date(2022, 4, 10), "std"};
 
   std::cout.precision(15);
 
-  auto result = CalculateIrResult(instrument, *environment_a, "EUR");
+  auto result = CalculateIrResult(instrument, *environment_a, "USD");
 
   std::cout << "NPV = " << result.GetNpv() << '\n';
   std::cout << "DF Deltas : " << '\n';
@@ -73,11 +76,13 @@ int main() {
 
   map<string, unique_ptr<ICreditCurve<a_double>>> credit_curve_set_z_a;
 
-  const auto environment_z_a = make_unique<PricingEnvironment<a_double>>(
-      market_date, move(usd_curve_set_z_a), fixings,
-      move(credit_curve_set_z_a));
+  map<string, a_double> fx_today_map_z_a;
 
-  auto result_z = CalculateIrResult(instrument, *environment_z_a, "EUR");
+  const auto environment_z_a = make_unique<PricingEnvironment<a_double>>(
+      market_date, move(usd_curve_set_z_a), fixings, move(credit_curve_set_z_a),
+      move(fx_today_map_z_a));
+
+  auto result_z = CalculateIrResult(instrument, *environment_z_a, "USD");
 
   std::cout << "NPV = " << result_z.GetNpv() << '\n';
   std::cout << "Zero Deltas : " << '\n';

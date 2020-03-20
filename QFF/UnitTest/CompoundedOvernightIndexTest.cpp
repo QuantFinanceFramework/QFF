@@ -4,6 +4,7 @@
 #include <FlatZeroRateCurve.h>
 #include <PricingEnvironment.h>
 #include <Unadjusted.h>
+
 #include <memory>
 #include <string>
 
@@ -28,9 +29,11 @@ class CompoundedOvernightIndexTestFixture : public testing::Test {
         "USD_FF", map<date, double>{std::make_pair(date(2018, 12, 31), 0.026),
                                     std::make_pair(date(2019, 1, 1), 0.025)}));
 
+    map<string, double> fx_today_map;
+
     environment_ = std::make_unique<PricingEnvironment<double>>(
         date(2019, 1, 2), std::move(curve_set), std::move(past_fixing),
-        std::move(credit_curve_set));
+        std::move(credit_curve_set), std::move(fx_today_map));
   }
 
  protected:

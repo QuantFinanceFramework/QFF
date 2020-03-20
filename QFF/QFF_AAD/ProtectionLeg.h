@@ -1,6 +1,7 @@
 #pragma once
 #include <numeric>
 #include <vector>
+
 #include "BaseCalendar.h"
 #include "IProduct.h"
 #include "SwapScheduler.h"
@@ -15,20 +16,22 @@ class ProtectionLeg final : public IProduct {
                 std::string survival_curve_name, double recovery_rate,
                 Frequency estimation_frequency);
 
-  double Evaluate(const IPricingEnvironment<double>& environment,
-                  const std::string& currency_code) const override {
-    return EvaluateImpl(environment, currency_code);
+  Currency<double> Evaluate(
+      const IPricingEnvironment<double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
 
-  aad::a_double Evaluate(const IPricingEnvironment<aad::a_double>& environment,
-                         const std::string& currency_code) const override {
-    return EvaluateImpl(environment, currency_code);
+  Currency<aad::a_double> Evaluate(
+      const IPricingEnvironment<aad::a_double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
 
  private:
   template <typename T>
-  T EvaluateImpl(const IPricingEnvironment<T>& environment,
-                 const std::string& currency_code) const;
+  Currency<T> EvaluateImpl(const IPricingEnvironment<T>& environment,
+                           const std::string& valuation_currency) const;
 
   double notional_{};
   std::string currency_code_;
@@ -58,8 +61,9 @@ inline ProtectionLeg::ProtectionLeg(double notional, std::string currency_code,
       estimation_frequency_(estimation_frequency) {}
 
 template <typename T>
-T ProtectionLeg::EvaluateImpl(const IPricingEnvironment<T>& environment,
-                              const std::string& currency_code) const {
+Currency<T> ProtectionLeg::EvaluateImpl(
+    const IPricingEnvironment<T>& environment,
+    const std::string& valuation_currency) const {
   if (estimation_schedule_.empty()) {
     estimation_schedule_ = SwapScheduler::MakeUnadjustedSchedule(
         start_date_, end_date_, estimation_frequency_, BaseCalendar(), true,
@@ -76,6 +80,9 @@ T ProtectionLeg::EvaluateImpl(const IPricingEnvironment<T>& environment,
       });
   const auto loss_given_default = notional_ * (1.0 - recovery_rate_);
 
-  return T(loss_given_default * discounted_default_probability);
+  auto npv = loss_given_default * discounted_default_probability *
+             environment.GetFxToday(currency_code_, valuation_currency);
+
+  return Currency(valuation_currency, T(npv));
 }
 }  // namespace qff_a

@@ -30,9 +30,11 @@ class IborIndexTestFixture : public testing::Test {
         map<date, double>{std::make_pair(date(2018, 12, 31), 0.026),
                           std::make_pair(date(2019, 1, 1), 0.025)}));
 
+    map<string, double> fx_today_map;
+
     environment_ = std::make_unique<PricingEnvironment<double>>(
         date(2019, 1, 1), std::move(curve_set), std::move(past_fixing),
-        std::move(credit_curve_set));
+        std::move(credit_curve_set), std::move(fx_today_map));
   }
 
  protected:
@@ -48,7 +50,8 @@ TEST_F(IborIndexTestFixture, GetRate_Past) {
                         Unadjusted(),
                         Period{3, TimeUnit::m}};
 
-  const auto rate = index.GetRate(date(2019, 1, 2), date(2019, 4, 2), *environment_);
+  const auto rate =
+      index.GetRate(date(2019, 1, 2), date(2019, 4, 2), *environment_);
 
   EXPECT_NEAR(rate, 0.026, 0.0001);
 }
@@ -62,7 +65,8 @@ TEST_F(IborIndexTestFixture, GetRate) {
                         Unadjusted(),
                         Period{3, TimeUnit::m}};
 
-  const auto rate = index.GetRate(date(2019, 4, 1), date(2019, 7, 1), *environment_);
+  const auto rate =
+      index.GetRate(date(2019, 4, 1), date(2019, 7, 1), *environment_);
 
   EXPECT_NEAR(rate, 0.020049946, 0.0001);
 }

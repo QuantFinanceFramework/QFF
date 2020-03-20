@@ -14,18 +14,6 @@ class CdsPremium final : public ICashflow {
              std::string discount_curve_name, std::string survival_curve_name,
              const IDayCounter& day_counter, double cds_spread);
 
-  //Override ICashflow implementation
-  double Evaluate(const IPricingEnvironment<double>& environment,
-                  const std::string& currency_code) const override {
-    return EvaluateImpl(environment, currency_code);
-  }
-
-  // Override ICashflow implementation
-  aad::a_double Evaluate(const IPricingEnvironment<aad::a_double>& environment,
-                         const std::string& currency_code) const override {
-    return EvaluateImpl(environment, currency_code);
-  }
-
   boost::gregorian::date GetPaymentDate() const override {
     return payment_date_;
   }
@@ -34,23 +22,27 @@ class CdsPremium final : public ICashflow {
     return discount_curve_name_;
   }
 
-  double GetPaymentAmount(
-      const IPricingEnvironment<double>& environment) const override {
-    return GetPaymentAmountImpl(environment);
+  std::string GetCurrencyCode() const override { return currency_code_; }
+
+  Currency<double> Evaluate(
+      const IPricingEnvironment<double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
 
-  aad::a_double GetPaymentAmount(
-      const IPricingEnvironment<aad::a_double>& environment) const override {
-    return GetPaymentAmountImpl(environment);
+  Currency<aad::a_double> Evaluate(
+      const IPricingEnvironment<aad::a_double>& environment,
+      const std::string& valuation_currency) const override {
+    return EvaluateImpl(environment, valuation_currency);
   }
 
  private:
   template <typename T>
-  T GetPaymentAmountImpl(const IPricingEnvironment<T>& environment) const;
+  Currency<T> EvaluateImpl(const IPricingEnvironment<T>& environment,
+                           const std::string& valuation_currency) const;
 
   template <typename T>
-  T EvaluateImpl(const IPricingEnvironment<T>& environment,
-                 const std::string& currency_code) const;
+  T GetPaymentAmount(const IPricingEnvironment<T>& environment) const;
 
   double notional_{};
   std::string currency_code_;
@@ -84,13 +76,18 @@ inline CdsPremium::CdsPremium(double notional, std::string currency_code,
       cds_spread_(cds_spread) {}
 
 template <typename T>
-T CdsPremium::GetPaymentAmountImpl(
+T CdsPremium::GetPaymentAmount(
     const IPricingEnvironment<T>& environment) const {
   return T(notional_ * cds_spread_ * accrual_factor_);
 }
+
 template <typename T>
-T CdsPremium::EvaluateImpl(const IPricingEnvironment<T>& environment,
-                           const std::string& currency_code) const {
+Currency<T> CdsPremium::EvaluateImpl(
+    const IPricingEnvironment<T>& environment,
+    const std::string& valuation_currency) const {
+  if (IsExpired(environment)) {
+    return Currency(valuation_currency, T(0.0));
+  }
   const auto discount_factor =
       environment.GetDiscountFactor(discount_curve_name_, payment_date_);
 
@@ -101,8 +98,9 @@ T CdsPremium::EvaluateImpl(const IPricingEnvironment<T>& environment,
       survival_curve_name_, accrual_end_date_);
 
   const auto npv = GetPaymentAmount(environment) * discount_factor * 0.5 *
-                   (survival_probability_end + survival_probability_start);
+                   (survival_probability_end + survival_probability_start) *
+                   environment.GetFxToday(currency_code_, valuation_currency);
 
-  return T(npv);
+  return Currency(valuation_currency, T(npv));
 }
 }  // namespace qff_a

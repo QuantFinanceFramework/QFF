@@ -51,6 +51,12 @@
     <ClCompile Include="Target2CalendarTest.cpp">
       <Filter>Calendars</Filter>
     </ClCompile>
+    <ClCompile Include="CurrencyTest.cpp">
+      <Filter>Currencies</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedCashflowTest.cpp">
+      <Filter>Products</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="BusinessDayConventions">
@@ -82,6 +88,9 @@
     </Filter>
     <Filter Include="Pricers">
       <UniqueIdentifier>{2736c6cf-006d-4ac9-98d0-a0165a3ccf0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Currencies">
+      <UniqueIdentifier>{9782fdf6-2a5c-41f5-af0d-df9005c41d90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

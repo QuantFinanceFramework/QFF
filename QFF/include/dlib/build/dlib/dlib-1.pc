@@ -1,0 +1,8 @@
+libdir=C:/Program Files (x86)/dlib_project/lib
+includedir=C:/Program Files (x86)/dlib_project/include
+
+Name: dlib
+Description: Numerical and networking C++ library
+Version: 19.19.0
+Libs: -L${libdir} -ldlib ws2_32 winmm comctl32 gdi32 imm32 C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/intel64/mkl_intel_lp64.lib C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/intel64/mkl_core.lib C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/intel64/mkl_intel_thread.lib C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/intel64/libiomp5md.lib C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/intel64/mkl_intel_lp64.lib C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/intel64/mkl_core.lib C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/intel64/mkl_intel_thread.lib C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/intel64/libiomp5md.lib
+Cflags: -I${includedir}  -IC:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/include

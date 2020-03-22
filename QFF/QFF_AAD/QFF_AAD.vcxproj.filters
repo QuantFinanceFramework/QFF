@@ -147,6 +147,9 @@
     <ClCompile Include="Currency.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\dlib\source\dlib\all\dlib_all.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actual365.h">

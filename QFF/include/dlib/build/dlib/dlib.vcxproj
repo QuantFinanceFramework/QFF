@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CF0A5FCC-0CB2-320E-9B41-4311F1797EB1}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>dlib</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\dlib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dlib.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dlib19.19.0_debug_64bit_msvc1925</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\dlib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">dlib.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">dlib19.19.0_release_64bit_msvc1925</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\dlib\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">dlib.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">dlib19.19.0_minsizerel_64bit_msvc1925</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\dlib\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">dlib.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">dlib19.19.0_relwithdebinfo_64bit_msvc1925</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DLIB_HAVE_SSE2;DLIB_DISABLE_ASSERTS;DLIB_JPEG_SUPPORT;DLIB_USE_BLAS;DLIB_USE_LAPACK;DLIB_PNG_SUPPORT;DLIB_USE_MKL_FFT;LAPACK_FORCE_UNDERSCORE;DLIB__CMAKE_GENERATED_A_CONFIG_H_FILE;DLIB_CHECK_FOR_VERSION_MISMATCH=DLIB_VERSION_MISMATCH_CHECK__EXPECTED_VERSION_19_19_0;DLIB_JPEG_STATIC;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DLIB_HAVE_SSE2;DLIB_DISABLE_ASSERTS;DLIB_JPEG_SUPPORT;DLIB_USE_BLAS;DLIB_USE_LAPACK;DLIB_PNG_SUPPORT;DLIB_USE_MKL_FFT;LAPACK_FORCE_UNDERSCORE;DLIB__CMAKE_GENERATED_A_CONFIG_H_FILE;DLIB_CHECK_FOR_VERSION_MISMATCH=DLIB_VERSION_MISMATCH_CHECK__EXPECTED_VERSION_19_19_0;DLIB_JPEG_STATIC;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/Debug/
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy "C:/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler/libiomp5md.dll" C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/Debug/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;DLIB_DISABLE_ASSERTS;DLIB_JPEG_SUPPORT;DLIB_USE_BLAS;DLIB_USE_LAPACK;DLIB_PNG_SUPPORT;DLIB_USE_MKL_FFT;LAPACK_FORCE_UNDERSCORE;DLIB__CMAKE_GENERATED_A_CONFIG_H_FILE;DLIB_CHECK_FOR_VERSION_MISMATCH=DLIB_VERSION_MISMATCH_CHECK__EXPECTED_VERSION_19_19_0;DLIB_JPEG_STATIC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;DLIB_DISABLE_ASSERTS;DLIB_JPEG_SUPPORT;DLIB_USE_BLAS;DLIB_USE_LAPACK;DLIB_PNG_SUPPORT;DLIB_USE_MKL_FFT;LAPACK_FORCE_UNDERSCORE;DLIB__CMAKE_GENERATED_A_CONFIG_H_FILE;DLIB_CHECK_FOR_VERSION_MISMATCH=DLIB_VERSION_MISMATCH_CHECK__EXPECTED_VERSION_19_19_0;DLIB_JPEG_STATIC;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/Release/
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy "C:/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler/libiomp5md.dll" C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/Release/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;DLIB_DISABLE_ASSERTS;DLIB_JPEG_SUPPORT;DLIB_USE_BLAS;DLIB_USE_LAPACK;DLIB_PNG_SUPPORT;DLIB_USE_MKL_FFT;LAPACK_FORCE_UNDERSCORE;DLIB__CMAKE_GENERATED_A_CONFIG_H_FILE;DLIB_CHECK_FOR_VERSION_MISMATCH=DLIB_VERSION_MISMATCH_CHECK__EXPECTED_VERSION_19_19_0;DLIB_JPEG_STATIC;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;DLIB_DISABLE_ASSERTS;DLIB_JPEG_SUPPORT;DLIB_USE_BLAS;DLIB_USE_LAPACK;DLIB_PNG_SUPPORT;DLIB_USE_MKL_FFT;LAPACK_FORCE_UNDERSCORE;DLIB__CMAKE_GENERATED_A_CONFIG_H_FILE;DLIB_CHECK_FOR_VERSION_MISMATCH=DLIB_VERSION_MISMATCH_CHECK__EXPECTED_VERSION_19_19_0;DLIB_JPEG_STATIC;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/MinSizeRel/
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy "C:/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler/libiomp5md.dll" C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/MinSizeRel/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;DLIB_DISABLE_ASSERTS;DLIB_JPEG_SUPPORT;DLIB_USE_BLAS;DLIB_USE_LAPACK;DLIB_PNG_SUPPORT;DLIB_USE_MKL_FFT;LAPACK_FORCE_UNDERSCORE;DLIB__CMAKE_GENERATED_A_CONFIG_H_FILE;DLIB_CHECK_FOR_VERSION_MISMATCH=DLIB_VERSION_MISMATCH_CHECK__EXPECTED_VERSION_19_19_0;DLIB_JPEG_STATIC;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;DLIB_DISABLE_ASSERTS;DLIB_JPEG_SUPPORT;DLIB_USE_BLAS;DLIB_USE_LAPACK;DLIB_PNG_SUPPORT;DLIB_USE_MKL_FFT;LAPACK_FORCE_UNDERSCORE;DLIB__CMAKE_GENERATED_A_CONFIG_H_FILE;DLIB_CHECK_FOR_VERSION_MISMATCH=DLIB_VERSION_MISMATCH_CHECK__EXPECTED_VERSION_19_19_0;DLIB_JPEG_STATIC;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/RelWithDebInfo/
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy "C:/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler/libiomp5md.dll" C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/RelWithDebInfo/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/m046881/source/repos/QFF/QFF/include/dlib/source/dlib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/m046881/source/repos/QFF/QFF/include/dlib/source -BC:/Users/m046881/source/repos/QFF/QFF/include/dlib/build --check-stamp-file C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/dlib/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.17\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.17\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindJPEG.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.17\Templates\CPackConfig.cmake.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\check_if_neon_available.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\dlib.pc.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\dlibConfig.cmake.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_blas.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_libjpeg.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_libpng.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\release_build_by_default;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\set_compiler_specific_options.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\use_cpp_11.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\config.h.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\revision.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\dlib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/m046881/source/repos/QFF/QFF/include/dlib/source/dlib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/m046881/source/repos/QFF/QFF/include/dlib/source -BC:/Users/m046881/source/repos/QFF/QFF/include/dlib/build --check-stamp-file C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/dlib/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.17\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.17\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindJPEG.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.17\Templates\CPackConfig.cmake.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\check_if_neon_available.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\dlib.pc.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\dlibConfig.cmake.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_blas.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_libjpeg.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_libpng.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\release_build_by_default;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\set_compiler_specific_options.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\use_cpp_11.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\config.h.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\revision.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\dlib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/m046881/source/repos/QFF/QFF/include/dlib/source/dlib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/m046881/source/repos/QFF/QFF/include/dlib/source -BC:/Users/m046881/source/repos/QFF/QFF/include/dlib/build --check-stamp-file C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/dlib/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.17\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.17\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindJPEG.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.17\Templates\CPackConfig.cmake.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\check_if_neon_available.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\dlib.pc.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\dlibConfig.cmake.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_blas.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_libjpeg.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_libpng.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\release_build_by_default;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\set_compiler_specific_options.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\use_cpp_11.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\config.h.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\revision.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\dlib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/m046881/source/repos/QFF/QFF/include/dlib/source/dlib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/m046881/source/repos/QFF/QFF/include/dlib/source -BC:/Users/m046881/source/repos/QFF/QFF/include/dlib/build --check-stamp-file C:/Users/m046881/source/repos/QFF/QFF/include/dlib/build/dlib/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.17\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.17\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindJPEG.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.17\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.17\Templates\CPackConfig.cmake.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\check_if_neon_available.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\dlib.pc.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\dlibConfig.cmake.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_blas.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_libjpeg.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\find_libpng.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\release_build_by_default;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\set_compiler_specific_options.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cmake_utils\use_cpp_11.cmake;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\config.h.in;C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\revision.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\dlib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\base64\base64_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\bigint\bigint_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\bigint\bigint_kernel_2.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\bit_stream\bit_stream_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\entropy_decoder\entropy_decoder_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\entropy_decoder\entropy_decoder_kernel_2.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\entropy_encoder\entropy_encoder_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\entropy_encoder\entropy_encoder_kernel_2.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\md5\md5_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\tokenizer\tokenizer_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\unicode\unicode.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\data_io\image_dataset_metadata.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\data_io\mnist.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\global_optimization\global_function_search.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\filtering\kalman_filter.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\test_for_odr_violations.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\svm\auto.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\sockets\sockets_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\bsp\bsp.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\dir_nav\dir_nav_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\dir_nav\dir_nav_kernel_2.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\dir_nav\dir_nav_extensions.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\linker\linker_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\logger\extra_logger_headers.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\logger\logger_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\logger\logger_config_file.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\misc_api\misc_api_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\misc_api\misc_api_kernel_2.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\sockets\sockets_extensions.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\sockets\sockets_kernel_2.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\sockstreambuf\sockstreambuf.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\sockstreambuf\sockstreambuf_unbuffered.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\server\server_kernel.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\server\server_iostream.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\server\server_http.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\threads\multithreaded_object_extension.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\threads\threaded_object_extension.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\threads\threads_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\threads\threads_kernel_2.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\threads\threads_kernel_shared.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\threads\thread_pool_extension.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\threads\async.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\timer\timer.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\stack_trace.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cuda\cpu_dlib.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\cuda\tensor_tools.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\gui_widgets\fonts.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\gui_widgets\widgets.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\gui_widgets\drawable.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\gui_widgets\canvas_drawing.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\gui_widgets\style.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\gui_widgets\base_widgets.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\gui_core\gui_core_kernel_1.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\gui_core\gui_core_kernel_2.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\arm\arm_init.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\arm\filter_neon_intrinsics.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\png.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngerror.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngget.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngmem.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngpread.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngread.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngrio.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngrtran.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngrutil.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngset.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngtrans.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngwio.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngwrite.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngwtran.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libpng\pngwutil.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\adler32.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\compress.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\crc32.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\deflate.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\gzclose.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\gzlib.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\gzread.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\gzwrite.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\infback.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\inffast.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\inflate.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\inftrees.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\trees.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\uncompr.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\zlib\zutil.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\image_loader\png_loader.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\image_saver\save_png.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jaricom.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcapimin.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcapistd.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcarith.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jccoefct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jccolor.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcdctmgr.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jchuff.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcinit.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcmainct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcmarker.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcmaster.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcomapi.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcparam.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcprepct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jcsample.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdapimin.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdapistd.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdarith.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdatadst.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdatasrc.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdcoefct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdcolor.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jddctmgr.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdhuff.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdinput.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdmainct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdmarker.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdmaster.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdmerge.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdpostct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jdsample.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jerror.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jfdctflt.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jfdctfst.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jfdctint.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jidctflt.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jidctfst.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jidctint.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jmemmgr.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jmemnobs.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jquant1.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jquant2.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\external\libjpeg\jutils.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\image_loader\jpeg_loader.cpp" />
+    <ClCompile Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\source\dlib\image_saver\save_jpeg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\m046881\source\repos\QFF\QFF\include\dlib\build\ZERO_CHECK.vcxproj">
+      <Project>{168A50FC-0A4A-35D2-8C39-707ABE30A484}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

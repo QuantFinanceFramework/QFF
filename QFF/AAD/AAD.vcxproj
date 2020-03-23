@@ -19,15 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AAD.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="aad_all.h" />
     <ClInclude Include="block_list.h" />
     <ClInclude Include="expression.h" />
     <ClInclude Include="gaussians.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="tape.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aad.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

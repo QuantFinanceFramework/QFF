@@ -35,7 +35,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AAD.cpp">
+    <ClCompile Include="aad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
 #include <algorithm>
 
-#include "../AAD/aad_all.h"
+#include "../Aad/aad_all.h"
 #include "IInterpolator.h"
 #include "InterestRateCurve.h"
 

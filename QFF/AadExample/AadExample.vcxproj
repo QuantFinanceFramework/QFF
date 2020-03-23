@@ -162,12 +162,12 @@
     <ClCompile Include="AadExample.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AAD\AAD.vcxproj">
-      <Project>{918669e5-99aa-486b-902c-452e4eb260c9}</Project>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Aad\Aad.vcxproj">
+      <Project>{918669e5-99aa-486b-902c-452e4eb260c9}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

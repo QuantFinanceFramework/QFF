@@ -74,25 +74,25 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetName>pyqff</TargetName>
     <TargetExt>.pyd</TargetExt>
-    <IncludePath>..\QFF_AAD;C:\Program Files %28x86%29\Microsoft Visual Studio\Shared\Python37_64\include;$(SolutionDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Qff;C:\Program Files %28x86%29\Microsoft Visual Studio\Shared\Python37_64\include;$(SolutionDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>pyqff</TargetName>
     <TargetExt>.pyd</TargetExt>
-    <IncludePath>..\QFF_AAD;C:\Program Files %28x86%29\Microsoft Visual Studio\Shared\Python37_86\include;$(SolutionDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Qff;C:\Program Files %28x86%29\Microsoft Visual Studio\Shared\Python37_86\include;$(SolutionDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>pyqff</TargetName>
     <TargetExt>.pyd</TargetExt>
-    <IncludePath>..\QFF_AAD;C:\Program Files %28x86%29\Microsoft Visual Studio\Shared\Python37_64\include;$(SolutionDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Qff;C:\Program Files %28x86%29\Microsoft Visual Studio\Shared\Python37_64\include;$(SolutionDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>pyqff</TargetName>
     <TargetExt>.pyd</TargetExt>
-    <IncludePath>..\QFF_AAD;C:\Program Files %28x86%29\Microsoft Visual Studio\Shared\Python37_86\include;$(SolutionDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Qff;C:\Program Files %28x86%29\Microsoft Visual Studio\Shared\Python37_86\include;$(SolutionDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -190,7 +190,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QFF_AAD\QFF_AAD.vcxproj">
+    <ProjectReference Include="..\Qff\Qff.vcxproj">
       <Project>{1cf4a115-defa-4870-9ad3-b33974fa4fdd}</Project>
     </ProjectReference>
   </ItemGroup>

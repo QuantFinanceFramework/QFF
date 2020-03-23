@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 
-#include "../AAD/expression.h"
+#include "../Aad/expression.h"
 #include "DateFunctions.h"
 #include "ICreditCurve.h"
 #include "IDayCounter.h"

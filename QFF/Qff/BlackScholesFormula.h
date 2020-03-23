@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <string_view>
 
-#include "../AAD/aad_all.h"
+#include "../Aad/aad_all.h"
 #include "../include/dlib/source/dlib/optimization.h"
 
 namespace qff_a {

@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string_view>
 
-#include "../AAD/aad_all.h"
+#include "../Aad/aad_all.h"
 
 namespace qff_a {
 template <typename T>

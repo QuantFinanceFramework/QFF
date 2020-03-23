@@ -1,5 +1,5 @@
 #pragma once
-#include "../AAD/aad_all.h"
+#include "../Aad/aad_all.h"
 #include "Currency.h"
 #include "IPricingEnvironment.h"
 

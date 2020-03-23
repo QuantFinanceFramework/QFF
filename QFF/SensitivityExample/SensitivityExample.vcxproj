@@ -71,19 +71,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\QFF_AAD;$(IncludePath)</IncludePath>
+    <IncludePath>..\Qff;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\QFF_AAD;$(IncludePath)</IncludePath>
+    <IncludePath>..\Qff;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\QFF_AAD;$(IncludePath)</IncludePath>
+    <IncludePath>..\Qff;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\QFF_AAD;$(IncludePath)</IncludePath>
+    <IncludePath>..\Qff;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -146,15 +146,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QFF_AAD\QFF_AAD.vcxproj">
-      <Project>{1cf4a115-defa-4870-9ad3-b33974fa4fdd}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="SensitivityExample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Qff\Qff.vcxproj">
+      <Project>{1cf4a115-defa-4870-9ad3-b33974fa4fdd}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

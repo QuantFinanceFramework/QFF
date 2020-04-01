@@ -1,11 +1,9 @@
 #pragma once
 #include <Actual365.h>
-#include <CompoundedOvernightIndex.h>
 #include <CurveInterpolator.h>
-#include <DiscountFactorCurve.h>
 #include <Interpolation.h>
 #include <PricingEnvironment.h>
-#include <SwapScheduler.h>
+
 #include <ZeroRateCurve.h>
 
 #include <memory>

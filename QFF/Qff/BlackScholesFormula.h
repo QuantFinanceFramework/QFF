@@ -30,25 +30,25 @@ auto BlackScholesFormula(T spot, double strike, T discount_factor,
   throw std::invalid_argument("invalid option type");
 }
 
+// Use dlib::find_min_single_variable to solve the Black Scholes implied
+// volatility from European option premium.
 inline double BlackScholesImpliedVolatility(double premium, double spot,
                                             double strike,
                                             double discount_factor,
                                             double time_to_maturity,
                                             std::string_view option_type) {
-  // Initial guess
-  dlib::matrix<double, 0, 1> vol = {0.5};
-  auto search = dlib::bfgs_search_strategy();
-  auto stop = dlib::objective_delta_stop_strategy(1e-7);
+  // initial guess
+  auto guess{0.2};
 
-  auto f = [&](const dlib::matrix<double, 0, 1>& input) {
+  auto f = [&](const double vol) {
     return pow((BlackScholesFormula(spot, strike, discount_factor,
-                                    time_to_maturity, input(0), option_type) -
+                                    time_to_maturity, vol, option_type) -
                 premium),
                2);
   };
 
-  find_min_using_approximate_derivatives(search, stop, f, vol, 0.0);
+  dlib::find_min_single_variable(f, guess);
 
-  return vol(0);
+  return guess;
 }
 }  // namespace qff_a

@@ -1,4 +1,6 @@
 #pragma once
+#include <stdexcept>
+
 #include "../Aad/aad_all.h"
 #include "InterestRateCurve.h"
 
@@ -8,6 +10,14 @@ class FlatZeroRateCurve final : public InterestRateCurve<T> {
  public:
   FlatZeroRateCurve(boost::gregorian::date curve_date, std::string curve_name,
                     const IDayCounter& day_counter, T zero_rate);
+
+  void SetPillars(std::vector<boost::gregorian::date> pillar_dates) override {
+    throw std::logic_error{"Not a pillar curve"};
+  }
+
+  void SetValues(const std::vector<double>& values) override {
+    throw std::logic_error{"Not a pillar curve"};
+  }
 
   T GetDiscountFactorImpl(double time) const override;
 

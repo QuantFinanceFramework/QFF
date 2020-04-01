@@ -1,5 +1,6 @@
 #pragma once
 #include <algorithm>
+#include <boost/range/combine.hpp>
 
 #include "../Aad/aad_all.h"
 #include "IInterpolator.h"
@@ -14,6 +15,14 @@ class ZeroRateCurve final : public InterestRateCurve<T> {
                 const IInterpolator<T>& interpolator,
                 std::vector<boost::gregorian::date> pillar_dates,
                 const std::vector<T>& zero_rates);
+
+  ZeroRateCurve(boost::gregorian::date curve_date, std::string curve_name,
+                const IDayCounter& day_counter,
+                const IInterpolator<T>& interpolator);
+
+  void SetPillars(std::vector<boost::gregorian::date> pillar_dates) override;
+
+  void SetValues(const std::vector<double>& values) override;
 
   T GetDiscountFactorImpl(double time) const override;
 
@@ -46,6 +55,47 @@ ZeroRateCurve<T>::ZeroRateCurve(
                        zeros);
                  });
 }
+
+template <typename T>
+ZeroRateCurve<T>::ZeroRateCurve(boost::gregorian::date curve_date,
+                                std::string curve_name,
+                                const IDayCounter& day_counter,
+                                const IInterpolator<T>& interpolator)
+    : InterestRateCurve<T>(curve_date, curve_name, day_counter),
+      interpolator_(interpolator.Clone()) {}
+
+template <typename T>
+void ZeroRateCurve<T>::SetPillars(
+    std::vector<boost::gregorian::date> pillar_dates) {
+  pillar_dates_ = std::move(pillar_dates);
+  zero_rates_map_.clear();
+  std::transform(pillar_dates_.begin(), pillar_dates_.end(),
+                 std::inserter(zero_rates_map_, zero_rates_map_.end()),
+                 [&](auto date) {
+                   return std::make_pair(
+                       DateToTime(*InterestRateCurve<T>::day_counter_,
+                                  InterestRateCurve<T>::curve_date_, date),
+                       T(0.0));
+                 });
+}
+
+template <typename T>
+void ZeroRateCurve<T>::SetValues(const std::vector<double>& values) {
+  for (auto [m, v] : boost::combine(zero_rates_map_, values)) {
+    m.second = v.head;
+  }
+}
+
+template <>
+inline void ZeroRateCurve<aad::a_double>::SetValues(
+    const std::vector<double>& values) {
+  std::vector<aad::a_double> values_a(size(values));
+  convert_collection(values.begin(), values.end(), values_a.begin());
+  for (auto [m, v] : boost::combine(zero_rates_map_, values_a)) {
+    m.second = v.head;
+  }
+}
+
 template <typename T>
 T ZeroRateCurve<T>::GetDiscountFactorImpl(double time) const {
   return T(exp(-GetZeroRate(time) * time));

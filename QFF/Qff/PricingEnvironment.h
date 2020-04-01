@@ -6,6 +6,7 @@
 #include "ICreditCurve.h"
 #include "IInterestRateCurve.h"
 #include "IPricingEnvironment.h"
+#include "ZeroRateCurve.h"
 
 namespace qff_a {
 template <typename T>
@@ -45,6 +46,13 @@ class PricingEnvironment final : public IPricingEnvironment<T> {
 
   T GetFxToday(std::string base_currency,
                std::string quote_currency) const override;
+
+  void SetIrCurvePillars(
+      const std::string& curve_name,
+      std::vector<boost::gregorian::date> pillar_dates) override;
+
+  void SetIrCurveValues(const std::string& curve_name,
+                        const std::vector<double>& values) override;
 
  private:
   boost::gregorian::date pricing_date_;
@@ -154,5 +162,20 @@ T PricingEnvironment<T>::GetFxToday(std::string base_currency,
   }
 
   throw std::logic_error{"FX today rate cannot be found"};
+}
+
+template <typename T>
+void PricingEnvironment<T>::SetIrCurvePillars(
+    const std::string& curve_name,
+    std::vector<boost::gregorian::date> pillar_dates) {
+  auto curve_itr = rate_curves_set_.find(curve_name);
+  curve_itr->second->SetPillars(std::move(pillar_dates));
+}
+
+template <typename T>
+void PricingEnvironment<T>::SetIrCurveValues(
+    const std::string& curve_name, const std::vector<double>& values) {
+  auto curve_itr = rate_curves_set_.find(curve_name);
+  curve_itr->second->SetValues(values);
 }
 }  // namespace qff_a

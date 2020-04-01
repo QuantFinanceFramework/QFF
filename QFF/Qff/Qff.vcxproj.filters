@@ -85,6 +85,12 @@
     <Filter Include="Header Files\Products\Cashflows">
       <UniqueIdentifier>{28e30222-ef1b-4d46-af7a-ddaee228e92b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{3cb05554-bf0c-41ab-aecb-f41a10cfc16e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{aa849e33-9e5b-45f1-9175-ac2563f8e0f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actual365.cpp">
@@ -145,7 +151,7 @@
       <Filter>Source Files\Calendars</Filter>
     </ClCompile>
     <ClCompile Include="..\include\dlib\source\dlib\all\dlib_all.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="BasisSwap.h">
       <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="CalibrateIrCurves.h">
+      <Filter>Header Files\Functions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -37,5 +37,12 @@ class IPricingEnvironment {
 
   virtual std::vector<double> GetCreditAdjoints(
       const std::string& curve_name) const = 0;
+
+  virtual void SetIrCurvePillars(
+      const std::string& curve_name,
+      std::vector<boost::gregorian::date> pillar_dates) = 0;
+
+  virtual void SetIrCurveValues(const std::string& curve_name,
+                                const std::vector<double>& values) = 0;
 };
 }  // namespace qff_a

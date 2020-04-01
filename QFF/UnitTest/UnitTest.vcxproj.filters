@@ -57,6 +57,12 @@
     <ClCompile Include="FixedCashflowTest.cpp">
       <Filter>Products</Filter>
     </ClCompile>
+    <ClCompile Include="ZeroRateCurveTest.cpp">
+      <Filter>PricingEnvironment\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackScholesFormulaTest.cpp">
+      <Filter>Functions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="BusinessDayConventions">

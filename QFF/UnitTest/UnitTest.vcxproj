@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="AveragedOvernightIndexTest.cpp" />
+    <ClCompile Include="BlackScholesFormulaTest.cpp" />
     <ClCompile Include="BusinessDayConventionTest.cpp" />
     <ClCompile Include="CompositeCalendarTest.cpp" />
     <ClCompile Include="CompoundedOvernightIndexTest.cpp" />
@@ -67,6 +68,7 @@
     <ClCompile Include="SydneyCalendarTest.cpp" />
     <ClCompile Include="Target2CalendarTest.cpp" />
     <ClCompile Include="UsBondMarketCalendarTest.cpp" />
+    <ClCompile Include="ZeroRateCurveTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

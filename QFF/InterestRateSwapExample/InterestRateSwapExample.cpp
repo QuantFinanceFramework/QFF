@@ -1,4 +1,5 @@
 #include <Actual360.h>
+#include <AveragedOvernightIndex.h>
 #include <CalculateIrResult.h>
 #include <CompositeCalendar.h>
 #include <CompoundedOvernightIndex.h>
@@ -218,6 +219,59 @@ int main() {
 
   std::cout << "SOFR FF Basis Zero Deltas : " << '\n';
   sofr_ff_basis_result.PrintDeltas();
+  std::cout << '\n';
+
+  AveragedOvernightIndex ff_averaged_index{"USD",
+                                           "USD_FF",
+                                           Actual360(),
+                                           Period(0, TimeUnit::b),
+                                           Period(1, TimeUnit::b),
+                                           NewYorkFedCalendar(),
+                                           ModifiedFollowing(),
+                                           Period(-2, TimeUnit::b),
+                                           false};
+
+  auto ff_libor_basis = SwapScheduler::MakeBasisSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), "USD_FF",
+      Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(0, TimeUnit::b), Actual360(), ff_averaged_index, 1.0, 0.002, true,
+      date(2020, 2, 4), 0.0, Frequency::Quarterly, NewYorkFedCalendar(),
+      ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), ibor_index, 1.0,
+      true, date(2020, 2, 4), 0.0, false);
+
+  auto ff_libor_basis_par = SwapScheduler::MakeBasisSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), "USD_FF",
+      Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(0, TimeUnit::b), Actual360(), ff_averaged_index, 1.0,
+      ff_libor_basis->GetParRate(*environment).value(), true, date(2020, 2, 4),
+      0.0, Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(0, TimeUnit::b), Actual360(), ibor_index, 1.0, true,
+      date(2020, 2, 4), 0.0, false);
+
+  auto ff_libor_basis_result =
+      CalculateIrResult(*ff_libor_basis, *environment, "USD");
+  auto ff_libor_basis_par_result =
+      CalculateIrResult(*ff_libor_basis_par, *environment, "USD");
+
+  std::cout << "FF Swap NPV in " << ff_libor_basis_result.GetResultCurrency()
+            << " = " << ff_libor_basis_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "Par FF Swap NPV in "
+            << ff_libor_basis_par_result.GetResultCurrency() << " = "
+            << ff_libor_basis_par_result.GetNpv() << '\n';
+  std::cout << '\n';
+
+  std::cout << "3Y FF Swap Par-rate = "
+            << ff_libor_basis->GetParRate(*environment).value() << '\n';
+  std::cout << '\n';
+
+  std::cout << "BPV = "
+            << ff_libor_basis->GetBasisPointValue(*environment).value() << '\n';
+  std::cout << '\n';
+
+  std::cout << "FF Swap Zero Deltas : " << '\n';
+  ff_libor_basis_result.PrintDeltas();
   std::cout << '\n';
 
   return 0;

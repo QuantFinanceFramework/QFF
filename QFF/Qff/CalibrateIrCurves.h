@@ -1,5 +1,6 @@
 #pragma once
 #include <boost/range/combine.hpp>
+
 #include "../include/dlib/source/dlib/matrix.h"
 #include "../include/dlib/source/dlib/optimization.h"
 #include "IProduct.h"
@@ -49,8 +50,8 @@ void CalibrateIrCurves(
     return error;
   };
   // BOBYQA (Bound Optimization BY Quadratic Approximation)
-  dlib::find_min_bobyqa(f, zeros, 9, dlib::uniform_matrix<double>(n, 1, -0.2),
-                        dlib::uniform_matrix<double>(n, 1, 0.2), 0.01, 1e-10,
-                        1000);
+  dlib::find_min_bobyqa(
+      f, zeros, n * 2, dlib::uniform_matrix<double>(n, 1, -0.05),
+      dlib::uniform_matrix<double>(n, 1, 0.2), 0.1, 1e-13, n * 100);
 }
 }  // namespace qff_a

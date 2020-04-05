@@ -1,5 +1,6 @@
 #include <Actual360.h>
 #include <Actual365.h>
+#include <AveragedOvernightIndex.h>
 #include <CalibrateIrCurves.h>
 #include <CompositeCalendar.h>
 #include <CompoundedOvernightIndex.h>
@@ -12,6 +13,7 @@
 #include <Period.h>
 #include <SwapScheduler.h>
 #include <Thirty360Isda.h>
+
 #include <iostream>
 
 #include "boost/date_time/gregorian/gregorian.hpp"
@@ -22,6 +24,8 @@ using boost::gregorian::date;
 
 int main() {
   try {
+    std::cout.precision(15);
+  	
     const date pricing_date{2020, 1, 31};
 
     auto interpolator = CurveInterpolator<double>{
@@ -59,6 +63,16 @@ int main() {
                                                  NewYorkFedCalendar(),
                                                  ModifiedFollowing()};
 
+    AveragedOvernightIndex ff_averaged_index{"USD",
+                                             "USD_FF",
+                                             Actual360(),
+                                             Period(0, TimeUnit::b),
+                                             Period(1, TimeUnit::b),
+                                             NewYorkFedCalendar(),
+                                             ModifiedFollowing(),
+                                             Period(-2, TimeUnit::b),
+                                             false};
+
     IborIndex libor_3m_index{"USD",
                              "USD_LIBOR_3M",
                              Actual360(),
@@ -67,58 +81,60 @@ int main() {
                              ModifiedFollowing(),
                              Period(3, TimeUnit::m)};
 
+    auto notional = 1e7;
+  	
     vector<shared_ptr<IProduct>> instruments{
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2021, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2021, 2, 3), false,
             "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
             ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.02,
             Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
             Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
             true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2022, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2022, 2, 3), false,
             "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
             ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.022,
             Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
             Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
             true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2023, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2023, 2, 3), false,
             "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
             ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.023,
             Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
             Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
             true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2025, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2025, 2, 3), false,
             "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
             ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.025,
             Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
             Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
             true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2030, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2030, 2, 3), false,
             "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
             ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.027,
             Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
             Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
             true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2035, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2035, 2, 3), false,
             "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
             ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.028,
             Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
             Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
             true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2040, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2040, 2, 3), false,
             "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
             ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.030,
             Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
             Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
             true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2021, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2021, 2, 3), false,
             "USD_FF", Frequency::Semiannually,
             CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
             ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.020,
@@ -127,7 +143,7 @@ int main() {
             ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(),
             libor_3m_index, 1, 0.0, true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2023, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2023, 2, 3), false,
             "USD_FF", Frequency::Semiannually,
             CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
             ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.022,
@@ -136,7 +152,7 @@ int main() {
             ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(),
             libor_3m_index, 1, 0.0, true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2030, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2030, 2, 3), false,
             "USD_FF", Frequency::Semiannually,
             CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
             ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.035,
@@ -145,7 +161,7 @@ int main() {
             ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(),
             libor_3m_index, 1, 0.0, true, date(2020, 2, 3), 0.0),
         SwapScheduler::MakeInterestRateSwap(
-            "USD", 10000000.0, date(2020, 2, 3), date(2040, 2, 3), false,
+                "USD", notional, date(2020, 2, 3), date(2040, 2, 3), false,
             "USD_FF", Frequency::Semiannually,
             CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
             ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.045,
@@ -162,7 +178,7 @@ int main() {
                          date(2040, 2, 3), date(2021, 2, 3), date(2023, 2, 3),
                          date(2030, 2, 3), date(2040, 2, 3)};
     vector<double> initial_guesses(size(pillars));
-    fill(initial_guesses.begin(), initial_guesses.end(), 0.02);
+    fill(initial_guesses.begin(), initial_guesses.end(), 0.03);
 
     CalibrateIrCurves(*environment, curve_names, pillar_numbers, instruments,
                       pillars, initial_guesses);

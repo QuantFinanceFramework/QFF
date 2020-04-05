@@ -29,6 +29,8 @@ Period FrequencyToPeriod(Frequency frequency) {
       return Period{2, TimeUnit::w};
     case Frequency::Monthly:
       return Period{1, TimeUnit::m};
+    case Frequency::Bimonthly:
+      return Period{2, TimeUnit::m};
     case Frequency::Quarterly:
       return Period{3, TimeUnit::m};
     case Frequency::Semiannually:
@@ -41,15 +43,15 @@ Period FrequencyToPeriod(Frequency frequency) {
 }
 
 std::unique_ptr<GenericSwap> SwapScheduler::MakeCreditDefaultSwap(
-    const std::string& currency_code, double notional,
-    boost::gregorian::date effective_date, boost::gregorian::date maturity_date,
-    bool is_protection_buyer, const std::string& discount_curve_name,
+    const std::string& currency_code, double notional, date effective_date,
+    date maturity_date, bool is_protection_buyer,
+    const std::string& discount_curve_name,
     const std::string& survival_curve_name, Frequency premium_frequency,
     const ICalendar& premium_leg_calendar,
     const IBusinessDayConvention& premium_leg_convention,
     Period premium_payment_lag, const IDayCounter& premium_day_counter,
     double cds_spread, double recovery_rate, bool is_front_stub,
-    boost::gregorian::date stub_date) {
+    date stub_date) {
   auto premium_leg = MakePremiumLeg(
       currency_code, notional, effective_date, maturity_date,
       discount_curve_name, survival_curve_name, premium_frequency,
@@ -63,9 +65,9 @@ std::unique_ptr<GenericSwap> SwapScheduler::MakeCreditDefaultSwap(
 
   if (is_protection_buyer)
     return std::make_unique<GenericSwap>(std::move(protection_leg),
-                                  std::move(premium_leg));
+                                         std::move(premium_leg));
   return std::make_unique<GenericSwap>(std::move(premium_leg),
-                                std::move(protection_leg));
+                                       std::move(protection_leg));
 }
 
 unique_ptr<InterestRateSwap> SwapScheduler::MakeInterestRateSwap(
@@ -102,22 +104,18 @@ unique_ptr<InterestRateSwap> SwapScheduler::MakeInterestRateSwap(
 }
 
 unique_ptr<BasisSwap> SwapScheduler::MakeBasisSwap(
-    const std::string& currency_code, double notional,
-    boost::gregorian::date settlement_date,
-    boost::gregorian::date maturity_date,
-    const std::string& discount_curve_name, Frequency m_leg_frequency,
-    const ICalendar& m_leg_payment_calendar,
+    const std::string& currency_code, double notional, date settlement_date,
+    date maturity_date, const std::string& discount_curve_name,
+    Frequency m_leg_frequency, const ICalendar& m_leg_payment_calendar,
     const IBusinessDayConvention& m_leg_business_day_convention,
     Period m_leg_payment_lag, const IDayCounter& m_leg_day_counter,
     const IIndex& m_leg_index, double m_leg_leverage, double margin,
-    bool m_leg_is_front_stub, boost::gregorian::date m_leg_stub_date,
-    double m_leg_stub_rate, Frequency f_leg_frequency,
-    const ICalendar& f_leg_payment_calendar,
+    bool m_leg_is_front_stub, date m_leg_stub_date, double m_leg_stub_rate,
+    Frequency f_leg_frequency, const ICalendar& f_leg_payment_calendar,
     const IBusinessDayConvention& f_leg_business_day_convention,
     Period f_leg_payment_lag, const IDayCounter& f_leg_day_counter,
     const IIndex& f_leg_index, double f_leg_leverage, bool f_leg_is_front_stub,
-    boost::gregorian::date f_leg_stub_date, double f_leg_stub_rate,
-    bool is_paying_margin) {
+    date f_leg_stub_date, double f_leg_stub_rate, bool is_paying_margin) {
   auto leg_notional = notional;
 
   if (is_paying_margin) {
@@ -142,13 +140,12 @@ unique_ptr<BasisSwap> SwapScheduler::MakeBasisSwap(
 }
 
 std::unique_ptr<GenericLeg> SwapScheduler::MakePremiumLeg(
-    const std::string& currency_code, double notional,
-    boost::gregorian::date start_date, boost::gregorian::date maturity_date,
-    const std::string& discount_curve_name,
+    const std::string& currency_code, double notional, date start_date,
+    date maturity_date, const std::string& discount_curve_name,
     const std::string& survival_curve_name, Frequency frequency,
     const ICalendar& payment_calendar, const IBusinessDayConvention& convention,
     Period payment_lag, const IDayCounter& day_counter, double cds_spread,
-    bool is_front_stub, boost::gregorian::date stub_date) {
+    bool is_front_stub, date stub_date) {
   auto schedule =
       MakeSchedule(start_date, maturity_date, frequency, payment_calendar,
                    convention, is_front_stub, stub_date);

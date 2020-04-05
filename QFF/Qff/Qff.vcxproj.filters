@@ -236,9 +236,6 @@
     <ClInclude Include="CompoundedOvernightIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
-    <ClInclude Include="SwapScheduler.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="AveragedOvernightIndex.h">
       <Filter>Header Files\Indices</Filter>
     </ClInclude>
@@ -322,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="CalibrateIrCurves.h">
       <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapScheduler.h">
+      <Filter>Header Files\Products</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

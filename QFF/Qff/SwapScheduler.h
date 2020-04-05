@@ -5,14 +5,14 @@
 #include "BasisSwap.h"
 #include "FixedLeg.h"
 #include "FloatingLeg.h"
+#include "GenericLeg.h"
+#include "GenericSwap.h"
 #include "IBusinessDayConvention.h"
 #include "ICalendar.h"
 #include "IDayCounter.h"
 #include "IIndex.h"
 #include "InterestRateSwap.h"
-#include "GenericLeg.h"
 #include "Period.h"
-#include "GenericSwap.h"
 #include "boost/date_time/gregorian/gregorian.hpp"
 
 namespace qff_a {
@@ -22,6 +22,7 @@ enum class Frequency {
   Weekly,
   Fortnightly,
   Monthly,
+  Bimonthly,
   Quarterly,
   Semiannually,
   Annually

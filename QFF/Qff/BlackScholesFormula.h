@@ -12,7 +12,7 @@ namespace qff_a {
 template <typename T>
 auto BlackScholesFormula(T spot, double strike, T discount_factor,
                          double time_to_maturity, T volatility,
-                         std::string_view option_type) {
+                         const std::string_view option_type) {
   const auto d1 = (log(spot / strike) +
                    (-log(discount_factor) +
                     0.5 * volatility * volatility * time_to_maturity)) /

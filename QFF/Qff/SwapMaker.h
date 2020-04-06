@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
+#include <optional>
 #include <string>
+#include <string_view>
 
 #include "BasisSwap.h"
 #include "FixedLeg.h"
@@ -30,7 +32,7 @@ enum class Frequency {
 
 Period FrequencyToPeriod(Frequency frequency);
 
-class SwapScheduler {
+class SwapMaker {
  public:
   static std::unique_ptr<GenericSwap> MakeCreditDefaultSwap(
       const std::string& currency_code, double notional,
@@ -41,8 +43,8 @@ class SwapScheduler {
       const ICalendar& premium_leg_calendar,
       const IBusinessDayConvention& premium_leg_convention,
       Period premium_payment_lag, const IDayCounter& premium_day_counter,
-      double cds_spread, double recovery_rate, bool is_front_stub,
-      boost::gregorian::date stub_date);
+      double cds_spread, double recovery_rate, bool is_front_stub = true,
+      std::optional<boost::gregorian::date> stub_date = std::nullopt);
 
   static std::unique_ptr<InterestRateSwap> MakeInterestRateSwap(
       const std::string& currency_code, double notional,
@@ -56,26 +58,25 @@ class SwapScheduler {
       const ICalendar& floating_payment_calendar,
       const IBusinessDayConvention& floating_business_day_convention,
       Period floating_payment_lag, const IDayCounter& floating_day_counter,
-      const IIndex& index, double leverage, double margin, bool is_front_stub,
-      boost::gregorian::date stub_date, double stub_rate);
+      const IIndex& index, double leverage, double margin,
+      bool is_front_stub = true,
+      std::optional<boost::gregorian::date> stub_date = std::nullopt);
 
   static std::unique_ptr<BasisSwap> MakeBasisSwap(
       const std::string& currency_code, double notional,
       boost::gregorian::date settlement_date,
-      boost::gregorian::date maturity_date,
+      boost::gregorian::date maturity_date, bool is_paying_margin,
       const std::string& discount_curve_name, Frequency m_leg_frequency,
       const ICalendar& m_leg_payment_calendar,
       const IBusinessDayConvention& m_leg_business_day_convention,
       Period m_leg_payment_lag, const IDayCounter& m_leg_day_counter,
       const IIndex& m_leg_index, double m_leg_leverage, double margin,
-      bool m_leg_is_front_stub, boost::gregorian::date m_leg_stub_date,
-      double m_leg_stub_rate, Frequency f_leg_frequency,
-      const ICalendar& f_leg_payment_calendar,
+      Frequency f_leg_frequency, const ICalendar& f_leg_payment_calendar,
       const IBusinessDayConvention& f_leg_business_day_convention,
       Period f_leg_payment_lag, const IDayCounter& f_leg_day_counter,
       const IIndex& f_leg_index, double f_leg_leverage,
-      bool f_leg_is_front_stub, boost::gregorian::date f_leg_stub_date,
-      double f_leg_stub_rate, bool is_paying_margin);
+      bool is_front_stub = true,
+      std::optional<boost::gregorian::date> stub_date = std::nullopt);
 
   static std::unique_ptr<GenericLeg> MakePremiumLeg(
       const std::string& currency_code, double notional,
@@ -84,8 +85,9 @@ class SwapScheduler {
       const std::string& survival_curve_name, Frequency frequency,
       const ICalendar& payment_calendar,
       const IBusinessDayConvention& convention, Period payment_lag,
-      const IDayCounter& day_counter, double cds_spread, bool is_front_stub,
-      boost::gregorian::date stub_date);
+      const IDayCounter& day_counter, double cds_spread,
+      bool is_front_stub = true,
+      std::optional<boost::gregorian::date> stub_date = std::nullopt);
 
   static std::unique_ptr<FixedLeg> MakeFixedLeg(
       const std::string& currency_code, double notional,
@@ -94,8 +96,8 @@ class SwapScheduler {
       const std::string& discount_curve_name, Frequency frequency,
       const ICalendar& payment_calendar,
       const IBusinessDayConvention& convention, Period payment_lag,
-      const IDayCounter& day_counter, double strike, bool is_front_stub,
-      boost::gregorian::date stub_date);
+      const IDayCounter& day_counter, double strike, bool is_front_stub = true,
+      std::optional<boost::gregorian::date> stub_date = std::nullopt);
 
   static std::unique_ptr<FloatingLeg> MakeFloatingLeg(
       const std::string& currency_code, double notional,
@@ -105,17 +107,18 @@ class SwapScheduler {
       const ICalendar& payment_calendar,
       const IBusinessDayConvention& convention, Period payment_lag,
       const IDayCounter& day_counter, const IIndex& index, double leverage,
-      double margin, bool is_front_stub, boost::gregorian::date stub_date);
+      double margin, bool is_front_stub = true,
+      std::optional<boost::gregorian::date> stub_date = std::nullopt);
 
   static std::vector<boost::gregorian::date> MakeSchedule(
       boost::gregorian::date start_date, boost::gregorian::date maturity_date,
       Frequency frequency, const ICalendar& calendar,
-      const IBusinessDayConvention& convention, bool is_front_stub,
-      boost::gregorian::date stub_date);
+      const IBusinessDayConvention& convention, bool is_front_stub = true,
+      std::optional<boost::gregorian::date> stub_date = std::nullopt);
 
   static std::vector<boost::gregorian::date> MakeUnadjustedSchedule(
       boost::gregorian::date start_date, boost::gregorian::date maturity_date,
-      Frequency frequency, const ICalendar& calendar, bool is_front_stub,
-      boost::gregorian::date stub_date);
+      Frequency frequency, const ICalendar& calendar, bool is_front_stub = true,
+      std::optional<boost::gregorian::date> stub_date = std::nullopt);
 };
 }  // namespace qff_a

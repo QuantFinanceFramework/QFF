@@ -1,22 +1,17 @@
-#include <Actual360.h>
 #include <Actual365.h>
 #include <AveragedOvernightIndex.h>
 #include <CalibrateIrCurves.h>
-#include <CompositeCalendar.h>
 #include <CompoundedOvernightIndex.h>
 #include <CurveInterpolator.h>
-#include <IborIndex.h>
 #include <Interpolation.h>
-#include <LondonCalendar.h>
-#include <ModifiedFollowing.h>
 #include <NewYorkFedCalendar.h>
 #include <Period.h>
-#include <SwapScheduler.h>
-#include <Thirty360Isda.h>
+#include <ProductGenerator.h>
 
 #include <iostream>
 
 #include "boost/date_time/gregorian/gregorian.hpp"
+#include "boost/range/combine.hpp"
 
 using namespace std;
 using namespace qff_a;
@@ -25,8 +20,10 @@ using boost::gregorian::date;
 int main() {
   try {
     std::cout.precision(15);
-  	
+
     const date pricing_date{2020, 1, 31};
+    const date settlement_date{
+        ShiftDate(pricing_date, Period{2, TimeUnit::b}, NewYorkFedCalendar())};
 
     auto interpolator = CurveInterpolator<double>{
         &ProductLinearInterpol<double>, &ProductLinearExtrapol<double>};
@@ -55,152 +52,102 @@ int main() {
         pricing_date, std::move(curve_set), std::move(past_fixing_set),
         std::move(credit_curve_set), std::move(fx_today_map));
 
-    CompoundedOvernightIndex ff_compounded_index{"USD",
-                                                 "USD_FF",
-                                                 Actual360(),
-                                                 Period(0, TimeUnit::b),
-                                                 Period(1, TimeUnit::b),
-                                                 NewYorkFedCalendar(),
-                                                 ModifiedFollowing()};
-
-    AveragedOvernightIndex ff_averaged_index{"USD",
-                                             "USD_FF",
-                                             Actual360(),
-                                             Period(0, TimeUnit::b),
-                                             Period(1, TimeUnit::b),
-                                             NewYorkFedCalendar(),
-                                             ModifiedFollowing(),
-                                             Period(-2, TimeUnit::b),
-                                             false};
-
-    IborIndex libor_3m_index{"USD",
-                             "USD_LIBOR_3M",
-                             Actual360(),
-                             Period(-2, TimeUnit::b),
-                             LondonCalendar(),
-                             ModifiedFollowing(),
-                             Period(3, TimeUnit::m)};
-
     auto notional = 1e7;
-  	
-    vector<shared_ptr<IProduct>> instruments{
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2021, 2, 3), false,
-            "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
-            ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.02,
-            Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
-            Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
-            true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2022, 2, 3), false,
-            "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
-            ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.022,
-            Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
-            Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
-            true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2023, 2, 3), false,
-            "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
-            ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.023,
-            Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
-            Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
-            true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2025, 2, 3), false,
-            "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
-            ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.025,
-            Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
-            Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
-            true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2030, 2, 3), false,
-            "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
-            ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.027,
-            Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
-            Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
-            true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2035, 2, 3), false,
-            "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
-            ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.028,
-            Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
-            Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
-            true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2040, 2, 3), false,
-            "USD_FF", Frequency::Annually, NewYorkFedCalendar(),
-            ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(), 0.030,
-            Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
-            Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0,
-            true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2021, 2, 3), false,
-            "USD_FF", Frequency::Semiannually,
-            CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
-            ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.020,
-            Frequency::Quarterly,
-            CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
-            ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(),
-            libor_3m_index, 1, 0.0, true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2023, 2, 3), false,
-            "USD_FF", Frequency::Semiannually,
-            CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
-            ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.022,
-            Frequency::Quarterly,
-            CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
-            ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(),
-            libor_3m_index, 1, 0.0, true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2030, 2, 3), false,
-            "USD_FF", Frequency::Semiannually,
-            CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
-            ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.035,
-            Frequency::Quarterly,
-            CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
-            ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(),
-            libor_3m_index, 1, 0.0, true, date(2020, 2, 3), 0.0),
-        SwapScheduler::MakeInterestRateSwap(
-                "USD", notional, date(2020, 2, 3), date(2040, 2, 3), false,
-            "USD_FF", Frequency::Semiannually,
-            CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
-            ModifiedFollowing(), Period(0, TimeUnit::b), Thirty360Isda(), 0.045,
-            Frequency::Quarterly,
-            CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
-            ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(),
-            libor_3m_index, 1, 0.0, true, date(2020, 2, 3), 0.0)};
 
     vector<string> curve_names{"USD_FF", "USD_LIBOR_3M"};
-    vector<size_t> pillar_numbers{7, 4};
 
-    vector<date> pillars{date(2021, 2, 3), date(2022, 2, 3), date(2023, 2, 3),
-                         date(2025, 2, 3), date(2030, 2, 3), date(2035, 8, 3),
-                         date(2040, 2, 3), date(2021, 2, 3), date(2023, 2, 3),
-                         date(2030, 2, 3), date(2040, 2, 3)};
+    vector<date> ff_pillars{ShiftDate(settlement_date, Period(1, TimeUnit::m),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(2, TimeUnit::m),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(3, TimeUnit::m),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(6, TimeUnit::m),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(9, TimeUnit::m),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(1, TimeUnit::y),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(5, TimeUnit::y),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(10, TimeUnit::y),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(20, TimeUnit::y),
+                                      NewYorkFedCalendar()),
+                            ShiftDate(settlement_date, Period(30, TimeUnit::y),
+                                      NewYorkFedCalendar())};
+
+    vector<string> ff_generators{"USSO", "USSO", "USSO", "USSO", "USSO",
+                                 "USBG", "USBG", "USBG", "USBG", "USBG"};
+
+    vector<double> ff_par_rates{0.01592,  0.01593,  0.01594,  0.01586,
+                                0.01578,  0.001566, 0.001547, 0.001532,
+                                0.001475, 0.001414};
+
+    vector<shared_ptr<IProduct>> ff_instruments(size(ff_pillars));
+
+    for (auto zipped : boost::combine(ff_instruments, ff_generators, ff_pillars,
+                                      ff_par_rates)) {
+      zipped.get<0>() = ProductGenerator::MakeProduct(
+          zipped.get<1>(), notional, settlement_date, zipped.get<2>(),
+          zipped.get<3>());
+    }
+
+    vector<date> libor_3m_pillars{
+        date(2024, 2, 6), date(2025, 2, 4), date(2026, 2, 4), date(2027, 2, 4),
+        date(2028, 2, 4), date(2029, 2, 6), date(2030, 2, 5), date(2032, 2, 4),
+        date(2035, 2, 6), date(2040, 2, 6), date(2045, 2, 6), date(2050, 2, 4),
+        date(2060, 2, 4)};
+
+    vector<string> libor_3m_generators{
+        "USSWAP", "USSWAP", "USSWAP", "USSWAP", "USSWAP", "USSWAP", "USSWAP",
+        "USSWAP", "USSWAP", "USSWAP", "USSWAP", "USSWAP", "USSWAP"};
+
+    vector<double> libor_3m_par_rates{
+        0.0140538741, 0.014121,  0.0143107517, 0.0145215,    0.014801432,
+        0.0150828333, 0.0153635, 0.0158885,    0.0164680902, 0.0170601804,
+        0.0172779098, 0.0173075, 0.0173075};
+
+    vector<shared_ptr<IProduct>> libor_3m_instruments(size(libor_3m_pillars));
+
+    for (auto zipped : boost::combine(libor_3m_instruments, libor_3m_generators,
+                                      libor_3m_pillars, libor_3m_par_rates)) {
+      zipped.get<0>() = ProductGenerator::MakeProduct(
+          zipped.get<1>(), notional, settlement_date, zipped.get<2>(),
+          zipped.get<3>());
+    }
+
+    vector<date> pillars;
+    std::copy(ff_pillars.begin(), ff_pillars.end(),
+              std::back_inserter(pillars));
+    std::copy(libor_3m_pillars.begin(), libor_3m_pillars.end(),
+              std::back_inserter(pillars));
+
+    vector<size_t> pillar_numbers{size(ff_pillars), size(libor_3m_pillars)};
+
+    vector<shared_ptr<IProduct>> instruments;
+    std::move(ff_instruments.begin(), ff_instruments.end(),
+              std::back_inserter(instruments));
+    std::move(libor_3m_instruments.begin(), libor_3m_instruments.end(),
+              std::back_inserter(instruments));
+
     vector<double> initial_guesses(size(pillars));
-    fill(initial_guesses.begin(), initial_guesses.end(), 0.03);
+    fill(initial_guesses.begin(), initial_guesses.end(), 0.02);
 
     CalibrateIrCurves(*environment, curve_names, pillar_numbers, instruments,
-                      pillars, initial_guesses);
+                      pillars, initial_guesses, "BFGS");
 
-    cout << "Fed Funds Curve:" << '\n';
-    cout << environment->GetDiscountFactor("USD_FF", date(2020, 8, 3)) << '\n';
-    cout << environment->GetDiscountFactor("USD_FF", date(2021, 2, 3)) << '\n';
-    cout << environment->GetDiscountFactor("USD_FF", date(2022, 2, 3)) << '\n';
-    cout << environment->GetDiscountFactor("USD_FF", date(2023, 2, 3)) << '\n';
-    cout << environment->GetDiscountFactor("USD_FF", date(2025, 2, 3)) << '\n';
-    cout << environment->GetDiscountFactor("USD_FF", date(2030, 2, 3)) << '\n';
-    cout << environment->GetDiscountFactor("USD_FF", date(2040, 2, 3)) << '\n';
+    cout << "USD_FF DF" << '\n';
+    for (const auto& p : ff_pillars) {
+      cout << environment->GetDiscountFactor("USD_FF", p) << '\n';
+    }
+    cout << '\n';
 
-    cout << "LIBOR 3m Curve:" << '\n';
-    cout << environment->GetDiscountFactor("USD_LIBOR_3M", date(2021, 2, 3))
-         << '\n';
-    cout << environment->GetDiscountFactor("USD_LIBOR_3M", date(2023, 2, 3))
-         << '\n';
-    cout << environment->GetDiscountFactor("USD_LIBOR_3M", date(2030, 2, 3))
-         << '\n';
-    cout << environment->GetDiscountFactor("USD_LIBOR_3M", date(2040, 2, 3))
-         << '\n';
+    cout << "USD_LIBOR_3M DF" << '\n';
+    for (const auto& p : libor_3m_pillars) {
+      cout << environment->GetDiscountFactor("USD_LIBOR_3M", p) << '\n';
+    }
+    cout << '\n';
 
     cout << "Calibration Instrument NPV:" << '\n';
     for (const auto& i : instruments) {

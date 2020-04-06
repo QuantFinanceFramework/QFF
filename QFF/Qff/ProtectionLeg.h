@@ -4,7 +4,7 @@
 
 #include "BaseCalendar.h"
 #include "IProduct.h"
-#include "SwapScheduler.h"
+#include "SwapMaker.h"
 
 namespace qff_a {
 class ProtectionLeg final : public IProduct {
@@ -65,7 +65,7 @@ Currency<T> ProtectionLeg::EvaluateImpl(
     const IPricingEnvironment<T>& environment,
     const std::string& valuation_currency) const {
   if (estimation_schedule_.empty()) {
-    estimation_schedule_ = SwapScheduler::MakeUnadjustedSchedule(
+    estimation_schedule_ = SwapMaker::MakeUnadjustedSchedule(
         start_date_, end_date_, estimation_frequency_, BaseCalendar(), true,
         start_date_);
   }

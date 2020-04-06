@@ -1,8 +1,10 @@
-#include "SwapScheduler.h"
+#include "SwapMaker.h"
 
 #include <algorithm>
+#include <stdexcept>
 #include <vector>
 
+#include "AveragedOvernightIndex.h"
 #include "CdsPremium.h"
 #include "DateFunctions.h"
 #include "FixedCoupon.h"
@@ -42,7 +44,7 @@ Period FrequencyToPeriod(Frequency frequency) {
   }
 }
 
-std::unique_ptr<GenericSwap> SwapScheduler::MakeCreditDefaultSwap(
+std::unique_ptr<GenericSwap> SwapMaker::MakeCreditDefaultSwap(
     const std::string& currency_code, double notional, date effective_date,
     date maturity_date, bool is_protection_buyer,
     const std::string& discount_curve_name,
@@ -51,7 +53,7 @@ std::unique_ptr<GenericSwap> SwapScheduler::MakeCreditDefaultSwap(
     const IBusinessDayConvention& premium_leg_convention,
     Period premium_payment_lag, const IDayCounter& premium_day_counter,
     double cds_spread, double recovery_rate, bool is_front_stub,
-    date stub_date) {
+    std::optional<date> stub_date) {
   auto premium_leg = MakePremiumLeg(
       currency_code, notional, effective_date, maturity_date,
       discount_curve_name, survival_curve_name, premium_frequency,
@@ -70,7 +72,7 @@ std::unique_ptr<GenericSwap> SwapScheduler::MakeCreditDefaultSwap(
                                        std::move(protection_leg));
 }
 
-unique_ptr<InterestRateSwap> SwapScheduler::MakeInterestRateSwap(
+unique_ptr<InterestRateSwap> SwapMaker::MakeInterestRateSwap(
     const string& currency_code, double notional, date settlement_date,
     date maturity_date, bool is_payer, const string& discount_curve_name,
     Frequency fixed_frequency, const ICalendar& fixed_payment_calendar,
@@ -81,7 +83,7 @@ unique_ptr<InterestRateSwap> SwapScheduler::MakeInterestRateSwap(
     const IBusinessDayConvention& floating_business_day_convention,
     Period floating_payment_lag, const IDayCounter& floating_day_counter,
     const IIndex& index, double leverage, double margin, bool is_front_stub,
-    date stub_date, double stub_rate) {
+    std::optional<date> stub_date) {
   auto leg_notional = notional;
 
   if (is_payer) {
@@ -103,19 +105,19 @@ unique_ptr<InterestRateSwap> SwapScheduler::MakeInterestRateSwap(
                                             std::move(floating));
 }
 
-unique_ptr<BasisSwap> SwapScheduler::MakeBasisSwap(
+std::unique_ptr<BasisSwap> SwapMaker::MakeBasisSwap(
     const std::string& currency_code, double notional, date settlement_date,
-    date maturity_date, const std::string& discount_curve_name,
-    Frequency m_leg_frequency, const ICalendar& m_leg_payment_calendar,
+    date maturity_date, bool is_paying_margin,
+    const std::string& discount_curve_name, Frequency m_leg_frequency,
+    const ICalendar& m_leg_payment_calendar,
     const IBusinessDayConvention& m_leg_business_day_convention,
     Period m_leg_payment_lag, const IDayCounter& m_leg_day_counter,
     const IIndex& m_leg_index, double m_leg_leverage, double margin,
-    bool m_leg_is_front_stub, date m_leg_stub_date, double m_leg_stub_rate,
     Frequency f_leg_frequency, const ICalendar& f_leg_payment_calendar,
     const IBusinessDayConvention& f_leg_business_day_convention,
     Period f_leg_payment_lag, const IDayCounter& f_leg_day_counter,
-    const IIndex& f_leg_index, double f_leg_leverage, bool f_leg_is_front_stub,
-    date f_leg_stub_date, double f_leg_stub_rate, bool is_paying_margin) {
+    const IIndex& f_leg_index, double f_leg_leverage, bool is_front_stub,
+    std::optional<date> stub_date) {
   auto leg_notional = notional;
 
   if (is_paying_margin) {
@@ -126,26 +128,25 @@ unique_ptr<BasisSwap> SwapScheduler::MakeBasisSwap(
       currency_code, leg_notional, settlement_date, maturity_date,
       discount_curve_name, m_leg_frequency, m_leg_payment_calendar,
       m_leg_business_day_convention, m_leg_payment_lag, m_leg_day_counter,
-      m_leg_index, m_leg_leverage, margin, m_leg_is_front_stub,
-      m_leg_stub_date);
+      m_leg_index, m_leg_leverage, margin, is_front_stub, stub_date);
 
   auto floating_leg = MakeFloatingLeg(
       currency_code, leg_notional, settlement_date, maturity_date,
       discount_curve_name, f_leg_frequency, f_leg_payment_calendar,
       f_leg_business_day_convention, f_leg_payment_lag, f_leg_day_counter,
-      f_leg_index, f_leg_leverage, 0.0, f_leg_is_front_stub, f_leg_stub_date);
+      f_leg_index, f_leg_leverage, 0.0, is_front_stub, stub_date);
 
   return std::make_unique<BasisSwap>(std::move(margin_leg),
                                      std::move(floating_leg));
 }
 
-std::unique_ptr<GenericLeg> SwapScheduler::MakePremiumLeg(
+std::unique_ptr<GenericLeg> SwapMaker::MakePremiumLeg(
     const std::string& currency_code, double notional, date start_date,
     date maturity_date, const std::string& discount_curve_name,
     const std::string& survival_curve_name, Frequency frequency,
     const ICalendar& payment_calendar, const IBusinessDayConvention& convention,
     Period payment_lag, const IDayCounter& day_counter, double cds_spread,
-    bool is_front_stub, date stub_date) {
+    bool is_front_stub, std::optional<date> stub_date) {
   auto schedule =
       MakeSchedule(start_date, maturity_date, frequency, payment_calendar,
                    convention, is_front_stub, stub_date);
@@ -164,12 +165,12 @@ std::unique_ptr<GenericLeg> SwapScheduler::MakePremiumLeg(
   return std::make_unique<GenericLeg>(std::move(cf_collection));
 }
 
-unique_ptr<FixedLeg> SwapScheduler::MakeFixedLeg(
+unique_ptr<FixedLeg> SwapMaker::MakeFixedLeg(
     const string& currency_code, double notional, date settlement_date,
     date maturity_date, const string& discount_curve_name, Frequency frequency,
     const ICalendar& payment_calendar, const IBusinessDayConvention& convention,
     Period payment_lag, const IDayCounter& day_counter, double strike,
-    bool is_front_stub, date stub_date) {
+    bool is_front_stub, std::optional<date> stub_date) {
   auto schedule =
       MakeSchedule(settlement_date, maturity_date, frequency, payment_calendar,
                    convention, is_front_stub, stub_date);
@@ -187,12 +188,13 @@ unique_ptr<FixedLeg> SwapScheduler::MakeFixedLeg(
 
   return std::make_unique<FixedLeg>(currency_code, std::move(cf_collection));
 }
-unique_ptr<FloatingLeg> SwapScheduler::MakeFloatingLeg(
+unique_ptr<FloatingLeg> SwapMaker::MakeFloatingLeg(
     const string& currency_code, double notional, date settlement_date,
     date maturity_date, const string& discount_curve_name, Frequency frequency,
     const ICalendar& payment_calendar, const IBusinessDayConvention& convention,
     Period payment_lag, const IDayCounter& day_counter, const IIndex& index,
-    double leverage, double margin, bool is_front_stub, date stub_date) {
+    double leverage, double margin, bool is_front_stub,
+    std::optional<date> stub_date) {
   auto schedule =
       MakeSchedule(settlement_date, maturity_date, frequency, payment_calendar,
                    convention, is_front_stub, stub_date);
@@ -210,10 +212,12 @@ unique_ptr<FloatingLeg> SwapScheduler::MakeFloatingLeg(
 
   return std::make_unique<FloatingLeg>(currency_code, std::move(cf_collection));
 }
-vector<date> SwapScheduler::MakeSchedule(
-    date start_date, date maturity_date, Frequency frequency,
-    const ICalendar& calendar, const IBusinessDayConvention& convention,
-    bool is_front_stub, date stub_date) {
+vector<date> SwapMaker::MakeSchedule(date start_date, date maturity_date,
+                                     Frequency frequency,
+                                     const ICalendar& calendar,
+                                     const IBusinessDayConvention& convention,
+                                     bool is_front_stub,
+                                     std::optional<date> stub_date) {
   auto schedule = MakeUnadjustedSchedule(start_date, maturity_date, frequency,
                                          calendar, is_front_stub, stub_date);
   std::transform(std::next(schedule.begin()), schedule.end(),
@@ -222,23 +226,35 @@ vector<date> SwapScheduler::MakeSchedule(
   return schedule;
 }
 
-vector<date> SwapScheduler::MakeUnadjustedSchedule(
-    date start_date, date maturity_date, Frequency frequency,
-    const ICalendar& calendar, bool is_front_stub, date stub_date) {
+vector<date> SwapMaker::MakeUnadjustedSchedule(date start_date,
+                                               date maturity_date,
+                                               Frequency frequency,
+                                               const ICalendar& calendar,
+                                               bool is_front_stub,
+                                               std::optional<date> stub_date) {
   const auto tenor = FrequencyToPeriod(frequency);
   vector<date> schedule;
-  schedule.emplace_back(start_date);
-  if (is_front_stub) {
-    if (stub_date != start_date) schedule.emplace_back(stub_date);
-    while (schedule.back() < maturity_date) {
-      schedule.emplace_back(ShiftDate(schedule.back(), tenor, calendar));
+  auto tmp_date = start_date;
+
+  if (!is_front_stub && stub_date) {
+    while (tmp_date < *stub_date) {
+      schedule.emplace_back(tmp_date);
+      tmp_date = ShiftDate(tmp_date, tenor, calendar);
     }
-  } else {
-    while (schedule.back() < stub_date) {
-      schedule.emplace_back(ShiftDate(schedule.back(), tenor, calendar));
-      schedule.emplace_back(maturity_date);
-    }
+    schedule.emplace_back(*stub_date);
+    schedule.emplace_back(maturity_date);
+    return schedule;
   }
+
+  if (is_front_stub && stub_date) {
+    schedule.emplace_back(tmp_date);
+    tmp_date = *stub_date;
+  }
+  while (tmp_date < maturity_date) {
+    schedule.emplace_back(tmp_date);
+    tmp_date = ShiftDate(tmp_date, tenor, calendar);
+  }
+  schedule.emplace_back(maturity_date);
   return schedule;
 }
 }  // namespace qff_a

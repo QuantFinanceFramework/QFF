@@ -9,7 +9,7 @@
 #include <LondonCalendar.h>
 #include <ModifiedFollowing.h>
 #include <NewYorkFedCalendar.h>
-#include <SwapScheduler.h>
+#include <SwapMaker.h>
 #include <Thirty360Isda.h>
 #include <UsBondMarketCalendar.h>
 
@@ -37,21 +37,20 @@ int main() {
                                                NewYorkFedCalendar(),
                                                ModifiedFollowing()};
 
-  auto ois = SwapScheduler::MakeInterestRateSwap(
+  auto ois = SwapMaker::MakeInterestRateSwap(
       "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(2, TimeUnit::b), Actual360(), 0.012093142296278,
       Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
-      Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0, true,
-      date(2020, 2, 4), 0.0);
+      Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1, 0.0);
 
-  auto ois_par = SwapScheduler::MakeInterestRateSwap(
+  auto ois_par = SwapMaker::MakeInterestRateSwap(
       "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(2, TimeUnit::b), Actual360(),
       ois->GetParRate(*environment).value(), Frequency::Annually,
       NewYorkFedCalendar(), ModifiedFollowing(), Period(2, TimeUnit::b),
-      Actual360(), ff_compounded_index, 1, 0.0, true, date(2020, 2, 4), 0.0);
+      Actual360(), ff_compounded_index, 1, 0.0);
 
   std::cout.precision(15);
 
@@ -86,7 +85,7 @@ int main() {
                        ModifiedFollowing(),
                        Period(3, TimeUnit::m)};
 
-  auto irs = SwapScheduler::MakeInterestRateSwap(
+  auto irs = SwapMaker::MakeInterestRateSwap(
       "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Semiannually,
       CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
@@ -94,9 +93,9 @@ int main() {
       Frequency::Quarterly,
       CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
       ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), ibor_index, 1,
-      0.0, true, date(2020, 2, 4), 0.0);
+      0.0);
 
-  auto irs_par = SwapScheduler::MakeInterestRateSwap(
+  auto irs_par = SwapMaker::MakeInterestRateSwap(
       "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Semiannually,
       CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
@@ -104,7 +103,7 @@ int main() {
       irs->GetParRate(*environment).value(), Frequency::Quarterly,
       CompositeCalendar(NewYorkFedCalendar(), LondonCalendar()),
       ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), ibor_index, 1,
-      0.0, true, date(2020, 2, 4), 0.0);
+      0.0);
 
   auto irs_result = CalculateIrResult(*irs, *environment, "USD");
   auto irs_par_result = CalculateIrResult(*irs_par, *environment, "USD");
@@ -137,20 +136,20 @@ int main() {
                                                  UsBondMarketCalendar(),
                                                  ModifiedFollowing()};
 
-  auto sofr_ois = SwapScheduler::MakeInterestRateSwap(
+  auto sofr_ois = SwapMaker::MakeInterestRateSwap(
       "USD", 10000000.0, date(2020, 2, 4), date(2030, 2, 4), true, "USD_FF",
       Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(2, TimeUnit::b), Actual360(), 0.013, Frequency::Annually,
       NewYorkFedCalendar(), ModifiedFollowing(), Period(2, TimeUnit::b),
-      Actual360(), sofr_compounded_index, 1, 0.0, true, date(2020, 2, 4), 0.0);
+      Actual360(), sofr_compounded_index, 1, 0.0);
 
-  auto sofr_ois_par = SwapScheduler::MakeInterestRateSwap(
+  auto sofr_ois_par = SwapMaker::MakeInterestRateSwap(
       "USD", 10000000.0, date(2020, 2, 4), date(2030, 2, 4), true, "USD_FF",
       Frequency::Annually, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(2, TimeUnit::b), Actual360(),
       sofr_ois->GetParRate(*environment).value(), Frequency::Annually,
       NewYorkFedCalendar(), ModifiedFollowing(), Period(2, TimeUnit::b),
-      Actual360(), sofr_compounded_index, 1, 0.0, true, date(2020, 2, 4), 0.0);
+      Actual360(), sofr_compounded_index, 1, 0.0);
 
   auto sofr_ois_result = CalculateIrResult(*sofr_ois, *environment, "USD");
   auto sofr_ois_par_result =
@@ -176,23 +175,21 @@ int main() {
   sofr_ois_result.PrintDeltas();
   std::cout << '\n';
 
-  auto sofr_ff_basis = SwapScheduler::MakeBasisSwap(
-      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), "USD_FF",
+  auto sofr_ff_basis = SwapMaker::MakeBasisSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(2, TimeUnit::b), Actual360(), sofr_compounded_index, 1.0,
-      -0.000057, true, date(2020, 2, 4), 0.0, Frequency::Quarterly,
-      NewYorkFedCalendar(), ModifiedFollowing(), Period(2, TimeUnit::b),
-      Actual360(), ff_compounded_index, 1.0, true, date(2020, 2, 4), 0.0,
-      false);
+      -0.000057, Frequency::Quarterly, NewYorkFedCalendar(),
+      ModifiedFollowing(), Period(2, TimeUnit::b), Actual360(),
+      ff_compounded_index, 1.0);
 
-  auto sofr_ff_basis_par = SwapScheduler::MakeBasisSwap(
-      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), "USD_FF",
+  auto sofr_ff_basis_par = SwapMaker::MakeBasisSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(2, TimeUnit::b), Actual360(), sofr_compounded_index, 1.0,
-      sofr_ff_basis->GetParRate(*environment).value(), true, date(2020, 2, 4),
-      0.0, Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
-      Period(2, TimeUnit::b), Actual360(), ff_compounded_index, 1.0, true,
-      date(2020, 2, 4), 0.0, false);
+      sofr_ff_basis->GetParRate(*environment).value(), Frequency::Quarterly,
+      NewYorkFedCalendar(), ModifiedFollowing(), Period(2, TimeUnit::b),
+      Actual360(), ff_compounded_index, 1.0);
 
   auto sofr_ff_basis_result =
       CalculateIrResult(*sofr_ff_basis, *environment, "USD");
@@ -231,22 +228,20 @@ int main() {
                                            Period(-2, TimeUnit::b),
                                            false};
 
-  auto ff_libor_basis = SwapScheduler::MakeBasisSwap(
-      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), "USD_FF",
+  auto ff_libor_basis = SwapMaker::MakeBasisSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
-      Period(0, TimeUnit::b), Actual360(), ff_averaged_index, 1.0, 0.002, true,
-      date(2020, 2, 4), 0.0, Frequency::Quarterly, NewYorkFedCalendar(),
-      ModifiedFollowing(), Period(0, TimeUnit::b), Actual360(), ibor_index, 1.0,
-      true, date(2020, 2, 4), 0.0, false);
+      Period(0, TimeUnit::b), Actual360(), ff_averaged_index, 1.0, 0.002,
+      Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
+      Period(0, TimeUnit::b), Actual360(), ibor_index, 1.0);
 
-  auto ff_libor_basis_par = SwapScheduler::MakeBasisSwap(
-      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), "USD_FF",
+  auto ff_libor_basis_par = SwapMaker::MakeBasisSwap(
+      "USD", 10000000.0, date(2020, 2, 4), date(2023, 2, 4), false, "USD_FF",
       Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
       Period(0, TimeUnit::b), Actual360(), ff_averaged_index, 1.0,
-      ff_libor_basis->GetParRate(*environment).value(), true, date(2020, 2, 4),
-      0.0, Frequency::Quarterly, NewYorkFedCalendar(), ModifiedFollowing(),
-      Period(0, TimeUnit::b), Actual360(), ibor_index, 1.0, true,
-      date(2020, 2, 4), 0.0, false);
+      ff_libor_basis->GetParRate(*environment).value(), Frequency::Quarterly,
+      NewYorkFedCalendar(), ModifiedFollowing(), Period(0, TimeUnit::b),
+      Actual360(), ibor_index, 1.0);
 
   auto ff_libor_basis_result =
       CalculateIrResult(*ff_libor_basis, *environment, "USD");

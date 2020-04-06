@@ -7,7 +7,7 @@
 #include <NewYorkFedCalendar.h>
 #include <PricingEnvironment.h>
 #include <SurvivalCurve.h>
-#include <SwapScheduler.h>
+#include <SwapMaker.h>
 
 #include <memory>
 #include <vector>
@@ -101,11 +101,10 @@ int main() {
       pricing_date, std::move(curve_set), std::move(past_fixing_set),
       std::move(credit_curve_set), std::move(fx_today_map)};
 
-  auto jpm_cds = SwapScheduler::MakeCreditDefaultSwap(
+  auto jpm_cds = SwapMaker::MakeCreditDefaultSwap(
       "USD", 1000000.0, date(2019, 6, 1), date(2029, 6, 20), true,
       "USD_FedFunds", "JPM", Frequency::Quarterly, NewYorkFedCalendar(),
-      Following(), Period(0, TimeUnit::b), Actual360(), 0.00874761, 0.4, true,
-      date(2019, 9, 20));
+      Following(), Period(0, TimeUnit::b), Actual360(), 0.00874761, 0.4);
 
   std::cout.precision(15);
 

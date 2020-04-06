@@ -53,7 +53,7 @@ inline void CalibrateIrCurves(
     // BOBYQA (Bound Optimization BY Quadratic Approximation)
     dlib::find_min_bobyqa(
         f, zeros, n * 2, dlib::uniform_matrix<double>(n, 1, -0.05),
-        dlib::uniform_matrix<double>(n, 1, 0.2), 0.1, 1e-13, n * 100);
+        dlib::uniform_matrix<double>(n, 1, 0.2), 0.1, 1e-13, n * 1000);
     return;
   }
   if (method == "BFGS") {

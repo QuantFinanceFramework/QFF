@@ -2,7 +2,7 @@
 #include <LondonCalendar.h>
 #include <ModifiedFollowing.h>
 #include <NewYorkFedCalendar.h>
-#include <SwapScheduler.h>
+#include <SwapMaker.h>
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
@@ -11,7 +11,7 @@ using boost::gregorian::date;
 
 TEST(SwapSchedulerTest, TestMakeSchedule) {
   const CompositeCalendar calender{NewYorkFedCalendar(), LondonCalendar()};
-  const auto schedule = SwapScheduler::MakeSchedule(
+  const auto schedule = SwapMaker::MakeSchedule(
 	  date(2019, 3, 21), date(2023, 3, 21), Frequency::Quarterly, calender,
 	  ModifiedFollowing(), true, date(2019, 3, 21));
   EXPECT_THAT(schedule,

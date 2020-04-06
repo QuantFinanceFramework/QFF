@@ -190,7 +190,8 @@
     <ClCompile Include="Following.cpp" />
     <ClCompile Include="Period.cpp" />
     <ClCompile Include="Preceding.cpp" />
-    <ClCompile Include="SwapScheduler.cpp" />
+    <ClCompile Include="ProductGenerator.cpp" />
+    <ClCompile Include="SwapMaker.cpp" />
     <ClCompile Include="SydenyCalendar.cpp" />
     <ClCompile Include="Target2Calendar.cpp" />
     <ClCompile Include="Thirty360Isda.cpp" />
@@ -249,10 +250,11 @@
     <ClInclude Include="Period.h" />
     <ClInclude Include="Preceding.h" />
     <ClInclude Include="PricingEnvironment.h" />
+    <ClInclude Include="ProductGenerator.h" />
     <ClInclude Include="ProtectionLeg.h" />
     <ClInclude Include="SurvivalCurve.h" />
     <ClInclude Include="GenericSwap.h" />
-    <ClInclude Include="SwapScheduler.h" />
+    <ClInclude Include="SwapMaker.h" />
     <ClInclude Include="SydneyCalendar.h" />
     <ClInclude Include="Target2Calendar.h" />
     <ClInclude Include="Thirty360Isda.h" />

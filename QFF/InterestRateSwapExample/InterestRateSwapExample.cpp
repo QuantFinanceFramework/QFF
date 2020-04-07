@@ -4,6 +4,7 @@
 #include <CompositeCalendar.h>
 #include <CompoundedOvernightIndex.h>
 #include <DiscountFactorCurve.h>
+#include <ForwardRateAgreement.h>
 #include <IborIndex.h>
 #include <Interpolation.h>
 #include <LondonCalendar.h>
@@ -268,6 +269,15 @@ int main() {
   std::cout << "FF Swap Zero Deltas : " << '\n';
   ff_libor_basis_result.PrintDeltas();
   std::cout << '\n';
+
+  auto fra = std::make_unique<ForwardRateAgreement>(
+      10000000.0, "USD", date(2020, 5, 4), date(2020, 8, 4), date(2020, 5, 4),
+      "USD_FF", Actual360(), 0.015, ibor_index, 1.0, 0.0);
+
+  auto fra_result = fra->Evaluate(*environment, "USD");
+
+  std::cout << "FRA NPV in " << fra_result.currency_code << " = "
+            << fra_result.amount.value() << '\n';
 
   return 0;
 }

@@ -227,6 +227,7 @@
     <ClInclude Include="FloatingLeg.h" />
     <ClInclude Include="Following.h" />
     <ClInclude Include="CalculateIrResult.h" />
+    <ClInclude Include="ForwardRateAgreement.h" />
     <ClInclude Include="IborIndex.h" />
     <ClInclude Include="IBusinessDayConvention.h" />
     <ClInclude Include="ICalendar.h" />

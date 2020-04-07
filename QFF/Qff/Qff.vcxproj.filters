@@ -91,6 +91,9 @@
     <Filter Include="Source Files\Utilities">
       <UniqueIdentifier>{aa849e33-9e5b-45f1-9175-ac2563f8e0f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Products\Swaps">
+      <UniqueIdentifier>{1e6c7777-975d-4522-a1e8-52306f88ca64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actual365.cpp">
@@ -284,9 +287,6 @@
     <ClInclude Include="Currency.h">
       <Filter>Header Files\Currencies</Filter>
     </ClInclude>
-    <ClInclude Include="InterestRateSwap.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="FixedLeg.h">
       <Filter>Header Files\Products\Legs</Filter>
     </ClInclude>
@@ -311,23 +311,29 @@
     <ClInclude Include="ICashflow.h">
       <Filter>Header Files\Products\Cashflows</Filter>
     </ClInclude>
-    <ClInclude Include="GenericSwap.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="GenericLeg.h">
       <Filter>Header Files\Products\Legs</Filter>
-    </ClInclude>
-    <ClInclude Include="BasisSwap.h">
-      <Filter>Header Files\Products</Filter>
     </ClInclude>
     <ClInclude Include="CalibrateIrCurves.h">
       <Filter>Header Files\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="SwapMaker.h">
-      <Filter>Header Files\Products</Filter>
-    </ClInclude>
     <ClInclude Include="ProductGenerator.h">
       <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="ForwardRateAgreement.h">
+      <Filter>Header Files\Products</Filter>
+    </ClInclude>
+    <ClInclude Include="BasisSwap.h">
+      <Filter>Header Files\Products\Swaps</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericSwap.h">
+      <Filter>Header Files\Products\Swaps</Filter>
+    </ClInclude>
+    <ClInclude Include="InterestRateSwap.h">
+      <Filter>Header Files\Products\Swaps</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapMaker.h">
+      <Filter>Header Files\Products\Swaps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

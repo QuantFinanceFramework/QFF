@@ -61,6 +61,7 @@
     <ClCompile Include="FixedCashflowTest.cpp" />
     <ClCompile Include="FlatZeroCurveTest.cpp" />
     <ClCompile Include="IborIndexTest.cpp" />
+    <ClCompile Include="ImmDatesTest.cpp" />
     <ClCompile Include="InterpolationTest.cpp" />
     <ClCompile Include="LondonCalendarTest.cpp" />
     <ClCompile Include="NewYorkFedCalendarTest.cpp" />

@@ -159,6 +159,9 @@
     <ClCompile Include="ProductGenerator.cpp">
       <Filter>Source Files\Products</Filter>
     </ClCompile>
+    <ClCompile Include="ImmDates.cpp">
+      <Filter>Source Files\Date</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actual365.h">
@@ -334,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="SwapMaker.h">
       <Filter>Header Files\Products\Swaps</Filter>
+    </ClInclude>
+    <ClInclude Include="ImmDates.h">
+      <Filter>Header Files\Date</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

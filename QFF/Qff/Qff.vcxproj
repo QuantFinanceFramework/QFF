@@ -180,6 +180,7 @@
     <ClCompile Include="Actual360.cpp" />
     <ClCompile Include="BaseCalendar.cpp" />
     <ClCompile Include="CompositeCalendar.cpp" />
+    <ClCompile Include="ImmDates.cpp" />
     <ClCompile Include="IrDeltas.cpp" />
     <ClCompile Include="IrResult.cpp" />
     <ClCompile Include="LondonCalendar.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="IIndex.h" />
     <ClInclude Include="IInterestRateCurve.h" />
     <ClInclude Include="IInterpolator.h" />
+    <ClInclude Include="ImmDates.h" />
     <ClInclude Include="InterestRateCurve.h" />
     <ClInclude Include="InterestRateSwap.h" />
     <ClInclude Include="Interpolation.h" />

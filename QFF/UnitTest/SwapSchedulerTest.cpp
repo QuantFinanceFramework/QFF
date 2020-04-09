@@ -13,7 +13,7 @@ TEST(SwapSchedulerTest, TestMakeSchedule) {
   const CompositeCalendar calender{NewYorkFedCalendar(), LondonCalendar()};
   const auto schedule = SwapMaker::MakeSchedule(
 	  date(2019, 3, 21), date(2023, 3, 21), Frequency::Quarterly, calender,
-	  ModifiedFollowing(), true, date(2019, 3, 21));
+	  ModifiedFollowing());
   EXPECT_THAT(schedule,
               testing::ElementsAre(
                   date(2019, 3, 21), date(2019, 6, 21), date(2019, 9, 23),
@@ -22,4 +22,27 @@ TEST(SwapSchedulerTest, TestMakeSchedule) {
                   date(2021, 6, 21), date(2021, 9, 21), date(2021, 12, 21),
                   date(2022, 3, 21), date(2022, 6, 21), date(2022, 9, 21),
                   date(2022, 12, 21), date(2023, 3, 21)));
+}
+
+TEST(SwapSchedulerTest, TestMakeSchedule_front_stub) {
+  const CompositeCalendar calender{NewYorkFedCalendar(), LondonCalendar()};
+  const auto schedule = SwapMaker::MakeSchedule(
+      date(2019, 3, 1), date(2023, 3, 21), Frequency::Quarterly, calender,
+      ModifiedFollowing(), true, date(2019, 3, 21));
+  EXPECT_THAT(schedule,
+              testing::ElementsAre(
+                  date(2019, 3, 1),
+                  date(2019, 3, 21), date(2019, 6, 21), date(2019, 9, 23),
+                  date(2019, 12, 23), date(2020, 3, 23), date(2020, 6, 22),
+                  date(2020, 9, 21), date(2020, 12, 21), date(2021, 3, 22),
+                  date(2021, 6, 21), date(2021, 9, 21), date(2021, 12, 21),
+                  date(2022, 3, 21), date(2022, 6, 21), date(2022, 9, 21),
+                  date(2022, 12, 21), date(2023, 3, 21)));
+}
+
+TEST(SwapSchedulerTest, TestMakeSchedule_stub_date_equal_start_date) {
+  const CompositeCalendar calender{NewYorkFedCalendar(), LondonCalendar()};
+  EXPECT_ANY_THROW(SwapMaker::MakeSchedule(
+      date(2019, 3, 21), date(2023, 3, 21), Frequency::Quarterly, calender,
+      ModifiedFollowing(), true, date(2019, 3, 21)));
 }

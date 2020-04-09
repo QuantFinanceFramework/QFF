@@ -63,6 +63,9 @@
     <ClCompile Include="BlackScholesFormulaTest.cpp">
       <Filter>Functions</Filter>
     </ClCompile>
+    <ClCompile Include="ImmDatesTest.cpp">
+      <Filter>Date</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="BusinessDayConventions">

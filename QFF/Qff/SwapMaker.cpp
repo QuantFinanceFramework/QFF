@@ -237,6 +237,10 @@ vector<date> SwapMaker::MakeUnadjustedSchedule(date start_date,
   auto tmp_date = start_date;
 
   if (!is_front_stub && stub_date) {
+    if (stub_date >= maturity_date) {
+      throw std::logic_error{
+          "stub_date cannot be greater than or equal to maturity_date"};
+    }
     while (tmp_date < *stub_date) {
       schedule.emplace_back(tmp_date);
       tmp_date = ShiftDate(tmp_date, tenor, calendar);
@@ -247,6 +251,10 @@ vector<date> SwapMaker::MakeUnadjustedSchedule(date start_date,
   }
 
   if (is_front_stub && stub_date) {
+    if (stub_date <= start_date) {
+      throw std::logic_error{
+          "stub_date cannot be less than or equal to start_date"};
+    }
     schedule.emplace_back(tmp_date);
     tmp_date = *stub_date;
   }
